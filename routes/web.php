@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route Admin
+// Route::get('/', function () {
+//     return view('admin/dashboard');
+// });
 Route::get('/', function () {
-    return view('admin/dashboard');
+    return view('guest/welcome');
 });
 
 Route::get('/Admin/ProfilDesa', function () {
