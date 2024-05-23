@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -29,6 +32,20 @@
     font-style: normal;
   }
 
+  .grechen-fuemen-regular {
+    font-family: "Grechen Fuemen", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .nunito-reguler {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100px;
+    font-style: normal;
+  }
+
+
 /* TEST */
 .h-screen {
     height: 100vh;
@@ -54,4 +71,17 @@
     background-color: #025862;
   }
 
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.image-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px;
+}
 
