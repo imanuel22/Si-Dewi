@@ -26,7 +26,7 @@
             <div
                 class="absolute top-0 flex flex-col justify-center pl-80 h-full text-white text-4xl poppins-bold tracking-normal">
                 <div>
-                    <h1>EXPLORE BALI</h1>
+                    <h1>EXPLORE BALIs </h1>
                 </div>
                 <div>
                     <h1>WHERE CULTURE MEETS PARADISE</h1>
