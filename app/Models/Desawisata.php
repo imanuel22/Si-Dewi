@@ -10,7 +10,8 @@ class Desawisata extends Model
     use HasFactory;
 
     protected $table = 'tb_desawisata';
-    protected $guarded  = 'id';
-    public $timestamps = false;
+    protected $guarded = ['id'];
+
+    // public $timestamps = true;
 
 }

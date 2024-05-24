@@ -14,19 +14,16 @@ class DesawisataController extends Controller
     public function index()
     {
         $response = Http::get('localhost:3000/desawisata')->json();
-        $desawisata = $response;
-
-        $datadesa=Desawisata::all();
-        // dd($datadesa,$response);
-        if($datadesa!=$response){
-            for ($i=0; $i < count($response); $i++) { 
-                dd($datadesa,$response[$i]);
-                Desawisata::create($response[$i]);
-            }
-        }
+        // if(Desawisata::count()!=count($response)){
+        //     Desawisata::truncate();
+        //     for ($i=0; $i < count($response); $i++) { 
+        //         Desawisata::create($response[$i]);
+        //     }
+        // }
+        // $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
-            'desawisata'=> $datadesa
+            'desawisata'=> $response
         ]);
     }
 
@@ -35,7 +32,9 @@ class DesawisataController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.desawisata.create',[
+            // 'desawisata'=> $response
+        ]);
     }
 
     /**
@@ -43,7 +42,7 @@ class DesawisataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
