@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AkunController;
+use App\Http\Controllers\DesawisataController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +18,7 @@ Route::get('/Admin/ProfilDesa', function () {
 });
 
 
+// ADMIN
 Route::get('/Admin/Berita', function () {
     return view('admin/crud_berita');
 });
@@ -38,3 +41,6 @@ Route::get('/Admin/PaketWisata', function () {
     return view('admin/crud_paket_wisata');
 });
 
+// SUPERADMIN
+Route::resource('/superadmin/akun', AkunController::class);
+Route::resource('/superadmin/desa', DesawisataController::class);

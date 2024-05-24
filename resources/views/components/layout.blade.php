@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<x-header></x-header>
-
+@include('components.header')
 <body>
-    <x-sidebar></x-sidebar>
-    {{ $slot }}
-    <x-footer></x-footer>
-    <x-script></x-script>
+    @include('components.sidebar-superadmin')
+    <div class="p-4 sm:ml-64">
+        <div class="mt-14">
+            @yield('main')
+        </div>
+     </div>
+    @include('components.footer')
+    @include('components.script')
 </body>
-
 </html>

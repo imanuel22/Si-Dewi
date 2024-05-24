@@ -8,29 +8,27 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('tb_desawisata', function (Blueprint $table) {
-            $table->integer('id_desawisata')->primary();
+            $table->id();
+            $table->string('nama',25);
+            $table->string('slug',35);
             $table->text('gambar');
             $table->text('alamat');
-            $table->string('nama', 25);
             $table->text('deskripsi');
             $table->text('maps');
-            $table->enum('kategori', ['Rintisan', 'Berkembang', 'Maju', 'Mandiri']);
-            $table->enum('kabupaten', ['Badung', 'Bangli', 'Jembrana', 'Klungkung', 'Karangasem', 'Gianyar', 'Tabanan', 'Denpasar', 'Buleleng']);
+            $table->enum('kategori',['Rintisan', 'Berkembang', 'Maju', 'Mandiri']);
+            $table->enum('kabupaten',['Badung', 'Bangli', 'Jembrana', 'Klungkung', 'Karangasem', 'Gianyar', 'Tabanan', 'Denpasar', 'Buleleng']);
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('tb_desawisata');
     }
