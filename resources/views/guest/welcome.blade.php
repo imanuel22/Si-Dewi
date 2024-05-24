@@ -9,7 +9,13 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="container h-screen w-screen">
+=======
+    <div class="container h-screen">
+
+
+>>>>>>> 543c42943469df9b17b3c98fb9ed18ee8e2dbb66
         <div class="relative h-screen w-screen">
             <nav class="sticky top-0 z-50 mx-72 bg-transparent   border-gray-200 font-bold">
                 <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
