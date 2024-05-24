@@ -13,9 +13,20 @@ class DesawisataController extends Controller
      */
     public function index()
     {
-        $desawisata = Http::get('localhost:3000/desawisata')->collect();
+        $response = Http::get('localhost:3000/desawisata')->json();
+        $desawisata = $response;
+
+        $datadesa=Desawisata::all();
+        // dd($datadesa,$response);
+        if($datadesa!=$response){
+            for ($i=0; $i < count($response); $i++) { 
+                dd($datadesa,$response[$i]);
+                Desawisata::create($response[$i]);
+            }
+        }
+
         return view('superadmin.desawisata.index',[
-            'desawisata'=> $desawisata
+            'desawisata'=> $datadesa
         ]);
     }
 

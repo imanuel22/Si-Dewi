@@ -21,7 +21,9 @@ return new class extends Migration
             $table->text('maps');
             $table->enum('kategori',['Rintisan', 'Berkembang', 'Maju', 'Mandiri']);
             $table->enum('kabupaten',['Badung', 'Bangli', 'Jembrana', 'Klungkung', 'Karangasem', 'Gianyar', 'Tabanan', 'Denpasar', 'Buleleng']);
-            $table->timestamps();
+            $table->date('createdAt');
+            $table->date('updatedAt');
+            // $table->timestamps();
         });
     }
 
