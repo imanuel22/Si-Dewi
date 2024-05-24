@@ -12,7 +12,7 @@
     <div class="container-fluid h-screen">
 
 
-        <div class="relative h-screen bg-slate-700">
+        <div class="h-screen bg-slate-700">
             @include('partials.navbar')
 
             <!-- Gambar Latar Belakang -->
@@ -32,8 +32,8 @@
                     <h1>WHERE CULTURE MEETS PARADISE</h1>
                 </div>
             </div>
-            
-            <div class="bg-white p-4 rounded-lg shadow-md w-screen">
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
                 <div class="grid grid-cols-2 gap-4 mr-5 ml-7">
                     <!-- Kolom Pertama: Judul dan Deskripsi -->
                     <div class="pl-10">
