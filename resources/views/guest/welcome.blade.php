@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="container h-screen w-screen">
+    <div class="container h-screen">
 
 
         <div class="relative h-screen w-screen">

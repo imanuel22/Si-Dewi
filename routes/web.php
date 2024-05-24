@@ -7,15 +7,26 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('admin/dashboard');
 // });
+
+// guest
 Route::get('/', function () {
     return view('guest/welcome');
 });
 
-Route::get('/Admin/ProfilDesa', function () {
-    return view('admin/crud_profil_desa');
+Route::get('/artikel', function () {
+    return view('guest/artikel');
+});
+Route::get('/detail', function () {
+    return view('guest/detailDesa');
 });
 
 
+
+
+// admin
+Route::get('/Admin/ProfilDesa', function () {
+    return view('admin/crud_profil_desa');
+});
 Route::get('/Admin/Berita', function () {
     return view('admin/crud_berita');
 });
@@ -38,3 +49,4 @@ Route::get('/Admin/PaketWisata', function () {
     return view('admin/crud_paket_wisata');
 });
 
+?>
