@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AkunController;
-use App\Http\Controllers\DesawisataController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AkunController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DesawisataController;
 
 
 // Route Admin
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('./User/user_home');
 });
+
+
+Route::get('/login',[AuthController::class,'login']);
+Route::post('/dologin',[AuthController::class,'dologin']);
 
 Route::get('/Admin/ProfilDesa', function () {
     return view('admin/crud_profil_desa');

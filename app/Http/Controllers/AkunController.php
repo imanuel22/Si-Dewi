@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AkunController extends Controller
 {
@@ -11,7 +12,10 @@ class AkunController extends Controller
      */
     public function index()
     {
-        return view('superadmin.akun.index');
+        $response = Http::get('localhost:3000/akun')->json();
+        return view('superadmin.akun.index',[
+            'akun'=>$response
+        ]);
     }
 
     /**
