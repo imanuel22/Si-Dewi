@@ -120,11 +120,11 @@ class DesawisataController extends Controller
         }
 
         if($response->successful()){
-            return redirect('/desawisata')->with('message','berhasil mengupdate');
+            return redirect('/superadmin/desa')->with('message','berhasil mengupdate');
         }elseif ($response->failed()) {
-            return redirect('/desawisata/'.$id.'/')->with('message','gagal mengupdate');
+            return redirect('/superadmin/desa/')->with('message','gagal mengupdate');
         } else {
-            return redirect('/desawisata')->with('message','erorr system 500');
+            return redirect('/superadmin/desa')->with('message','erorr system 500');
         }
     }
 

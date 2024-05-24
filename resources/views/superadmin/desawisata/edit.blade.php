@@ -1,44 +1,53 @@
 @extends('components.layout')
 
 @section('main')
-{{-- @dd($desawisata) --}}
 <h1>Form Desa</h1>
-<form class="mx-auto" action="/superadmin/desa" method="POST" enctype="multipart/form-data">
+<form class="mx-auto" action="/superadmin/desa/{{$desawisata['id']}}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
+    <input type="hidden" name="gambarOld" value="{{$desawisata['gambar']}}">
     <div class="mb-5">
       <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nama</label>
-      <input type="nama" value="{{old($desawisata['maps'],'nama')}}" name="nama" id="nama" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+      <input type="nama" value="{{$desawisata['nama'],old('nama')}}" name="nama" id="nama" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
     </div>
     <div class="mb-5">
       <label for="gambar" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
-      <img class="image-preview img-fluid mb-2">
+      <img class="image-preview img-fluid mb-2" src="http://localhost:3000/uploads/desawisata/{{$desawisata['gambar']}}">
       <input onchange="previewImage()" name="gambar" id="gambar" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
     </div>
     <div class="mb-5">
         <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">alamat</label>
-        <input type="alamat" name="alamat" id="alamat" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+        <input type="alamat" value="{{$desawisata['alamat'],old('alamat')}}" name="alamat" id="alamat" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
     </div>
     <div class="mb-5">
         <label for="maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maps</label>
-        <input type="maps" name="maps" id="maps" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+        <input type="maps" value="{{$desawisata['maps'],old('maps')}}" name="maps" id="maps" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
     </div>
     <div class="mb-5">
         <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">deskripsi</label>
-        <textarea id="deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+        <textarea id="deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here...">{{$desawisata['deskripsi'],old('deskripsi')}}</textarea>
     </div>
     <div class="mb-5">
         <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">pilih kategori</label>
         <select id="kategori" name="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option hidden>Select Kategori</option>
-            <option value="Rintisan">Rintisan</option>
-            <option value="Berkembang">Berkembang</option>
-            <option value="Maju">Maju</option>
-            <option value="Mandiri">Mandiri</option>
+            @if ($desawisata['kategori'])
+                <option hidden selected value="{{$desawisata['kategori']}}">{{$desawisata['kategori']}}</option>    
+            
+            @endif
+                <option hidden>Select Kategori</option>
+                <option value="Rintisan">Rintisan</option>
+                <option value="Berkembang">Berkembang</option>
+                <option value="Maju">Maju</option>
+                <option value="Mandiri">Mandiri</option>
         </select>
     </div>
     <div class="mb-5">
         <label for="kabupaten" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">pilih kabupaten</label>
         <select id="kabupaten" name="kabupaten" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @if ($desawisata['kabupaten'])
+                <option hidden selected value="{{$desawisata['kabupaten']}}">{{$desawisata['kabupaten']}}</option>    
+           
+            @endif
             <option hidden>Select Kabupaten</option>
             <option value="Badung">Badung</option>
             <option value="Bangli">Bangli</option>
