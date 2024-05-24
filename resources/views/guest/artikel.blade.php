@@ -7,11 +7,19 @@
     @vite('resources/css/app.css')
 </head>
 
+
+
+
+
+  
+@yield('container')
+
 <body class="">
     <div class="container-fluid">
+        @include('partials.navbar')
         <div class="Navbar mb-10">
         {{-- Navbar start --}}
-        <nav class="sticky top-0 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 x2l:px-44 md:px-20 sm:px-20">
+        {{-- <nav class="sticky top-0 border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 x2l:px-44 md:px-20 sm:px-20">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                   <img src="{{ asset('storage/img/logoM.png') }}" class="h-8" alt="Flowbite Logo" />
@@ -45,10 +53,9 @@
                 </ul>
             </div>
             </div>
-        </nav>
-    </div>
+        </nav> --}}
+        </div>
         {{-- Navbar End --}}
-
         {{-- content Start --}}
         {{-- artikel start --}}
         <div class="flex justify-center s:flex-col sm:flex-row  mx-auto ">
@@ -147,7 +154,7 @@
             </div>
             {{-- artikel end --}}
             {{-- card  start   --}}
-            <div class="grid lg:grid-cols-2 relative sm: grid-rows-3 gap-y-5 gap-x-5 x2l:mr-44 lg:mr-20 sm:mr-20 ml-5 mt-9 sm:grid-cols-1 sm:auto-rows-min sm:overflow-scroll">
+            <div class="grid lg:grid-cols-2  sm:grid-rows-3 gap-y-5 gap-x-5 x2l:mr-44 lg:mr-20 sm:mr-20 ml-5 mt-9 sm:grid-cols-1 sm:auto-rows-min sm:overflow-scroll">
                 <div class="mx-auto w-64 h-48 overflow-hidden">
                     <a href="#" class="">
                         <img class="rounded object-cover w-full h-full" src="{{ asset('storage/img/background.jpg') }}" alt="" />
@@ -274,6 +281,7 @@
         {{-- footer end --}}
 
     </div>
+    
 </body>
 
 </html>
