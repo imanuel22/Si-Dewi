@@ -8,12 +8,13 @@
 </head>
 
 <body>
-    <div class="container h-screen">
+    <div class="container-fluid h-screen">
 
 
-        <div class="relative h-screen w-screen">
+        <div class="relative h-screen bg-slate-700">
+            @include('partials.navbar')
 
-            <nav class="sticky top-0 z-50 mx-72 bg-transparent   border-gray-200 font-bold">
+            {{-- <nav class="sticky top-0 z-50 mx-72 bg-transparent   border-gray-200 font-bold">
                 <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
                     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                         <img src="{{ asset('storage/img/logoM.png') }}" class="h-12" alt="Logo" />
@@ -52,9 +53,9 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
             <!-- Gambar Latar Belakang -->
-            <img src="{{ asset('storage/img/background.jpg') }}" class="absolute inset-0 w-full h-full object-cover"
+            <img src="{{ asset('storage\img\bg.jpg') }}" class=" inset-0 w-full h-full object-cover"
                 alt="" style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->
@@ -62,7 +63,7 @@
 
             <!-- Konten Teks di Atas Gambar -->
             <div
-                class="relative z-10 flex flex-col justify-center pl-80 h-full text-white text-4xl poppins-bold tracking-normal">
+                class="absolute top-0 flex flex-col justify-center pl-80 h-full text-white text-4xl poppins-bold tracking-normal">
                 <div>
                     <h1>EXPLORE BALI</h1>
                 </div>
@@ -73,7 +74,7 @@
 
 
 
-        <div class="bg-white p-4 rounded-lg shadow-md w-screen">
+        <div class="bg-white p-4 rounded-lg shadow-md ">
             <div class="grid grid-cols-2 gap-4 mr-5 ml-7">
                 <!-- Kolom Pertama: Judul dan Deskripsi -->
                 <div class="pl-10">

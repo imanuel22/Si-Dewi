@@ -157,7 +157,7 @@
             <div class="grid lg:grid-cols-2  sm:grid-rows-3 gap-y-5 gap-x-5 x2l:mr-44 lg:mr-20 sm:mr-20 ml-5 mt-9 sm:grid-cols-1 sm:auto-rows-min sm:overflow-scroll">
                 <div class="mx-auto w-64 h-48 overflow-hidden">
                     <a href="#" class="">
-                        <img class="rounded object-cover w-full h-full" src="{{ asset('storage/img/background.jpg') }}" alt="" />
+                        <img class="rounded object-cover w-full h-full" src="{{ asset('storage/img/bg.jpg') }}" alt="" />
                     </a>
                 </div>
                 <div class="mx-auto w-64 h-48 overflow-hidden">
