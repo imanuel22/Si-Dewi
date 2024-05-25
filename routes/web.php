@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
+use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\DesawisataController;
 
 
@@ -11,11 +12,11 @@ use App\Http\Controllers\DesawisataController;
 //     return view('admin/dashboard');
 // });
 Route::get('/', function () {
-    return view('./User/user_home');
+    return view('home');
 });
 
 
-Route::get('/login',[AuthController::class,'login']);
+Route::get('/login',[AuthController::class,'login'])->middleware('guest');
 Route::post('/dologin',[AuthController::class,'dologin']);
 
 Route::get('/Admin/ProfilDesa', function () {
@@ -47,5 +48,5 @@ Route::get('/Admin/PaketWisata', function () {
 });
 
 // SUPERADMIN
-Route::resource('/superadmin/akun', AkunController::class);
+Route::resource('/superadmin/akun', AkunController::class)->middleware('SUPERADMIN');
 Route::resource('/superadmin/desa', DesawisataController::class);

@@ -1,5 +1,4 @@
 @extends('components.layout')
-
 @section('main')
 
 @if (session()->has('message'))

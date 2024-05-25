@@ -12,7 +12,7 @@ class AkunController extends Controller
      */
     public function index()
     {
-        $response = Http::get('localhost:3000/akun')->json();
+        $response = Http::withToken($_COOKIE['accessToken'])->get('localhost:3000/akun')->collect();
         return view('superadmin.akun.index',[
             'akun'=>$response
         ]);

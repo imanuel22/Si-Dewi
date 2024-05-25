@@ -13,7 +13,7 @@ class DesawisataController extends Controller
      */
     public function index()
     {
-        $response = Http::get('localhost:3000/desawisata')->json();
+        $response = Http::get('localhost:3000/desawisata')->collect();
         // if(Desawisata::count()!=count($response)){
         //     Desawisata::truncate();
         //     for ($i=0; $i < count($response); $i++) { 
