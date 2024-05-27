@@ -32,13 +32,13 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    judul
                 </th>
                 <th scope="col" class="px-6 py-3">
                     gambar
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    alamat
+                    isi_berita
                 </th>
                 <th scope="col" class="px-6 py-3">
                     kategori
@@ -58,7 +58,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($desawisata as $row)
+            @foreach ($berita as $row)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$loop->iteration}}

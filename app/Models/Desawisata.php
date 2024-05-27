@@ -12,6 +12,6 @@ class Desawisata extends Model
     protected $table = 'tb_desawisata';
     protected $guarded = ['id'];
 
-    // public $timestamps = true;
+    public $timestamps = False;
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use GuzzleHttp\Cookie\SetCookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -18,7 +19,8 @@ class AuthController extends Controller
         $response = Http::post('http://localhost:3000/akun/login',$request);
         $token = $response->cookies()->toArray();
         setcookie('accessToken',$token[0]['Value'],0);
-            if($response->successful()){
+        
+        if($response->successful()){
             return redirect('/login')->with('message','berhasil login');
         }elseif ($response->failed()) {
             return redirect('/login')->with('message','gagal login');

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Controllers\DesawisataController;
 
@@ -17,17 +18,19 @@ Route::get('/', function () {
 
 
 Route::get('/login',[AuthController::class,'login'])->middleware('guest');
-Route::post('/dologin',[AuthController::class,'dologin']);
+Route::post('/dologin',[AuthController::class,'dologin'])->middleware('guest');
 
 Route::get('/Admin/ProfilDesa', function () {
     return view('admin/crud_profil_desa');
 });
 
 
-// ADMIN
-Route::get('/Admin/Berita', function () {
-    return view('admin/crud_berita');
-});
+// ADMIN.
+Route::resource('/admin/berita',BeritaController::class);
+
+// Route::get('/Admin/Berita', function () {
+//     return view('admin.berita.index');
+// });
 Route::get('/Admin/Rating', function () {
     return view('admin/crud_rating');
 });
@@ -48,5 +51,5 @@ Route::get('/Admin/PaketWisata', function () {
 });
 
 // SUPERADMIN
-Route::resource('/superadmin/akun', AkunController::class)->middleware('SUPERADMIN');
-Route::resource('/superadmin/desa', DesawisataController::class);
+Route::resource('/superadmin/akun', AkunController::class);
+Route::resource('/superadmin/desa', DesawisataController::class)->middleware('SUPERADMIN');
