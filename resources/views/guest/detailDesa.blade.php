@@ -39,10 +39,10 @@
                 </div>
                 </div>
             </nav>
-        </div> 
+        </div>
         {{-- navbar end --}}
         {{-- background --}}
-        <div class="img "> 
+        <div class="img ">
             <img src="{{ asset('storage/img/testpict.png') }}" alt="" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
@@ -62,7 +62,7 @@
                     </div>
                 <div>
                 {{-- tab --}}
-                    
+
 
                         <div class="mx-72 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <div class="sm:hidden">
@@ -176,10 +176,12 @@
                             </div>
                         </div>
 
-                {{-- tab --}}  
+                {{-- tab --}}
             </div>
         {{-- content end --}}
-    </div>              
+    </div>
+    @include('partials.navbar')
+
     {{-- container end --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>

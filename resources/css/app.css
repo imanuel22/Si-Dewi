@@ -87,7 +87,5 @@
 
 .t1{
     mix-blend-mode: difference;
-    color: black;
-
-    filter: invert(100%);
+    color: #fff;
 }

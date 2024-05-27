@@ -14,8 +14,8 @@
 
 @yield('container')
 
-<body class="">
-    <div class="container-fluid">
+<body class="bg-slate-200">
+    <div class="container-fluid ">
         @include('partials.navbar')
         <div class="Navbar mb-10">
         {{-- Navbar start --}}
