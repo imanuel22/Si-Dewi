@@ -20,7 +20,9 @@ Route::get('/detail', function () {
     return view('guest/detailDesa');
 });
 
-
+Route::get('/event', function () {
+    return view('event');
+});
 
 
 // admin

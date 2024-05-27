@@ -15,9 +15,8 @@
         @include('partials.navbar')
         {{-- navbar end --}}
         {{-- background --}}
-        <div class="img ">
-            <img src="{{ asset('storage/img/testpict.png') }}" alt=""
-                class="absolute inset-0 w-full h-full object-cover -z-50">
+        <div class="img "> 
+            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
         {{-- background --}}
@@ -354,11 +353,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                {{-- tab --}}
+
+                {{-- tab --}}  
             </div>
-        </div>
         {{-- content end --}}
     </div>
     {{-- container end --}}

@@ -10,17 +10,15 @@
 
 <body>
     <div class="container-fluid h-screen">
-
-
+        @include('partials.navbar')
         <div class="h-screen bg-slate-700">
-            @include('partials.navbar')
 
             <!-- Gambar Latar Belakang -->
-            <img src="{{ asset('storage\img\bg.jpg') }}" class=" inset-0 w-full h-full object-cover"
+            <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
+            <img src="{{ asset('storage\img\background.jpg') }}" class="inset-0 w-full h-full object-cover"
                 alt="" style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->
-            <div class="absolute inset-0 bg-black opacity-50"></div>
 
             <!-- Konten Teks di Atas Gambar -->
             <div
@@ -32,8 +30,7 @@
                     <h1>WHERE CULTURE MEETS PARADISE</h1>
                 </div>
             </div>
-
-            <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="bg-white p-4 rounded-lg shadow-md w-screen">
                 <div class="grid grid-cols-2 gap-4 mr-5 ml-7">
                     <!-- Kolom Pertama: Judul dan Deskripsi -->
                     <div class="pl-10">
@@ -152,9 +149,9 @@
                         districts and cities in Bali.</p>
                 </div>
 
-                <div class="flex space-x-4">
+                <div class="flex space-x-4 relative">
                     <!-- Card 1 -->
-                    <div
+                    <div data-aos="fade-up"
                         class="bg-white shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
                         <h2 class="text-lg font-semibold mb-2">Card Title 1</h2>
                         <p class="text-gray-700">
@@ -202,10 +199,13 @@
                 <button class="mt-4 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300" style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
                     Read More <i class="fas fa-arrow-right ml-5"></i>
                 </button>
-
-
             </div>
+            <div class="h-52"></div>
+        @include('partials.footer')
         </div>
-</body>
 
+</body>
+<script>
+    AOS.init();
+  </script>
 </html>
