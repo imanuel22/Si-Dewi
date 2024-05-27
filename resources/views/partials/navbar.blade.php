@@ -12,20 +12,20 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+    <div class=" w-full  md:w-auto" id="navbar-solid-bg">
         <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0
          md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
         <li class="lg:mx-7">
-            <a href="{{url('/')}}" class="block py-2 px-3 md:p-0 text-gray-900 dark:text-white bg-blue-700 rounded md:bg-transparent md:dark:bg-transparent" aria-current="page">Home</a>
+            <a href="{{url('/')}}" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:dark:bg-transparent" aria-current="page">Home</a>
         </li>
         <li class="lg:px-7">
-            <a href="{{url('/artikel')}}" class="block py-2 px-3 md:p-0 text-gray-900 dark:text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+            <a href="{{url('/artikel')}}" class="block py-2 px-3 md:p-0 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
              md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-900 
              md:dark:hover:bg-transparent">Artikel</a>
         </li>
         <li class="lg:pl-7">
-            <a href="{{url('/event')}}" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
-             md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-900
+            <a href="{{url('/event')}}" class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
+             md:hover:text-blue-700 text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-900
               md:dark:hover:bg-transparent">Event</a>
         </li>
         </ul>
