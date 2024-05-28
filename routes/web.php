@@ -12,6 +12,8 @@ use App\Http\Controllers\DesawisataController;
 // Route::get('/', function () {
 //     return view('admin/dashboard');
 // });
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -19,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/login',[AuthController::class,'login'])->middleware('guest');
 Route::post('/dologin',[AuthController::class,'dologin'])->middleware('guest');
-
+Route::delete('/logout',[AuthController::class,'logout'])->middleware('guest');
 Route::get('/Admin/ProfilDesa', function () {
     return view('admin/crud_profil_desa');
 });

@@ -30,7 +30,16 @@ class AuthController extends Controller
 
     }
 
-    public function logout() {
-        // return view('');
-    }
+    // public function logout(Request $request) {
+    //     $response = Http::withToken($_COOKIE['accessToken'])->delete('http://localhost:3000/akun/logout',$request);
+    //     if($response->successful()){
+    //         $token = $response->cookies()->toArray();
+    //         $request->session()->put('accessToken', $token[0]['Value']);
+    //         return redirect('/login')->with('message','berhasil logout');
+    //     }elseif ($response->failed()) {
+    //         return redirect('/login')->with('message','gagal logout');
+    //     } else {
+    //         return redirect('/login')->with('message','erorr system 500');
+    //     }
+    // }
 }
