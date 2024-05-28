@@ -14,17 +14,16 @@ class DesawisataController extends Controller
     public function index()
     {
         $response = Http::get('localhost:3000/desawisata')->collect();
-        // dd(Desawisata::all()->toArray(),$response);    
-        if(Desawisata::all()->toArray()!=$response){
-            Desawisata::truncate();
-            for ($i=0; $i < count($response); $i++) { 
-                Desawisata::create($response[$i]);
-            }
-        }
-        $datadesa=Desawisata::all();
+        // if(Desawisata::all()->toArray()!=$response){
+        //     Desawisata::truncate();
+        //     for ($i=0; $i < count($response); $i++) { 
+        //         Desawisata::create($response[$i]);
+        //     }
+        // }
+        // $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
-            'desawisata'=> $datadesa
+            'desawisata'=> $response
         ]);
     }
 

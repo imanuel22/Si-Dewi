@@ -51,5 +51,5 @@ Route::get('/Admin/PaketWisata', function () {
 });
 
 // SUPERADMIN
-Route::resource('/superadmin/akun', AkunController::class);
+Route::resource('/superadmin/akun', AkunController::class)->middleware('SUPERADMIN');
 Route::resource('/superadmin/desa', DesawisataController::class)->middleware('SUPERADMIN');
