@@ -23,10 +23,15 @@ Route::get('/detail', function () {
 
 
 
-// admin
+Route::get('/admin', function () {
+    return view('admin/dashboard');
+});
+
 Route::get('/Admin/ProfilDesa', function () {
     return view('admin/crud_profil_desa');
 });
+
+
 Route::get('/Admin/Berita', function () {
     return view('admin/crud_berita');
 });
@@ -47,6 +52,19 @@ Route::get('/Admin/Event', function () {
 });
 Route::get('/Admin/PaketWisata', function () {
     return view('admin/crud_paket_wisata');
+});
+Route::get('/admin/event', function () {
+    return view('admin/crud_event');
+});
+
+
+Route::get('/event', function () {
+    return view('event');
+});
+// Route::get('/event/list', [EventController::class, 'listEvent'])->name('events.list');
+
+Route::get('/map', function () {
+    return view('map');
 });
 
 ?>
