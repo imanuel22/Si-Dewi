@@ -50,7 +50,6 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 themeSystem: 'bootstrap5',
-
                 dateClick: function(info) {
                     console.log(info);
                     $('#modal-action').modal('show')
