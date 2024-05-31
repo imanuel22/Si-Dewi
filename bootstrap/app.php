@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\EnsureTokenIsValid;
 use App\Http\Middleware\SuperadminMiddleware;
@@ -16,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'SUPERADMIN' => SuperadminMiddleware::class,
+            'ADMIN' => AdminMiddleware::class,
 
         ]);
 

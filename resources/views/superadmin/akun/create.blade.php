@@ -1,4 +1,4 @@
-@extends('components.layout')
+@extends('superadmin.layouts.main')
 
 @section('main')
 <h1>Form Akun</h1>

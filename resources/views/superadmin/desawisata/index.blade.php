@@ -1,4 +1,4 @@
-@extends('components.layout')
+@extends('superadmin.layouts.main')
 
 @section('main')
 
@@ -67,7 +67,7 @@
                         {{$row['nama']}}
                     </td>
                     <td class="px-6 py-4">
-                        <img src="http://localhost:3000/uploads/desawisata/{{$row['gambar']}}" alt="{{$row['gambar']}}">
+                        {{-- <img src="http://localhost:3000/uploads/desawisata/{{$row['gambar']}}" alt="{{$row['gambar']}}"> --}}
                     </td>
                     <td class="px-6 py-4">
                         {{$row['alamat']}}

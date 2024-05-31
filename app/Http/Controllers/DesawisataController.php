@@ -13,14 +13,14 @@ class DesawisataController extends Controller
      */
     public function index()
     {
-        $response = Http::get('localhost:3000/desawisata')->collect();
-        // if(Desawisata::all()->toArray()!=$response){
-        //     Desawisata::truncate();
-        //     for ($i=0; $i < count($response); $i++) { 
-        //         Desawisata::create($response[$i]);
-        //     }
-        // }
-        // $datadesa=Desawisata::all();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata')->collect();
+        if(Desawisata::all()->toArray()!=$response){
+            Desawisata::truncate();
+            for ($i=0; $i < count($response); $i++) { 
+                Desawisata::create($response[$i]);
+            }
+        }
+        $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
             'desawisata'=> $response
@@ -55,7 +55,7 @@ class DesawisataController extends Controller
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
-        $response = Http::attach(
+        $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
         )->post('http://localhost:3000/desawisata/add',$validatedData);
 
@@ -73,16 +73,25 @@ class DesawisataController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
+    {   
+        if(request()->session()->get('id_desa') != $id){
+            abort(403);
+        }
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata/'.$id)->collect();
+        return view('Admin.desa.show',[
+            'desa'=>$response,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $slug)
-    {
-        $response = Http::get('http://localhost:3000/desawisata/'.$slug)->collect();
+    public function edit(string $id)
+    {   
+        if(request()->session()->get('id_desa') != $id){
+            abort(403);
+        }
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/desawisata/'.$id)->collect();
         // dd($response);
         return view('superadmin.desawisata.edit',[
             'desawisata'=>$response,
@@ -95,6 +104,9 @@ class DesawisataController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        if(request()->session()->get('id_desa') != $id){
+            abort(403);
+        }
         $validatedData = $request->validate([
             'nama'=>'required|max:255',
             'alamat'=>'required|max:255',
@@ -112,19 +124,19 @@ class DesawisataController extends Controller
 
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::patch('http://localhost:3000/desawisata/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/desawisata/'.$id,$validatedData);
         }else{
-            $response = Http::attach(
+            $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
             )->patch('http://localhost:3000/desawisata/'.$id,$validatedData);
         }
 
         if($response->successful()){
-            return redirect('/superadmin/desa')->with('message','berhasil mengupdate');
+            return redirect('/admin/profil-desa/'.$id)->with('message','berhasil mengupdate');
         }elseif ($response->failed()) {
-            return redirect('/superadmin/desa/')->with('message','gagal mengupdate');
+            return redirect('/admin/profil-desa/'.$id)->with('message','gagal mengupdate');
         } else {
-            return redirect('/superadmin/desa')->with('message','erorr system 500');
+            return redirect('/admin/profil-desa/'.$id)->with('message','erorr system 500');
         }
     }
 

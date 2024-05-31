@@ -1,4 +1,4 @@
-@extends('components.layout')
+@extends('superadmin.layouts.main')
 @section('main')
 
 @if (session()->has('message'))
@@ -62,7 +62,7 @@
                         {{$row['nama']}}
                     </td>
                     <td class="px-6 py-4">
-                        <img src="http://localhost:3000/uploads/akun/{{$row['foto']}}" alt="{{$row['foto']}}">
+                        {{-- <img src="http://localhost:3000/uploads/akun/{{$row['foto']}}" alt="{{$row['foto']}}"> --}}
                     </td>
                     <td class="px-6 py-4">
                         {{$row['email']}}

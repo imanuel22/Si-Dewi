@@ -10,9 +10,9 @@ class AkunController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $response = Http::withToken($_COOKIE['accessToken'])->get('localhost:3000/akun')->collect();
+        $response = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun')->collect();
         return view('superadmin.akun.index',[
             'akun'=>$response
         ]);

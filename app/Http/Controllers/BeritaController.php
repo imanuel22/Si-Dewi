@@ -12,7 +12,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $response = Http::get('http://localhost:3000/berita')->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/desa/'.request()->session()->get('id_desa'))->collect();
         return view('Admin.berita.index',[
             'berita'=>$response,
         ]);
@@ -39,7 +39,10 @@ class BeritaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/desa/'.request()->session()->get('id_desa'))->collect();
+        return view('Admin.berita.show',[
+            'berita'=>$response,
+        ]);
     }
 
     /**

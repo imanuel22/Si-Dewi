@@ -20,15 +20,16 @@ class SuperadminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
+
         if(!$request->session()->get('accessToken')){
-            abort(403);
+            return redirect('/login');
         }
         
         $response = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun')->json();
         
-        if(!count($response)){
-            abort(403);
+        if(!$response){
+            return redirect('/login');
+            // abort(403);
         }
         
         $e = explode('.',$request->session()->get('accessToken'));
@@ -50,8 +51,8 @@ class SuperadminMiddleware
         if($request->session()->get('role') == 'ADMIN'){
             return redirect('/admin/dashboard');
         };
-        if($request->session()->get('role') == 'ADMIN'){
-        abort(403);
+        if($request->session()->get('role') == 'USER'){
+            return redirect('/');
         }
     }
 }

@@ -1,8 +1,8 @@
-@extends('components.layout')
+@extends('superadmin.layouts.main')
 
 @section('main')
 <h1>Form Desa</h1>
-<form class="mx-auto" action="/superadmin/desa/{{$desawisata['id']}}" method="POST" enctype="multipart/form-data">
+<form class="mx-auto" action="/admin/profil-desa/{{$desawisata['id']}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <input type="hidden" name="gambarOld" value="{{$desawisata['gambar']}}">
