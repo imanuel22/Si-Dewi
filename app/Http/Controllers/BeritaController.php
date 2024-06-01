@@ -23,7 +23,7 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.berita.create');
     }
 
     /**
@@ -31,7 +31,27 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'judul'=>'required|max:25',
+            'isi_berita'=>'required',
+            'gambar'=>'required|image|file',
+        ]);
+        $validatedData['id_desawisata']= $request->session()->get('id_desa');
+        $validatedData['createdAt'] = now();
+        $validatedData['updatedAt'] = now();
+
+        $response = Http::withToken($request->session()->get('accessToken'))->attach(
+            'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
+        )->post('http://localhost:3000/berita/add',$validatedData);
+
+        if($response->successful()){
+            return redirect('/admin/berita')->with('message','berhasil menambahkan');
+        }elseif ($response->failed()) {
+            return redirect('/admin/berita')->with('message','gagal menambahkan');
+        } else {
+            return redirect('/admin/berita')->with('message','erorr system 500');
+        }
     }
 
     /**
@@ -39,7 +59,11 @@ class BeritaController extends Controller
      */
     public function show(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/'.$id)->collect();
+        
+        if(request()->session()->get('id_desa') != $response['id_desawisata']){
+            abort(403);
+        }
         return view('Admin.berita.show',[
             'berita'=>$response,
         ]);
@@ -50,7 +74,15 @@ class BeritaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/'.$id)->collect();
+        
+        if(request()->session()->get('id_desa') != $response['id_desawisata']){
+            abort(403);
+        }
+        return view('Admin.berita.edit',[
+            'berita'=>$response
+        ]);
+
     }
 
     /**
@@ -58,7 +90,35 @@ class BeritaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if(request()->session()->get('id_desa') != $id){
+            abort(403);
+        }
+        $validatedData = $request->validate([
+            'judul'=>'required|max:25',
+            'isi_berita'=>'required',
+            'gambar'=>'image|file',
+        ]);
+        if(!$request['gambar']){
+            $validatedData['gambar'] = $request['gambarOld'];
+        }
+
+        $validatedData['updatedAt'] = now();
+       
+        if($_FILES['gambar']['error'] === 4){
+            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/berita/'.$id,$validatedData);
+        }else{
+            $response = Http::withToken($request->session()->get('accessToken'))->attach(
+                'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
+            )->patch('http://localhost:3000/berita/'.$id,$validatedData);
+        }
+
+        if($response->successful()){
+            return redirect('/admin/berita/'.$id)->with('message','berhasil mengupdate');
+        }elseif ($response->failed()) {
+            return redirect('/admin/berita/'.$id)->with('message','gagal mengupdate');
+        } else {
+            return redirect('/admin/berita/'.$id)->with('message','erorr system 500');
+        }
     }
 
     /**
@@ -66,6 +126,13 @@ class BeritaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $response = Http::delete('http://localhost:3000/berita/'.$id);
+        if($response->successful()){
+            return redirect('/admin/berita/')->with('message','berhasil menghapus');
+        }elseif ($response->failed()) {
+            return redirect('/admin/berita/')->with('message','gagal menghapus');
+        } else {
+            return redirect('/admin/berita/')->with('message','erorr system 500');
+        }
     }
 }
