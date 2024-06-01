@@ -69,6 +69,7 @@
                         class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
                 </a>
             </li>
+            
             <li>
                 <a href="/admin/akomodasi"
                     class="{{ request()->is('admin/akomodasi*') ? 'text-white rounded-lg dark:text-white bg-gray-900 hover:bg-gray-600' : 'text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700' }} flex items-center p-2  group">

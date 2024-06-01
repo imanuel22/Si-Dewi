@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\DesawisataController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
 
@@ -48,4 +49,6 @@ Route::middleware('SUPERADMIN')->group(function(){
     Route::resource('/superadmin/akun', AkunController::class);
     Route::resource('/superadmin/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/superadmin/admindesa', AdmindesaController::class);
+    Route::resource('/superadmin/kategoridestinasi', KategoridestinasiController::class);
+
 });
