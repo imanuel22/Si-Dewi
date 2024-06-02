@@ -21,9 +21,13 @@ Route::get('/detail', function () {
 });
 
 Route::get('/event', function () {
-    return view('event');
+    return view('guest/event');
 });
+// Route::get('/event/list', [EventController::class, 'listEvent'])->name('events.list');
 
+Route::get('/map', function () {
+    return view('guest/map');
+});
 
 Route::get('/admin', function () {
     return view('admin/dashboard');
@@ -60,13 +64,6 @@ Route::get('/admin/event', function () {
 });
 
 
-Route::get('/event', function () {
-    return view('event');
-});
-// Route::get('/event/list', [EventController::class, 'listEvent'])->name('events.list');
 
-Route::get('/map', function () {
-    return view('map');
-});
 
 ?>
