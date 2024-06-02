@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\RatingController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DesawisataController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
@@ -34,7 +35,8 @@ Route::middleware('ADMIN')->group(function(){
     Route::resource('/admin/akomodasi', AkomodasiController::class);
     Route::resource('/admin/produk', ProdukController::class);
     Route::resource('/admin/paket', PaketController::class);
-    Route::resource('/admin/rating', RatingController::class);
+    Route::resource('/admin/review', ReviewController::class);
+    Route::resource('/admin/informasi', InformasiController::class);
 
     //bagian made
     // Route::resource('/admin/event', EventController::class);

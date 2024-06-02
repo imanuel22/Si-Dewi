@@ -32,13 +32,13 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama
+                    akun
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    gambar
+                    rating
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    kategori
+                    review
                 </th>
                 <th scope="col" class="px-6 py-3">
                     createdAt
@@ -52,19 +52,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($rating as $row)
+            @foreach ($review as $row)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$loop->iteration}}
                     </th>
                     <td class="px-6 py-4">
-                        {{$row['nama']}}
+                        {{$row['id_akun']}}
                     </td>
                     <td class="px-6 py-4">
-                        <img src="{{$row['gambar']}}" alt="{{$row['gambar']}}">
+                        {{$row['rating']}}
                     </td>
                     <td class="px-6 py-4">
-                        {{$row['kategori']}}
+                        {{$row['review']}}
                     </td>
                     <td class="px-6 py-4">
                         {{$row['createdAt']}}
@@ -74,11 +74,12 @@
                     </td>
                     <td class="px-6 py-4 flex">
                         {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
-                        <a href="/superadmin/desa/{{$row['id']}}/edit" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">E</a>
-                        <form action="/superadmin/desa/{{$row['id']}}" method="post">
+                        <form action="/admin/review/{{$row['id']}}" method="post">
                         @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="confirm('yakin')" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">D</button>
+                        <input type="hidden" name="id" value="{{$row['id_destinasiwisata']}}">
+                        @method('PATCH')
+                        <button type="submit" onclick="confirm('yakin')" name="setujui" value="1" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">setuju</button>
+                        <button type="submit" onclick="confirm('yakin')" name="setujui" value="0" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">delete</button>
                         </form>
                     </td>
                 </tr>

@@ -23,7 +23,9 @@ class AkunController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.akun.create',[
+            // 'desawisata'=> $response
+        ]);
     }
 
     /**
@@ -31,7 +33,30 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama'=>'required',
+            'no_telp'=>'required',
+            'password'=>'required',
+            'email'=>'required|email',
+            'foto'=>'required|image|file',
+            'role'=>'required',
+        ]);
+
+        $validatedData['createdAt'] = now();
+        $validatedData['updatedAt'] = now();
+
+        $response = Http::attach(
+            'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
+        )->post('http://localhost:3000/akun/add',$validatedData);
+        // dd();
+        if($response->successful()){
+            return redirect('/superadmin/akun')->with('message',$response->reason());
+        }elseif ($response->failed()) {
+            return redirect('/superadmin/akun')->with('message',$response->reason());
+        } else {
+            return redirect('/superadmin/akun')->with('message',$response->reason());
+        }
+        
     }
 
     /**
@@ -63,6 +88,13 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $response = Http::withToken(request()->session()->get('accessToken'))->delete('http://localhost:3000/akun/'.$id);
+        if($response->successful()){
+            return redirect('/superadmin/akun')->with('message','berhasil menghapus');
+        }elseif ($response->failed()) {
+            return redirect('/superadmin/akun')->with('message','gagal menghapus');
+        } else {
+            return redirect('/superadmin/akun')->with('message','erorr system 500');
+        }
     }
 }

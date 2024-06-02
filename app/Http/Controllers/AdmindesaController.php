@@ -23,7 +23,7 @@ class AdmindesaController extends Controller
      */
     public function create(Request $request)
     {
-        $response_1 = Http::withToken($request->session()->get('accessToken'))->get('http://localhost:3000/akun')->collect();
+        $response_1 = Http::withToken($request->session()->get('accessToken'))->get('http://localhost:3000/akun')->collect()->whereIn('role','ADMIN');
         $response_2 = Http::get('localhost:3000/desawisata')->collect();
         return view('superadmin.admindesa.create',[
             'akun'=>$response_1,
@@ -37,18 +37,18 @@ class AdmindesaController extends Controller
      */
     public function store(Request $request)
     {       
-        // $validatedData = $request->validate([
-        //     'id_akun' => 'required',
-        //     'id_desawisata' => 'required',
-        // ]);
-        // $response = Http::post('localhost:3000/admindesa/add',$validatedData);
+        $validatedData = $request->validate([
+            'id_akun' => 'required',
+            'id_desawisata' => 'required',
+        ]);
+        $response = Http::post('localhost:3000/admindesa/add',$validatedData);
 
-        // if($response->successful()){
-        //     return redirect('/superdamin/admindesa')->with('message','berhasil');
-        // }
-        // if($response->failed()){
-        //     return redirect('/superdamin/admindesa')->with('message','gagal');
-        // }
+        if($response->successful()){
+            return redirect('/superadmin/admindesa')->with('message','berhasil');
+        }
+        if($response->failed()){
+            return redirect('/superadmin/admindesa')->with('message','gagal');
+        }
 
         // //validasi data desa
         // $validatedDataDesa = $request->validate([
@@ -127,6 +127,13 @@ class AdmindesaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $response = Http::withToken(request()->session()->get('accessToken'))->delete('http://localhost:3000/admindesa/'.$id);
+        if($response->successful()){
+            return redirect('/superadmin/admindesa/')->with('message','berhasil menghapus');
+        }elseif ($response->failed()) {
+            return redirect('/superadmin/admindesa/')->with('message','gagal menghapus');
+        } else {
+            return redirect('/superadmin/admindesa/')->with('message','erorr system 500');
+        }
     }
 }

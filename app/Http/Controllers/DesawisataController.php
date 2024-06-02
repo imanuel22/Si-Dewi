@@ -77,12 +77,14 @@ class DesawisataController extends Controller
         if(request()->session()->get('id_desa') != $id){
             abort(403);
         }
+        
         $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata/'.$id)->json();
         $response2 = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/informasi/desa/'.$id)->json();
+        
         // dd($response2[0]);
         return view('Admin.desa.show',[
             'desa'=>$response,
-            'informasi'=>$response2[0],
+            'informasi'=>$response2,
         ]);
     }
 

@@ -14,9 +14,12 @@ class DestinasiController extends Controller
     public function index()
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/desa/'.request()->session()->get('id_desa'))->collect();
-
+        // for ($i=0; $i < count($response); $i++) { 
+        //     $review[] = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/reviewdestinasi/destinasi/'.$response[$i]['id'])->collect()->whereIn('setujui',1)->count();
+        // }
         return view('Admin.destinasi.index',[
-            'destinasi'=>$response
+            'destinasi'=>$response,
+            // 'review'=>$review
         ]);
     }
 
