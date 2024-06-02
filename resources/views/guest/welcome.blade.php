@@ -15,7 +15,7 @@
 
             <!-- Gambar Latar Belakang -->
             <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
-            <img src="{{ asset('storage\img\background.jpg') }}" class="inset-0 w-full h-full object-cover"
+            <img src="{{ asset('storage\img\background.png') }}" class="inset-0 w-full h-full object-cover"
                 alt="" style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->

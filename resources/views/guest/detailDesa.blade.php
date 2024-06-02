@@ -10,22 +10,16 @@
 
 <body>
     {{-- container start --}}
-    <div class="container h-screen">
+    <div class="container-fluid h-screen">
         {{-- navbar start --}}
         @include('partials.navbar')
         {{-- navbar end --}}
         {{-- background --}}
-        <div class="img "> 
-            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-        </div>
+        <div class="mix-blend-screen inset-0 bg-black opacity-70"> </div>
+            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full h-full object-cover"  style="width: 100vw;">       
+        
         {{-- background --}}
         {{-- content --}}
-        <div class=" mt-10 h-screen w-screen ">
-            <div class="des">
-            </div>
-
-        </div>
         <div class=" mt-10 h-screen w-screen">
             <div class="kon">
                 <h1 class="text-2xl font-bold mb-4 text-center">Desa Kintamani</h1>
@@ -358,6 +352,7 @@
             </div>
         {{-- content end --}}
     </div>
+    @include('partials.footer')
     {{-- container end --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
