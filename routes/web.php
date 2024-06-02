@@ -9,6 +9,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DesawisataController;
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
@@ -37,7 +38,8 @@ Route::middleware('ADMIN')->group(function(){
     Route::resource('/admin/paket', PaketController::class);
     Route::resource('/admin/review', ReviewController::class);
     Route::resource('/admin/informasi', InformasiController::class);
-
+    Route::get('/admin/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
+    Route::resource('/admin/fasilitas', FasilitasController::class);
     //bagian made
     // Route::resource('/admin/event', EventController::class);
 

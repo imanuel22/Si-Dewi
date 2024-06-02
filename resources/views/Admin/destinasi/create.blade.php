@@ -14,8 +14,13 @@
       <input onchange="previewImage()" name="gambar" id="gambar" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" id="user_avatar" type="file">
     </div>
     <div class="mb-5">
-        <label for="id_kategoridestinasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">id_kategoridestinasi</label>
-        <input type="text" name="id_kategoridestinasi" id="id_kategoridestinasi" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+      <label for="id_kategoridestinasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">pilih id_kategoridestinasi</label>
+      <select id="id_kategoridestinasi" name="id_kategoridestinasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option hidden>Select Role</option>
+          @foreach ($kategoridesawisata as $row)
+              <option value="{{$row['id']}}">{{$row['nama']}}</option>
+          @endforeach
+      </select>
     </div>
     <div class="mb-5">
         <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">deskripsi</label>

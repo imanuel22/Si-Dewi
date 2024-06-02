@@ -28,7 +28,10 @@ class DestinasiController extends Controller
      */
     public function create()
     {
-        return view('Admin.destinasi.create');
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/kategoridestinasi/')->collect();
+        return view('Admin.destinasi.create',[
+            'kategoridesawisata'=>$response,
+        ]);
     }
 
     /**

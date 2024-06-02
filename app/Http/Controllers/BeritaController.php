@@ -75,7 +75,6 @@ class BeritaController extends Controller
     public function edit(string $id)
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/'.$id)->collect();
-        
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
         }
@@ -90,9 +89,7 @@ class BeritaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(request()->session()->get('id_desa') != $id){
-            abort(403);
-        }
+
         $validatedData = $request->validate([
             'judul'=>'required|max:25',
             'isi_berita'=>'required',
