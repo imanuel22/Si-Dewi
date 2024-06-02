@@ -21,26 +21,37 @@
         {{-- background --}}
         {{-- content --}}
         <div class=" mt-10 h-screen w-screen">
-            <div class="kon">
-                <h1 class="text-2xl font-bold mb-4 text-center">Desa Kintamani</h1>
-            </div>
-            <div class="mx-72 mb-48 text-justify flex ">
-            <div class="p-2">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti cupiditate, culpa ipsa cum inventore,
-                hic impedit in iste tempora voluptatum dolores. Maiores aut incidunt quia facilis, eius vero hic labore
-                unde, aperiam ullam placeat! Harum distinctio aliquam voluptatibus, delectus, deleniti, necessitatibus
-                error dolorum culpa esse perferendis consectetur a incidunt ratione nobis aperiam magni qui ab sequi quo
-                similique voluptatem consequatur dicta? Rerum architecto recusandae vitae esse atque fuga error quidem
-                minus, voluptates fugit. Expedita ut illum unde itaque excepturi, ducimus laborum perspiciatis
-                dignissimos. Eveniet, aliquam ullam voluptatum repudiandae suscipit maiores quos voluptatibus eum ipsam
-                quas deserunt rem iure consequatur at!
-            </div>
-            <div class="p-2">
-            <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7649.1466877873545!2d115.16821926787577!3d-8.803455159068722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1716778086056!5m2!1sid!2sid"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            
+            <div class="mx-72 mb-48 mt-36 text-justify flex grid-cols-2 gap-2 space-x-28 ">
+                <div>
+                    <div class="">
+                        <h1 class="text-4xl font-bold">Desa Kintamani</h1>
+                    </div>
+                    <div class="text-xl text-gray-600 mb-1">
+                        Kategori : <span class="text-green-700">Desa Maju</span>
+                        <br>
+                        
+                    </div>
+                    <div class="">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti cupiditate, culpa ipsa cum inventore,
+                        hic impedit in iste tempora voluptatum dolores. Maiores aut incidunt quia facilis, eius vero hic labore
+                        unde, aperiam ullam placeat! Harum distinctio aliquam voluptatibus, delectus, deleniti, necessitatibus
+                        error dolorum culpa esse perferendis consectetur a incidunt ratione nobis aperiam magni qui ab sequi quo
+                        similique voluptatem consequatur dicta? Rerum architecto recusandae vitae esse atque fuga error quidem
+                        minus, voluptates fugit. Expedita ut illum unde itaque excepturi, ducimus laborum perspiciatis
+                        dignissimos. Eveniet, aliquam ullam voluptatum repudiandae suscipit maiores quos voluptatibus eum ipsam
+                        quas deserunt rem iure consequatur at!
+                    </div>
+                </div>
+                
+                <div class="text-xl text-gray-600 mb-1">
+                    <!-- <div>Lokasi Desa Wisata</div> -->
+                    <div>Alamat   : Jln. Abcd No.02</div>
+                    <iframe class="border-8 border-lime-700 border-double"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7649.1466877873545!2d115.16821926787577!3d-8.803455159068722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1716778086056!5m2!1sid!2sid"
+                            width="600" height="350" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
             <div>
                 {{-- tab --}}
@@ -61,25 +72,62 @@
                         <li class="w-full">
                             <button id="destinasi-tab" data-tabs-target="#destinasi" type="button" role="tab"
                                 aria-controls="destinasi" aria-selected="true"
-                                class="inline-block w-full p-4 rounded-ss-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Destinasi</button>
+                                class="inline-block w-full p-4 rounded-ss-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
+                                style="color: var(--text-color);">
+                                Destinasi
+                            </button>
                         </li>
                         <li class="w-full">
                             <button id="akomodasi-tab" data-tabs-target="#akomodasi" type="button" role="tab"
                                 aria-controls="akomodasi" aria-selected="false"
-                                class="inline-block w-full p-4 bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Akomodasi</button>
+                                class="inline-block w-full p-4 text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
+                                style="color: var(--text-color);">
+                                Akomodasi
+                            </button>
                         </li>
                         <li class="w-full">
                             <button id="pawi-tab" data-tabs-target="#pawi" type="button" role="tab" aria-controls="pawi"
                                 aria-selected="false"
-                                class="inline-block w-full p-4 rounded-se-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Paket
-                                Wisata</button>
+                                class="inline-block w-full p-4 rounded-se-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
+                                style="color: var(--text-color);">
+                                Paket Wisata
+                            </button>
                         </li>
                         <li class="w-full">
                             <button id="produk-tab" data-tabs-target="#produk" type="button" role="tab"
                                 aria-controls="produk" aria-selected="false"
-                                class="inline-block w-full p-4 rounded-se-lg bg-gray-50 hover:bg-gray-100 focus:outline-none dark:bg-gray-700 dark:hover:bg-gray-600">Produk</button>
+                                class="inline-block w-full p-4 rounded-se-lg text-white bg-green-400 hover:bg-green-500 focus:outline-none hover:text-white dark:bg-green-700 dark:hover:bg-green-600"
+                                style="color: var(--text-color);">
+                                Produk
+                            </button>
                         </li>
                     </ul>
+
+                    <script>
+                        const tabs = document.querySelectorAll('[role="tab"]');
+                        tabs.forEach(tab => {
+                            tab.addEventListener('click', () => {
+                                // Update 'aria-selected' attribute for all tabs
+                                tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+                                tab.setAttribute('aria-selected', 'true');
+
+                                // Update text color for all tabs
+                                tabs.forEach(t => {
+                                    if (t.getAttribute('aria-selected') === 'true') {
+                                        t.style.setProperty('--text-color', 'white'); // warna teks untuk tab yang dipilih
+                                    } else {
+                                        t.style.setProperty('--text-color', 'gray'); // warna teks untuk tab yang tidak dipilih
+                                    }
+                                });
+                            });
+                        });
+
+                        // Simulate a click on the default tab when the page loads
+                        window.onload = function() {
+                            document.getElementById('destinasi-tab').click();
+                        };
+                    </script>
+
                     <div id="fullWidthTabContent" class="border-t border-gray-200 dark:border-gray-600">
                         <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="destinasi"
                             role="tabpanel" aria-labelledby="destinasi-tab">
