@@ -9,15 +9,24 @@ var marker = L.marker([-8.649973065457678, 115.22184194637907]).addTo(map);
 
 const Card1 = document.getElementById("Card1");
 Card1.addEventListener("click", (event) => {
-    const CardInfo = document.getElementById("CardInfo");
-    if (CardInfo.style.visibility === "visible") {
-        CardInfo.style.visibility = "hidden";
-        marker.closePopup(); // Tutup popup pada marker
-    } else {
-        CardInfo.style.visibility = "visible";
-        marker.openPopup(); // Buka popup pada marker
-    }
+    // const CardInfo = document.getElementById("CardInfo");
+    // if (CardInfo.style.visibility === "visible") {
+    //     CardInfo.style.visibility = "hidden";
+    //     marker.closePopup(); // Tutup popup pada marker
+    // } else {
+    //     CardInfo.style.visibility = "visible";
+    marker.openPopup(); // Buka popup pada marker
+    // }
 });
+
+// Hide the popup when the mouse leaves the element
+Card1.addEventListener("mouseover", (event) => {
+    marker.openPopup();
+});
+// // Hide the popup when the mouse leaves the element
+// Card1.addEventListener("mouseout", (event) => {
+//     marker.closePopup();
+// });
 marker
     .bindPopup(
         '<a href="https://maps.google.com/?q=-8.649973065457678,115.22184194637907">Telusuri Desa</a>'
