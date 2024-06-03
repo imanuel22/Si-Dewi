@@ -83,5 +83,9 @@
     height: 150px;
     object-fit: cover;
     margin: 10px;
-}
+}a
 
+.t1{
+    mix-blend-mode: difference;
+    color: #fff;
+}

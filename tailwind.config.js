@@ -20,7 +20,10 @@ export default {
         fontFamily: {
             poppins: ['Poppins', ],
             nunitosans: ['Nunito Sans'],
-        }
+        },
+        colors: {
+            'ijo' : '#01606A'
+          },
     },
   },
   plugins: [],

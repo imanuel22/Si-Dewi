@@ -11,11 +11,11 @@
 
 
 
-  
+
 @yield('container')
 
-<body class="">
-    <div class="container-fluid">
+<body class="bg-slate-200">
+    <div class="container-fluid ">
         @include('partials.navbar')
         <div class="Navbar mb-10">
         {{-- Navbar start --}}
@@ -37,12 +37,12 @@
                 <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0
                  md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
                 <li class="lg:mx-7">
-                    <a href="{{url('/')}}" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 
+                    <a href="{{url('/')}}" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700
                     md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
                 </li>
                 <li class="lg:px-7">
                     <a href="{{url('/artikel')}}" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0
-                     md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white 
+                     md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white
                      md:dark:hover:bg-transparent">Artikel</a>
                 </li>
                 <li class="lg:pl-7">
@@ -58,7 +58,7 @@
         {{-- Navbar End --}}
         {{-- content Start --}}
         {{-- artikel start --}}
-        <div class="flex justify-center s:flex-col sm:flex-row  mx-auto ">
+        <div class="flex justify-center s:flex-col mt-20 sm:flex-row  mx-auto ">
             <div class="flex-1 md:ml-20 sm:ml-20 lg:ml-20 x2l:ml-44 mr-5 mb-0 rounded-lg mt-8 s:items-center s:justify-center s:mx-auto s:w-52 ">
                 <div class="flex items-center mb-4">
                     <h5 class="text-xl font-bold leading-none text-gray-900">List Berita</h5>
@@ -185,15 +185,15 @@
                         <img class="rounded object-cover w-full h-full" src="{{ asset('storage/img/background.jpg') }}" alt="" />
                     </a>
                 </div>
-                
+
             </div>
         </div>
         {{-- card end --}}
         {{-- content End --}}
         {{-- footer start --}}
-        
-        <div class="mt-28">  
-            <footer class="bg-white dark:bg-gray-900">
+
+        <div class="mt-28">
+            <footer class="bg-gray-900">
                 <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                     <div class="md:flex md:justify-between">
                     <div class="mb-6 md:mb-0">
@@ -245,31 +245,31 @@
                     <div class="flex mt-4 sm:justify-center sm:mt-0">
                         <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                                    
+
                                 </svg>
                             <span class="sr-only">Facebook page</span>
                         </a>
                         <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
-                                   
+
                                 </svg>
                             <span class="sr-only">Discord community</span>
                         </a>
                         <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
-                               
+
                             </svg>
                             <span class="sr-only">Twitter page</span>
                         </a>
                         <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    
+
                             </svg>
                             <span class="sr-only">GitHub account</span>
                         </a>
                         <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                
+
                             </svg>
                             <span class="sr-only">Dribbble account</span>
                         </a>
@@ -281,7 +281,7 @@
         {{-- footer end --}}
 
     </div>
-    
+
 </body>
 
 </html>
