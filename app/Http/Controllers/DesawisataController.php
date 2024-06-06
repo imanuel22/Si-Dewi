@@ -14,13 +14,13 @@ class DesawisataController extends Controller
     public function index()
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata')->collect();
-        if(Desawisata::all()->toArray()!=$response){
-            Desawisata::truncate();
-            for ($i=0; $i < count($response); $i++) { 
-                Desawisata::create($response[$i]);
-            }
-        }
-        $datadesa=Desawisata::all();
+        // if(Desawisata::all()->toArray()!=$response){
+        //     Desawisata::truncate();
+        //     for ($i=0; $i < count($response); $i++) { 
+        //         Desawisata::create($response[$i]);
+        //     }
+        // }
+        // $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
             'desawisata'=> $response
