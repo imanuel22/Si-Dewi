@@ -67,8 +67,8 @@ class DestinasiController extends Controller
      */
     public function show(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/'.request()->session()->get('id_desa'))->collect();
-
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/'.$id)->collect();
+        
         return view('Admin.destinasi.show',[
             'destinasi'=>$response
         ]);
