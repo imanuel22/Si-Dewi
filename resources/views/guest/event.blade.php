@@ -12,7 +12,7 @@
     <div class="container mx-auto p-20">
         <div class="p-20" id='calendar'></div>
     </div>
-
+    @include('partials.navbar')
 
 
     <!-- Modal -->

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 // guest
 Route::get('/', function () {
-    return view('./User/user_home');
+    return view('./guest/welcome');
 });
 
 Route::get('/artikel', function () {
