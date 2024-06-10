@@ -23,6 +23,9 @@ Route::middleware('guest')->group(function(){
     Route::get('/login',[AuthController::class,'login']);
     Route::post('/dologin',[AuthController::class,'dologin']);
     Route::delete('/logout',[AuthController::class,'logout']);
+    Route::get('/profile',[AkunController::class,'profile']);
+    Route::patch('/profile/update/{id}',[AkunController::class,'update']);
+    Route::patch('/profile/password/{id}',[AkunController::class,'password']);
 });
 
 
@@ -47,10 +50,6 @@ Route::middleware('ADMIN')->group(function(){
     //bagian made
     // Route::resource('/admin/event', EventController::class);
 
-    Route::get('/profile',function(){
-        return view('profile');
-    });
-
 });
 
 // SUPERADMIN
@@ -62,7 +61,5 @@ Route::middleware('SUPERADMIN')->group(function(){
     Route::resource('/superadmin/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/superadmin/admindesa', AdmindesaController::class);
     Route::resource('/superadmin/kategoridestinasi', KategoridestinasiController::class);
-    Route::get('/profile',[AkunController::class,'profile']);
-    Route::patch('/profile/update/{id}',[AkunController::class,'update']);
-    Route::patch('/profile/password/{id}',[AkunController::class,'password']);
+    
 });
