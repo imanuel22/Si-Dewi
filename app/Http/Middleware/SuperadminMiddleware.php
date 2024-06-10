@@ -38,6 +38,7 @@ class SuperadminMiddleware
 
         $response2 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun/'.$id)->json();
         $request->session()->put([
+            'id'=>$response2['id'],
             'nama'=>$response2['nama'],
             'email'=>$response2['email'],
             'foto'=>$response2['foto'],

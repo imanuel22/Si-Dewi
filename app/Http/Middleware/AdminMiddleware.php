@@ -36,6 +36,7 @@ class AdminMiddleware
             abort(403);
         }
         $request->session()->put([
+            'id'=>$response2['id'],
             'nama'=>$response2['nama'],
             'email'=>$response2['email'],
             'foto'=>$response2['foto'],
