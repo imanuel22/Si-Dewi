@@ -2,13 +2,13 @@
 
 @section('main')
     <div class="mx-4">
-        <h2 class="ms-4 mb-3  font-bold tracking-tight text-gray-500 ">Paket / Tambah </h2>
-        <p class="ms-4 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Tambah Paket Wisata </p>
+        <h2 class=" mb-3  font-bold tracking-tight text-gray-500 ">Paket / Edit </h2>
+        <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Edit Paket Wisata </p>
         <form class="mx-auto" action="/admin/paket/{{ $paket['id'] }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div
-                class="mx-4 mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class=" mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Paket </p>
                 <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
