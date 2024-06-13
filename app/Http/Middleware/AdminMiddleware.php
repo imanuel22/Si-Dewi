@@ -32,7 +32,11 @@ class AdminMiddleware
 
         $response2 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun/'.$id)->json();
         $response3 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/admindesa/akun/'.$id)->json();
+        if(!isset($response3[0]['id_desawisata'])){
+            abort(403);
+        }
         $request->session()->put([
+            'id'=>$response2['id'],
             'nama'=>$response2['nama'],
             'email'=>$response2['email'],
             'foto'=>$response2['foto'],

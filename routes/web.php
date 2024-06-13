@@ -23,36 +23,42 @@ Route::middleware('guest')->group(function(){
     Route::get('/login',[AuthController::class,'login']);
     Route::post('/dologin',[AuthController::class,'dologin']);
     Route::delete('/logout',[AuthController::class,'logout']);
+    Route::get('/profile',[AkunController::class,'profile']);
+    Route::patch('/profile/update/{id}',[AkunController::class,'update']);
+    Route::patch('/profile/password/{id}',[AkunController::class,'password']);
 });
 
+
+  
+
+
 // ADMIN
-Route::middleware('ADMIN')->group(function(){
-    Route::get('/admin/dashboard', function(){
+Route::prefix('/admin')->middleware('ADMIN')->group(function(){
+    Route::get('/dashboard', function(){
         return view('admin.dashboard');
     });    
-    Route::resource('/admin/profil-desa',DesawisataController::class)->only(['show','edit','update']);
-    Route::resource('/admin/berita', BeritaController::class);
-    Route::resource('/admin/destinasi', DestinasiController::class);
-    Route::resource('/admin/akomodasi', AkomodasiController::class);
-    Route::resource('/admin/produk', ProdukController::class);
-    Route::resource('/admin/paket', PaketController::class);
-    Route::resource('/admin/review', ReviewController::class);
-    Route::resource('/admin/informasi', InformasiController::class);
-    Route::get('/admin/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
-    Route::resource('/admin/fasilitas', FasilitasController::class);
-    //bagian made
-    // Route::resource('/admin/event', EventController::class);
+    Route::resource('/profil-desa',DesawisataController::class)->only(['show','edit','update']);
+    Route::resource('/berita', BeritaController::class);
+    Route::resource('/destinasi', DestinasiController::class);
+    Route::resource('/akomodasi', AkomodasiController::class);
+    Route::resource('/produk', ProdukController::class);
+    Route::resource('/paket', PaketController::class);
+    Route::resource('/review', ReviewController::class);
+    Route::resource('/informasi', InformasiController::class);
+    Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
+    Route::resource('/fasilitas', FasilitasController::class);
+
 
 });
 
 // SUPERADMIN
-Route::middleware('SUPERADMIN')->group(function(){
-    Route::get('/superadmin/dashboard', function(){
+Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
+    Route::get('/dashboard', function(){
         return view('superadmin.dashboard');
     });
-    Route::resource('/superadmin/akun', AkunController::class);
-    Route::resource('/superadmin/desa', DesawisataController::class)->only(['index','create','destroy','store']);
-    Route::resource('/superadmin/admindesa', AdmindesaController::class);
-    Route::resource('/superadmin/kategoridestinasi', KategoridestinasiController::class);
-
+    Route::resource('/akun', AkunController::class);
+    Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
+    Route::resource('/admindesa', AdmindesaController::class);
+    Route::resource('/kategoridestinasi', KategoridestinasiController::class);
+    
 });
