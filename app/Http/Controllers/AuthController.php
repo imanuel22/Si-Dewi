@@ -21,7 +21,7 @@ class AuthController extends Controller
         if($response->successful()){
             $token = $response->cookies()->toArray();
             $request->session()->put('accessToken', $token[0]['Value']);
-            return redirect('/login')->with('message','berhasil login');
+            return redirect('/superadmin/dashboard')->with('message','berhasil login');
         }elseif ($response->failed()) {
             return redirect('/login')->with('message','gagal login');
         } else {
