@@ -12,9 +12,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
                 <div class="mb-5">
                     <label for="nama"
-                        class="@error('nama')
+                        class=" mb-2 text-sm font-medium @error('nama')
                         
-                   mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white  @enderror ">Nama
+                  text-red-700 dark:text-red-500 @else blocktext-gray-900 dark:text-white  @enderror ">Nama
                     </label>
                     <input type="text" name="nama" id="nama"
                         class="@error('nama')
