@@ -49,7 +49,7 @@ class AkunController extends Controller
         $response = Http::attach(
             'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
         )->post('http://localhost:3000/akun/add',$validatedData);
-        // dd();
+        
         if($response->successful()){
             return redirect('/superadmin/akun')->with('message',$response->reason());
         }elseif ($response->failed()) {
