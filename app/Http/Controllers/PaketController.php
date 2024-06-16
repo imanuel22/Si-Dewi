@@ -13,7 +13,7 @@ class PaketController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/paketwisata/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.request()->session()->get('id_desa'))->collect();
 
         return view('Admin.paket.index',[
             'paket'=>$response
@@ -45,7 +45,7 @@ class PaketController extends Controller
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post('http://localhost:3000/paketwisata/add',$validatedData);
+        )->post(env('APP_API_URL').'/paketwisata/add',$validatedData);
 
         if($response->successful()){
             return redirect('/admin/paket')->with('message','berhasil menambahkan');
@@ -69,7 +69,7 @@ class PaketController extends Controller
      */
     public function edit(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/paketwisata/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/'.$id)->collect();
         
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
@@ -100,11 +100,11 @@ class PaketController extends Controller
         $validatedData['updatedAt'] = now();
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/paketwisata/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/paketwisata/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch('http://localhost:3000/paketwisata/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/paketwisata/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -121,7 +121,7 @@ class PaketController extends Controller
      */
     public function destroy(String $id)
     {
-        $response = Http::delete('http://localhost:3000/paketwisata/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/paketwisata/'.$id);
         if($response->successful()){
             return redirect('/admin/paket/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

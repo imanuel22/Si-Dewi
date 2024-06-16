@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function dologin(Request $request)
     {
 
-        $response = Http::post('http://localhost:3000/akun/login', $request);
+        $response = Http::post(env('APP_API_URL').'/akun/login', $request);
         if ($response->successful()) {
             $token = $response->cookies()->toArray();
             $request->session()->put('accessToken', $token[0]['Value']);
@@ -33,7 +33,7 @@ class AuthController extends Controller
     }
 
     // public function logout(Request $request) {
-    //     $response = Http::withToken($_COOKIE['accessToken'])->delete('http://localhost:3000/akun/logout',$request);
+    //     $response = Http::withToken($_COOKIE['accessToken'])->delete(env('APP_API_URL').'/akun/logout',$request);
     //     if($response->successful()){
     //         $token = $response->cookies()->toArray();
     //         $request->session()->put('accessToken', $token[0]['Value']);

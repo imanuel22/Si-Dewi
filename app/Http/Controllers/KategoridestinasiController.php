@@ -13,7 +13,7 @@ class KategoridestinasiController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/kategoridestinasi/')->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/kategoridestinasi/')->collect();
 
         return view('superadmin.kategoridestinasi.index',[
             'kategoridestinasi'=>$response
@@ -39,7 +39,7 @@ class KategoridestinasiController extends Controller
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
-        $response = Http::withToken($request->session()->get('accessToken'))->post('http://localhost:3000/kategoridestinasi/add',$validatedData);
+        $response = Http::withToken($request->session()->get('accessToken'))->post(env('APP_API_URL').'/kategoridestinasi/add',$validatedData);
 
         if($response->successful()){
             return redirect('/superadmin/kategoridestinasi')->with('message','berhasil menambahkan');
@@ -63,7 +63,7 @@ class KategoridestinasiController extends Controller
      */
     public function edit(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/kategoridestinasi/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/kategoridestinasi/'.$id)->collect();
         return view('superadmin.kategoridestinasi.edit',[
             'kategoridestinasi'=>$response
         ]);
@@ -79,7 +79,7 @@ class KategoridestinasiController extends Controller
         ]);
 
         $validatedData['updatedAt'] = now();
-        $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/kategoridestinasi/'.$id,$validatedData);
+        $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/kategoridestinasi/'.$id,$validatedData);
 
         if($response->successful()){
             return redirect('/superadmin/kategoridestinasi/')->with('message','berhasil mengupdate');
@@ -95,7 +95,7 @@ class KategoridestinasiController extends Controller
      */
     public function destroy(String $id)
     {
-        $response = Http::delete('http://localhost:3000/kategoridestinasi/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/kategoridestinasi/'.$id);
         if($response->successful()){
             return redirect('/superadmin/kategoridestinasi/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

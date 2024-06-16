@@ -13,7 +13,7 @@ class AkomodasiController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/akomodasi/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akomodasi/desa/'.request()->session()->get('id_desa'))->collect();
 
         return view('Admin.akomodasi.index',[
             'akomodasi'=>$response
@@ -44,7 +44,7 @@ class AkomodasiController extends Controller
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post('http://localhost:3000/akomodasi/add',$validatedData);
+        )->post(env('APP_API_URL').'/akomodasi/add',$validatedData);
 
         if($response->successful()){
             return redirect('/admin/akomodasi')->with('message','berhasil menambahkan');
@@ -68,7 +68,7 @@ class AkomodasiController extends Controller
      */
     public function edit(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/akomodasi/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akomodasi/'.$id)->collect();
         
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
@@ -98,11 +98,11 @@ class AkomodasiController extends Controller
         $validatedData['updatedAt'] = now();
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/akomodasi/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akomodasi/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch('http://localhost:3000/akomodasi/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/akomodasi/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -119,7 +119,7 @@ class AkomodasiController extends Controller
      */
     public function destroy(String $id)
     {
-        $response = Http::delete('http://localhost:3000/akomodasi/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/akomodasi/'.$id);
         if($response->successful()){
             return redirect('/admin/akomodasi/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

@@ -20,7 +20,7 @@ class AdminMiddleware
             abort(403);
         }
         
-        $response = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun')->json();
+        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->json();
         
         if(!count($response)){
             abort(403);
@@ -30,8 +30,8 @@ class AdminMiddleware
         $d = base64_decode($e[1]);
         $id = json_decode($d)->id;
 
-        $response2 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun/'.$id)->json();
-        $response3 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/admindesa/akun/'.$id)->json();
+        $response2 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$id)->json();
+        $response3 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$id)->json();
         if(!isset($response3[0]['id_desawisata'])){
             abort(403);
         }

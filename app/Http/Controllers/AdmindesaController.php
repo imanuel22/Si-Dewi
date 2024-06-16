@@ -12,7 +12,7 @@ class AdmindesaController extends Controller
      */
     public function index()
     {
-        $response = Http::get('http://localhost:3000/admindesa')->collect();
+        $response = Http::get(env('APP_API_URL').'/admindesa')->collect();
         return view('superadmin.admindesa.index',[
             'admindesa'=>$response,
         ]);    
@@ -23,8 +23,8 @@ class AdmindesaController extends Controller
      */
     public function create(Request $request)
     {
-        $response_1 = Http::withToken($request->session()->get('accessToken'))->get('http://localhost:3000/akun')->collect()->whereIn('role','ADMIN');
-        $response_2 = Http::get('localhost:3000/desawisata')->collect();
+        $response_1 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect()->whereIn('role','ADMIN');
+        $response_2 = Http::get(env('APP_API_URL').'/desawisata')->collect();
         return view('superadmin.admindesa.create',[
             'akun'=>$response_1,
             'desawisata'=>$response_2
@@ -41,7 +41,7 @@ class AdmindesaController extends Controller
             'id_akun' => 'required',
             'id_desawisata' => 'required',
         ]);
-        $response = Http::post('localhost:3000/admindesa/add',$validatedData);
+        $response = Http::post(env('APP_API_URL').'/admindesa/add',$validatedData);
 
         if($response->successful()){
             return redirect('/superadmin/admindesa')->with('message','berhasil');
@@ -69,19 +69,19 @@ class AdmindesaController extends Controller
         // ]);
         // $validatedDataAkun['role']='ADMIN';
         // //response
-        // $response_akun = Http::post('localhost:3000/akun/add');
-        // $response_desa = Http::post('localhost:3000/desawisata/add');
+        // $response_akun = Http::post(env('APP_API_URL').'/akun/add');
+        // $response_desa = Http::post(env('APP_API_URL').'/desawisata/add');
 
         // if($response_akun->successful() && $response_desa->successful()){
-        //     $response_1 = Http::withToken($request->session()->get('accessToken'))->get('http://localhost:3000/akun')->collect();
-        //     $response_2 = Http::get('localhost:3000/desawisata')->collect();
+        //     $response_1 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
+        //     $response_2 = Http::get(env('APP_API_URL').'/desawisata')->collect();
         //     //ambil id akun 
         //     $id_akun = 1;
         //     //ambil id desa
         //     $id_desawisata = 1;
 
         //     //post admindesa
-        //     $response_admin = Http::post('localhost:3000/admindesa/add',[
+        //     $response_admin = Http::post(env('APP_API_URL').'/admindesa/add',[
         //         'id_akun'=>$id_akun,
         //         'id_desawisata'=>$id_desawisata,
         //     ]);
@@ -127,7 +127,7 @@ class AdmindesaController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->delete('http://localhost:3000/admindesa/'.$id);
+        $response = Http::withToken(request()->session()->get('accessToken'))->delete(env('APP_API_URL').'/admindesa/'.$id);
         if($response->successful()){
             return redirect('/superadmin/admindesa/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {
