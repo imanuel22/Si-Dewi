@@ -37,7 +37,7 @@ class ReviewController extends Controller
     public function show(string $id)
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/reviewdestinasi/destinasi/' . $id)->collect();
-        return view('Admin.destinasi.show', [
+        return view('Admin.review.show', [
             'review' => $response->whereIn('setujui', 0)
         ]);
     }

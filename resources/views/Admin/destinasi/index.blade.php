@@ -130,7 +130,7 @@
 
                     <li
                         class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                        <a href="/admin/destinasi/{{ $row['id'] }}" class="flex items-center p-2  group">
+                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
                             <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
