@@ -36,22 +36,22 @@
                 +</a>
         </div>
         <div class="relative overflow-x-auto mt-5">
-            <table id="example" class="table-auto w-full">
-                <thead>
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="">
+                        <th scope="col" class="px-6 py-3 text-center ">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             Nama
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             gambar
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             deskripsi
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             kategori
                         </th>
                         {{-- <th scope="col" class="px-6 py-3">
@@ -63,7 +63,7 @@
                         <th scope="col" class="px-6 py-3">
                             updatedAt
                         </th> --}}
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 text-center">
                             Action
                         </th>
                     </tr>
@@ -71,8 +71,7 @@
                 <tbody>
                     @foreach ($destinasi as $row)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th class="px-6 py-4 text-center">
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4">
@@ -84,16 +83,16 @@
                             <td class="px-6 py-4">
                                 {{ $row['deskripsi'] }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-2 text-center">
                                 {{ $row['id_kategoridestinasi'] }}
                             </td>
-                            {{-- <td class="px-6 py-4">
+                            {{-- <td class=" px-4 py-2">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-2">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-2 text-center">
                                 <button id="dropdownLeftEndButton" data-dropdown-toggle="dropdownLeftEnd{{ $row['id'] }}"
                                     data-dropdown-placement="left-start"
                                     class="me-3 mb-3 md:mb-0  font-extrabold text-gray-900 dark:text-white  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
@@ -111,11 +110,12 @@
         <!-- Dropdown menu -->
         @foreach ($destinasi as $row)
             <div id="dropdownLeftEnd{{ $row['id'] }}"
-                class="z-20 hidden bg-white divide-y absolute divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                class="z-20 hidden bg-white divide-y absolute divide-gray-100 rounded-lg shadow w-30 dark:bg-gray-700">
                 <ul class=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLeftEndButton">
-                    <li class="">
+                    <li
+                        class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                         <a href="/admin/fasilitas/{{ $row['id'] }}" class="flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true"
+                            <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -127,19 +127,9 @@
 
                         </a>
                     </li>
-                    <li>
-                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-width="2"
-                                    d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
-                                <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
 
-                            <span class="flex-1 ms-2 whitespace-nowrap">View</span></a>
-                    </li>
-                    <li>
+                    <li
+                        class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <a href="/admin/destinasi/{{ $row['id'] }}" class="flex items-center p-2  group">
                             <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -154,12 +144,24 @@
                             <span class="flex-1 ms-2 whitespace-nowrap">Ulasan</span></a>
                         </a>
                     </li>
+                    {{-- <li>
+                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
+                            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2"
+                                    d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-2 whitespace-nowrap">View</span></a>
+                    </li> --}}
                     <li
                         class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm  dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
                         <a href="/admin/destinasi/{{ $row['id'] }}/edit" class=" flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px] text-yellow-400 group-hover:text-white dark:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
                                     clip-rule="evenodd" />
@@ -176,9 +178,9 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="flex items-center p-2">
-                                <svg class="w-[18px] h-[18px] transition duration-75 text-red-700 group-hover:text-white dark:text-white dark:group-hover:text-white"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-[18px] h-[18px] transition duration-75  dark:text-white " aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
                                         clip-rule="evenodd" />
@@ -192,16 +194,4 @@
         @endforeach
 
     </div>
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-                // Add any customization options here
-            });
-        });
-    </script>
 @endsection

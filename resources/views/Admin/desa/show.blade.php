@@ -2,38 +2,46 @@
 
 @section('main')
     <div class="mx-4">
-
-        <h2 class=" mb-3  font-bold tracking-tight text-gray-500 ">Profil Desa / Info </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500">Profil Desa / Info</h2>
 
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> {{ $desa['nama'] }} </p>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $desa['nama'] }}</p>
             <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 href="/admin/profil-desa/{{ $desa['id'] }}/edit">edit</a>
         </div>
-
-        <h2 class=" mb-5  font-bold tracking-tight text-gray-500 "> {{ $desa['kategori'] }} / {{ $desa['kabupaten'] }}
-        </h2>
+        <h2 class="mb-5 font-bold tracking-tight text-gray-500">{{ $desa['kategori'] }} / {{ $desa['kabupaten'] }}</h2>
         <div
-            class=" mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            class="mt-8 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-w-full overflow-hidden">
+            <img src="{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}" width="300" height="200" class="block mx-auto">
 
-            <img src="{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}" width="300" height="200">
-            <div class="mt-5 grid grid-cols-3">
-                <div class="col-span-2 ">
-                    <p>{{ $desa['deskripsi'] }}</p>
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-full">
+                <div class="col-span-2 overflow-hidden">
+                    <p class="break-words">{{ $desa['deskripsi'] }}</p>
                 </div>
-                <div class="flex col-span-1">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z"
-                            clip-rule="evenodd" />
-                    </svg>
+                <div class="col-span-1">
 
 
-                    <p>{{ $desa['alamat'] }}</p>
+                    <div class="relative" style="height: 300px;">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15777.346005471349!2d{{ explode(',', $desa['maps'])[1] }}!3d{{ explode(',', $desa['maps'])[0] }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOeKdu-OpzOyYoiAtIDE1NSwgNDEuMjMgU08sIFRyYW5zYWN0aW9uIENodW5rcyBSZWQsIE1vYmlsZSBLaW5nZG9tLCBTYW5zIFJvYWQ!5e0!3m2!1sen!2sid!4v1623872036346!5m2!1sen!2sid"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="flex mt-3 items-center">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M11.906 1.994a8.002 8.002 0 0 1 8.09 8.421 7.996 7.996 0 0 1-1.297 3.957.996.996 0 0 1-.133.204l-.108.129c-.178.243-.37.477-.573.699l-5.112 6.224a1 1 0 0 1-1.545 0L5.982 15.26l-.002-.002a18.146 18.146 0 0 1-.309-.38l-.133-.163a.999.999 0 0 1-.13-.202 7.995 7.995 0 0 1 6.498-12.518ZM15 9.997a3 3 0 1 1-5.999 0 3 3 0 0 1 5.999 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p>{{ $desa['alamat'] }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
 
 
         {{-- Contact $ Social Media --}}

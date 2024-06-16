@@ -12,7 +12,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -34,18 +34,18 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(String $id)
+    public function show(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/reviewdestinasi/destinasi/'.$id)->collect();
-        return view('Admin.review.show',[
-            'review'=>$response->whereIn('setujui',0)
+        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/reviewdestinasi/destinasi/' . $id)->collect();
+        return view('Admin.destinasi.show', [
+            'review' => $response->whereIn('setujui', 0)
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(String $id)
+    public function edit(string $id)
     {
         //
     }
@@ -53,38 +53,38 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, String $id)
-    {   
+    public function update(Request $request, string $id)
+    {
         $validatedData = $request->validate([
-            'setujui'=> 'numeric'
+            'setujui' => 'numeric'
         ]);
-        if($validatedData['setujui'] == 1){
-            $response = Http::patch('http://localhost:3000/reviewdestinasi/'.$request->id,$validatedData);
-            if($response->successful()){
-                return redirect('/admin/review/'.$id)->with('message','berhasil mengupdate');
-            }elseif ($response->failed()) {
-                return redirect('/admin/review/'.$id)->with('message','gagal mengupdate');
+        if ($validatedData['setujui'] == 1) {
+            $response = Http::patch('http://localhost:3000/reviewdestinasi/' . $request->id, $validatedData);
+            if ($response->successful()) {
+                return redirect('/admin/review/' . $id)->with('message', 'berhasil mengupdate');
+            } elseif ($response->failed()) {
+                return redirect('/admin/review/' . $id)->with('message', 'gagal mengupdate');
             } else {
-                return redirect('/admin/review/'.$id)->with('message','erorr system 500');
+                return redirect('/admin/review/' . $id)->with('message', 'erorr system 500');
             }
         }
-        if($validatedData['setujui'] == 0){
-            return $this->destroy($id,$request->id_destinasiwisata);
+        if ($validatedData['setujui'] == 0) {
+            return $this->destroy($id, $request->id_destinasiwisata);
         }
     }
- 
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(String $id,String $id_destinasiwisata)
+    public function destroy(string $id, string $id_destinasiwisata)
     {
-        $response = Http::delete('http://localhost:3000/reviewdestinasi/'.$id);
-        if($response->successful()){
-            return redirect('/admin/review/'.$id_destinasiwisata)->with('message','berhasil menghapus');
-        }elseif ($response->failed()) {
-            return redirect('/admin/review/'.$id_destinasiwisata)->with('message','gagal menghapus');
+        $response = Http::delete('http://localhost:3000/reviewdestinasi/' . $id);
+        if ($response->successful()) {
+            return redirect('/admin/review/' . $id_destinasiwisata)->with('message', 'berhasil menghapus');
+        } elseif ($response->failed()) {
+            return redirect('/admin/review/' . $id_destinasiwisata)->with('message', 'gagal menghapus');
         } else {
-            return redirect('/admin/review/'.$id_destinasiwisata)->with('message','erorr system 500');
+            return redirect('/admin/review/' . $id_destinasiwisata)->with('message', 'erorr system 500');
         }
     }
 }
