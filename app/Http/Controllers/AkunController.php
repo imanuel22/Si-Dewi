@@ -34,7 +34,7 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validatedData = $request->validate([ 
             'nama'=>'required',
             'no_telp'=>'required',
             'password'=>'required',
@@ -90,7 +90,7 @@ class AkunController extends Controller
 
         if(!$request['foto']){
             $validatedData['foto'] = $request['fotoOld'];
-        }
+        } 
 
         $validatedData['updatedAt'] = now();
         // dd($request,$id,$validatedData);

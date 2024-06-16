@@ -72,7 +72,7 @@ class ReviewController extends Controller
             return $this->destroy($id,$request->id_destinasiwisata);
         }
     }
-
+ 
     /**
      * Remove the specified resource from storage.
      */

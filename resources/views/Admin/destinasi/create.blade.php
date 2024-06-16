@@ -10,17 +10,14 @@
             <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Destinasi </p>
             <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                <div class="mb-5">
+                <div class="mb-5 ">
                     <label for="nama"
-                        class="@error('nama')
-                        
-                   mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white  @enderror ">Nama
+                        class="@error('nama') mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white  @enderror ">Nama
                     </label>
                     <input type="text" name="nama" id="nama"
                         class="@error('nama')
-                            bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500" placeholder="Bonnie Green">
-    <p class="mt-2 text-sm text-red-600 dark:text-red-500 @else
-                         bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @enderror" />
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else
+                        bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @enderror">
                     @error('nama')
                         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
                             {{ $message }}</p>
@@ -28,23 +25,33 @@
                 </div>
                 <div class="mb-5">
                     <label for="id_kategoridestinasi"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori
+                        class="@error('id_kategoridestinasi') mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white @enderror">Kategori
                     </label>
                     <select id="id_kategoridestinasi" name="id_kategoridestinasi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="@error('id_kategoridestinasi')
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @enderror">
                         <option hidden>Select Role</option>
                         @foreach ($kategoridesawisata as $row)
                             <option value="{{ $row['id'] }}">{{ $row['nama'] }}</option>
                         @endforeach
                     </select>
+                    @error('id_kategoridestinasi')
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                            {{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="mb-5">
                 <label for="deskripsi"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                    class="@error('deskripsi') mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white @enderror">Deskripsi</label>
                 <textarea id="text" name="deskripsi" rows="8"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="@error('deskripsi')
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else  block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @enderror"
                     placeholder="Write your thoughts here..."></textarea>
+                @error('deskripsi')
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                        {{ $message }}</p>
+                @enderror
             </div>
         </div>
         {{--  --}}
@@ -56,8 +63,13 @@
                 {{-- <label for="gambar" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Gambar</label> --}}
                 <img class="image-preview img-fluid mb-2">
                 <input onchange="previewImage()" name="gambar" id="gambar"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    class="@error('gambar')
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @enderror"
                     aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                @error('gambar')
+                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                        {{ $message }}</p>
+                @enderror
             </div>
         </div>
         <div class="ms-4">
