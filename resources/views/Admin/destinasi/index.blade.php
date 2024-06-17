@@ -35,116 +35,59 @@
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5 border border-gray-200 rounded-lg shadow">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr class="">
-                        <th scope="col" class="px-6 py-3  ">
-                            No
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center">
-                            Nama
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center">
-                            gambar
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center">
-                            deskripsi
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center">
-                            kategori
-                        </th>
-                        {{-- <th scope="col" class="px-6 py-3">
-                    rating yang belum di setujui
-                </th> --}}
-                        {{-- <th scope="col" class="px-6 py-3">
-                            createdAt
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            updatedAt
-                        </th> --}}
-                        <th scope="col" class="px-6 py-3 text-center">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($destinasi as $row)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th class="px-6 py-4 ">
-                                {{ $loop->iteration }}
-                            </th>
-                            <td class="px-6 py-4 text-center">
-                                {{ $row['nama'] }}
-                            </td>
-                            <td class="px-6 py-4 text-center">
-                                <img src="{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $row['deskripsi'] }}
-                            </td>
-                            <td class=" px-4 py-2 text-center">
-                                {{ $row['id_kategoridestinasi'] }}
-                            </td>
-                            {{-- <td class=" px-4 py-2">
-                                {{ $row['createdAt'] }}
-                            </td>
-                            <td class=" px-4 py-2">
-                                {{ $row['updatedAt'] }}
-                            </td> --}}
-                            <td class=" px-4 py-2 text-center">
-                                <button id="dropdownLeftEndButton" data-dropdown-toggle="dropdownLeftEnd{{ $row['id'] }}"
-                                    data-dropdown-placement="left-start"
-                                    class="me-3 mb-3 md:mb-0  font-extrabold text-gray-900 dark:text-white  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
-                                    type="button">
-                                    :
-                                </button>
 
 
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        <!-- Dropdown menu -->
-        @foreach ($destinasi as $row)
-            <div id="dropdownLeftEnd{{ $row['id'] }}"
-                class="z-20 hidden bg-white divide-y absolute divide-gray-100 rounded-lg shadow w-30 dark:bg-gray-700">
-                <ul class=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLeftEndButton">
-                    <li
-                        class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-                        <a href="/admin/fasilitas/{{ $row['id'] }}" class="flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
-                                    clip-rule="evenodd" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            @foreach ($destinasi as $row)
+                <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class="flex justify-end px-4 pt-4">
+                        <button id="dropdownButton" data-dropdown-toggle="dropdown{{ $row['id'] }}"
+                            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                            type="button">
+                            <span class="sr-only">Open dropdown</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 16 3">
+                                <path
+                                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                             </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdown{{ $row['id'] }}"
+                            class="z-10 border hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="" aria-labelledby="dropdownButton">
+                                <li
+                                    class="text-gray-900 hover:text-white  hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium text-sm  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                                    <a href="/admin/fasilitas/{{ $row['id'] }}" class="flex items-center p-2  group">
+                                        <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
 
-                            <span class="flex-1 ms-2 whitespace-nowrap">Fasilitas</span>
+                                        <span class="flex-1 ms-2 whitespace-nowrap">Fasilitas</span>
 
-                        </a>
-                    </li>
+                                    </a>
+                                </li>
 
-                    <li
-                        class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z"
-                                    clip-rule="evenodd" />
-                                <path fill-rule="evenodd"
-                                    d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            <span class="flex-1 ms-2 whitespace-nowrap">Ulasan</span></a>
-                        </a>
-                    </li>
-                    {{-- <li>
+                                <li
+                                    class="text-blue-700 hover:text-white  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm  dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                                    <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
+                                        <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M4 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1v2a1 1 0 0 0 1.707.707L9.414 13H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4Z"
+                                                clip-rule="evenodd" />
+                                            <path fill-rule="evenodd"
+                                                d="M8.023 17.215c.033-.03.066-.062.098-.094L10.243 15H15a3 3 0 0 0 3-3V8h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-1v2a1 1 0 0 1-1.707.707L14.586 18H9a1 1 0 0 1-.977-.785Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="flex-1 ms-2 whitespace-nowrap">Ulasan</span></a>
+                                    </a>
+                                </li>
+                                {{-- <li>
                         <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
                             <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -156,42 +99,73 @@
 
                             <span class="flex-1 ms-2 whitespace-nowrap">View</span></a>
                     </li> --}}
-                    <li
-                        class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm  dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
-                        <a href="/admin/destinasi/{{ $row['id'] }}/edit" class=" flex items-center p-2  group">
-                            <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path fill-rule="evenodd"
-                                    d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
-                                    clip-rule="evenodd" />
-                                <path fill-rule="evenodd"
-                                    d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
-                                    clip-rule="evenodd" />
+                                <li
+                                    class="text-yellow-400 hover:text-white  hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium text-sm  dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
+                                    <a href="/admin/destinasi/{{ $row['id'] }}/edit"
+                                        class=" flex items-center p-2  group">
+                                        <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path fill-rule="evenodd"
+                                                d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
+                                                clip-rule="evenodd" />
+                                            <path fill-rule="evenodd"
+                                                d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="flex-1 ms-2 whitespace-nowrap">Edit</span></a>
+                                </li>
+                                <li
+                                    class="group text-red-700 hover:text-white  hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-sm dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                    <form action="/admin/destinasi/{{ $row['id'] }}" method="post"
+                                        onsubmit="return confirm('yakin')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="flex items-center p-2">
+                                            <svg class="w-[18px] h-[18px] transition duration-75  dark:text-white "
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="flex-1 ms-2 whitespace-nowrap">Delete</span>
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <img class="rounded-t-lg" src="{{ $row['gambar'] }}" alt="{{ $row['nama'] }}" />
+                    </a>
+                    {{-- dropdown menu --}}
+
+
+
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                {{ $row['nama'] }}</h5>
+                            <h5 class="mb-2 text-sm font-bold tracking-tight text-gray-50000 dark:text-white">
+                                {{ $row['id_kategoridestinasi'] }}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">
+                            {{ \Illuminate\Support\Str::limit($row['deskripsi'], 100) }}</p>
+                        <a href="#"
+                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                             </svg>
-                            <span class="flex-1 ms-2 whitespace-nowrap">Edit</span></a>
-                    </li>
-                    <li
-                        class="group text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                        <form action="/admin/destinasi/{{ $row['id'] }}" method="post"
-                            onsubmit="return confirm('yakin')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="flex items-center p-2">
-                                <svg class="w-[18px] h-[18px] transition duration-75  dark:text-white " aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd"
-                                        d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <span class="flex-1 ms-2 whitespace-nowrap">Delete</span>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        @endforeach
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
 
     </div>
 @endsection
