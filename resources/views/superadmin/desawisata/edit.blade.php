@@ -65,23 +65,21 @@
                             <option value="Buleleng">Buleleng</option>
                         </select>
                     </div>
-                </div>
-                <div class="mb-5">
-                    <label for="deskripsi"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
-                    <textarea id="deskripsi" name="deskripsi" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Write your thoughts here...">{{ $desawisata['deskripsi'], old('deskripsi') }}</textarea>
-                </div>
-                <div class="mb-5">
+
+                    <div class="mb-5">
+                        <label for="deskripsi"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
+                        <textarea id="deskripsi" name="deskripsi" rows="18"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write your thoughts here...">{{ $desawisata['deskripsi'], old('deskripsi') }}</textarea>
+                    </div>
                     <input type="hidden" name="gambarOld" value="{{ $desawisata['gambar'] }}">
-                    <div class="flex items-center justify-center rounded bg-gray-50 dark:bg-gray-800 relative"
-                        id="Map">
-                        <!-- Tombol Cari Lokasi Terkini -->
-                        {{-- <button style="z-index: 1000;" id="locateButton"
-                            class="absolute top-2 right-2 bg-blue-500 text-white font-bold py-2 px-4 rounded">
-                            Cari Lokasi Terkini
-                        </button> --}}
+                    <div class="mb-5">
+                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi
+                            Desa Wisata</label>
+                        <div class="flex items-center justify-center rounded bg-gray-50 dark:bg-gray-800 relative w-full h-96"
+                            id="Map">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,11 +98,9 @@
                 </div>
             </div>
             {{-- Mapss --}}
-            <div class="mb-5 ">
-                <label for="maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">maps</label>
-                <input type="maps" value="{{ $desawisata['maps'], old('maps') }}" name="maps" id="maps"
-                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
-            </div>
+            <input type="hidden" value="{{ $desawisata['maps'], old('maps') }}" name="maps" id="maps"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
+
             <button type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
             <button type="reset"
@@ -127,6 +123,60 @@
                     imagePreview.src = oFREvent.target.result;
                 }
             }
+            // Map
+            // Inisialisasi peta dengan Leaflet
+            const mymap = L.map("Map").setView([-8.384321, 115.218391], 11);
+
+            // Layer tiles OpenStreetMap
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(mymap);
+
+            // Variabel untuk input koordinat
+            var mapsInput = document.getElementById('maps');
+
+            // Marker
+            var marker;
+
+            // Fungsi untuk menambah atau memperbarui marker
+            function addOrUpdateMarker(latlng) {
+                if (marker) {
+                    marker.setLatLng(latlng);
+                } else {
+                    marker = L.marker(latlng, {
+                        draggable: true
+                    }).addTo(mymap);
+                    marker.on('dragend', function(event) {
+                        var position = marker.getLatLng();
+                        marker.setLatLng(position).bindPopup(position.toString()).update();
+                        mapsInput.value = position.lat + ", " + position.lng;
+                    });
+                }
+            }
+
+            // Ambil koordinat dari variabel maps
+            var mapsCoordinates = "{{ $desawisata['maps'] ?? old('maps') }}";
+            if (mapsCoordinates) {
+                var coordinates = mapsCoordinates.split(', ');
+                var lat = parseFloat(coordinates[0]);
+                var lng = parseFloat(coordinates[1]);
+
+                // Tambahkan marker pada peta
+                addOrUpdateMarker([lat, lng]);
+
+                // Set view pada peta
+                mymap.setView([lat, lng], 18);
+            }
+
+            // Event klik pada peta untuk menambah marker baru
+            mymap.on('click', function(e) {
+                var latlng = e.latlng;
+
+                // Tambahkan atau perbarui marker
+                addOrUpdateMarker(latlng);
+
+                // Update nilai input maps
+                mapsInput.value = latlng.lat + ", " + latlng.lng;
+            });
         </script>
-        {{-- <x-map></x-map> --}}
     @endsection
