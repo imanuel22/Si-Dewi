@@ -35,11 +35,11 @@
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5">
+        <div class="relative overflow-x-auto mt-5 border border-gray-200 rounded-lg shadow">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr class="">
-                        <th scope="col" class="px-6 py-3 text-center ">
+                        <th scope="col" class="px-6 py-3  ">
                             No
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
@@ -71,13 +71,13 @@
                 <tbody>
                     @foreach ($destinasi as $row)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th class="px-6 py-4 text-center">
+                            <th class="px-6 py-4 ">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-center">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-center">
                                 <img src="{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4">

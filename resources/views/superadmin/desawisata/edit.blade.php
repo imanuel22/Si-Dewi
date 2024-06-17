@@ -1,4 +1,4 @@
-@extends('superadmin.layouts.main')
+@extends('admin.layouts.main')
 
 @section('main')
     <div class="mx-4">
@@ -73,9 +73,17 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write your thoughts here...">{{ $desawisata['deskripsi'], old('deskripsi') }}</textarea>
                 </div>
-
-                <input type="hidden" name="gambarOld" value="{{ $desawisata['gambar'] }}">
-
+                <div class="mb-5">
+                    <input type="hidden" name="gambarOld" value="{{ $desawisata['gambar'] }}">
+                    <div class="flex items-center justify-center rounded bg-gray-50 dark:bg-gray-800 relative"
+                        id="Map">
+                        <!-- Tombol Cari Lokasi Terkini -->
+                        {{-- <button style="z-index: 1000;" id="locateButton"
+                            class="absolute top-2 right-2 bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                            Cari Lokasi Terkini
+                        </button> --}}
+                    </div>
+                </div>
             </div>
 
             <div
@@ -120,4 +128,5 @@
                 }
             }
         </script>
+        {{-- <x-map></x-map> --}}
     @endsection
