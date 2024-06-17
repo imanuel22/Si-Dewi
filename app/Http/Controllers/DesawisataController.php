@@ -13,7 +13,7 @@ class DesawisataController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata')->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata')->collect();
         // if(Desawisata::all()->toArray()!=$response){
         //     Desawisata::truncate();
         //     for ($i=0; $i < count($response); $i++) { 
@@ -57,7 +57,7 @@ class DesawisataController extends Controller
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post('http://localhost:3000/desawisata/add',$validatedData);
+        )->post(env('APP_API_URL').'/desawisata/add',$validatedData);
 
         if($response->successful()){
             return redirect('/superadmin/desa')->with('message','berhasil menambahkan');
@@ -78,8 +78,8 @@ class DesawisataController extends Controller
             abort(403);
         }
         
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/desawisata/'.$id)->json();
-        $response2 = Http::withToken(request()->session()->get('accessToken'))->get('localhost:3000/informasi/desa/'.$id)->json();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->json();
+        $response2 = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/desa/'.$id)->json();
         
         // dd($response2[0]);
         return view('Admin.desa.show',[
@@ -96,7 +96,7 @@ class DesawisataController extends Controller
         if(request()->session()->get('id_desa') != $id){
             abort(403);
         }
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/desawisata/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->collect();
         // dd($response);
         return view('superadmin.desawisata.edit',[
             'desawisata'=>$response,
@@ -129,11 +129,11 @@ class DesawisataController extends Controller
 
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/desawisata/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch('http://localhost:3000/desawisata/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -150,7 +150,7 @@ class DesawisataController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::delete('http://localhost:3000/desawisata/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/desawisata/'.$id);
         if($response->successful()){
             return redirect('/superadmin/desa')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

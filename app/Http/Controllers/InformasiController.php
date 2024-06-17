@@ -42,7 +42,7 @@ class InformasiController extends Controller
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
         
-        $response = Http::withToken($request->session()->get('accessToken'))->post('http://localhost:3000/informasi/add',$validatedData);
+        $response = Http::withToken($request->session()->get('accessToken'))->post(env('APP_API_URL').'/informasi/add',$validatedData);
 
         if($response->successful()){
             return redirect('/admin/profil-desa/'.$request->session()->get('id_desa'))->with('message','berhasil menambahkan');
@@ -67,7 +67,7 @@ class InformasiController extends Controller
      */
     public function edit(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/informasi/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/'.$id)->collect();
         // dd($response);
         return view('Admin.informasi.edit',[
             'informasi'=>$response,
@@ -91,7 +91,7 @@ class InformasiController extends Controller
         $validatedData['id_desawisata'] = $request->session()->get('id_desa');
         $validatedData['updatedAt'] = now();
         
-        $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/informasi/'.$id,$validatedData);
+        $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/informasi/'.$id,$validatedData);
         if($response->successful()){
             return redirect('/admin/profil-desa/'.$request->session()->get('id_desa'))->with('message','berhasil menambahkan');
         }elseif ($response->failed()) {

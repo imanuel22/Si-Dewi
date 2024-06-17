@@ -13,9 +13,9 @@ class DestinasiController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/desa/'.request()->session()->get('id_desa'))->collect();
         // for ($i=0; $i < count($response); $i++) { 
-        //     $review[] = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/reviewdestinasi/destinasi/'.$response[$i]['id'])->collect()->whereIn('setujui',1)->count();
+        //     $review[] = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi/destinasi/'.$response[$i]['id'])->collect()->whereIn('setujui',1)->count();
         // }
         return view('Admin.destinasi.index',[
             'destinasi'=>$response,
@@ -28,7 +28,7 @@ class DestinasiController extends Controller
      */
     public function create()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/kategoridestinasi/')->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/kategoridestinasi/')->collect();
         return view('Admin.destinasi.create',[
             'kategoridesawisata'=>$response,
         ]);
@@ -51,7 +51,7 @@ class DestinasiController extends Controller
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post('http://localhost:3000/destinasiwisata/add',$validatedData);
+        )->post(env('APP_API_URL').'/destinasiwisata/add',$validatedData);
 
         if($response->successful()){
             return redirect('/admin/destinasi')->with('message','berhasil menambahkan');
@@ -67,7 +67,7 @@ class DestinasiController extends Controller
      */
     public function show(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/'.$id)->collect();
         
         return view('Admin.destinasi.show',[
             'destinasi'=>$response
@@ -80,7 +80,7 @@ class DestinasiController extends Controller
      */
     public function edit(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/destinasiwisata/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/'.$id)->collect();
         
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
@@ -111,11 +111,11 @@ class DestinasiController extends Controller
         $validatedData['updatedAt'] = now();
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/destinasiwisata/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/destinasiwisata/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch('http://localhost:3000/destinasiwisata/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/destinasiwisata/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -132,7 +132,7 @@ class DestinasiController extends Controller
      */
     public function destroy(String $id)
     {
-        $response = Http::delete('http://localhost:3000/destinasiwisata/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/destinasiwisata/'.$id);
         if($response->successful()){
             return redirect('/admin/destinasi/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

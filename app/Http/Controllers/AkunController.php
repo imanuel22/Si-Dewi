@@ -13,7 +13,7 @@ class AkunController extends Controller
      */
     public function index(Request $request)
     {
-        $response = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun')->collect();
+        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
         return view('superadmin.akun.index',[
             'akun'=>$response
         ]);
@@ -48,7 +48,7 @@ class AkunController extends Controller
 
         $response = Http::attach(
             'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-        )->post('http://localhost:3000/akun/add',$validatedData);
+        )->post(env('APP_API_URL').'/akun/add',$validatedData);
         
         if($response->successful()){
             return redirect('/superadmin/akun')->with('message',$response->reason());
@@ -96,11 +96,11 @@ class AkunController extends Controller
         // dd($request,$id,$validatedData);
 
         if(!isset($_FILES['foto'])){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/akun/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-            )->patch('http://localhost:3000/akun/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -117,7 +117,7 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->delete('http://localhost:3000/akun/'.$id);
+        $response = Http::withToken(request()->session()->get('accessToken'))->delete(env('APP_API_URL').'/akun/'.$id);
         if($response->successful()){
             return redirect('/superadmin/akun')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {
@@ -128,7 +128,7 @@ class AkunController extends Controller
     }
 
     public function profile(){
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/akun/'.request()->session()->get('id'));
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
         return view('profile',[
             'profile'=>$response
         ]);
@@ -142,7 +142,7 @@ class AkunController extends Controller
             ]);
             
             
-            $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/akun/'.request()->session()->get('id'));
+            $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
         if(!password_verify($request['oldpassword'],$response['password'])){
             return false;
         }
@@ -154,11 +154,11 @@ class AkunController extends Controller
         $validatedData['updatedAt'] = now();
 
         if(!isset($_FILES['foto'])){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/akun/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-            )->patch('http://localhost:3000/akun/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
         }
 
         if($response->successful()){

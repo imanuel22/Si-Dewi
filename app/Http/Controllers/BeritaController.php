@@ -12,7 +12,7 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/desa/'.request()->session()->get('id_desa'))->collect();
         return view('Admin.berita.index',[
             'berita'=>$response,
         ]);
@@ -43,7 +43,7 @@ class BeritaController extends Controller
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post('http://localhost:3000/berita/add',$validatedData);
+        )->post(env('APP_API_URL').'/berita/add',$validatedData);
 
         if($response->successful()){
             return redirect('/admin/berita')->with('message','berhasil menambahkan');
@@ -59,7 +59,7 @@ class BeritaController extends Controller
      */
     public function show(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
@@ -74,7 +74,7 @@ class BeritaController extends Controller
      */
     public function edit(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/berita/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         if(request()->session()->get('id_desa') != $response['id_desawisata']){
             abort(403);
         }
@@ -102,11 +102,11 @@ class BeritaController extends Controller
         $validatedData['updatedAt'] = now();
        
         if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch('http://localhost:3000/berita/'.$id,$validatedData);
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/berita/'.$id,$validatedData);
         }else{
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
                 'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch('http://localhost:3000/berita/'.$id,$validatedData);
+            )->patch(env('APP_API_URL').'/berita/'.$id,$validatedData);
         }
 
         if($response->successful()){
@@ -123,7 +123,7 @@ class BeritaController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::delete('http://localhost:3000/berita/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/berita/'.$id);
         if($response->successful()){
             return redirect('/admin/berita/')->with('message','berhasil menghapus');
         }elseif ($response->failed()) {

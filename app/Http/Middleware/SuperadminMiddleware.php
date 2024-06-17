@@ -25,7 +25,7 @@ class SuperadminMiddleware
             return redirect('/login');
         }
         
-        $response = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun')->json();
+        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->json();
         
         if(!$response){
             return redirect('/login');
@@ -36,7 +36,7 @@ class SuperadminMiddleware
         $d = base64_decode($e[1]);
         $id = json_decode($d)->id;
 
-        $response2 = Http::withToken($request->session()->get('accessToken'))->get('localhost:3000/akun/'.$id)->json();
+        $response2 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$id)->json();
         $request->session()->put([
             'id'=>$response2['id'],
             'nama'=>$response2['nama'],

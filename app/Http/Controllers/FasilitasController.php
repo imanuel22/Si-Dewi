@@ -35,7 +35,7 @@ class FasilitasController extends Controller
                 'nama'=> 'required',
                 'id_destinasiwisata'=>'required'
             ]);
-            $response = Http::post('http://localhost:3000/fasilitas/add',$validatedData);
+            $response = Http::post(env('APP_API_URL').'/fasilitas/add',$validatedData);
                 if($response->successful()){
                     return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','berhasil mengupdate');
                 }elseif ($response->failed()) {
@@ -51,7 +51,7 @@ class FasilitasController extends Controller
      */
     public function show(String $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get('http://localhost:3000/fasilitas/destinasi/'.$id)->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/fasilitas/destinasi/'.$id)->collect();
         return view('Admin.fasilitas.show',[
             'fasilitas'=>$response,
             'id_destinasiwisata'=>$id,
@@ -75,7 +75,7 @@ class FasilitasController extends Controller
         //     'setujui'=> 'numeric'
         // ]);
         // if($validatedData['setujui'] == 1){
-        //     $response = Http::patch('http://localhost:3000/fasilitas/'.$request->id,$validatedData);
+        //     $response = Http::patch(env('APP_API_URL').'/fasilitas/'.$request->id,$validatedData);
         //     if($response->successful()){
         //         return redirect('/admin/review/'.$id)->with('message','berhasil mengupdate');
         //     }elseif ($response->failed()) {
@@ -95,7 +95,7 @@ class FasilitasController extends Controller
     public function destroy(Request $request,String $id)
     {
         // dd($id,$request);
-        $response = Http::delete('http://localhost:3000/fasilitas/'.$id);
+        $response = Http::delete(env('APP_API_URL').'/fasilitas/'.$id);
         if($response->successful()){
             return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','berhasil menghapus');
         }elseif ($response->failed()) {
