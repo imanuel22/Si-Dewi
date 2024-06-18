@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Akomodasi extends Model
+class Produkcount extends Model
 {
     use HasFactory;
+    protected $fillable = ['id_produk','count'];
+
 }

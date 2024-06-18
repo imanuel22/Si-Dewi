@@ -137,7 +137,8 @@
                         </div>
                     </div>
                     <a href="#">
-                        <img class="rounded-t-lg" src="{{ $row['gambar'] }}" alt="{{ $row['nama'] }}" />
+                        <img class="rounded-t-lg" src="{{ env('APP_API_URL') }}/uploads/destinasi/{{ $row['gambar'] }}"
+                            alt="{{ $row['nama'] }}" />
                     </a>
                     {{-- dropdown menu --}}
 

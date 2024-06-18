@@ -27,7 +27,7 @@
             </button>
         </div>
     @endif
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css">
 
     <div class="mx-4">
         <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Produk / Table </h2>
@@ -38,7 +38,7 @@
                 +</a>
         </div>
         <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table id="myTable" class="display w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -78,7 +78,8 @@
                                 {{ $row['nama'] }}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <img src="{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
+                                <img src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
+                                    alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4">
                                 {{ $row['deskripsi'] }}
@@ -130,4 +131,12 @@
             </table>
         </div>
     </div>
+
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
 @endsection

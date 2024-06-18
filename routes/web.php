@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DesawisataController;
 use App\Http\Controllers\DestinasiController;
@@ -19,6 +20,14 @@ use App\Http\Controllers\ProdukController;
 Route::middleware('guest')->group(function(){
     Route::get('/', function () {
         return view('home');
+    });
+    Route::get('/home',[DashboardController::class,'home']);
+    Route::prefix('/desa/{id_desa}')->group(function()  {
+        Route::get('/',[DashboardController::class,'desacount']);
+        
+        Route::get('/destinasi/{id_destinasi}',[DashboardController::class,'destinasicount']);
+        Route::get('/paket/{id_paket}',[DashboardController::class,'paketcount']);
+        Route::get('/produk/{id_produk}',[DashboardController::class,'produkcount']);
     });
     Route::get('/login',[AuthController::class,'login']);
     Route::post('/dologin',[AuthController::class,'dologin']);

@@ -58,6 +58,7 @@ class DesawisataController extends Controller
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
             'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
         )->post(env('APP_API_URL').'/desawisata/add',$validatedData);
+        dd($request,$response);
 
         if($response->successful()){
             return redirect('/superadmin/desa')->with('message','berhasil menambahkan');
