@@ -37,23 +37,24 @@
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow">
-            <table id="myTable" class="display w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow p-3">
+            <table id="myTable"
+                class="display border-collapse border p-2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 border">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Nama
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             gambar
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             deskripsi
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             harga
                         </th>
                         {{-- <th scope="col" class="px-6 py-3">
@@ -62,7 +63,7 @@
                         <th scope="col" class="px-6 py-3">
                             updatedAt
                         </th> --}}
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Action
                         </th>
                     </tr>
@@ -71,20 +72,20 @@
                     @foreach ($produk as $row)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 <img src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="border px-6 py-4">
                                 {{ $row['deskripsi'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['harga'] }}
                             </td>
                             {{-- <td class="px-6 py-4">
@@ -93,7 +94,7 @@
                             <td class="px-6 py-4">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
-                            <td class="px-6 py-4">
+                            <td class="border px-6 py-4">
                                 <div class="flex justify-center">
                                     {{-- <a href="/admin/produk/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
                                     <a href="/admin/produk/{{ $row['id'] }}/edit"
