@@ -67,8 +67,12 @@
     object-fit: cover;
 }
 
+.bg-primary {
+    background-color: #53BFCB;
+  }
+
 .bg-secondary {
-    background-color: #025862;
+    background-color: #1E4E58;
   }
 
   .image-container {
@@ -88,4 +92,7 @@
 .t1{
     mix-blend-mode: difference;
     color: #fff;
+}
+
+.footer{
 }

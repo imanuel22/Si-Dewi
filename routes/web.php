@@ -29,6 +29,10 @@ Route::get('/map', function () {
     return view('guest/map');
 });
 
+Route::get('/jelajahi', function () {
+    return view('guest/explore');
+});
+
 Route::get('/admin', function () {
     return view('admin/dashboard');
 });
