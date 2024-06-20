@@ -64,6 +64,3 @@ Route::get('/admin/event', function () {
 });
 
 
-
-
-?>
