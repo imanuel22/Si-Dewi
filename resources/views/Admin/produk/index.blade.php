@@ -38,7 +38,7 @@
                 +</a>
         </div>
         <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table id="example" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -78,7 +78,8 @@
                                 {{ $row['nama'] }}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <img src="{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
+                                <img src="http://localhost:3000/uploads/produk/{{ $row['gambar'] }}"
+                                    alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4">
                                 {{ $row['deskripsi'] }}
@@ -130,4 +131,13 @@
             </table>
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                // Add any customization options here
+            });
+        });
+    </script>
 @endsection

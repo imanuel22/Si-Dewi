@@ -137,12 +137,9 @@
                         </div>
                     </div>
                     <a href="#">
-                        <img class="rounded-t-lg" src="{{ $row['gambar'] }}" alt="{{ $row['nama'] }}" />
+                        <img class="rounded-t-lg" src="http://localhost:3000/uploads/destinasiwisata/{{ $row['gambar'] }}"
+                            alt="{{ $row['nama'] }}" />
                     </a>
-                    {{-- dropdown menu --}}
-
-
-
                     <div class="p-5">
                         <a href="#">
                             <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

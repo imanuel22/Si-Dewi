@@ -49,7 +49,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Data Petugas Desa</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="/superadmin/kategoridestinasi"
                     class="{{ request()->is('superadmin/kategoridestinasi*') ? 'text-white rounded-lg dark:text-white bg-primary-200 hover:bg-primary-100 drop-shadow-lg' : 'text-gray-900 rounded-lg  dark:text-white hover:bg-primary-100 hover:text-white dark:hover:bg-gray-700' }} flex items-center p-2  group">
                     <svg class="flex-shrink-0 w-5 h-5 {{ request()->is('superadmin/kategoridestinasi*') ? 'text-white  transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white' : 'text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white' }}"
@@ -59,7 +59,7 @@
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Kategori Destinasi</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
 
     </div>
