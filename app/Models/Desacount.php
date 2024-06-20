@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kategoridestinasi extends Model
+class Desacount extends Model
 {
     use HasFactory;
+    protected $fillable = ['id_desawisata','count'];
 }

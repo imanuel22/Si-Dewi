@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <a href="#">
-                        <img class="rounded-t-lg" src="http://localhost:3000/uploads/destinasiwisata/{{ $row['gambar'] }}"
+                        <img class="rounded-t-lg" src="{{ env('APP_API_URL') }}/uploads/destinasi/{{ $row['gambar'] }}"
                             alt="{{ $row['nama'] }}" />
                     </a>
                     <div class="p-5">

@@ -14,7 +14,8 @@
         </div>
         <div
             class="mt-5 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-w-full overflow-hidden">
-            <img src="{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}" width="300" height="200" class="block mx-auto">
+            <img src="{{ env('APP_API_URL') }}/uploads/desawisata/{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}"
+                width="300" height="200" class="block mx-auto">
 
             <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-full">
                 <div class="col-span-2 overflow-hidden">
@@ -22,13 +23,18 @@
                 </div>
                 <div class="col-span-1">
 
+                    @if (isset($desa['maps'][1]))
+                        <div class="relative" style="height: 300px;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15777.346005471349!2d{{ explode(',', $desa['maps'])[1] }}!3d{{ explode(',', $desa['maps'])[0] }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOeKdu-OpzOyYoiAtIDE1NSwgNDEuMjMgU08sIFRyYW5zYWN0aW9uIENodW5rcyBSZWQsIE1vYmlsZSBLaW5nZG9tLCBTYW5zIFJvYWQ!5e0!3m2!1sen!2sid!4v1623872036346!5m2!1sen!2sid"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @else
+                        <div class="relative" style="height: 300px;">
 
-                    <div class="relative" style="height: 300px;">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15777.346005471349!2d{{ explode(',', $desa['maps'])[1] }}!3d{{ explode(',', $desa['maps'])[0] }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOeKdu-OpzOyYoiAtIDE1NSwgNDEuMjMgU08sIFRyYW5zYWN0aW9uIENodW5rcyBSZWQsIE1vYmlsZSBLaW5nZG9tLCBTYW5zIFJvYWQ!5e0!3m2!1sen!2sid!4v1623872036346!5m2!1sen!2sid"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                        </div>
+                    @endif
                     <div class="flex mt-3 items-center">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
