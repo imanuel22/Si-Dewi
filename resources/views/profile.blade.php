@@ -5,7 +5,7 @@
     <div
         class=" mt-8  block  p-6  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="">
-            <img src="http://localhost:3000/uploads/desawisata/{{ $profile['foto'] }}" alt="{{ $profile['nama'] }}">
+            <img src="http://localhost:3000/uploads/akun/{{ $profile['foto'] }}" alt="{{ $profile['nama'] }}">
         </div>
         <div class="">
             <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Profile </p>
@@ -71,7 +71,7 @@
                     @method('PATCH')
                     <div
                         class=" mt-8 mb-5  block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Desa </p>
+                        <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Profile </p>
                         <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
                             <input type="hidden" name="fotoOld" value="{{ $profile['foto'] }}">
@@ -104,7 +104,7 @@
                         <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Foto Profil</p>
                         <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
                         <div class="mb-5">
-
+                            <input type="hidden" name="fotoOld" value="{{ $profile['foto'] }}">
                             <img class="image-preview img-fluid mb-2">
                             <input onchange="previewImage()" name="foto" id="foto"
                                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"

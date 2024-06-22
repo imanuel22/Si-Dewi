@@ -140,10 +140,6 @@
                         <img class="rounded-t-lg" src="{{ env('APP_API_URL') }}/uploads/destinasi/{{ $row['gambar'] }}"
                             alt="{{ $row['nama'] }}" />
                     </a>
-                    {{-- dropdown menu --}}
-
-
-
                     <div class="p-5">
                         <a href="#">
                             <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
