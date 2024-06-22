@@ -13,6 +13,16 @@ use PhpParser\Node\Expr\Cast\String_;
 class DashboardController extends Controller
 {
     //
+    public function index(){
+        // $data = Destinasicount::where('id')->all();
+        // dd($data->name);
+        // foreach(){
+
+        // }
+        // $data = ['labels' => ,
+        //     'data' => ,];
+        return view('Admin.dashboard',compact('data'));
+    }
 
     public function home(){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata')->collect();

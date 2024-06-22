@@ -17,13 +17,15 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!$request->session()->get('accessToken')){
-            abort(403);
+            // abort(403);
+            return redirect('/login');
         }
         
         $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->json();
         
-        if(!count($response)){
-            abort(403);
+        if(!isset($response)){
+            // abort(403);
+            return redirect('/login');
         }
         
         $e = explode('.',$request->session()->get('accessToken'));
@@ -33,7 +35,8 @@ class AdminMiddleware
         $response2 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$id)->json();
         $response3 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$id)->json();
         if(!isset($response3[0]['id_desawisata'])){
-            abort(403);
+            // abort(403);
+            return redirect('/login');
         }
         $request->session()->put([
             'id'=>$response2['id'],

@@ -35,11 +35,11 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
         $response = Http::withToken($request->session()->get('accessToken'))
-        ->withCookies(['accessToken'=>$request->session()->get('accessToken')],'.ondigitalocean.app')
+        ->withCookies(['accessToken'=>$request->session()->get('accessToken')],'localhost')
         ->delete(env('APP_API_URL').'/akun/logout',$request);
         // dd($response);
         if($response->successful()){
-            $request->session()->forget('accessToken');
+            $request->session()->flush();
             return redirect('/login')->with('message','berhasil logout');
         }elseif ($response->failed()) {
             return redirect('/login')->with('message','gagal logout');

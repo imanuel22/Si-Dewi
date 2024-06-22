@@ -1,10 +1,9 @@
 @extends('superadmin.layouts.main')
 
 @section('main')
-    <<<<<<< HEAD=======<h1>Halaman Admin Desa</h1>
+    <h1>Halaman Admin Desa</h1>
 
 
-        >>>>>>> 56cd1bc7c07f845fbd28dcc3270744116dd7e453
         @if (session()->has('message'))
             <div id="toast-success"
                 class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
