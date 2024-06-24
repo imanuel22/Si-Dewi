@@ -39,7 +39,7 @@
                 +</a>
         </div>
 
-        <div class=" overflow-x-auto mt-5 border border-gray-200 rounded-lg shadow">
+        <div class=" overflow-x-auto mt-5 border p-4 border-gray-200 rounded-lg shadow">
             <table id="myTable" class=" justify-self-end w-full text-sm text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
