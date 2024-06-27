@@ -15,12 +15,20 @@
 
             <!-- Gambar Latar Belakang -->
             <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
-            <img src="{{ asset('storage\img\background.png') }}" class="inset-0 w-full h-full object-cover"
+            <img src="{{ asset('storage\img\background.jpg') }}" class="inset-0 w-full h-full object-cover"
                 alt="" style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->
 
             <!-- Konten Teks di Atas Gambar -->
+            <div class="absolute flex justify-end bg-black w-full">
+                <div class="">
+                    <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                     focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center">
+                     Explore</button>
+
+                </div>
+            </div>
             <div
                 class="absolute top-0 flex flex-col justify-center pl-80 h-full text-white text-4xl poppins-bold tracking-normal">
                 <div>
@@ -29,7 +37,10 @@
                 <div>
                     <h1>WHERE CULTURE MEETS PARADISE</h1>
                 </div>
+
             </div>
+
+
             <div class="bg-white p-4 rounded-lg shadow-md w-screen">
                 <div class="grid grid-cols-2 gap-4 mr-5 ml-7">
                     <!-- Kolom Pertama: Judul dan Deskripsi -->
@@ -117,7 +128,7 @@
                             <div class="bg-gray-200 w-3/4 h-60 p-4">
                                 <!-- Your content here -->
                                 <div class="text-yellow-500 text-2xl font-bold">⭐️ 4.5</div>
-                                <div>Your destination overview here!</div>
+                                <div class="text-bottom">Desa Wisata Penglipuran</div>
                             </div>
                             <!-- Smaller section on the right -->
                             <div class="bg-gray-200 w-1/4 h-60 p-4">
@@ -200,7 +211,9 @@
                     Read More <i class="fas fa-arrow-right ml-5"></i>
                 </button>
             </div>
-            <div class="h-52"></div>
+            <div class="h-52">
+
+            </div>
         @include('partials.footer')
         </div>
 

@@ -16,7 +16,7 @@
         <ul class="flex flex-col font-medium mt-4 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0
          md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700 ">
         <li class="lg:mx-7 ">
-            <a href="{{url('/')}}" class="block py-2 px-3 md:p-0 text-white  bg-blue-700 rounded md:bg-transparent md:dark:bg-transparent hover:bg-gray-100 md:hover:bg-transparent md:border-0
+            <a href="{{url('/')}}" class="block text- py-2 px-3 md:p-0 text-white  bg-blue-700 rounded md:bg-transparent md:dark:bg-transparent hover:bg-gray-100 md:hover:bg-transparent md:border-0
             md:hover:text-blue-700  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-gray-900
             md:dark:hover:bg-transparent mix-blend-lighten" aria-current="page">Home</a>
         </li>

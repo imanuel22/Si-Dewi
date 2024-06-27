@@ -1,7 +1,12 @@
 {{-- footer start --}}
 
+<<<<<<< HEAD
 <div class="mt-28 ">
     <footer class="bg-primary">
+=======
+<div class="mt-28">
+    <footer class="bg-ijo">
+>>>>>>> 92c84ed2ad0169e225fc9eec3e426633008c5df1
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
