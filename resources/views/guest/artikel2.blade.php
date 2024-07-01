@@ -22,13 +22,13 @@
             <div class="grid grid-cols-3 gap-4">
                 <div class="grid grid-cols-1 gap-4 col-span-2 row-start-2 mx-auto w-full">
                         
-                        <div class="border-2 border-gray-400 bg-primary p-5">
+                        <div class="border-2 border-gray-400 bg-primary">
                             <article class="">
                                 <div class="border-black">
                                     <div class="image-card">
                                         <img width="1000" height="600" src="{{ asset('storage\img\background.jpg') }}" class="" alt=""> 
                                     </div>
-                                    <div class="headlight text-white pt-7">
+                                    <div class="headlight text-white p-5 pt-7">
                                         <h5 class="pt-blog-title font-bold"><a href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Pemerintah Kabupaten Konoha Melakukan pembanguna!!</a></h5>
                                         <p>Have you missed the recent Honkai: Star Rail stream? No worries! We’ve got a summary of the upcoming 2.3 patch for you!</p>
                                     </div>
@@ -36,14 +36,40 @@
                             </article>
                         </div>
 
-                        <div class="mt-10 border-2 border-black p-5">
+                        <div class="border-2 border-gray-400 bg-primary">
                             <article class="">
                                 <div class="border-black">
                                     <div class="image-card">
                                         <img width="1000" height="600" src="{{ asset('storage\img\background.jpg') }}" class="" alt=""> 
                                     </div>
-                                    <div class="headlight">
-                                        <h5 class="pt-blog-title"><a href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Pemerintah Kabupaten Konoha Melakukan pembanguna!!</a></h5>
+                                    <div class="headlight text-white p-5 pt-7">
+                                        <h5 class="pt-blog-title font-bold"><a href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Pemerintah Kabupaten Konoha Melakukan pembanguna!!</a></h5>
+                                        <p>Have you missed the recent Honkai: Star Rail stream? No worries! We’ve got a summary of the upcoming 2.3 patch for you!</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="border-2 border-gray-400 bg-primary">
+                            <article class="">
+                                <div class="border-black">
+                                    <div class="image-card">
+                                        <img width="1000" height="600" src="{{ asset('storage\img\background.jpg') }}" class="" alt=""> 
+                                    </div>
+                                    <div class="headlight text-white p-5 pt-7">
+                                        <h5 class="pt-blog-title font-bold"><a href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Pemerintah Kabupaten Konoha Melakukan pembanguna!!</a></h5>
+                                        <p>Have you missed the recent Honkai: Star Rail stream? No worries! We’ve got a summary of the upcoming 2.3 patch for you!</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="border-2 border-gray-400 bg-primary">
+                            <article class="">
+                                <div class="border-black">
+                                    <div class="image-card">
+                                        <img width="1000" height="600" src="{{ asset('storage\img\background.jpg') }}" class="" alt=""> 
+                                    </div>
+                                    <div class="headlight text-white p-5 pt-7">
+                                        <h5 class="pt-blog-title font-bold"><a href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Pemerintah Kabupaten Konoha Melakukan pembanguna!!</a></h5>
                                         <p>Have you missed the recent Honkai: Star Rail stream? No worries! We’ve got a summary of the upcoming 2.3 patch for you!</p>
                                     </div>
                                 </div>
@@ -53,15 +79,15 @@
                 {{-- side --}}
                 <div class="grid grid-cols-1 gap-4 row-start-2 ml-20">
                     <aside class="sidebar">
-                    <div class="border-2 bg-primary border-black p-4">
+                    <div class="border-2 bg-primary border-gray-400 p-4">
                         <form role="search" class="wp-block-search__button-outside wp-block-search__text-button wp-block-search">
                             <div class="wp-block-search__inside-wrapper ">
-                                <input type="search" class="w-72 file:border file:border-solid" name="s" value="" placeholder="" required="">
+                                <input type="search" class="w-72 " name="s" value="" placeholder="" required="">
                                 <button type="submit" class="pl-2 text-white wp-block-search__button wp-element-button">Search</button>
                             </div>
                         </form>
                     </div>
-                    <div class="border-2 border-black bg-primary text-white p-4 mt-4">
+                    <div class="border-2 border-gray-400 bg-primary text-white p-4 mt-4">
                     <h2 class="widget-title font-bold pb-2">Recent posts</h2>
                     <div class="pt-footer-recent-post">
                     <div class="pt-footer-recent-post-media">

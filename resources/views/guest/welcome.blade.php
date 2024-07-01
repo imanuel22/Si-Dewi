@@ -117,7 +117,7 @@
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
-                    <p class="text-gray-600 mb-8 text-white">Find tourist villages based on the distribution map of
+                    <p class= mb-8 text-white">Find tourist villages based on the distribution map of
                         districts and cities in Bali.</p>
                 </div>
                 <div class="container w-full max-w-5xl">
@@ -156,7 +156,7 @@
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 50vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">News Update</h1>
-                    <p class="text-gray-600 mb-8 text-white">Find tourist villages based on the distribution map of
+                    <p class="mb-8 text-white">Find tourist villages based on the distribution map of
                         districts and cities in Bali.</p>
                 </div>
 
