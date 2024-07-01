@@ -39,7 +39,7 @@
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/test.jpg') }}" alt="" />
+                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
                         </a>
                         <div class="p-6">
                             <a href="#">
@@ -53,7 +53,7 @@
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/test.jpg') }}" alt="" />
+                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
                         </a>
                         <div class="p-6">
                             <a href="#">
@@ -66,7 +66,7 @@
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/test.jpg') }}" alt="" />
+                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
                         </a>
                         <div class="p-6">
                             <a href="#">
@@ -79,7 +79,7 @@
                 <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/test.jpg') }}" alt="" />
+                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
                         </a>
                         <div class="p-6">
                             <a href="#">
