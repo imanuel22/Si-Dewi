@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -32,7 +32,7 @@
         <div class="flex justify-between">
             <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Destinasi Wisata </p>
             <a href="/admin/destinasi/create"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
 
@@ -42,14 +42,16 @@
                 <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex justify-end px-4 pt-4">
                         <button id="dropdownButton" data-dropdown-toggle="dropdown{{ $row['id'] }}"
-                            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                            class="inline-block absolute z-50 text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
                             type="button">
                             <span class="sr-only">Open dropdown</span>
-                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 16 3">
-                                <path
-                                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                            <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2.8"
+                                    d="M6 12h.01m6 0h.01m5.99 0h.01" />
                             </svg>
+
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdown{{ $row['id'] }}"
@@ -117,8 +119,7 @@
                                 </li>
                                 <li
                                     class="group text-red-700 hover:text-white  hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-sm dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                                    <form action="/admin/destinasi/{{ $row['id'] }}" method="post"
-                                        onsubmit="return confirm('yakin')">
+                                    <form action="/admin/destinasi/{{ $row['id'] }}" method="post" class="delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="flex items-center p-2">
@@ -137,10 +138,11 @@
                         </div>
                     </div>
                     <a href="#">
-                        <img class="rounded-t-lg" src="{{ env('APP_API_URL') }}/uploads/destinasi/{{ $row['gambar'] }}"
+                        <img class="rounded-t-lg h-64 relative"
+                            src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
                             alt="{{ $row['nama'] }}" />
                     </a>
-                    <div class="p-5">
+                    <div class="m-5 h-48">
                         <a href="#">
                             <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 {{ $row['nama'] }}</h5>
@@ -148,15 +150,12 @@
                                 {{ $row['id_kategoridestinasi'] }}</h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">
-                            {{ \Illuminate\Support\Str::limit($row['deskripsi'], 100) }}</p>
+                            {{ \Illuminate\Support\Str::limit($row['deskripsi'], 200) }}</p>
+                    </div>
+                    <div class="mx-5 mb-8">
                         <a href="#"
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Read more
-                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                            </svg>
+                            class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none">
+                            Selengkapnya
                         </a>
                     </div>
                 </div>

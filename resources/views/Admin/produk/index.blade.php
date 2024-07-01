@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -27,16 +27,18 @@
             </button>
         </div>
     @endif
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.tailwindcss.css">
+
+
 
     <div class="mx-4">
         <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Produk / Table </h2>
         <div class="flex justify-between">
             <h1 class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Produk</h1>
             <a href="/admin/produk/create"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
+<<<<<<< Updated upstream
 
         <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow p-3">
             <table id="myTable"
@@ -56,6 +58,25 @@
                             deskripsi
                         </th>
                         <th scope="col" class="px-6 py-3 text-center border">
+=======
+        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
+            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="border">
+                        <th scope="col" class=" px-6 py-3 text-center border w-12">
+                            No
+                        </th>
+                        <th scope="col" class="border px-6 py-3 text-center w-44 ">
+                            Nama
+                        </th>
+                        <th scope="col" class="border px-6 py-3 text-center ">
+                            gambar
+                        </th>
+                        <th scope="col" class="border px-6 py-3  text-center">
+                            deskripsi
+                        </th>
+                        <th scope="col" class=" border px-6 py-3 text-center ">
+>>>>>>> Stashed changes
                             harga
                         </th>
                         {{-- <th scope="col" class="px-6 py-3">
@@ -64,14 +85,22 @@
                         <th scope="col" class="px-6 py-3">
                             updatedAt
                         </th> --}}
+<<<<<<< Updated upstream
                         <th scope="col" class="px-6 py-3 text-center border">
+=======
+                        <th scope="col" class="border px-6 py-3 text-center ">
+>>>>>>> Stashed changes
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($produk as $row)
+<<<<<<< Updated upstream
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+=======
+                        <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+>>>>>>> Stashed changes
                             <th scope="row"
                                 class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
@@ -79,12 +108,22 @@
                             <td class="border px-6 py-4 text-center">
                                 {{ $row['nama'] }}
                             </td>
+<<<<<<< Updated upstream
                             <td class="border px-6 py-4 text-center">
                                 <img src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="border px-6 py-4">
                                 {{ $row['deskripsi'] }}
+=======
+                            <td class="border px-6 py-4 text-center justify-center flex">
+                                <img class="max-h-40 " src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
+                                    alt="{{ $row['gambar'] }}">
+                            </td>
+                            <td class="border px-6 py-4 ">
+                                <p class="whitespace-normal break-words max-w-sm sm:w-2xl">
+                                    {{ \Illuminate\Support\Str::limit($row['deskripsi'], 200) }}</p>
+>>>>>>> Stashed changes
                             </td>
                             <td class="border px-6 py-4 text-center">
                                 {{ $row['harga'] }}
@@ -110,6 +149,7 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </a>
+<<<<<<< Updated upstream
                                     <form action="/admin/produk/{{ $row['id'] }}" method="post"
                                         onsubmit="return confirm('yakin')">
                                         @csrf
@@ -117,6 +157,14 @@
                                         <button type="submit"
                                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
                                                 class="w-6 h-6 text-white" aria-hidden="true"
+=======
+                                    <form action="/admin/produk/{{ $row['id'] }}" method="post" class="delete-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button"
+                                            class= "  focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 delete-button">
+                                            <svg class="w-6 h-6 text-white" aria-hidden="true"
+>>>>>>> Stashed changes
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 fill="currentColor" viewBox="0 0 24 24">
                                                 <path fill-rule="evenodd"
@@ -133,6 +181,7 @@
             </table>
         </div>
     </div>
+<<<<<<< Updated upstream
 
     <script>
         $(document).ready(function() {
@@ -150,4 +199,6 @@
     <script>
         let table = new DataTable('#myTable');
     </script>
+=======
+>>>>>>> Stashed changes
 @endsection

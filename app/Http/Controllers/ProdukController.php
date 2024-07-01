@@ -13,10 +13,10 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.request()->session()->get('id_desa'))->collect();
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . request()->session()->get('id_desa'))->collect();
 
-        return view('Admin.produk.index',[
-            'produk'=>$response
+        return view('Admin.produk.index', [
+            'produk' => $response
         ]);
     }
 
@@ -34,32 +34,34 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama'=>'required|max:25',
-            'harga'=>'required',
-            'gambar'=>'image|file',
-            'deskripsi'=>'required',
+            'nama' => 'required|max:25',
+            'harga' => 'required',
+            'gambar' => 'required|image|file',
+            'deskripsi' => 'required',
         ]);
         $validatedData['id_desawisata'] = $request->session()->get('id_desa');
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
-            'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post(env('APP_API_URL').'/produk/add',$validatedData);
+            'gambar',
+            file_get_contents($_FILES['gambar']['tmp_name']),
+            $_FILES['gambar']['name']
+        )->post(env('APP_API_URL') . '/produk/add', $validatedData);
 
-        if($response->successful()){
-            return redirect('/admin/produk')->with('message','berhasil menambahkan');
-        }elseif ($response->failed()) {
-            return redirect('/admin/produk')->with('message','gagal menambahkan');
+        if ($response->successful()) {
+            return redirect('/admin/produk')->with('message', 'berhasil menambahkan');
+        } elseif ($response->failed()) {
+            return redirect('/admin/produk')->with('message', 'gagal menambahkan');
         } else {
-            return redirect('/admin/produk')->with('message','erorr system 500');
+            return redirect('/admin/produk')->with('message', 'erorr system 500');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(String $id)
+    public function show(string $id)
     {
         //
     }
@@ -67,67 +69,69 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(String $id)
+    public function edit(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/'.$id)->collect();
-        
-        if(request()->session()->get('id_desa') != $response['id_desawisata']){
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/' . $id)->collect();
+
+        if (request()->session()->get('id_desa') != $response['id_desawisata']) {
             abort(403);
         }
-        return view('Admin.produk.edit',[
-            'produk'=>$response
+        return view('Admin.produk.edit', [
+            'produk' => $response
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, String $id)
+    public function update(Request $request, string $id)
     {
         // if(request()->session()->get('id_desa') != $id){
         //     abort(403);
         // }
         $validatedData = $request->validate([
-            'nama'=>'required|max:25',
-            'harga'=>'required',
-            'gambar'=>'image|file',
-            'deskripsi'=>'required',
+            'nama' => 'required|max:25',
+            'harga' => 'required',
+            'gambar' => 'image|file',
+            'deskripsi' => 'required',
         ]);
-        if(!$request['gambar']){
+        if (!$request['gambar']) {
             $validatedData['gambar'] = $request['gambarOld'];
         }
 
         $validatedData['updatedAt'] = now();
-       
-        if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/produk/'.$id,$validatedData);
-        }else{
+
+        if ($_FILES['gambar']['error'] === 4) {
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL') . '/produk/' . $id, $validatedData);
+        } else {
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch(env('APP_API_URL').'/produk/'.$id,$validatedData);
+                'gambar',
+                file_get_contents($_FILES['gambar']['tmp_name']),
+                $_FILES['gambar']['name']
+            )->patch(env('APP_API_URL') . '/produk/' . $id, $validatedData);
         }
 
-        if($response->successful()){
-            return redirect('/admin/produk/')->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/admin/produk/')->with('message','gagal mengupdate');
+        if ($response->successful()) {
+            return redirect('/admin/produk/')->with('message', 'berhasil mengupdate');
+        } elseif ($response->failed()) {
+            return redirect('/admin/produk/')->with('message', 'gagal mengupdate');
         } else {
-            return redirect('/admin/produk/')->with('message','erorr system 500');
+            return redirect('/admin/produk/')->with('message', 'erorr system 500');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(String $id)
+    public function destroy(string $id)
     {
-        $response = Http::delete(env('APP_API_URL').'/produk/'.$id);
-        if($response->successful()){
-            return redirect('/admin/produk/')->with('message','berhasil menghapus');
-        }elseif ($response->failed()) {
-            return redirect('/admin/produk/')->with('message','gagal menghapus');
+        $response = Http::delete(env('APP_API_URL') . '/produk/' . $id);
+        if ($response->successful()) {
+            return redirect('/admin/produk/')->with('message', 'berhasil menghapus');
+        } elseif ($response->failed()) {
+            return redirect('/admin/produk/')->with('message', 'gagal menghapus');
         } else {
-            return redirect('/admin/produk/')->with('message','erorr system 500');
+            return redirect('/admin/produk/')->with('message', 'erorr system 500');
         }
     }
 }

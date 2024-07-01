@@ -1,5 +1,7 @@
 @extends('components.layoutlogin')
+<style>
 
+</style>
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
@@ -30,31 +32,36 @@
 
 
 
+    <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2">
+        <div class="h-full w-full hidden sm:block">
+            <img src="" alt="">
+        </div>
+        <div
+            class="w-full  bg-white  rounded shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center">
 
-    <h1 class="text-3xl mb-5 font-medium mt-20">Welcome Back</h1>
-    <div class="w-full max-w-lg p-4 bg-white  rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <p class="text-2xl tracking-tight font-normal  text-gray-900 dark:text-white ">Sign in to SiDewi </p>
-        <form class="w-full mt-7" action="/dologin" method="POST">
-            @csrf
-            <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Email Address</label>
-                <input type="email" name="email" id="email"
-                    class="shadow-sm p-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="Enter your email address" required />
-            </div>
-            <div class="mb-5">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                    password</label>
-                <input type="password" name="password" id="password"
-                    class="shadow-sm p-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                    placeholder="Password" required />
-            </div>
-            <a class="underline hover:text-secondary" href="">Forgot password ?</a>
+            <div class="w-full max-w-lg mx-7">
+                <p class="-mt-24 mx-1 mb-24 text-6xl font-semibold font-poppins  text-gray-900 dark:text-white ">Login </p>
+                <form class="mt-7" action="/dologin" method="POST">
+                    @csrf
+                    <div class="mb-14">
+                        <input type="email" name="email" id="email"
+                            class="border-none text-xl  w-full placeholder-gray-500 bg-transparent py-2 focus:ring-blue-500 focus:border-blue-500 block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Email" required />
+                        <hr class="h-1 mx-4  bg-black border-0 dark:bg-gray-700">
+                    </div>
+                    <div class="mb-5">
 
+                        <input type="password" name="password" id="password"
+                            class=" border-none text-xl  p-4 w-full placeholder-gray-500 bg-transparent py-2 focus:ring-blue-500 focus:  block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            placeholder="Password" required />
+                        <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class= " shadow-lg text-white px-10 rounded-xl text-2xl mt-10 bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <button type="submit"
-        class="text-white w-full text-base max-w-xs mt-10 bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  px-3 py-4 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        style="border-radius: 20px;">Sign
-        In</button> </form>
 @endsection

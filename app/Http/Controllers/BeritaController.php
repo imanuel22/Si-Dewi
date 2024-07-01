@@ -12,9 +12,9 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/desa/'.request()->session()->get('id_desa'))->collect();
-        return view('Admin.berita.index',[
-            'berita'=>$response,
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/desa/' . request()->session()->get('id_desa'))->collect();
+        return view('Admin.berita.index', [
+            'berita' => $response,
         ]);
     }
 
@@ -33,24 +33,26 @@ class BeritaController extends Controller
     {
 
         $validatedData = $request->validate([
-            'judul'=>'required|max:25',
-            'isi_berita'=>'required',
-            'gambar'=>'required|image|file',
+            'judul' => 'required|max:25',
+            'isi_berita' => 'required',
+            'gambar' => 'required|image|file',
         ]);
-        $validatedData['id_desawisata']= $request->session()->get('id_desa');
+        $validatedData['id_desawisata'] = $request->session()->get('id_desa');
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
         $response = Http::withToken($request->session()->get('accessToken'))->attach(
-            'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-        )->post(env('APP_API_URL').'/berita/add',$validatedData);
+            'gambar',
+            file_get_contents($_FILES['gambar']['tmp_name']),
+            $_FILES['gambar']['name']
+        )->post(env('APP_API_URL') . '/berita/add', $validatedData);
 
-        if($response->successful()){
-            return redirect('/admin/berita')->with('message','berhasil menambahkan');
-        }elseif ($response->failed()) {
-            return redirect('/admin/berita')->with('message','gagal menambahkan');
+        if ($response->successful()) {
+            return redirect('/admin/berita')->with('message', 'berhasil menambahkan');
+        } elseif ($response->failed()) {
+            return redirect('/admin/berita')->with('message', 'gagal menambahkan');
         } else {
-            return redirect('/admin/berita')->with('message','erorr system 500');
+            return redirect('/admin/berita')->with('message', 'erorr system 500');
         }
     }
 
@@ -59,13 +61,13 @@ class BeritaController extends Controller
      */
     public function show(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
-        
-        if(request()->session()->get('id_desa') != $response['id_desawisata']){
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/' . $id)->collect();
+
+        if (request()->session()->get('id_desa') != $response['id_desawisata']) {
             abort(403);
         }
-        return view('Admin.berita.show',[
-            'berita'=>$response,
+        return view('Admin.berita.show', [
+            'berita' => $response,
         ]);
     }
 
@@ -74,12 +76,12 @@ class BeritaController extends Controller
      */
     public function edit(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
-        if(request()->session()->get('id_desa') != $response['id_desawisata']){
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/' . $id)->collect();
+        if (request()->session()->get('id_desa') != $response['id_desawisata']) {
             abort(403);
         }
-        return view('Admin.berita.edit',[
-            'berita'=>$response
+        return view('Admin.berita.edit', [
+            'berita' => $response
         ]);
 
     }
@@ -91,30 +93,32 @@ class BeritaController extends Controller
     {
 
         $validatedData = $request->validate([
-            'judul'=>'required|max:25',
-            'isi_berita'=>'required',
-            'gambar'=>'image|file',
+            'judul' => 'required|max:25',
+            'isi_berita' => 'required',
+            'gambar' => 'image|file',
         ]);
-        if(!$request['gambar']){
+        if (!$request['gambar']) {
             $validatedData['gambar'] = $request['gambarOld'];
         }
 
         $validatedData['updatedAt'] = now();
-       
-        if($_FILES['gambar']['error'] === 4){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/berita/'.$id,$validatedData);
-        }else{
+
+        if ($_FILES['gambar']['error'] === 4) {
+            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL') . '/berita/' . $id, $validatedData);
+        } else {
             $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'gambar', file_get_contents($_FILES['gambar']['tmp_name']), $_FILES['gambar']['name']
-            )->patch(env('APP_API_URL').'/berita/'.$id,$validatedData);
+                'gambar',
+                file_get_contents($_FILES['gambar']['tmp_name']),
+                $_FILES['gambar']['name']
+            )->patch(env('APP_API_URL') . '/berita/' . $id, $validatedData);
         }
 
-        if($response->successful()){
-            return redirect('/admin/berita/'.$id)->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/admin/berita/'.$id)->with('message','gagal mengupdate');
+        if ($response->successful()) {
+            return redirect('/admin/berita/' . $id)->with('message', 'berhasil mengupdate');
+        } elseif ($response->failed()) {
+            return redirect('/admin/berita/' . $id)->with('message', 'gagal mengupdate');
         } else {
-            return redirect('/admin/berita/'.$id)->with('message','erorr system 500');
+            return redirect('/admin/berita/' . $id)->with('message', 'erorr system 500');
         }
     }
 
@@ -123,13 +127,13 @@ class BeritaController extends Controller
      */
     public function destroy(string $id)
     {
-        $response = Http::delete(env('APP_API_URL').'/berita/'.$id);
-        if($response->successful()){
-            return redirect('/admin/berita/')->with('message','berhasil menghapus');
-        }elseif ($response->failed()) {
-            return redirect('/admin/berita/')->with('message','gagal menghapus');
+        $response = Http::delete(env('APP_API_URL') . '/berita/' . $id);
+        if ($response->successful()) {
+            return redirect('/admin/berita/')->with('message', 'berhasil menghapus');
+        } elseif ($response->failed()) {
+            return redirect('/admin/berita/')->with('message', 'gagal menghapus');
         } else {
-            return redirect('/admin/berita/')->with('message','erorr system 500');
+            return redirect('/admin/berita/')->with('message', 'erorr system 500');
         }
     }
 }

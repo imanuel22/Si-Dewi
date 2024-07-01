@@ -13,9 +13,9 @@
                 href="/admin/profil-desa/{{ $desa['id'] }}/edit">edit</a>
         </div>
         <div
-            class="mt-5 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-w-full overflow-hidden">
+            class="mt-5 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full overflow-hidden">
             <img src="{{ env('APP_API_URL') }}/uploads/desawisata/{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}"
-                width="300" height="200" class="block mx-auto">
+                class="block mx-auto w-full h-2/4">
 
             <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-full">
                 <div class="col-span-2 overflow-hidden">

@@ -51,14 +51,20 @@
             </div>
             <div
                 class="mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Gambar </p>
+                <p class=" btext-xl font-bold tracking-tight text-gray-900 dark:text-white ">
+                    Gambar </p>
                 <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="mb-5">
-
                     <img class="image-preview img-fluid mb-2">
                     <input onchange="previewImage()" name="gambar" id="gambar"
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="@error('gambar') block w-full text-sm border border-red-700 text-red-700 rounded-lg cursor-pointer bg-red-50  dark:text-red-500
+@else
+block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @enderror"
                         aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                    @error('gambar')
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                            {{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <button type="submit"

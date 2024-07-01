@@ -11,14 +11,18 @@
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Gambar </p>
                 <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
 
-                <div class="flex items-center justify-center  mb-5 rounded">
-                    <div class="w-full px-3">
-                        <img src="" alt="" class=" mb-3">
-                        <input
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            aria-describedby="user_avatar_help" id="user_avatar" type="file" name="gambar">
-                        <div class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help"></div>
-                    </div>
+                <div class="mb-5">
+                    {{-- <label for="gambar" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Gambar</label> --}}
+                    <img class="image-preview img-fluid mb-2">
+                    <input onchange="previewImage()" name="gambar" id="gambar"
+                        class="@error('gambar') block w-full text-sm border border-red-700 text-red-700 rounded-lg cursor-pointer bg-red-50  dark:text-red-500
+                        @else
+                        block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @enderror"
+                        aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                    @error('gambar')
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                            {{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 
@@ -30,21 +34,31 @@
 
                 {{-- Judul --}}
                 <div class="w-full px-3">
-                    <label for="judul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
-                        Berita</label>
-                    <input type="text" id="address" name="judul"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required />
+                    <label for="judul"
+                        class="@error('judul') mb-2 text-sm font-medium text-red-700 dark:text-red-500 @else block mb-2 text-sm font-medium text-gray-900 dark:text-white  @enderror ">Judul
+                    </label>
+                    <input type="text" name="judul" id="judul"
+                        class="@error('judul')
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else
+                        bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @enderror">
+                    @error('judul')
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                            {{ $message }}</p>
+                    @enderror
                 </div>
                 {{-- Deskripsi --}}
                 <div class="flex items-center justify-center h-96 mb-3 mt-3 rounded">
                     <div class="w-full px-3">
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Isi Berita</label>
-                        <textarea id="message" rows="15"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Leave a comment..." name="isi_berita"></textarea>
-
+                        <textarea id="message" rows="15" name="isi_berita"
+                            class="@error('isi_berita')
+                        bg-red-50  border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500 @else  block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @enderror"
+                            placeholder="Write your thoughts here..."></textarea>
+                        @error('isi_berita')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">Oops!</span>
+                                {{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -58,4 +72,20 @@
 
         </div>
     </form>
+    <script>
+        // PreviewImage
+        function previewImage() {
+            const image = document.querySelector('#gambar');
+            const imagePreview = document.querySelector('.image-preview');
+
+            imagePreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imagePreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection
