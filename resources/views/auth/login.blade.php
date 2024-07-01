@@ -45,14 +45,14 @@
                     @csrf
                     <div class="mb-14">
                         <input type="email" name="email" id="email"
-                            class="border-none text-xl  w-full placeholder-gray-500 bg-transparent py-2 focus:ring-blue-500 focus:border-blue-500 block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            class="border-none text-xl  w-full placeholder-gray-500 bg-transparent py-2 focus:ring-transparent focus:border-none block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Email" required />
                         <hr class="h-1 mx-4  bg-black border-0 dark:bg-gray-700">
                     </div>
                     <div class="mb-5">
 
                         <input type="password" name="password" id="password"
-                            class=" border-none text-xl  p-4 w-full placeholder-gray-500 bg-transparent py-2 focus:ring-blue-500 focus:  block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            class=" border-none text-xl  p-4 w-full placeholder-gray-500 bg-transparent py-2 focus:ring-transparent focus:border-none  block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Password" required />
                         <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
                     </div>
