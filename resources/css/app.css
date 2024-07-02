@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,39 +11,38 @@
     font-family: "Poppins", sans-serif;
     font-weight: 200;
     font-style: normal;
-  }
+}
 
-  .poppins-regular {
+.poppins-regular {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  .poppins-semibold {
+.poppins-semibold {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
-  }
+}
 
-  .poppins-bold {
+.poppins-bold {
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
-  }
+}
 
-  .grechen-fuemen-regular {
+.grechen-fuemen-regular {
     font-family: "Grechen Fuemen", cursive;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  .nunito-reguler {
+.nunito-reguler {
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
     font-weight: 100px;
     font-style: normal;
-  }
-
+}
 
 /* TEST */
 .h-screen {
@@ -67,14 +66,14 @@
 }
 
 .bg-primary {
-    background-color: #53BFCB;
-  }
+    background-color: #53bfcb;
+}
 
 .bg-secondary {
-    background-color: #1E4E58;
-  }
+    background-color: #1e4e58;
+}
 
-  .image-container {
+.image-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,41 +85,12 @@
     height: 150px;
     object-fit: cover;
     margin: 10px;
-}a
-
-.t1{
+}
+a .t1 {
     mix-blend-mode: difference;
     color: #fff;
 }
 
-<<<<<<< HEAD
-.map-container {
-  position: relative;
-  padding-bottom: 10em; /* Ratio 16:9 */
-  height: 0;
-  overflow: hidden;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 80% !important;
-}
-.tabcontent {
-  display: none;
-}
-.tablinks {
-  color: black;
-  border-bottom: 2px solid transparent;
-}
-.tablinks.active {
-  color: blue;
-  border-bottom: 2px solid blue;
-}
-
-=======
 .card {
     position: relative;
     overflow: hidden;
@@ -141,6 +111,5 @@
     padding: 1rem;
 }
 
-.footer{
+.footer {
 }
->>>>>>> 581a106fa67d2d50def6febd8090a5911a354827
