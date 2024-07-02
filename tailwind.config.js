@@ -22,7 +22,9 @@ export default {
             nunitosans: ['Nunito Sans'],
         },
         colors: {
-            'ijo' : '#01606A'
+            'primary' : '#1E4E58',
+            'secondary' : '#00C2CC'
+
           },
     },
   },

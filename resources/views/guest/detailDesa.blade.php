@@ -17,8 +17,13 @@
 
         {{-- navbar end --}}
         {{-- background --}}
+<<<<<<< HEAD
         <div class="mix-blend-screen inset-0 bg-black opacity-70 mt-16 sm:mt-0  "> </div>
             <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full sm:h-full object-cover"  style="width: 100vw;">       
+=======
+        <div class="inset-0 bg-black opacity-70"> </div>
+            <img src="{{ asset('storage/img/testpict.png') }}" alt="" class=" inset-0 w-full h-full object-cover"  style="width: 100vw;">       
+>>>>>>> 581a106fa67d2d50def6febd8090a5911a354827
         
         {{-- background --}}
         {{-- content --}}

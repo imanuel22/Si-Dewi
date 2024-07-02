@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Route;
 
 // guest
 Route::get('/', function () {
-    return view('guest/welcome');
+    return view('./guest/welcome');
 });
 
 Route::get('/artikel', function () {
-    return view('guest/artikel');
+    return view('guest/artikel2');
 });
 Route::get('/detail', function () {
     return view('guest/detailDesa');
@@ -27,6 +27,10 @@ Route::get('/event', function () {
 
 Route::get('/map', function () {
     return view('guest/map');
+});
+
+Route::get('/jelajahi', function () {
+    return view('guest/explore');
 });
 
 Route::get('/admin', function () {
