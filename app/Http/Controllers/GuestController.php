@@ -11,7 +11,7 @@ class GuestController extends Controller
         $data = [
             'title'=>'',
         ];
-        return view();
+        return view('guest.welcome');
     }
     public function jelajahi(){
         //search
