@@ -18,9 +18,9 @@
                 <div class="relative w-full">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     </div>
-                    <input type="text" id="simple-search"
+                    <input type="text" id="simple-search" name="search"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Village Destination Here..." required />
+                        placeholder="Search Village Destination Here..." value="{{ $_GET['search'] }}" />
                 </div>
                 <button type="submit"
                     class="p-2.5 ms-2 text-sm font-medium text-white bg-secondary rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -36,59 +36,44 @@
 
         <div class="container mx-auto px-24 mt-5">
             <div class="flex flex-wrap -mx-4">
-                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
-                        </a>
-                        <div class="p-6">
+                @foreach ($desa as $row)
+                    <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
+                        <div
+                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nama Desa</h5>
+                                <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}"
+                                    alt="" />
                             </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci, officia fugit fuga reiciendis minus dolores dolore! Error recusandae vitae delectus? Corrupti maiores quo fugiat?</p>
+                            <div class="p-6">
+                                <a href="/desa/{{ $row['id'] }}">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {{ $row['nama'] }}</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $row['deskripsi'] }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Ulangi div di atas untuk 3 kartu lagi -->
-                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
-                        </a>
-                        <div class="p-6">
+                @endforeach
+                @foreach ($destinasi as $row)
+                    <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
+                        <div
+                            class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nama Desa</h5>
+                                <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}"
+                                    alt="" />
                             </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci, officia fugit fuga reiciendis minus dolores dolore! Error recusandae vitae delectus? Corrupti maiores quo fugiat?</p>
+                            <div class="p-6">
+                                <a href="/desa/{{ $row['id'] }}">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                        {{ $row['nama'] }}</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $row['deskripsi'] }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
-                        </a>
-                        <div class="p-6">
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nama Desa</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci, officia fugit fuga reiciendis minus dolores dolore! Error recusandae vitae delectus? Corrupti maiores quo fugiat?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/4 px-4 mb-8">
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-t-lg" src="{{ asset('storage/img/tanahlot.jpg') }}" alt="" />
-                        </a>
-                        <div class="p-6">
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Nama Desa</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam excepturi, saepe ea, magnam veniam adipisci, officia fugit fuga reiciendis minus dolores dolore! Error recusandae vitae delectus? Corrupti maiores quo fugiat?</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
@@ -100,7 +85,6 @@
 </body>
 <script>
     AOS.init();
-
 </script>
 
 </html>

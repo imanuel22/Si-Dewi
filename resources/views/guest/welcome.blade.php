@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css','resources/js/app.css')
+    @vite('resources/css/app.css', 'resources/js/app.css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -15,8 +15,8 @@
 
             <!-- Gambar Latar Belakang -->
             <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
-            <img src="{{ asset('desa.jpg') }}" class="inset-0 w-full h-full object-cover"
-                alt="" style="width: 100vw;">
+            <img src="{{ asset('desa.jpg') }}" class="inset-0 w-full h-full object-cover" alt=""
+                style="width: 100vw;">
 
             <!-- Overlay Gelap (Opsional) -->
 
@@ -32,9 +32,10 @@
                 </div>
                 <div class="absolute flex justify-end  bg-transparent h-96 w-full">
                     <div class="absolute bottom-0 right-0">
-                        <button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                        <button type="button"
+                            class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
                          focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center">
-                         Explore</button>
+                            Explore</button>
 
                     </div>
                 </div>
@@ -136,7 +137,7 @@
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
-                    <p class= mb-8 text-white">Find tourist villages based on the distribution map of
+                    <p class=mb-8 text-white">Find tourist villages based on the distribution map of
                         districts and cities in Bali.</p>
                 </div>
                 <div class="container w-full max-w-5xl">
@@ -148,7 +149,8 @@
 
                                 <div class="text-yellow-500 text-2xl font-bold">⭐️ 4.5</div>
                                 <div class="text-bottom">Desa Wisata Penglipuran</div>
-                                <img class="h-auto max-w-xl" src="/docs/images/examples/image-1@2x.jpg" alt="image description">
+                                <img class="h-auto max-w-xl" src="/docs/images/examples/image-1@2x.jpg"
+                                    alt="image description">
                             </div>
                             <!-- Smaller section on the right -->
                             <div class="bg-gray-200 w-1/4 h-60 p-4">
@@ -176,11 +178,7 @@
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 50vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">News Update</h1>
-<<<<<<< HEAD
                     <p class="mb-8 text-white">Find tourist villages based on the distribution map of
-=======
-                    <p class=" mb-8 text-white">Find tourist villages based on the distribution map of
->>>>>>> 4071538ae77a8efc4953d3bcb9925126c68ad6cb
                         districts and cities in Bali.</p>
                 </div>
 
@@ -231,21 +229,23 @@
                         </p>
                     </div>
                 </div>
-                <button class="mt-4 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300" style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
+                <button
+                    class="mt-4 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
+                    style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
                     Read More <i class="fas fa-arrow-right ml-5"></i>
                 </button>
             </div>
 
 
             <div class="h-52">
-                    <div class="bg-black"></div>
+                <div class="bg-black"></div>
             </div>
-        @include('partials.footer')
+            @include('partials.footer')
         </div>
 
 </body>
 <script>
     AOS.init();
+</script>
 
-  </script>
 </html>

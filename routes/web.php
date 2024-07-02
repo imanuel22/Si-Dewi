@@ -11,6 +11,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\DesawisataController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
@@ -18,17 +19,22 @@ use App\Http\Controllers\ProdukController;
 
 // GUEST
 Route::middleware('guest')->group(function(){
-    Route::get('/', function () {
-        return view('home');
+    Route::get('/', [GuestController::class,'homepage']);
+    Route::get('/jelajahi', [GuestController::class,'jelajahi']);
+    Route::prefix('/desa/{id_desa}')->group(function(){
+        Route::get('/',[GuestController::class,'desa']);
     });
+
+
+
     Route::get('/home',[DashboardController::class,'home']);
-    Route::prefix('/desa/{id_desa}')->group(function()  {
-        Route::get('/',[DashboardController::class,'desacount']);
+    // Route::prefix('/desa/{id_desa}')->group(function()  {
+    //     Route::get('/',[DashboardController::class,'desacount']);
         
-        Route::get('/destinasi/{id_destinasi}',[DashboardController::class,'destinasicount']);
-        Route::get('/paket/{id_paket}',[DashboardController::class,'paketcount']);
-        Route::get('/produk/{id_produk}',[DashboardController::class,'produkcount']);
-    });
+    //     Route::get('/destinasi/{id_destinasi}',[DashboardController::class,'destinasicount']);
+    //     Route::get('/paket/{id_paket}',[DashboardController::class,'paketcount']);
+    //     Route::get('/produk/{id_produk}',[DashboardController::class,'produkcount']);
+    // });
     Route::get('/login',[AuthController::class,'login']);
     Route::post('/dologin',[AuthController::class,'dologin']);
     Route::delete('/logout',[AuthController::class,'logout']);
