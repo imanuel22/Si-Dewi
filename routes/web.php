@@ -59,6 +59,9 @@ Route::prefix('/admin')->middleware('ADMIN')->group(function(){
 
 
 });
+Route::get('/admin/event', function () {
+    return view('admin/crud_event');
+});
 
 // SUPERADMIN
 Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
