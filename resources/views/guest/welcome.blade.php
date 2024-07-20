@@ -32,10 +32,10 @@
                 </div>
                 <div class="absolute flex justify-end  bg-transparent h-96 w-full">
                     <div class="absolute bottom-0 right-0">
-                        <button type="button"
+                        <a href="/jelajahi"
                             class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
                          focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-full text-sm px-10 py-2.5 text-center">
-                            Explore</button>
+                            Explore</a>
 
                     </div>
                 </div>
@@ -184,56 +184,24 @@
 
                 <div class="flex space-x-4 ">
                     <!-- Card 1 -->
-                    <div data-aos=""
-                        class="bg-white shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
-                        <h2 class="text-lg font-semibold mb-2">Card Title 1</h2>
-                        <p class="text-gray-700">
-                            This is a detailed description for the first card. It provides an overview of the content
-                            and purpose of this card,
-                            offering insights and valuable information that can help the reader understand more about
-                            the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
-                        </p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
-                        <h2 class="text-lg font-semibold mb-2">Card Title 2</h2>
-                        <p class="text-gray-700">
-                            This is a detailed description for the first card. It provides an overview of the content
-                            and purpose of this card,
-                            offering insights and valuable information that can help the reader understand more about
-                            the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
-                        </p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div
-                        class="bg-white shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
-                        <h2 class="text-lg font-semibold mb-2">Card Title 3</h2>
-                        <p class="text-gray-700">
-                            This is a detailed description for the first card. It provides an overview of the content
-                            and purpose of this card,
-                            offering insights and valuable information that can help the reader understand more about
-                            the topic being presented.
-                            The description aims to be informative, engaging, and comprehensive, ensuring that all key
-                            points are covered in a clear and concise manner.
-                            Whether it is about news, updates, or other important information,
-                            this card aims to deliver the message effectively and efficiently.
-                        </p>
-                    </div>
+                    @foreach ($berita as $row)
+                        <a href="/artikel/{{ $row['id'] }}">
+                            <div data-aos=""
+                                class="bg-white shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
+                                <h2 class="text-lg font-semibold mb-2">{{ $row['judul'] }}</h2>
+                                <p class="text-gray-700">
+                                    {{ Str::limit($row['isi_berita'], 500, '...') }}
+                                </p>
+                            </div>
+                        </a>
+                    @endforeach
+
                 </div>
-                <button
+                <a href="/artikel"
                     class="mt-4 bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
                     style="background-color: #00C2CC; border-color: #00C2CC; hover:bg-opacity-80;">
                     Read More <i class="fas fa-arrow-right ml-5"></i>
-                </button>
+                </a>
             </div>
 
 

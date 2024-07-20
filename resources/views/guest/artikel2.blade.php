@@ -22,23 +22,25 @@
                 <div class="grid grid-cols-3 gap-4">
                     <div class="grid grid-cols-1 gap-4 col-span-2 row-start-2 mx-auto w-full">
                         @foreach ($berita as $row)
-                            <div class="border-2 border-gray-400 bg-primary">
-                                <article class="">
-                                    <div class="border-black">
-                                        <div class="image-card">
-                                            <img width="1000" height="600"
-                                                src="{{ asset('storage\img\background.jpg') }}" class=""
-                                                alt="">
+                            <a href="/artikel/{{ $row['id'] }}">
+                                <div class="border-2 border-gray-400 bg-primary">
+                                    <article class="">
+                                        <div class="border-black">
+                                            <div class="image-card">
+                                                <img width="1000" height="600"
+                                                    src="{{ asset('storage\img\background.jpg') }}" class=""
+                                                    alt="">
+                                            </div>
+                                            <div class="headlight text-white p-5 pt-7">
+                                                <h5 class="pt-blog-title font-bold"><a
+                                                        href="/berita/{{ $row['slug'] }}">{{ $row['judul'] }}</a>
+                                                </h5>
+                                                <p>{{ $row['isi_berita'] }}</p>
+                                            </div>
                                         </div>
-                                        <div class="headlight text-white p-5 pt-7">
-                                            <h5 class="pt-blog-title font-bold"><a
-                                                    href="/berita/{{ $row['slug'] }}">{{ $row['judul'] }}</a>
-                                            </h5>
-                                            <p>{{ $row['isi_berita'] }}</p>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+                                    </article>
+                                </div>
+                            </a>
                         @endforeach
 
 
@@ -59,55 +61,22 @@
                             </div>
                             <div class="border-2 border-gray-400 bg-primary text-white p-4 mt-4">
                                 <h2 class="widget-title font-bold pb-2">Recent posts</h2>
-                                <div class="pt-footer-recent-post">
-                                    <div class="pt-footer-recent-post-media">
-                                        <a
-                                            href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">
-                                            <img src="https://blog.prydwen.gg/wp-content/uploads/2024/06/blog23-100x100.jpg"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="pt-footer-recent-post-info">
-                                        <h6><a
-                                                href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Honkai:
-                                                Star Rail 2.3 reveal stream summary!</a></h6>
-                                        <a href="https://blog.prydwen.gg/2024/06/07/" class="pt-post-date">
-                                            <i class="far fa-calendar-alt"></i>Jun <span>07</span>, 2024 </a>
-                                    </div>
+                                @foreach ($berita as $row)
+                                    <div class="pt-footer-recent-post">
+                                        <div class="pt-footer-recent-post-media">
+                                            <a href="/artikel/{{ $row['id'] }}">
+                                                <img src="https://blog.prydwen.gg/wp-content/uploads/2024/06/blog23-100x100.jpg"
+                                                    alt=""></a>
+                                        </div>
+                                        <div class="pt-footer-recent-post-info">
+                                            <h6><a href="/artikel/{{ $row['id'] }}">{{ $row['judul'] }}</a>
+                                            </h6>
+                                            <a href="https://blog.prydwen.gg/2024/06/07/" class="pt-post-date">
+                                                <i class="far fa-calendar-alt"></i>{{ $row['createdAt'] }} </a>
+                                        </div>
 
-                                </div>
-                                <div class="pt-footer-recent-post">
-                                    <div class="pt-footer-recent-post-media">
-                                        <a
-                                            href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">
-                                            <img src="https://blog.prydwen.gg/wp-content/uploads/2024/06/blog23-100x100.jpg"
-                                                alt=""></a>
                                     </div>
-                                    <div class="pt-footer-recent-post-info">
-                                        <h6><a
-                                                href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Honkai:
-                                                Star Rail 2.3 reveal stream summary!</a></h6>
-                                        <a href="https://blog.prydwen.gg/2024/06/07/" class="pt-post-date">
-                                            <i class="far fa-calendar-alt"></i>Jun <span>07</span>, 2024 </a>
-                                    </div>
-
-                                </div>
-
-                                <div class="pt-footer-recent-post">
-                                    <div class="pt-footer-recent-post-media">
-                                        <a
-                                            href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">
-                                            <img src="https://blog.prydwen.gg/wp-content/uploads/2024/06/blog23-100x100.jpg"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="pt-footer-recent-post-info">
-                                        <h6><a
-                                                href="https://blog.prydwen.gg/2024/06/07/honkai-star-rail-2-3-reveal-stream-summary/">Honkai:
-                                                Star Rail 2.3 reveal stream summary!</a></h6>
-                                        <a href="https://blog.prydwen.gg/2024/06/07/" class="pt-post-date">
-                                            <i class="far fa-calendar-alt"></i>Jun <span>07</span>, 2024 </a>
-                                    </div>
-
-                                </div>
+                                @endforeach
                         </aside>
                     </div>
                 </div>

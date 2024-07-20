@@ -8,10 +8,12 @@ use Illuminate\Support\Facades\Http;
 class GuestController extends Controller
 {
     public function homepage() {
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect();
+
         $data = [
-            'title'=>'',
+            'berita'=>$berita,
         ];
-        return view('guest.welcome');
+        return view('guest.welcome',$data);
     }
     public function jelajahi(){
         //search
