@@ -24,6 +24,7 @@ Route::middleware('guest')->group(function(){
     Route::prefix('/desa/{id_desa}')->group(function(){
         Route::get('/',[GuestController::class,'desa']);
     });
+    Route::get('/artikel',[GuestController::class,'berita']);
 
 
 

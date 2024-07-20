@@ -54,7 +54,7 @@ class GuestController extends Controller
                     });;  
         }
         if($search&&$kategori){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($search,$kategori) {
                         $matchesSearch = str_contains($item['nama'], $search)!== false;
@@ -68,7 +68,7 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     });; 
         }
         if($search&&$kabupaten){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($search,$kabupaten) {
                         $matchesSearch = str_contains($item['nama'], $search)!== false;
@@ -82,7 +82,7 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     });; 
         }
         if($kategori&&$kabupaten){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($kabupaten,$kategori) {
                         $matchesKategori = $item['kategori'] == $kategori;
@@ -92,7 +92,7 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     
         }
         if($search){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($search,$kabupaten,$kategori) {
                         $matchesSearch = str_contains($item['nama'], $search)!== false;
@@ -106,7 +106,7 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     });; 
         }
         if($kategori){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($search,$kabupaten,$kategori) {
                         $matchesKategori = $item['kategori'] == $kategori;
@@ -115,7 +115,7 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     
         }
         if($kabupaten){
-$desa = Http::get(env('APP_API_URL') . '/desawisata')
+            $desa = Http::get(env('APP_API_URL') . '/desawisata')
                     ->collect()
                     ->filter(function ($item) use ($search,$kabupaten,$kategori) {
                         $matchesKabupaten = $item['kabupaten'] == $kabupaten;
@@ -148,5 +148,12 @@ $desa = Http::get(env('APP_API_URL') . '/desawisata')
             'produk'=>$produk,
         ];
         return view('guest.detaildesa',$data);
+    }
+    public function berita(){
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect();
+        $data = [
+            'berita'=>$berita,
+        ];
+        return view('guest.artikel2',$data);
     }
 }
