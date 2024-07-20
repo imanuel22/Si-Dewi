@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 class GuestController extends Controller
 {
     public function homepage() {
-        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect();
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(3);
 
         $data = [
             'berita'=>$berita,
@@ -152,7 +152,7 @@ class GuestController extends Controller
         return view('guest.detaildesa',$data);
     }
     public function berita(){
-        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect();
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
         $data = [
             'berita'=>$berita,
         ];
