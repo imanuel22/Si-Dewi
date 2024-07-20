@@ -9,9 +9,11 @@ class GuestController extends Controller
 {
     public function homepage() {
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(3);
+        $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi')->collect();
 
         $data = [
             'berita'=>$berita,
+            'review'=>$review,
         ];
         return view('guest.welcome',$data);
     }

@@ -165,7 +165,6 @@
                         <div class="flex space-x-4">
                             <!-- Large section on the left -->
                             <div class="bg-gray-200 w-3/4 h-60 p-4">
-
                                 <div class="text-yellow-500 text-2xl font-bold">⭐️ 4.5</div>
                                 <div class="text-bottom">Desa Wisata Penglipuran</div>
                                 <img class="h-auto max-w-xl" src="/docs/images/examples/image-1@2x.jpg"
