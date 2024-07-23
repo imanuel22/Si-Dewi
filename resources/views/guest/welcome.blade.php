@@ -51,102 +51,120 @@
                             of districts and cities in Bali.</p>
                     </div>
                     <!-- Kolom Kedua: Card per Kabupaten -->
-                    <div class="flex flex-col justify-between   ">
-                        <div class="flex flex-row space-x-4 wraper">
-                            <div
-                                class=" wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021</h5>
-                                </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                    enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-                                </p>
-                                <a href="/jelajahi?kabupaten=Badung"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Kabupaten Badung
-                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021</h5>
-                                </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                    enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-                                </p>
-                                <a href="/jelajahi?kabupaten=Gianyar"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Kabupaten Gianyar
-                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021</h5>
-                                </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                    enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-                                </p>
-                                <a href="/jelajahi?kabupaten=Tabanan"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Kabupaten Tabanan
-                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021</h5>
-                                </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                    enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-                                </p>
-                                <a href="/jelajahi?kabupaten=Denpasar"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Kabupaten Denpasar
-                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <div
-                                class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                <a href="#">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Noteworthy technology acquisitions 2021</h5>
-                                </a>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                    enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-                                </p>
-                                <a href="/jelajahi?kabupaten=Tabanan"
-                                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Kabupaten Tabanan
-                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                                    </svg>
-                                </a>
+                    <style>
+                        .horizontal-scroll::-webkit-scrollbar {
+                            display: none;
+                        }
+                    </style>
+                    <div class="w-full overflow-x-scroll horizontal-scroll"
+                        style="scrollbar-color: transparent transparent;">
+                        <div class="flex flex-col justify-between gap-4">
+                            <div class="flex flex-row space-x-4 wraper">
+                                <div
+                                    class=" wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            Noteworthy technology acquisitions 2021</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+                                        enterprise technology acquisitions of 2021 so far, in reverse chronological
+                                        order.
+                                    </p>
+                                    <a href="/jelajahi?kabupaten=Badung"
+                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Kabupaten Badung
+                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div
+                                    class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            Noteworthy technology acquisitions 2021</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+                                        enterprise technology acquisitions of 2021 so far, in reverse chronological
+                                        order.
+                                    </p>
+                                    <a href="/jelajahi?kabupaten=Gianyar"
+                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Kabupaten Gianyar
+                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div
+                                    class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            Noteworthy technology acquisitions 2021</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+                                        enterprise technology acquisitions of 2021 so far, in reverse chronological
+                                        order.
+                                    </p>
+                                    <a href="/jelajahi?kabupaten=Tabanan"
+                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Kabupaten Tabanan
+                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div
+                                    class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            Noteworthy technology acquisitions 2021</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+                                        enterprise technology acquisitions of 2021 so far, in reverse chronological
+                                        order.
+                                    </p>
+                                    <a href="/jelajahi?kabupaten=Denpasar"
+                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Kabupaten Denpasar
+                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div
+                                    class="wrapp max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="#">
+                                        <h5
+                                            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                            Noteworthy technology acquisitions 2021</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
+                                        enterprise technology acquisitions of 2021 so far, in reverse chronological
+                                        order.
+                                    </p>
+                                    <a href="/jelajahi?kabupaten=Tabanan"
+                                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        Kabupaten Tabanan
+                                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -156,11 +174,14 @@
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
-                    <p class=mb-8 text-white">Find tourist villages based on the distribution map of
+                    <p class="mb-8 text-white">Find tourist villages based on the distribution map of
                         districts and cities in Bali.</p>
                 </div>
                 <div class="container w-full max-w-5xl">
                     <div class="flex flex-col space-y-4">
+                        @foreach ($review as $row)
+                            
+                        @endforeach
                         <!-- Top row -->
                         <div class="flex space-x-4">
                             <!-- Large section on the left -->
