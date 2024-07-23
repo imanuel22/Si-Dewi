@@ -10,10 +10,28 @@ class GuestController extends Controller
     public function homepage() {
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(3);
         $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi')->collect();
+        $reviewdes = $review->groupBy('id_destinasiwisata');
+
+        // Fetch destination data (replace this with your actual method of fetching destination data)
+        $destinations = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata')->collect();
+
+        // Map reviews with average rating
+        $reviewdes = $reviewdes->map(function ($reviews) use ($destinations) {
+            $averageRating = $reviews->avg('rating');
+            $destinationId = $reviews[0]['id_destinasiwisata'];
+            $destination = $destinations->firstWhere('id', $destinationId);
+            
+            return [
+                'reviews' => $reviews,
+                'averageRating' => $averageRating / 2,
+                'destination' => $destination
+            ];
+        });
+        $top5Reviews = $reviewdes->sortByDesc('averageRating')->take(5);
 
         $data = [
             'berita'=>$berita,
-            'review'=>$review,
+            'review'=>$top5Reviews,
         ];
         return view('guest.welcome',$data);
     }

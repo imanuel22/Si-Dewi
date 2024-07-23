@@ -178,10 +178,22 @@
                         districts and cities in Bali.</p>
                 </div>
                 <div class="container w-full max-w-5xl">
-                    <div class="flex flex-col space-y-4">
+
+                    <div class="flex gap-4">
                         @foreach ($review as $row)
-                            
+                            <div class="bg-gray-200 ">
+                                <div class="text-yellow-500 text-2xl font-bold">⭐️ {{ $row['averageRating'] }}</div>
+                                <p> {{ $row['destination']['nama'] }}</p>
+                                <p> {{ $row['destination']['gambar'] }}</p>
+
+                            </div>
                         @endforeach
+                    </div>
+
+
+
+
+                    <div class="flex flex-col space-y-4">
                         <!-- Top row -->
                         <div class="flex space-x-4">
                             <!-- Large section on the left -->
