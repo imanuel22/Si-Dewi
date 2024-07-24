@@ -24,7 +24,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
     Route::prefix('/desa/{id_desa}')->group(function(){
         Route::get('/',[GuestController::class,'desa']);
-        Route::get('/destinasi/{id_destinasi}',[GuestController::class,'desa']);
+        Route::get('/destinasi/{id_destinasi}',[GuestController::class,'destinasi']);
         Route::get('/paket/{id_paket}',[GuestController::class,'desa']);
         Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
         Route::get('/produk/{id_produk}',[GuestController::class,'desa']);
@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/home',[DashboardController::class,'home']);
     // Route::prefix('/desa/{id_desa}')->group(function()  {
     //     Route::get('/',[DashboardController::class,'desacount']);
-        
+
     //     Route::get('/destinasi/{id_destinasi}',[DashboardController::class,'destinasicount']);
     //     Route::get('/paket/{id_paket}',[DashboardController::class,'paketcount']);
     //     Route::get('/produk/{id_produk}',[DashboardController::class,'produkcount']);
@@ -50,14 +50,14 @@ Route::middleware('guest')->group(function(){
 });
 
 
-  
+
 
 
 // ADMIN
 Route::prefix('/admin')->middleware('ADMIN')->group(function(){
     Route::get('/dashboard', function(){
         return view('admin.dashboard');
-    });    
+    });
     Route::resource('/profil-desa',DesawisataController::class)->only(['show','edit','update']);
     Route::resource('/berita', BeritaController::class);
     Route::resource('/destinasi', DestinasiController::class);
@@ -84,5 +84,5 @@ Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/admindesa', AdmindesaController::class);
     Route::resource('/kategoridestinasi', KategoridestinasiController::class);
-    
+
 });

@@ -20,7 +20,7 @@ class GuestController extends Controller
             $averageRating = $reviews->avg('rating');
             $destinationId = $reviews[0]['id_destinasiwisata'];
             $destination = $destinations->firstWhere('id', $destinationId);
-            
+
             return [
                 'reviews' => $reviews,
                 'averageRating' => $averageRating / 2,
@@ -55,7 +55,7 @@ class GuestController extends Controller
             $desaQuery = $desaQuery->whereIn('kategori', $request->kategori);
         }
         $desa = $desaQuery->all();
-        
+
         // Filter destinasi wisata berdasarkan desa wisata yang terfilter
          $filteredDestinasi = $destinasiQuery->filter(function ($item) use ($desa, $searchTerm) {
             // Jika ada pencarian untuk destinasi wisata, cek juga nama destinasi wisata
@@ -87,13 +87,14 @@ class GuestController extends Controller
         ];
         return view('guest.explore',$data);
     }
+
     public function desa($id) {
         $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->collect();
         $akomodasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akomodasi/desa/'.$id)->collect();
         $destinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/desa/'.$id)->collect();
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.$id)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.$id)->collect();
-    
+
         $data = [
             'title'=>'',
             'desa'=>$desa,
@@ -104,6 +105,59 @@ class GuestController extends Controller
         ];
         return view('guest.detaildesa',$data);
     }
+
+    public function destinasi($iddesa, $id)
+    {
+        $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/desawisata/' . $iddesa)->collect();
+        $destinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/' . $id)->collect();
+        $listdestinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/desa/' . $iddesa)->collect();
+        $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/reviewdestinasi/destinasi/' . $id)->collect()->whereIn('setujui', 1);
+        $fasilitas = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/fasilitas/destinasi/' . $id)->collect();
+        $data = [
+            'title' => '',
+            'desa' => $desa,
+            'destinasi' => $destinasi,
+            'listdestinasi' => $listdestinasi,
+            'review' => $review,
+            'fasilitas' => $fasilitas
+        ];
+        return view('guest.destinasi', $data);
+    }
+
+    public function akomodasi($iddesa, $id)
+    {
+        $akomodasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/akomodasi/' . $id)->collect();
+        $data = [
+            'title' => '',
+            'akomodasi' => $akomodasi,
+        ];
+        return view('guest.akomodasi', $data);
+    }
+    public function produk($iddesa, $id)
+    {
+        $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/desawisata/' . $iddesa)->collect();
+        $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/' . $id)->collect();
+        $listproduk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . $iddesa)->collect();
+
+        $data = [
+            'title' => '',
+            'desa' => $desa,
+            'listproduk' => $listproduk,
+            'produk' => $produk,
+        ];
+        return view('guest.produk', $data);
+    }
+    public function paket($iddesa, $id)
+    {
+        $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/paketwisata/' . $id)->collect();
+        $data = [
+            'title' => '',
+            'paket' => $paket,
+        ];
+        return view('guest.paket', $data);
+    }
+
+
     public function berita(){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
         $data = [
