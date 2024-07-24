@@ -27,7 +27,7 @@ Route::middleware('guest')->group(function(){
         Route::get('/destinasi/{id_destinasi}',[GuestController::class,'destinasi']);
         Route::get('/paket/{id_paket}',[GuestController::class,'desa']);
         Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
-        Route::get('/produk/{id_produk}',[GuestController::class,'desa']);
+        Route::get('/produk/{id_produk}',[GuestController::class,'produk']);
     });
     Route::get('/artikel',[GuestController::class,'berita']);
 
