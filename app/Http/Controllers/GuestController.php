@@ -35,117 +35,47 @@ class GuestController extends Controller
         ];
         return view('guest.welcome',$data);
     }
+
+    public function filter(Request $request)  {
+        $desaQuery = collect(Http::get(env('APP_API_URL').'/desawisata')->json());
+        $destinasiQuery = collect(Http::get(env('APP_API_URL').'/destinasiwisata')->json());
+        $searchTerm = $request->search ?? '';
+
+         if (!empty($searchTerm)) {
+            $desaQuery = $desaQuery->filter(function ($item) use ($searchTerm) {
+                return stripos($item['nama'], $searchTerm) !== false;
+            });
+        }
+
+        if ($request->has('kabupaten')) {
+            $desaQuery = $desaQuery->whereIn('kabupaten', $request->kabupaten);
+        }
+
+        if ($request->has('kategori')) {
+            $desaQuery = $desaQuery->whereIn('kategori', $request->kategori);
+        }
+        $desa = $desaQuery->all();
+        
+        // Filter destinasi wisata berdasarkan desa wisata yang terfilter
+         $filteredDestinasi = $destinasiQuery->filter(function ($item) use ($desa, $searchTerm) {
+            // Jika ada pencarian untuk destinasi wisata, cek juga nama destinasi wisata
+            if (!empty($searchTerm)) {
+                return stripos($item['nama'], $searchTerm) !== false;
+            }
+            return in_array($item['id_desawisata'], array_column($desa, 'id'));
+        });
+        return view('guest.explore', [
+            'desa' => $desa,
+            'destinasi' => $filteredDestinasi,
+            'selectedKabupaten' => $request->kabupaten ?? [],
+            'selectedKategori' => $request->kategori ?? [],
+            'search' => $request->search ?? '',
+        ]);
+    }
+
     public function jelajahi(){
-        //search
-        // init
-        $search='';
-        $kabupaten='';
-        $kategori ='';
-        $destinasi ='';
-        $desa ='';
-        // getdata
-        if(request()->has('search')){
-            $search=request()->get('search');
-        }
-        if(request()->has('kabupaten')){
-            $kabupaten=request()->get('kabupaten');
-        }
-        if(request()->has('kategori')){
-            $kategori=request()->get('kategori');
-        }
-        // condisi
-
-        if(!$search&&!$kategori&&!$kabupaten){
-            $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
-            $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')->collect(); 
-        }
-
-        if($search&&$kategori&&$kabupaten){
-                    $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kabupaten,$kategori) {
-                        $matchesSearch = str_contains($item['nama'], $search)!== false;
-                        $matchesKategori = $item['kategori'] == $kategori;
-                        $matchesKabupaten = $item['kabupaten'] == $kabupaten;
-                        return $matchesSearch && $matchesKategori && $matchesKabupaten;
-                    });
-                    $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')
-                ->collect()
-                ->filter(function ($item) use ($search) {
-                        return stripos($item['nama'], $search) !== false;
-                    });;  
-        }
-        if($search&&$kategori){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kategori) {
-                        $matchesSearch = str_contains($item['nama'], $search)!== false;
-                        $matchesKategori = $item['kategori'] == $kategori;
-                        return $matchesSearch && $matchesKategori ;
-                    });
-                    $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')
-                ->collect()
-                ->filter(function ($item) use ($search) {
-                        return stripos($item['nama'], $search) !== false;
-                    });; 
-        }
-        if($search&&$kabupaten){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kabupaten) {
-                        $matchesSearch = str_contains($item['nama'], $search)!== false;
-                        $matchesKabupaten = $item['kabupaten'] == $kabupaten;
-                        return $matchesSearch && $matchesKabupaten;
-                    });
-                    $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')
-                ->collect()
-                ->filter(function ($item) use ($search) {
-                        return stripos($item['nama'], $search) !== false;
-                    });; 
-        }
-        if($kategori&&$kabupaten){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($kabupaten,$kategori) {
-                        $matchesKategori = $item['kategori'] == $kategori;
-                        $matchesKabupaten = $item['kabupaten'] == $kabupaten;
-                        return $matchesKategori && $matchesKabupaten;
-                    });
-                    
-        }
-        if($search){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kabupaten,$kategori) {
-                        $matchesSearch = str_contains($item['nama'], $search)!== false;
-                       
-                        return $matchesSearch;
-                    });
-                  $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')
-                ->collect()
-                ->filter(function ($item) use ($search) {
-                        return stripos($item['nama'], $search) !== false;
-                    });; 
-        }
-        if($kategori){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kabupaten,$kategori) {
-                        $matchesKategori = $item['kategori'] == $kategori;
-                        return  $matchesKategori ;
-                    });
-                    
-        }
-        if($kabupaten){
-            $desa = Http::get(env('APP_API_URL') . '/desawisata')
-                    ->collect()
-                    ->filter(function ($item) use ($search,$kabupaten,$kategori) {
-                        $matchesKabupaten = $item['kabupaten'] == $kabupaten;
-                        return $matchesKabupaten;
-                    });
-                  
-        }
-
+        $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+        $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')->collect();
 
         $data = [
             'title'=>'jelajahi',

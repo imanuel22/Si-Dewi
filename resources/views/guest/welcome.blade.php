@@ -170,6 +170,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="bg-secondary pl-15"
                 style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
                 <div>
