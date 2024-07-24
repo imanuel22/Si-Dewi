@@ -64,29 +64,35 @@
                         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800 " id="styled-destinasi" role="tabpanel" aria-labelledby="destinasi-tab">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             @foreach ($destinasi as $row)
-                                {{-- <div
-                                    class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                    <a href="#">
-                                        <img class="rounded-t-lg h-72 w-screen relative"
+                                <div
+                                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}">
+                                        <img class="rounded-t-lg"
                                             src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
                                             alt="{{ $row['nama'] }}" />
                                     </a>
-                                    <div class="m-5 h-48">
-                                        <a href="#">
+                                    <div class="p-5">
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}">
                                             <h5
                                                 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                                 {{ $row['nama'] }}</h5>
+                                        </a>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}">
                                             <h5
                                                 class="mb-2 text-sm font-bold tracking-tight text-gray-50000 dark:text-white">
                                                 {{ $row['id_kategoridestinasi'] }}</h5>
                                         </a>
-                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">
-                                            {{ \Illuminate\Support\Str::limit($row['deskripsi'], 200) }}</p>
-                                    </div>
-                                    <div class="mx-5 mb-8">
-                                        <a href="#"
-                                            class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none">
-                                            Selengkapnya
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                            {{ Str::limit($row['deskripsi'], 100, '...') }}</p>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}"
+                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                            </svg>
                                         </a>
                                     </div>
                                 </div> --}}
@@ -114,19 +120,43 @@
                                 </a>
                             @endforeach
                         </div>
-                        </div>
-                            <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-akomodasi" role="tabpanel" aria-labelledby="akomodasi-tab">
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                @foreach ($akomodasi as $row)
-                                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                                        <a href="#">
-                                            <img class="rounded-t-lg"
-                                                src="{{ env('APP_API_URL') }}/uploads/akomodasi/{{ $row['gambar'] }}"
-                                                alt="{{ $row['nama'] }}" />
+
+
+                    </div>
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel"
+                        aria-labelledby="dashboard-tab">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            @foreach ($akomodasi as $row)
+                                <div
+                                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}">
+                                        <img class="rounded-t-lg"
+                                            src="{{ env('APP_API_URL') }}/uploads/akomodasi/{{ $row['gambar'] }}"
+                                            alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                {{ $row['nama'] }}</h5>
                                         </a>
-                                        <div class="p-5">
-                                            <a href="#">
-                                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $row['nama'] }}</h5>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">
+                                                {{ $row['kategori'] }}</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                            {{-- {{ Str::limit($row['deskripsi'], 100, '...') }}</p> --}}
+                                            <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}"
+                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                Read more
+                                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 10">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                                </svg>
                                             </a>
                                             <a href="#">
                                                 <h5 class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">{{ $row['kategori'] }}</h5>
@@ -204,9 +234,87 @@
                             </div>
                         </div>
                     </div>
-
-                {{-- tab --}}
-
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-settings"
+                        role="tabpanel" aria-labelledby="settings-tab">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            @foreach ($produk as $row)
+                                <div
+                                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}">
+                                        <img class="rounded-t-lg"
+                                            src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
+                                            alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                {{ $row['nama'] }}</h5>
+                                        </a>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">
+                                                {{ $row['harga'] }}</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                            {{ Str::limit($row['deskripsi'], 100, '...') }}</p>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}"
+                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts"
+                        role="tabpanel" aria-labelledby="contacts-tab">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            @foreach ($paket as $row)
+                                <div
+                                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    <a href="/desa/{{ $row['id_desawisata'] }}/paket/{{ $row['id'] }}">
+                                        <img class="rounded-t-lg"
+                                            src="{{ env('APP_API_URL') }}/uploads/paketwisata/{{ $row['gambar'] }}"
+                                            alt="" />
+                                    </a>
+                                    <div class="p-5">
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/paket/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                                {{ $row['nama'] }}</h5>
+                                        </a>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/paket/{{ $row['id'] }}">
+                                            <h5
+                                                class="mb-2 text-sm font-bold tracking-tight text-green-700 dark:text-white">
+                                                {{ $row['harga'] }}</h5>
+                                        </a>
+                                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                            {{ Str::limit($row['deskripsi'], 100, '...') }}</p>
+                                        <a href="/desa/{{ $row['id_desawisata'] }}/paket/{{ $row['id'] }}"
+                                            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            Read more
+                                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 14 10">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         {{-- content end --}}
 

@@ -21,9 +21,15 @@ use App\Http\Controllers\ProdukController;
 Route::middleware('guest')->group(function(){
     Route::get('/', [GuestController::class,'homepage']);
     Route::get('/jelajahi', [GuestController::class,'jelajahi']);
+    Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
     Route::prefix('/desa/{id_desa}')->group(function(){
         Route::get('/',[GuestController::class,'desa']);
+        Route::get('/destinasi/{id_destinasi}',[GuestController::class,'desa']);
+        Route::get('/paket/{id_paket}',[GuestController::class,'desa']);
+        Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
+        Route::get('/produk/{id_produk}',[GuestController::class,'desa']);
     });
+    Route::get('/artikel',[GuestController::class,'berita']);
 
 
 
