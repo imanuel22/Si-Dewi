@@ -38,27 +38,6 @@
                 class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
-<<<<<<< Updated upstream
-
-        <div class="relative overflow-x-auto mt-5 border-gray-200 rounded-lg shadow p-3">
-            <table id="myTable"
-                class="display border-collapse border p-2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 border">
-                            No
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
-                            Nama
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
-                            gambar
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
-                            deskripsi
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
-=======
         <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
             <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
@@ -76,7 +55,6 @@
                             deskripsi
                         </th>
                         <th scope="col" class=" border px-6 py-3 text-center ">
->>>>>>> Stashed changes
                             harga
                         </th>
                         {{-- <th scope="col" class="px-6 py-3">
@@ -85,22 +63,14 @@
                         <th scope="col" class="px-6 py-3">
                             updatedAt
                         </th> --}}
-<<<<<<< Updated upstream
-                        <th scope="col" class="px-6 py-3 text-center border">
-=======
                         <th scope="col" class="border px-6 py-3 text-center ">
->>>>>>> Stashed changes
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($produk as $row)
-<<<<<<< Updated upstream
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-=======
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
->>>>>>> Stashed changes
                             <th scope="row"
                                 class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
@@ -108,14 +78,6 @@
                             <td class="border px-6 py-4 text-center">
                                 {{ $row['nama'] }}
                             </td>
-<<<<<<< Updated upstream
-                            <td class="border px-6 py-4 text-center">
-                                <img src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
-                                    alt="{{ $row['gambar'] }}">
-                            </td>
-                            <td class="border px-6 py-4">
-                                {{ $row['deskripsi'] }}
-=======
                             <td class="border px-6 py-4 text-center justify-center flex">
                                 <img class="max-h-40 " src="{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
@@ -123,7 +85,6 @@
                             <td class="border px-6 py-4 ">
                                 <p class="whitespace-normal break-words max-w-sm sm:w-2xl">
                                     {{ \Illuminate\Support\Str::limit($row['deskripsi'], 200) }}</p>
->>>>>>> Stashed changes
                             </td>
                             <td class="border px-6 py-4 text-center">
                                 {{ $row['harga'] }}
@@ -149,22 +110,12 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                     </a>
-<<<<<<< Updated upstream
-                                    <form action="/admin/produk/{{ $row['id'] }}" method="post"
-                                        onsubmit="return confirm('yakin')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
-                                                class="w-6 h-6 text-white" aria-hidden="true"
-=======
                                     <form action="/admin/produk/{{ $row['id'] }}" method="post" class="delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button"
                                             class= "  focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 delete-button">
                                             <svg class="w-6 h-6 text-white" aria-hidden="true"
->>>>>>> Stashed changes
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 fill="currentColor" viewBox="0 0 24 24">
                                                 <path fill-rule="evenodd"
@@ -181,24 +132,4 @@
             </table>
         </div>
     </div>
-<<<<<<< Updated upstream
-
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-                // Add any customization options here
-            });
-        });
-
-        // <script src="https://cdn.tailwindcss.com">
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.tailwindcss.js"></script>
-    <script>
-        let table = new DataTable('#myTable');
-    </script>
-=======
->>>>>>> Stashed changes
 @endsection
