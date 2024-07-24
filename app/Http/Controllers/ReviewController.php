@@ -36,10 +36,40 @@ class ReviewController extends Controller
      */
     public function show(string $id)
     {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi/destinasi/' . $id)->collect()->whereIn('setujui', 0);
-        return view('Admin.review.show', [
-            'review' => $response
-        ]);
+        // Ambil data dari API pertama
+    $reviews = Http::withToken(request()->session()->get('accessToken'))
+        ->get(env('APP_API_URL') . '/reviewdestinasi/destinasi/' . $id)
+        ->collect()
+        ->whereIn('setujui', 0);
+
+    // Ambil data dari API kedua
+    $accounts = Http::withToken(request()->session()->get('accessToken'))
+        ->get(env('APP_API_URL') . '/akun')
+        ->collect();
+
+    //get where
+    $destinasi = Http::withToken(request()->session()->get('accessToken'))
+        ->get(env('APP_API_URL') . '/destinasiwisata/'.$id)
+        ->collect();
+
+    //getall
+    $kategoridestinasi = Http::withToken(request()->session()->get('accessToken'))
+        ->get(env('APP_API_URL') . '/kategoridestinasi')
+        ->collect();
+
+
+    // Gabungkan data berdasarkan id_akun
+    $reviewsWithAccountData = $reviews->map(function ($review) use ($accounts) {
+        $account = $accounts->firstWhere('id', $review['id_akun']);
+        $review['akun'] = $account; // Menambahkan data akun ke review
+        return $review;
+    });
+
+    // Kirim data gabungan ke tampilan
+    return view('Admin.review.show', [
+        'review' => $reviewsWithAccountData,
+        'destinasi' => $destinasi,
+    ]);
     }
 
     /**

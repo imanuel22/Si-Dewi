@@ -81,6 +81,9 @@ class GuestController extends Controller
             'title'=>'jelajahi',
             'destinasi'=>$destinasi,
             'desa'=>$desa,
+            'selectedKabupaten' => request()->kabupaten ?? [],
+            'selectedKategori' => request()->kategori ?? [],
+            'search' => request()->search ?? '',
         ];
         return view('guest.explore',$data);
     }

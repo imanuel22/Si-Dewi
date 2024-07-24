@@ -106,7 +106,7 @@
                                         {{ $row['kabupaten'] }}</h5>
                                     </a>
                                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                        {{ $row['deskripsi'] }}
+                                        {{ Str::limit($row['deskripsi'], 500, '...') }}
                                     </p>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
 
                                     </a>
                                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                        {{ $row['deskripsi'] }}
+                                        {{ Str::limit($row['deskripsi'], 500, '...') }}
                                     </p>
                                 </div>
                             </div>
