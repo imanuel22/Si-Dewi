@@ -27,7 +27,7 @@
             </button>
         </div>
     @endif
-
+    @dd($destinasi)
 
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500">Destinasi Wisata / Ulasan</h2>
@@ -35,7 +35,7 @@
         <div class="flex justify-between">
             <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Wisata Tari Pendet</p>
         </div>
-        <h2 class="mb-5 font-bold tracking-tight text-gray-500">Tari Kesenian</h2>
+        <h2 class="mb-5 font-bold tracking-tight text-gray-500">{{ $destinasi }}</h2>
         {{-- <h3>dibuat oleh desa {{ $destinasi['id_desawisata'] }}</h3> --}}
         {{-- <p>type {{ $destinasi['id_kategoridestinasi'] }}</p> --}}
         {{-- <div
@@ -82,7 +82,13 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4 text-center">
+<<<<<<< Updated upstream
                                 {{ $row['id_akun'] }}
+=======
+                                {{ $row['akun']['nama'] }}
+                                {{ $row['akun']['foto'] }}
+
+>>>>>>> Stashed changes
                             </td>
                             <td class="px-6 py-4 text-center">
                                 {{ $row['rating'] }}
