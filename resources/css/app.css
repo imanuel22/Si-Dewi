@@ -65,13 +65,6 @@
     object-fit: cover;
 }
 
-.bg-primary {
-    background-color: #53bfcb;
-}
-
-.bg-secondary {
-    background-color: #1e4e58;
-}
 
 .image-container {
     display: flex;

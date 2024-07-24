@@ -82,7 +82,7 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4 text-center">
-                                Made Agus
+                                {{ $row['id_akun'] }}
                             </td>
                             <td class="px-6 py-4 text-center">
                                 {{ $row['rating'] }}

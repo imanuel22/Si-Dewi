@@ -1,18 +1,6 @@
-<!doctype html>
-<html>
+@extends('guest.layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css', 'resources/js/app.css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-
-<body>
-    <div class="container-fluid h-screen">
-        @include('partials.navbar')
-        <div class="h-screen bg-slate-700">
-
+@section('main')
             <!-- Gambar Latar Belakang -->
             <div class="mix-blend-screen inset-0 bg-black opacity-50"></div>
             <img src="{{ asset('desa.jpg') }}" class="inset-0 w-full h-full object-cover" alt=""
@@ -134,10 +122,10 @@
                 </div>
             </div>
             <div class="bg-secondary pl-15"
-                style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; text-align: center;">
+                style="display: flex; flex-direction: column; justify-content: flex-start; align-items: center; text-align: center;">
                 <div>
                     <h1 class="text-2xl font-semibold mb-2 mt-7 text-white">Favorite Destination</h1>
-                    <p class=mb-8 text-white">Find tourist villages based on the distribution map of
+                    <p class="mb-8 text-white">Find tourist villages based on the distribution map of
                         districts and cities in Bali.</p>
                 </div>
                 <div class="container w-full max-w-5xl">
@@ -235,17 +223,4 @@
                     Read More <i class="fas fa-arrow-right ml-5"></i>
                 </button>
             </div>
-
-
-            <div class="h-52">
-                <div class="bg-black"></div>
-            </div>
-            @include('partials.footer')
-        </div>
-
-</body>
-<script>
-    AOS.init();
-</script>
-
-</html>
+@endsection
