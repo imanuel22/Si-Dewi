@@ -36,51 +36,89 @@ class GuestController extends Controller
         return view('guest.welcome',$data);
     }
 
-    public function filter(Request $request)  {
-        $desaQuery = collect(Http::get(env('APP_API_URL').'/desawisata')->json());
-        $destinasiQuery = collect(Http::get(env('APP_API_URL').'/destinasiwisata')->json());
-        $searchTerm = $request->search ?? '';
+    public function filter(Request $request) {
+    $desaQuery = collect(Http::get(env('APP_API_URL').'/desawisata')->json());
+    $destinasiQuery = collect(Http::get(env('APP_API_URL').'/destinasiwisata')->json());
+    $searchTerm = $request->search ?? '';
 
-         if (!empty($searchTerm)) {
-            $desaQuery = $desaQuery->filter(function ($item) use ($searchTerm) {
-                return stripos($item['nama'], $searchTerm) !== false;
-            });
-        }
-
-        if ($request->has('kabupaten')) {
-            $desaQuery = $desaQuery->whereIn('kabupaten', $request->kabupaten);
-        }
-
-        if ($request->has('kategori')) {
-            $desaQuery = $desaQuery->whereIn('kategori', $request->kategori);
-        }
-        $desa = $desaQuery->all();
-
-        // Filter destinasi wisata berdasarkan desa wisata yang terfilter
-         $filteredDestinasi = $destinasiQuery->filter(function ($item) use ($desa, $searchTerm) {
-            // Jika ada pencarian untuk destinasi wisata, cek juga nama destinasi wisata
-            if (!empty($searchTerm)) {
-                return stripos($item['nama'], $searchTerm) !== false;
-            }
-            return in_array($item['id_desawisata'], array_column($desa, 'id'));
+    // Filter desa wisata
+    if (!empty($searchTerm)) {
+        $desaQuery = $desaQuery->filter(function ($item) use ($searchTerm) {
+            return stripos($item['nama'], $searchTerm) !== false;
         });
-        return view('guest.explore', [
-            'desa' => $desa,
-            'destinasi' => $filteredDestinasi,
-            'selectedKabupaten' => $request->kabupaten ?? [],
-            'selectedKategori' => $request->kategori ?? [],
-            'search' => $request->search ?? '',
-        ]);
     }
+
+    if ($request->has('kabupaten')) {
+        $desaQuery = $desaQuery->whereIn('kabupaten', $request->kabupaten);
+    }
+
+    if ($request->has('kategori')) {
+        $desaQuery = $desaQuery->whereIn('kategori', $request->kategori);
+    }
+
+    $page = $request->get('page', 1);
+    $perPage = 10;
+
+    $desaPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+        $desaQuery->forPage($page, $perPage),
+        $desaQuery->count(),
+        $perPage,
+        $page,
+        ['path' => request()->url(), 'query' => request()->query()]
+    );
+
+    // Filter destinasi wisata based on filtered desa wisata
+    $filteredDestinasi = $destinasiQuery->filter(function ($item) use ($desaPaginated, $searchTerm) {
+        // Jika ada pencarian untuk destinasi wisata, cek juga nama destinasi wisata
+        if (!empty($searchTerm)) {
+            return stripos($item['nama'], $searchTerm) !== false;
+        }
+        return in_array($item['id_desawisata'], array_column($desaPaginated->items(), 'id'));
+    });
+
+    $destinasiPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+        $filteredDestinasi->forPage($page, $perPage),
+        $filteredDestinasi->count(),
+        $perPage,
+        $page,
+        ['path' => request()->url(), 'query' => request()->query()]
+    );
+
+    return view('guest.explore', [
+        'desa' => $desaPaginated,
+        'destinasi' => $destinasiPaginated,
+        'selectedKabupaten' => $request->kabupaten ?? [],
+        'selectedKategori' => $request->kategori ?? [],
+        'search' => $request->search ?? '',
+    ]);
+}
 
     public function jelajahi(){
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
         $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')->collect();
 
+        $page = request()->get('page', 1);
+        $perPage = 10; // Number of items per page
+
+        $desaPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+            $desa->forPage($page, $perPage),
+            $desa->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        $destinasiPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+            $destinasi->forPage($page, $perPage),
+            $destinasi->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
         $data = [
             'title'=>'jelajahi',
-            'destinasi'=>$destinasi,
-            'desa'=>$desa,
+            'destinasi'=>$destinasiPaginated,
+            'desa'=>$desaPaginated,
             'selectedKabupaten' => request()->kabupaten ?? [],
             'selectedKategori' => request()->kategori ?? [],
             'search' => request()->search ?? '',
