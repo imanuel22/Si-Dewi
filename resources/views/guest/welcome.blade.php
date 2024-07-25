@@ -218,10 +218,10 @@
                     cities
                     in Bali.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
                 @foreach ($review as $index => $row)
-                    @if ($index == 1)
-                        <div class="lg:col-span-2 lg:row-span-2 relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                <div class="{{ $loop->first  ? 'col-span-2 row-span-2' : '' }}">
+                        <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                             <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}"
                                 alt="{{ $row['destination']['nama'] }}" class="w-full h-full object-cover">
                             <div
@@ -232,19 +232,7 @@
                                 <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>
                             </div>
                         </div>
-                    @else
-                        <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}"
-                                alt="{{ $row['destination']['nama'] }}" class="w-full h-64 object-cover">
-                            <div
-                                class="absolute top-0 right-0 m-2 bg-white bg-opacity-75 text-yellow-500 text-xl font-bold rounded-full p-1">
-                                ⭐️ {{ Str::limit($row['averageRating'], 3, '') }}
-                            </div>
-                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 text-white p-2">
-                                <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>
-                            </div>
-                        </div>
-                    @endif
+                </div>
                 @endforeach
             </div>
         </div>
@@ -256,26 +244,35 @@
                 districts and cities in Bali.</p>
         </div>
     </div>
-    <div class="xl:mx-56 p-4 xl:px-0 py-10  -mt-40 ">
-        <div class="grid grid-cols-3 gap-4 ">
+    <div class="xl:mx-56 p-4 xl:px-0 py-10 -mt-56 ">
+        <div class="grid grid-cols-3 gap-6 ">
             <!-- Card 1 -->
             @foreach ($berita as $row)
-                <div class="relative bg-white rounded-lg shadow-lg overflow-hidden">
-                    <a href="/artikel/{{ $row['id'] }}">
-                        <div data-aos=""
-                            class="shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
-                            <h2 class="text-lg font-semibold mb-2">{{ $row['judul'] }}</h2>
-                            <p class="text-gray-700">
-                                {{ Str::limit($row['isi_berita'], 500, '...') }}
-                            </p>
+                    <a href="/artikel/{{ $row['id'] }}" class="group relative block text-white" style="height: 35rem">
+                        <div class="relative rounded-xl flex h-full transform items-end transition-transform group-hover:-translate-y-2"
+                            style="background-image: url('{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-20 transition-opacity group-hover:opacity-50">
+                            </div>
+                            <div
+                                class="p-4 !pt-0 z-10 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
+                                <h2 class="mt-4 text-3xl font-bold sm:text-3xl">{{ $row['judul'] }}</h2>
+                            </div>
+                            <div
+                                class="absolute p-4 opacity-0 transition-opacity group-hover:opacity-100 sm:p-6 lg:p-8 w-full z-20">
+                                <h3 class="mt-4 text-xl font-medium sm:text-2xl">{{ $row['judul'] }}</h3>
+                                <p class="mt-4 text-sm sm:text-base break-words w-full">
+                                    {{ \Illuminate\Support\Str::limit($row['isi_berita'], 100) }}
+                                </p>
+                                <p class="mt-4 font-bold">Read more</p>
+                            </div>
                         </div>
                     </a>
-                </div>
             @endforeach
         </div>
         <div class="flex justify-center mt-5">
             <a href="/artikel"
-                class="mt-4 bg-primary text-white px-8 py-2 rounded-full hover:bg-opacity-90 transition-colors duration-300">
+                class="mt-4 bg-primary hover:bg-opacity-70 text-white px-8 py-2 rounded-full  transition-colors duration-300">
                 Read More <i class="fas fa-arrow-right ml-5"></i>
             </a>
         </div>
