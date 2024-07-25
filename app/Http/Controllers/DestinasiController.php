@@ -11,17 +11,36 @@ class DestinasiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/desa/' . request()->session()->get('id_desa'))->collect();
-        // for ($i=0; $i < count($response); $i++) {
-        //     $review[] = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi/destinasi/'.$response[$i]['id'])->collect()->whereIn('setujui',1)->count();
-        // }
-        return view('Admin.destinasi.index', [
-            'destinasi' => $response,
-            // 'review'=>$review
-        ]);
-    }
+ 
+ public function index()
+{
+    $accessToken = request()->session()->get('accessToken');
+    $id_desa = request()->session()->get('id_desa');
+
+    $destinasi = Http::withToken($accessToken)->get(env('APP_API_URL') . '/destinasiwisata/desa/' . $id_desa)->collect();
+    $reviews = Http::withToken($accessToken)->get(env('APP_API_URL') . '/reviewdestinasi')->collect();
+
+    // Group reviews by destination ID
+    $groupedReviews = $reviews->groupBy('id_destinasiwisata');
+
+    // Map reviews to their respective destinations and count reviews where setuju == 0
+    $destinasi = $destinasi->map(function ($destinasiItem) use ($groupedReviews) {
+        $reviewsForDestination = $groupedReviews->get($destinasiItem['id'], collect());
+        // Filter reviews where setujui == 0
+        $filteredReviews = $reviewsForDestination->filter(function ($review) {
+            return $review['setujui'] == 0;
+        });
+        $destinasiItem['reviews'] = $filteredReviews;
+        $destinasiItem['non_reviews'] = $filteredReviews->count();
+        return $destinasiItem;
+    });
+
+
+    return view('Admin.destinasi.index', [
+        'destinasi' => $destinasi,
+    ]);
+}
+
 
     /**
      * Show the form for creating a new resource.
