@@ -17,6 +17,7 @@
                 </div>
             </div>
         @endforeach
+        {{ $desa->links() }}
     @else
         <div class="text-center">
             Tidak ada
@@ -24,8 +25,7 @@
     @endif
     @if ($destinasi)
         @foreach ($destinasi as $row)
-            <div
-                class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/desa/{{ $row['id'] }}">
                     <img class="rounded-t-lg h-64 relative"
                         src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
@@ -41,6 +41,7 @@
                 </div>
             </div>
         @endforeach
+        {{ $destinasi->links() }}
     @else
         <div class="text-center">
             Tidak ada

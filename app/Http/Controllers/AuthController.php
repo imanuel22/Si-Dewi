@@ -34,15 +34,23 @@ class AuthController extends Controller
     }
 
     public function logout(Request $request) {
-        $response = Http::withToken($request->session()->get('accessToken'))
-        ->withCookies(['accessToken'=>$request->session()->get('accessToken')],'localhost')
-        ->delete(env('APP_API_URL').'/akun/logout',$request);
-        // dd($response);
-        if($response->successful()){
-            $request->session()->flush();
-            return redirect('/login')->with('message','berhasil logout');
-        }elseif ($response->failed()) {
-            return redirect('/login')->with('message','gagal logout');
-        }
+    $accessToken = $request->session()->get('accessToken');
+
+    // Make the API request to log out
+    $response = Http::withToken($accessToken)
+        ->delete(env('APP_API_URL') . '/akun/logout', [
+            'accessToken' => $accessToken
+        ]);
+
+    // Check if the request was successful
+    if ($response->successful()) {
+        // Flush the session and redirect to the login page with a success message
+        $request->session()->flush();
+        return redirect('/login')->with('message', 'Berhasil logout');
+    } elseif ($response->failed()) {
+        // Redirect to the login page with a failure message
+        return redirect('/login')->with('message', 'Gagal logout');
     }
+}
+
 }
