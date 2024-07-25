@@ -54,7 +54,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Badung"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Badung"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Badung
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -74,7 +74,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Badung"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Badung"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Badung
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -94,7 +94,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Badung"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Badung"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Badung
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -114,7 +114,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Badung"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Badung"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Badung
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -134,7 +134,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Gianyar"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Gianyar"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Gianyar
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -154,7 +154,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Tabanan"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Tabanan"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Tabanan
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -174,7 +174,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Denpasar"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Denpasar"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Denpasar
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -194,7 +194,7 @@
                                 enterprise technology acquisitions of 2021 so far, in reverse chronological
                                 order.
                             </p>
-                            <a href="/jelajahi?kabupaten=Tabanan"
+                            <a href="/jelajahi/filter?kabupaten%5B%5D=Tabanan"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Kabupaten Tabanan
                                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true"
@@ -222,11 +222,11 @@
                 @foreach ($review as $index => $row)
                     @if ($index == 1)
                         <div class="lg:col-span-2 lg:row-span-2 relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{$row['destination']['gambar']}}"
+                            <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}"
                                 alt="{{ $row['destination']['nama'] }}" class="w-full h-full object-cover">
                             <div
                                 class="absolute top-0 right-0 m-2 bg-white bg-opacity-75 text-yellow-500 text-xl font-bold rounded-full p-1">
-                                ⭐️ {{ Str::limit($row['averageRating'], 3,'' )  }}
+                                ⭐️ {{ Str::limit($row['averageRating'], 3, '') }}
                             </div>
                             <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 text-white p-2">
                                 <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>
@@ -234,11 +234,11 @@
                         </div>
                     @else
                         <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="{{env('APP_API_URL') }}/resource/destinasiwisata/{{$row['destination']['gambar']}}"
+                            <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}"
                                 alt="{{ $row['destination']['nama'] }}" class="w-full h-64 object-cover">
                             <div
                                 class="absolute top-0 right-0 m-2 bg-white bg-opacity-75 text-yellow-500 text-xl font-bold rounded-full p-1">
-                                ⭐️ {{ Str::limit($row['averageRating'], 3 ,'')  }}
+                                ⭐️ {{ Str::limit($row['averageRating'], 3, '') }}
                             </div>
                             <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 text-white p-2">
                                 <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>
@@ -260,17 +260,17 @@
         <div class="grid grid-cols-3 gap-4 ">
             <!-- Card 1 -->
             @foreach ($berita as $row)
-            <div class="relative bg-white rounded-lg shadow-lg overflow-hidden">
-                <a href="/artikel/{{ $row['id'] }}">
-                    <div data-aos=""
-                        class="shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
-                        <h2 class="text-lg font-semibold mb-2">{{ $row['judul'] }}</h2>
-                        <p class="text-gray-700">
-                            {{ Str::limit($row['isi_berita'], 500, '...') }}
-                        </p>
-                    </div>
-                </a>
-            </div>
+                <div class="relative bg-white rounded-lg shadow-lg overflow-hidden">
+                    <a href="/artikel/{{ $row['id'] }}">
+                        <div data-aos=""
+                            class="shadow-lg rounded-lg p-6 max-w-80 transform transition-transform duration-300 hover:-translate-y-3">
+                            <h2 class="text-lg font-semibold mb-2">{{ $row['judul'] }}</h2>
+                            <p class="text-gray-700">
+                                {{ Str::limit($row['isi_berita'], 500, '...') }}
+                            </p>
+                        </div>
+                    </a>
+                </div>
             @endforeach
         </div>
         <div class="flex justify-center mt-5">
