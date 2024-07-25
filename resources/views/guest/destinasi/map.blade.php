@@ -1,4 +1,4 @@
-<div class="mt-5 text-justify px-1 mx-auto">
+{{-- <div class="mt-5 text-justify px-1 mx-auto">
     <h1 class="font-semibold text-xl">Lokasi Destinasi</h1>
     <p class="text-xl">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }} </p>
     @if (isset($desa['maps'][1]))
@@ -9,4 +9,4 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     @endif
-</div>
+</div> --}}

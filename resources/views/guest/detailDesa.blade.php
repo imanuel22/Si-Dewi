@@ -1,8 +1,8 @@
 @extends('guest.layouts.main')
 @section('main')
     <div class="inset-0 bg-black opacity-70"> </div>
-    <img src="{{ env('APP_API_URL') }}/uploads/desawisata/{{ $desa['gambar'] }}" alt=""
-        class=" inset-0 w-full h-full object-cover" style="width: 100vw;">
+    <img src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $desa['gambar'] }}" alt=""
+        class=" inset-0 w-full h-full object-cover">
     {{-- background --}}
     {{-- content --}}
     <div class="mt-6 xl:mx-56 p-4 xl:px-0 ">

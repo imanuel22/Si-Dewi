@@ -1,4 +1,4 @@
-<div class="bg-white rounded-2xl p-6">
+{{-- <div class="bg-white rounded-2xl p-6">
     <h1 class="text-xl font-semibold"> Lokasi Desa</h1>
     <p class="text-lg">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }} </p>
     <div class=" h-full mt-4 sm:container  text-justify px-1 w-full mx-auto ">
@@ -15,4 +15,4 @@
             </div>
         @endif
     </div>
-</div>
+</div> --}}

@@ -222,11 +222,11 @@
                 @foreach ($review as $index => $row)
                     @if ($index == 1)
                         <div class="lg:col-span-2 lg:row-span-2 relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="{{ asset('img/' . $row['destination']['gambar']) }}"
+                            <img src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{$row['destination']['gambar']}}"
                                 alt="{{ $row['destination']['nama'] }}" class="w-full h-full object-cover">
                             <div
                                 class="absolute top-0 right-0 m-2 bg-white bg-opacity-75 text-yellow-500 text-xl font-bold rounded-full p-1">
-                                ⭐️ {{ $row['averageRating'] }}
+                                ⭐️ {{ Str::limit($row['averageRating'], 3,'' )  }}
                             </div>
                             <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 text-white p-2">
                                 <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>
@@ -234,11 +234,11 @@
                         </div>
                     @else
                         <div class="relative bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                            <img src="{{ asset('img/' . $row['destination']['gambar']) }}"
+                            <img src="{{env('APP_API_URL') }}/resource/destinasiwisata/{{$row['destination']['gambar']}}"
                                 alt="{{ $row['destination']['nama'] }}" class="w-full h-64 object-cover">
                             <div
                                 class="absolute top-0 right-0 m-2 bg-white bg-opacity-75 text-yellow-500 text-xl font-bold rounded-full p-1">
-                                ⭐️ {{ $row['averageRating'] }}
+                                ⭐️ {{ Str::limit($row['averageRating'], 3 ,'')  }}
                             </div>
                             <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-75 text-white p-2">
                                 <p class="text-lg font-bold">{{ $row['destination']['nama'] }}</p>

@@ -1,4 +1,4 @@
-<div class="hidden md:block rounded-r-2xl rounded-t-none bg-white h-full w-1/6 drop-shadow pb-2">
+<div class="sticky top-20  hidden md:block rounded-r-2xl rounded-t-none bg-white h-full w-1/6 drop-shadow pb-2">
     <div class="py-8 ">
         <form action="{{ route('jelajahi.filter') }}" method="GET">
             <h3 class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kategori Desa</h3>
