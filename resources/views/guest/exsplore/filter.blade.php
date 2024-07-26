@@ -1,51 +1,60 @@
 <div class="sticky top-20  hidden md:block rounded-r-2xl rounded-t-none bg-white h-full w-1/6 drop-shadow pb-2">
     <div class="py-8 ">
+        <form class="max-w-sm mx-auto  px-4 mb-5" action="">
+            <select id="pilih_data" onchange="toggleClasses()"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Desa</option>
+                <option value="Destinasi">Destinasi</option>
+            </select>
+        </form>
         <form class="formfilter" action="{{ route('jelajahi.filter') }}" method="GET">
-            <input type="text" name="search" value="{{ request()->get('search') }}">
-            <h3 class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kategori Desa</h3>
-            <div class="flex flex-col justify-center px-4">
-                <ul class="w-full text-lg font-medium text-gray-900 bg-white dark:text-white">
-                    <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3">
-                            <input id="vue-checkbox" type="checkbox" name="kategori[]" value="Maju"
-                                {{ in_array('Maju', $selectedKategori) ? 'checked' : '' }}
-                                onchange="document.querySelector('.formfilter').submit()"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="vue-checkbox"
-                                class="w-full py-3 ms-2 font-medium text-gray-900 dark:text-gray-300">Maju</label>
-                        </div>
-                    </li>
-                    <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3">
-                            <input id="react-checkbox" type="checkbox" name="kategori[]" value="Berkembang"
-                                {{ in_array('Berkembang', $selectedKategori) ? 'checked' : '' }}
-                                onchange="document.querySelector('.formfilter').submit()"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="react-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Berkembang</label>
-                        </div>
-                    </li>
-                    <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3">
-                            <input id="angular-checkbox" type="checkbox" name="kategori[]" value="Mandiri"
-                                {{ in_array('Mandiri', $selectedKategori) ? 'checked' : '' }}
-                                onchange="document.querySelector('.formfilter').submit()"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="angular-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Mandiri</label>
-                        </div>
-                    </li>
-                    <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
-                        <div class="flex items-center ps-3">
-                            <input id="laravel-checkbox" type="checkbox" name="kategori[]" value="Rintisan"
-                                {{ in_array('Rintisan', $selectedKategori) ? 'checked' : '' }}
-                                onchange="document.querySelector('.formfilter').submit()"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                            <label for="laravel-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Rintisan</label>
-                        </div>
-                    </li>
-                </ul>
+            {{-- <input type="text" name="search" value="{{ request()->get('search') }}"> --}}
+            <div class="kategori-desa">
+                <h3 class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kategori Desa</h3>
+                <div class="flex flex-col justify-center px-4">
+                    <ul class="w-full text-lg font-medium text-gray-900 bg-white dark:text-white">
+                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center ps-3">
+                                <input id="vue-checkbox" type="checkbox" name="kategori[]" value="Maju"
+                                    {{ in_array('Maju', $selectedKategori) ? 'checked' : '' }}
+                                    onchange="document.querySelector('.formfilter').submit()"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="vue-checkbox"
+                                    class="w-full py-3 ms-2 font-medium text-gray-900 dark:text-gray-300">Maju</label>
+                            </div>
+                        </li>
+                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center ps-3">
+                                <input id="react-checkbox" type="checkbox" name="kategori[]" value="Berkembang"
+                                    {{ in_array('Berkembang', $selectedKategori) ? 'checked' : '' }}
+                                    onchange="document.querySelector('.formfilter').submit()"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="react-checkbox"
+                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Berkembang</label>
+                            </div>
+                        </li>
+                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center ps-3">
+                                <input id="angular-checkbox" type="checkbox" name="kategori[]" value="Mandiri"
+                                    {{ in_array('Mandiri', $selectedKategori) ? 'checked' : '' }}
+                                    onchange="document.querySelector('.formfilter').submit()"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="angular-checkbox"
+                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Mandiri</label>
+                            </div>
+                        </li>
+                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                            <div class="flex items-center ps-3">
+                                <input id="laravel-checkbox" type="checkbox" name="kategori[]" value="Rintisan"
+                                    {{ in_array('Rintisan', $selectedKategori) ? 'checked' : '' }}
+                                    onchange="document.querySelector('.formfilter').submit()"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                <label for="laravel-checkbox"
+                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Rintisan</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <hr class="my-5">
             <h3 class=" mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kabupaten</h3>
@@ -146,3 +155,28 @@
         </form>
     </div>
 </div>
+
+<script>
+    function toggleClasses() {
+        const select = document.getElementById('pilih_data');
+        const desaElements = document.querySelectorAll('.desa, .kategori-desa');
+        const destinasiElements = document.querySelectorAll('.destinasi');
+
+        if (select.value === 'Desa') {
+            desaElements.forEach(element => element.classList.remove('hidden'));
+            desaElements.forEach(element => element.classList.add('block'));
+            destinasiElements.forEach(element => element.classList.remove('block'));
+            destinasiElements.forEach(element => element.classList.add('hidden'));
+        } else if (select.value === 'Destinasi') {
+            desaElements.forEach(element => element.classList.remove('block'));
+            desaElements.forEach(element => element.classList.add('hidden'));
+            destinasiElements.forEach(element => element.classList.remove('hidden'));
+            destinasiElements.forEach(element => element.classList.add('block'));
+        }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleClasses();
+    });
+    </script>
