@@ -4,7 +4,7 @@
             <div class=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/desa/{{ $row['id'] }}">
                     <img class="rounded-t-lg h-64 relative"
-                        src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
+                        src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                         alt="{{ $row['nama'] }}" />
                 </a>
                 <div class="m-5 h-fit">
@@ -28,7 +28,7 @@
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/desa/{{ $row['id'] }}">
                     <img class="rounded-t-lg h-64 relative"
-                        src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
+                        src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['gambar'] }}"
                         alt="{{ $row['nama'] }}" />
                 </a>
                 <div class="m-5 h-fit">
