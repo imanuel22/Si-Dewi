@@ -6,28 +6,20 @@
     // $latitude = MapHelper::dmsToDecimal3($matches[1], $matches[2], $matches[3], $matches[5]);
     // $longitude = MapHelper::dmsToDecimal3($matches[6], $matches[7], $matches[8], $matches[10]);
 
+
     $dmsString = $desa['maps'];
     $coordinates = MapHelper::parseDmsCoordinates($dmsString);
 
-    $longitude = Str::limit($coordinates['longitude'], 9, '') ;
-    $latitude = -8.422083 ;
+    $longitude = $coordinates['longitude'] ;
+    $latitude =  $coordinates['latitude'];
 
 @endphp
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <div class="bg-white rounded-2xl p-6 h-96">
     <h1 class="text-xl font-semibold">Lokasi Desa</h1>
     <p class="text-lg">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }}</p>
     <div class="h-full mt-4 sm:container text-justify px-1 w-full mx-auto">
-        <h1>  {{$longitude}}</h1>
-        <h1>  {{$latitude}}</h1>
-        <iframe
-        src="https://www.google.com/maps/embed/v1/place?q=8.4696,-115.2386"
-        width="600"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
+        <div id="map" class="relative h-64 z-0"></div>
     </div>
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>

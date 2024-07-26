@@ -1,5 +1,6 @@
-<div class="md:w-5/6 mt-8 mx-6 md:mx-8 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="md:w-5/6 mt-8 mx-6 md:mx-8">
     @if ($desa)
+    <div class=" grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         @foreach ($desa as $row)
             <div class=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/desa/{{ $row['id'] }}">
@@ -17,13 +18,17 @@
                 </div>
             </div>
         @endforeach
-        {{ $desa->links() }}
+
+    </div>
+    <div class="flex justify-center mt-10">
+     {{ $desa->links() }}
+    </div>
     @else
         <div class="text-center">
             Tidak ada
         </div>
     @endif
-    @if ($destinasi)
+    {{-- @if ($destinasi)
         @foreach ($destinasi as $row)
             <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/desa/{{ $row['id'] }}">
@@ -46,5 +51,5 @@
         <div class="text-center">
             Tidak ada
         </div>
-    @endif
+    @endif --}}
 </div>

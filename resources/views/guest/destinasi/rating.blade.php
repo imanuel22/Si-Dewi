@@ -1,4 +1,4 @@
-<div class=" bg-white rounded-2xl">
+<div class=" bg-white  rounded-2xl">
     <div class="p-10">
         <h1 class="text-3xl font-bold">Review</h1>
         <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700 mt-5">
