@@ -57,7 +57,7 @@ class GuestController extends Controller
     }
 
     $page = $request->get('page', 1);
-    $perPage = 10;
+    $perPage = 12;
 
     $desaPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
         $desaQuery->forPage($page, $perPage),
@@ -98,7 +98,7 @@ class GuestController extends Controller
         $destinasi = Http::get(env('APP_API_URL').'/destinasiwisata')->collect();
 
         $page = request()->get('page', 1);
-        $perPage = 10; // Number of items per page
+        $perPage = 12; // Number of items per page
 
         $desaPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
             $desa->forPage($page, $perPage),

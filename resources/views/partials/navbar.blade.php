@@ -1,6 +1,6 @@
 <nav class="fixed z-10 top-0 bg-transparent backdrop-blur-md shadow-md x2l:px-44 md:px-20 sm:px-20 w-screen">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('storage/img/logo.png') }}" class="h-8" alt="Flowbite Logo" />
             <span class="self-center text-2xl grechen-fuemen-regular font-semibold whitespace-nowrap dark:text-white">Si
                 Dewi</span>
