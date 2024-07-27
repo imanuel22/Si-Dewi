@@ -11,7 +11,7 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                {{ $row['id_akun'] }}
+                                {{ $row['akun']['nama'] }}
                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                                 01-01-2024
                             </p>
