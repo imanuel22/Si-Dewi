@@ -203,7 +203,7 @@ public function filterberita(Request $request) {
     $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
 
     // Filter berita by search term
-    $searchTerm = $request->get('search');
+    $searchTerm = $request->get('searchberita');
     if (!empty($searchTerm)) {
         $berita = $berita->filter(function ($item) use ($searchTerm) {
             return stripos($item['judul'], $searchTerm) !== false;
