@@ -166,7 +166,17 @@ class GuestController extends Controller
             }
             return $item;
         });
-        // dd($reviewjoinakun);
+
+        $page = request()->get('page', 1);
+        $perPage = 5;
+
+        $reviewPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+            $reviewjoinakun->forPage($page, $perPage),
+            $reviewjoinakun->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
         // join destinasi kategori
         // Join destinasi with kategori destinasi if destinasi is a single item
         if (isset($destinasi['id_kategoridestinasi']) && isset($kategoridestinasi[$destinasi['id_kategoridestinasi']])) {
@@ -182,7 +192,7 @@ class GuestController extends Controller
             'desa' => $desa,
             'destinasi' => $destinasi,
             'listdestinasi' => $listdestinasi,
-            'review' => $reviewjoinakun,
+            'review' => $reviewPaginated,
             'fasilitas' => $fasilitas
         ];
         return view('guest.destinasi', $data);
