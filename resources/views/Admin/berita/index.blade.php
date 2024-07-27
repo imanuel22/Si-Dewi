@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
+            class="fixed z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 transition-all duration-500 ease-in-out transform translate-y-4 bg-white rounded-lg shadow opacity-0 dark:text-gray-400 dark:bg-gray-800 bottom-14 right-14"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -14,7 +14,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -29,36 +29,36 @@
     @endif
 
     <div class="mx-4">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Berita / Table </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Berita / Table </h2>
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Berita </p>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Berita </p>
             <a href="/admin/berita/create"
                 class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+        <div class="relative p-3 mt-5 overflow-x-auto bg-white border-gray-200 rounded-lg shadow">
+            <table id="myTable" class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="border">
-                        <th scope="col" class=" px-6 py-3 text-center border w-12">
+                        <th scope="col" class="w-12 px-6 py-3 text-center border ">
                             No
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Judul
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Gambar
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Isi Berita
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Created at
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Updated at
                         </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Action
                         </th>
                     </tr>
@@ -67,26 +67,29 @@
                     @foreach ($berita as $row)
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 border whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="border px-6 py-4 text-center">
+                            <td class="px-6 py-4 text-center border">
                                 {{ $row['judul'] }}
                             </td>
-                            <td class= " border px-6 py-4 text-center justify-center flex">
-                                <img class="max-h-40 " src="{{ env('APP_API_URL') }}/uploads/berita/{{ $row['gambar'] }}"
+                            <td class= "flex justify-center px-6 py-4 text-center border ">
+                                <img class="max-h-40 " src="{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class="border px-6 py-4">
-                                {{ $row['isi_berita'] }}
+                            <td class="px-6 py-4 border">
+                                <p class="max-w-xl break-words whitespace-normal sm:w-2xl">
+
+                                    {{ STR::limit($row['isi_berita'], 300, '...') }}
+                                </p>
                             </td>
-                            <td class="border px-6 py-4 text-center">
+                            <td class="px-6 py-4 text-center border">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class="border px-6 py-4 text-center">
+                            <td class="px-6 py-4 text-center border">
                                 {{ $row['updatedAt'] }}
                             </td>
-                            <td class="border px-6 py-4 ">
+                            <td class="px-6 py-4 border ">
                                 <div class="flex justify-center">
                                     {{-- <a href="/admin/berita/{{ $row['id'] }}"
                                     class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">v</a> --}}

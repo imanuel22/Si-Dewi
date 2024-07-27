@@ -50,9 +50,9 @@
                         <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
                     </div>
                     <div class="relative mb-5">
-                        {{-- <input type="password" name="password" id="test1"
+                        <input type="password" name="password" id="password"
                             class="block w-full p-4 py-2 text-xl placeholder-gray-500 bg-transparent border-none focus:ring-transparent focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                            placeholder="Password" required />
+                            placeholder="Password" required />{{-- 
                         <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
                         <button type="button" id="eye" data-hs-toggle-password='{"target": "#hs-toggle-password"}'
                             class="absolute inset-y-0 right-0 z-20 flex items-center px-3 text-gray-400 cursor-pointer rounded-e-md focus:outline-none focus:text-blue-600 dark:text-neutral-600 dark:focus:text-blue-500">
@@ -71,16 +71,13 @@
                                 </circle>
                             </svg>
                         </button> --}}
-                        <input type="password" name="password" id="password" />
-
-
-                        <i id="togglePassword"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        {{-- <i id="togglePassword"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M4.998 7.78C6.729 6.345 9.198 5 12 5c2.802 0 5.27 1.345 7.002 2.78a12.713 12.713 0 0 1 2.096 2.183c.253.344.465.682.618.997.14.286.284.658.284 1.04s-.145.754-.284 1.04a6.6 6.6 0 0 1-.618.997 12.712 12.712 0 0 1-2.096 2.183C17.271 17.655 14.802 19 12 19c-2.802 0-5.27-1.345-7.002-2.78a12.712 12.712 0 0 1-2.096-2.183 6.6 6.6 0 0 1-.618-.997C2.144 12.754 2 12.382 2 12s.145-.754.284-1.04c.153-.315.365-.653.618-.997A12.714 12.714 0 0 1 4.998 7.78ZM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
                                     clip-rule="evenodd" />
-                            </svg></i>
+                            </svg></i> --}}
                     </div>
                     <div class="flex justify-center">
                         <button type="submit"

@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
+            class="fixed z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 transition-all duration-500 ease-in-out transform translate-y-4 bg-white rounded-lg shadow opacity-0 dark:text-gray-400 dark:bg-gray-800 bottom-14 right-14"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -14,7 +14,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -28,16 +28,16 @@
         </div>
     @endif
     <div class="mx-4">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Destinasi / Table </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Destinasi / Table </h2>
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Destinasi Wisata </p>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Destinasi Wisata </p>
             <a href="/admin/destinasi/create"
                 class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
 
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-3">
             @foreach ($destinasi as $row)
                 <div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex justify-end px-4 pt-4">
@@ -55,11 +55,11 @@
                         </button>
                         <!-- Dropdown menu -->
                         <div id="dropdown{{ $row['id'] }}"
-                            class="z-10 border hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            class="z-10 hidden text-base list-none bg-white border divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="" aria-labelledby="dropdownButton">
                                 <li
-                                    class="text-gray-900 hover:text-white  hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium text-sm  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-                                    <a href="/admin/fasilitas/{{ $row['id'] }}" class="flex items-center p-2  group">
+                                    class="text-sm font-medium text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                                    <a href="/admin/fasilitas/{{ $row['id'] }}" class="flex items-center p-2 group">
                                         <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="currentColor" viewBox="0 0 24 24">
@@ -74,8 +74,8 @@
                                 </li>
 
                                 <li
-                                    class="text-blue-700 hover:text-white  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm  dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                                    <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
+                                    class="text-sm font-medium text-blue-700 hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                                    <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2 group">
                                         <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@
                                     </a>
                                 </li>
                                 {{-- <li>
-                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2  group">
+                        <a href="/admin/review/{{ $row['id'] }}" class="flex items-center p-2 group">
                             <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -103,9 +103,8 @@
                             <span class="flex-1 ms-2 whitespace-nowrap">View</span></a>
                     </li> --}}
                                 <li
-                                    class="text-yellow-400 hover:text-white  hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium text-sm  dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
-                                    <a href="/admin/destinasi/{{ $row['id'] }}/edit"
-                                        class=" flex items-center p-2  group">
+                                    class="text-sm font-medium text-yellow-400 hover:text-white hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
+                                    <a href="/admin/destinasi/{{ $row['id'] }}/edit" class="flex items-center p-2 group">
                                         <svg class="w-[18px] h-[18px]  dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="currentColor" viewBox="0 0 24 24">
@@ -119,7 +118,7 @@
                                         <span class="flex-1 ms-2 whitespace-nowrap">Edit</span></a>
                                 </li>
                                 <li
-                                    class="group text-red-700 hover:text-white  hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium text-sm dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                    class="text-sm font-medium text-red-700 group hover:text-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                                     <form action="/admin/destinasi/{{ $row['id'] }}" method="post" class="delete-form">
                                         @csrf
                                         @method('DELETE')
@@ -139,18 +138,18 @@
                         </div>
                     </div>
                     <a href="#">
-                        <img class="rounded-t-lg h-64 relative"
-                            src="{{ env('APP_API_URL') }}/uploads/destinasiwisata/{{ $row['gambar'] }}"
+                        <img class="relative h-64 rounded-t-lg"
+                            src="{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['gambar'] }}"
                             alt="{{ $row['nama'] }}" />
                     </a>
-                    <div class="m-5 h-48">
+                    <div class="h-48 m-5">
                         <a href="#">
                             <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 {{ $row['nama'] }}</h5>
                             <h5 class="mb-2 text-sm font-bold tracking-tight text-gray-50000 dark:text-white">
-                                {{ $row['id_kategoridestinasi'] }}</h5>
+                                {{ $row['kategori']['nama'] }}</h5>
                         </a>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 break-words">
+                        <p class="mb-3 font-normal text-gray-700 break-words dark:text-gray-400">
                             {{ \Illuminate\Support\Str::limit($row['deskripsi'], 200) }}</p>
                     </div>
                     <div class="mx-5 mb-8">
