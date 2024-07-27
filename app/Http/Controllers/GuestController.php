@@ -135,6 +135,7 @@ class GuestController extends Controller
         $destinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/desa/'.$id)->collect();
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.$id)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.$id)->collect();
+        $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$id )->collect();
 
         $data = [
             'title'=>'',
@@ -143,6 +144,7 @@ class GuestController extends Controller
             'akomodasi'=>$akomodasi,
             'paket'=>$paket,
             'produk'=>$produk,
+            'informasi'=>$informasi
         ];
         return view('guest.detaildesa',$data);
     }
@@ -158,7 +160,7 @@ class GuestController extends Controller
         $kategoridestinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi')->collect();
         // join review akun
         $akunKey = $akun->keyBy('id');
-        $reviewjoinakun = $review->map(function ($item) use ($akunKey) {
+        $reviewjoinakun = $review->map(function ($item) use ($akunKey,$destinasi) {
             if (isset($akunKey[$item['id_akun']])) {
                 $item['akun'] = $akunKey[$item['id_akun']];
             } else {
@@ -166,6 +168,7 @@ class GuestController extends Controller
             }
             return $item;
         });
+        $averageRating = $review->avg('rating');
 
         $page = request()->get('page', 1);
         $perPage = 5;
@@ -193,7 +196,8 @@ class GuestController extends Controller
             'destinasi' => $destinasi,
             'listdestinasi' => $listdestinasi,
             'review' => $reviewPaginated,
-            'fasilitas' => $fasilitas
+            'fasilitas' => $fasilitas,
+            'averageRating' =>$averageRating
         ];
         return view('guest.destinasi', $data);
     }
@@ -212,12 +216,14 @@ class GuestController extends Controller
         $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/desawisata/' . $iddesa)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/' . $id)->collect();
         $listproduk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . $iddesa)->collect();
-
+        $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$iddesa )->collect();
+        
         $data = [
             'title' => '',
             'desa' => $desa,
             'listproduk' => $listproduk,
             'produk' => $produk,
+            'informasi' => $informasi,
         ];
         return view('guest.produk', $data);
     }

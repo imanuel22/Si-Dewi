@@ -23,7 +23,6 @@
                                 $halfStar = $rating % 2 >= 1 ? 1 : 0;
                                 $emptyStars = 5 - $fullStars - $halfStar;
                             @endphp
-
                             {{-- Bintang Penuh --}}
                             @for ($i = 0; $i < $fullStars; $i++)
                                 <svg class="w-5 h-5 text-yellow-400 dark:text-white" aria-hidden="true"
