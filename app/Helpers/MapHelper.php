@@ -67,13 +67,8 @@ class MapHelper
 
         return $decimal;
     }
-    
-    public static function dmsToDecimal3($degrees, $minutes, $seconds, $direction)
- {
-        $decimal = $degrees + ($minutes / 60) + ($seconds / 3600);
-        if (strtoupper($direction) == 'S' || strtoupper($direction) == 'W') {
-            $decimal *= -1;
-        }
-        return $decimal;
+
+    public static function isDmsFormat($coordinateString) {
+        return preg_match('/\d+°\d+\'\d+(\.\d+)?\"[NS] \d+°\d+\'\d+(\.\d+)?\"[EW]/', $coordinateString);
     }
 }

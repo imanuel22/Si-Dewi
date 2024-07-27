@@ -27,7 +27,7 @@
                 </div>
             </form>
         </div>
-        <div class="border-2 border-gray-400 bg-primary text-white p-4 mt-4">
+        <div class="border-2 border-gray-400 bg-primary-200 text-white p-4 mt-4">
             <h2 class="widget-title font-bold pb-2">Recent posts</h2>
             @foreach ($berita as $row)
                 <div class="pt-footer-recent-post">

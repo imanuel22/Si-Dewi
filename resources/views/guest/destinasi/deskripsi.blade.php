@@ -22,7 +22,7 @@
     </div>
     <div class="deskripsi">
         <div class="mt-5 max-w-full">
-            <p class="break-words">{{ $destinasi['deskripsi'] }}</p>
+            <p class="break-words">{!! nl2br(e($destinasi['deskripsi']))!!}</p>
         </div>
     </div>
     @if ($fasilitas->isNotEmpty())

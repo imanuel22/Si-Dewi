@@ -26,12 +26,12 @@
 
 
     <div class="bg-white py-8">
-        <div class="xl:ms-56 p-4 xl:px-0 pt-5 flex gap-5">
-            <div class="w-2/5 ">
+        <div class="xl:ms-56 p-4 xl:px-0 pt-5 lg:flex gap-1">
+            <div class="xl:w-2/5 ">
                 <!-- Kolom Pertama: Judul dan Deskripsi -->
                 <div class="mt-10">
                     <h1 class="text-4xl font-bold mb-4">Distribution Map</h1>
-                    <p class=" text-2xl">Find tourist villages based on the distribution map
+                    <p class="w-11/12 text-xl">Find tourist villages based on the distribution map
                         of districts and cities in Bali.</p>
                 </div>
             </div>
@@ -41,29 +41,25 @@
                     display: none;
                 }
 
-                .horizontal-scroll {
-                    overflow-x: scroll;
-                    white-space: nowrap;
-                    /* Indicate that the container is draggable */
-                }
-
-
                 .card {
                     flex-shrink: 0;
                     /* Prevent shrinking */
-                    display: inline-block;
-                    /* Ensure card behaves as inline-block for horizontal scrolling */
-                    vertical-align: top;
-                    /* Align cards properly */
+
+                }
+
+                .horizontal-scroll {
+                    transition: scroll-left 1s ease;
+                    /* Smooth scroll transition */
                 }
             </style>
-            <div class="w-3/5 horizontal-scroll overflow-x-scroll flex flex-row space-x-4 gap-3"  id="scroll-container">
-                <div class="card">
-                    <div class="image-container">
-                        <img class="object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+            <div class="horizontal-scroll mt-5 xl:mt-0 xl:w-3/5 flex flex-row space-x-4 gap-3 overflow-x-auto whitespace-nowrap cursor-grab "
+                id="scroll-container" >
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
@@ -72,12 +68,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
@@ -86,12 +84,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
@@ -100,12 +100,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
@@ -114,12 +116,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
@@ -128,36 +132,40 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                 d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
-                <div class="card ">
-                    <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                        style="width:25rem; height:30rem">
-                    <a href="/jelajahi?kabupaten=Badung" class="mt-5 flex items-center justify-between gap-3 w-full ">
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             Kabupaten Badung
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -206,14 +214,14 @@
             </div>
         </div>
     </div>
-    <div class="bg-secondary h-96">
-        <div>
-            <h1 class="text-4xl text-center font-semibold mb-2 pt-10 text-white">News Update</h1>
+    <div class="bg-secondary" style="height:40rem">
+        <div class="">
+            <h1 class="text-4xl text-center font-semibold mb-2 pt-44 text-white">News Update</h1>
             <p class="mb-8 text-center text-xl text-white">Find tourist villages based on the distribution map of
                 districts and cities in Bali.</p>
         </div>
     </div>
-    <div class="xl:mx-56 p-4 xl:px-0 py-10 -mt-56 ">
+    <div class="xl:mx-56 p-4 xl:px-0 py-10 -mt-80 ">
         <div class="grid grid-cols-3 gap-6 ">
             <!-- Card 1 -->
             @foreach ($berita as $row)
@@ -241,7 +249,7 @@
         </div>
         <div class="flex justify-center mt-5">
             <a href="/artikel"
-                class="mt-4 bg-primary hover:bg-opacity-70 text-white px-8 py-2 rounded-full  transition-colors duration-300">
+                class="mt-4 bg-primary-200 hover:bg-opacity-70 text-white px-8 py-2 rounded-full  transition-colors duration-300">
                 Read More <i class="fas fa-arrow-right ml-5"></i>
             </a>
         </div>
@@ -274,8 +282,16 @@
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 1.5; // Adjust the multiplier for smoother or faster scrolling
+            const walk = (x - startX) * 2; // Adjust the multiplier for smoother or faster scrolling
             slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Prevent default drag behavior on images
+        const images = slider.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
         });
     </script>
 @endsection
