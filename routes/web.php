@@ -20,8 +20,8 @@ use App\Http\Controllers\ProdukController;
 // GUEST
 Route::middleware('guest')->group(function(){
     Route::get('/', [GuestController::class,'homepage']);
-    Route::get('/jelajahi', [GuestController::class,'jelajahi']);
-    Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
+    Route::get('/jelajahi', [GuestController::class,'filter'])->name('jelajahi.filter');
+    // Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
     Route::prefix('/desa/{id_desa}')->group(function(){
         Route::get('/',[GuestController::class,'desa']);
         Route::get('/destinasi/{id_destinasi}',[GuestController::class,'destinasi']);
@@ -29,10 +29,11 @@ Route::middleware('guest')->group(function(){
         Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
         Route::get('/produk/{id_produk}',[GuestController::class,'produk']);
     });
-    Route::get('/artikel',[GuestController::class,'berita']);
-    Route::get('/artikel/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
-    Route::get('/artikel/{id_artikel}',[GuestController::class,'beritaId']);
-
+    Route::prefix('/artikel')->group(function(){
+        Route::get('/',[GuestController::class,'filterberita'])->name('artikel.filter');
+        // Route::get('/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
+        Route::get('/{id_artikel}',[GuestController::class,'beritaId']);
+    });
 
 
     Route::get('/home',[DashboardController::class,'home']);
