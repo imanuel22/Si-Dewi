@@ -83,8 +83,11 @@ class GuestController extends Controller
         $page,
         ['path' => request()->url(), 'query' => request()->query()]
     );
+    $kode = request()->get('kode');
+
 
     return view('guest.explore', [
+        'kode'=>$kode,
         'desa' => $desaPaginated,
         'destinasi' => $destinasiPaginated,
         'selectedKabupaten' => $request->kabupaten ?? [],
