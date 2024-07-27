@@ -198,38 +198,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="inline-block card">
-                    <div class="flex-shrink-0 image-container" style="width:25rem; height:30rem">
-                        <img class="object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                            style="width:25rem; height:30rem">
-                    </div>
-                    <div class="flex items-center justify-between w-full gap-3 mt-5 ">
-                        <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
-                        </h5>
-                        <svg class="mr-3 rtl:rotate-180 w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                        </svg>
-                    </div>
-                </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="inline-block card">
-                    <div class="flex-shrink-0 image-container" style="width:25rem; height:30rem">
-                        <img class="object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
-                            style="width:25rem; height:30rem">
-                    </div>
-                    <div class="flex items-center justify-between w-full gap-3 mt-5 ">
-                        <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
-                        </h5>
-                        <svg class="mr-3 rtl:rotate-180 w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                        </svg>
-                    </div>
-                </a>
+               
             </div>
         </div>
     </div>

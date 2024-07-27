@@ -6,11 +6,12 @@
     // $latitude = MapHelper::dmsToDecimal3($matches[1], $matches[2], $matches[3], $matches[5]);
     // $longitude = MapHelper::dmsToDecimal3($matches[6], $matches[7], $matches[8], $matches[10]);
 
-    $dmsString = $desa['maps'];
-    $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    // $dmsString = $desa['maps'];
+    // $coordinates = MapHelper::parseDmsCoordinates($dmsString);
 
-    $longitude = Str::limit($coordinates['longitude'], 9, '') ;
-    $latitude = Str::limit($coordinates['latitude'], 9, '') ;
+    // $longitude = Str::limit($coordinates['longitude'], 9, '') ;
+    // $latitude = Str::limit($coordinates['latitude'], 9, '') ;
+
 
 @endphp
 
@@ -25,7 +26,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Initialize the map
-            var map = L.map('map').setView([{{ $latitude }}, {{ $longitude }}], 15);
+            var map = L.map('map').setView([{{$desa['maps']}}], 15);
 
             // Add a tile layer to the map
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -33,7 +34,7 @@
             }).addTo(map);
 
             // Add a marker to the map
-            L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
+            L.marker([{{$desa['maps']}}]).addTo(map)
                 .bindPopup('Lokasi Destinasi')
                 .openPopup();
         });
