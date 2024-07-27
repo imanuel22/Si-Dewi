@@ -200,6 +200,7 @@ class GuestController extends Controller
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
         $data = [
             'berita'=>$berita,
+            'selectedKabupaten' => request()->kabupaten ?? [],
         ];
         return view('guest.artikel2',$data);
     }
