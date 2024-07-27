@@ -2,16 +2,16 @@
 
 @section('main')
     <div class="mx-4">
-        <h2 class=" mb-3  font-bold tracking-tight text-gray-500 ">Profil / Edit </h2>
-        <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Edit Profil Desa </p>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Profil / Edit </h2>
+        <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Edit Profil Desa </p>
         <form class="mx-auto" action="/admin/profil-desa/{{ $desawisata['id'] }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div
-                class=" mt-8 mb-5  block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="block p-6 mt-8 mb-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Desa </p>
-                <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
+                <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
                     <div class="">
                         <label for="nama"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
@@ -77,7 +77,7 @@
                     <div class="mb-5">
                         <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi
                             Desa Wisata</label>
-                        <div class="flex items-center justify-center rounded bg-gray-50 dark:bg-gray-800 relative w-full h-96"
+                        <div class="relative flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-96"
                             id="Map">
                         </div>
                     </div>
@@ -85,13 +85,13 @@
             </div>
 
             <div
-                class=" mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="block p-6 mt-8 mb-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Gambar </p>
-                <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="mb-5">
 
-                    <img class="image-preview img-fluid mb-2"
-                        src="http://localhost:3000/uploads/desawisata/{{ $desawisata['gambar'] }}">
+                    <img class="mb-2 image-preview img-fluid"
+                        src="{{env('APP_API_URL')}}/resource/desawisata/{{ $desawisata['gambar'] }}">
                     <input onchange="previewImage()" name="gambar" id="gambar"
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         aria-describedby="user_avatar_help" id="user_avatar" type="file">

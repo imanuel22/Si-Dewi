@@ -10,13 +10,24 @@ class AdmindesaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $response = Http::get(env('APP_API_URL').'/admindesa')->collect();
-        return view('superadmin.admindesa.index',[
-            'admindesa'=>$response,
-        ]);    
-    }
+public function index()
+{
+    $admindesa = Http::get(env('APP_API_URL').'/admindesa')->collect();
+    $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+    $akun = Http::get(env('APP_API_URL').'/akun')->collect();
+
+    $admindesajoin1 = $admindesa->map(function($item) use ($desa, $akun)  {
+        $item['desa'] = $desa->where('id', $item['id_desawisata'])->first();
+        $item['akun'] = $akun->where('id', $item['id_akun'])->first();
+        return $item;
+    });
+
+
+    return view('superadmin.admindesa.index', [
+        'admindesa' => $admindesajoin1,
+    ]);
+}
+
 
     /**
      * Show the form for creating a new resource.
