@@ -16,7 +16,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -32,47 +32,82 @@
 
 
 
-    <div class="w-full h-full grid grid-cols-1 sm:grid-cols-2">
-        <div class="h-full w-full hidden sm:block">
+    <div class="grid w-full h-full grid-cols-1 sm:grid-cols-2">
+        <div class="hidden w-full h-full sm:block">
             <img src="" alt="">
         </div>
         <div
-            class="w-full  bg-white  rounded shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 flex justify-center items-center">
+            class="flex items-center justify-center w-full bg-white rounded shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
 
             <div class="w-full max-w-lg mx-7">
-                <p class="-mt-24 mx-1 mb-24 text-6xl font-semibold font-poppins  text-gray-900 dark:text-white ">Login </p>
+                <p class="mx-1 mb-24 -mt-24 text-6xl font-semibold text-gray-900 font-poppins dark:text-white ">Login </p>
                 <form class="mt-7" action="/dologin" method="POST">
                     @csrf
                     <div class="mb-14">
                         <input type="email" name="email" id="email"
-                            class="border-none text-xl  w-full placeholder-gray-500 bg-transparent py-2 focus:ring-transparent focus:border-none block   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            class="block w-full py-2 text-xl placeholder-gray-500 bg-transparent border-none focus:ring-transparent focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Email" required />
-                        <hr class="h-1 mx-4  bg-black border-0 dark:bg-gray-700">
+                        <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
                     </div>
                     <div class="relative mb-5">
-                        <input type="password" name="password" id="hs-toggle-password"
-                            class="border-none text-xl p-4 w-full placeholder-gray-500 bg-transparent py-2 focus:ring-transparent focus:border-none block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        {{-- <input type="password" name="password" id="test1"
+                            class="block w-full p-4 py-2 text-xl placeholder-gray-500 bg-transparent border-none focus:ring-transparent focus:border-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             placeholder="Password" required />
                         <hr class="h-1 mx-4 bg-black border-0 dark:bg-gray-700">
-                        <button type="button" data-hs-toggle-password='{"target": "#hs-toggle-password"}'
-                            class="absolute inset-y-0 right-0 flex items-center z-20 px-3 cursor-pointer text-gray-400 rounded-e-md focus:outline-none focus:text-blue-600 dark:text-neutral-600 dark:focus:text-blue-500">
-                            <svg class="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" id="eye" data-hs-toggle-password='{"target": "#hs-toggle-password"}'
+                            class="absolute inset-y-0 right-0 z-20 flex items-center px-3 text-gray-400 cursor-pointer rounded-e-md focus:outline-none focus:text-blue-600 dark:text-neutral-600 dark:focus:text-blue-500">
+                            <svg class="shrink-0 size-3.5" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path class="hs-password-active:hidden" d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
-                                <path class="hs-password-active:hidden" d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
-                                <path class="hs-password-active:hidden" d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
-                                <line class="hs-password-active:hidden" x1="2" x2="22" y1="2" y2="22"></line>
-                                <path class="hidden hs-password-active:block" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                                <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3"></circle>
+                                <path class="hs-password-active:hidden"
+                                    d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                                <path class="hs-password-active:hidden"
+                                    d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                                <line class="hs-password-active:hidden" x1="2" x2="22" y1="2"
+                                    y2="22"></line>
+                                <path class="hidden hs-password-active:block"
+                                    d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3">
+                                </circle>
                             </svg>
-                        </button>
+                        </button> --}}
+                        <input type="password" name="password" id="password" />
+
+
+                        <i id="togglePassword"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M4.998 7.78C6.729 6.345 9.198 5 12 5c2.802 0 5.27 1.345 7.002 2.78a12.713 12.713 0 0 1 2.096 2.183c.253.344.465.682.618.997.14.286.284.658.284 1.04s-.145.754-.284 1.04a6.6 6.6 0 0 1-.618.997 12.712 12.712 0 0 1-2.096 2.183C17.271 17.655 14.802 19 12 19c-2.802 0-5.27-1.345-7.002-2.78a12.712 12.712 0 0 1-2.096-2.183 6.6 6.6 0 0 1-.618-.997C2.144 12.754 2 12.382 2 12s.145-.754.284-1.04c.153-.315.365-.653.618-.997A12.714 12.714 0 0 1 4.998 7.78ZM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                                    clip-rule="evenodd" />
+                            </svg></i>
                     </div>
                     <div class="flex justify-center">
                         <button type="submit"
-                            class= " shadow-lg text-white px-10 rounded-xl text-2xl mt-10 bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium   py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</button>
+                            class= "px-10 py-3 mt-10 text-2xl font-medium text-center text-white shadow-lg rounded-xl bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="path/to/preline.js"></script>
+    {{-- <script src="path/to/preline.js"></script> --}}
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function() {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
 @endsection

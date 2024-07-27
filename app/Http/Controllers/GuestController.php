@@ -83,8 +83,11 @@ class GuestController extends Controller
         $page,
         ['path' => request()->url(), 'query' => request()->query()]
     );
+    $kode = request()->get('kode');
+
 
     return view('guest.explore', [
+        'kode'=>$kode,
         'desa' => $desaPaginated,
         'destinasi' => $destinasiPaginated,
         'selectedKabupaten' => $request->kabupaten ?? [],
@@ -151,12 +154,34 @@ class GuestController extends Controller
         $listdestinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/desa/' . $iddesa)->collect();
         $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/reviewdestinasi/destinasi/' . $id)->collect()->whereIn('setujui', 1);
         $fasilitas = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/fasilitas/destinasi/' . $id)->collect();
+        $akun = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/akun')->collect();
+        $kategoridestinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi')->collect();
+        // join review akun
+        $akunKey = $akun->keyBy('id');
+        $reviewjoinakun = $review->map(function ($item) use ($akunKey) {
+            if (isset($akunKey[$item['id_akun']])) {
+                $item['akun'] = $akunKey[$item['id_akun']];
+            } else {
+                $item['akun'] = null;
+            }
+            return $item;
+        });
+        // join destinasi kategori
+        // Join destinasi with kategori destinasi if destinasi is a single item
+        if (isset($destinasi['id_kategoridestinasi']) && isset($kategoridestinasi[$destinasi['id_kategoridestinasi']])) {
+            $destinasi['kategori'] = $kategoridestinasi[$destinasi['id_kategoridestinasi']];
+        } else {
+            $destinasi['kategori'] = null;
+        }
+
+
+
         $data = [
             'title' => '',
             'desa' => $desa,
             'destinasi' => $destinasi,
             'listdestinasi' => $listdestinasi,
-            'review' => $review,
+            'review' => $reviewjoinakun,
             'fasilitas' => $fasilitas
         ];
         return view('guest.destinasi', $data);
