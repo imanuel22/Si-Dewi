@@ -1,5 +1,6 @@
 <div class=" bg-white rounded-2xl mt-6">
     <div class="p-8">
+        <h1 class="text-2xl font-bold">Produk Lainnya</h1>
         <div id="indicators-carousel" class="relative w-full mt-5" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -10,13 +11,13 @@
                             <a href="#" class="group relative block h-96  text-white">
 
                                 <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2 "
-                                    style="background-image: url('{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                                    style="background-image: url('{{ env('APP_API_URL') }}/resource/produk/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40">
                                     </div>
                                     <div
                                         class="p-4 !pt-0 z-10 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
-                                        <h2 class="mb-6 text-4xl font-bold sm:text-3xl">
+                                        <h2 class="mb-6 text-4xl text-left font-bold sm:text-3xl">
                                             {{ $row['nama'] }}</h2>
                                     </div>
                                     <div

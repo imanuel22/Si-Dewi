@@ -1,4 +1,4 @@
-<div class="bg-white rounded-2xl p-6 mb-6">
+<div class="bg-white mt-6 sm:mt-0 rounded-2xl p-6 mb-6">
     <h1 class="text-xl font-semibold"> CONTACT & SOCIAL MEDIA</h1>
     <div class="flex gap-3 mt-2">
         <a href="">

@@ -13,7 +13,7 @@
     </div>
     <div class="deskripsi">
         <div class="mt-5 max-w-full">
-            <p class="break-words">{{ $produk['deskripsi'] }}</p>
+            <p class="break-words">  {!! nl2br(e($produk['deskripsi'])) !!}</p>
         </div>
     </div>
 </div>

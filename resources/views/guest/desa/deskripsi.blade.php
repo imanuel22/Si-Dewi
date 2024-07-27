@@ -8,6 +8,6 @@
         </p>
     </div>
     <div class="mt-5 max-w-full">
-        <p class="break-words">{{ $desa['deskripsi'] }}</p>
+        <p class="break-words">{!! nl2br(e( $desa['deskripsi'] ))!!}</p>
     </div>
 </div>

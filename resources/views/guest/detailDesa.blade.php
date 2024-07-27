@@ -2,7 +2,7 @@
 @section('main')
     <div class="inset-0 bg-black opacity-70"> </div>
     <img src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $desa['gambar'] }}" alt=""
-        class=" w-full h-screen -mt-320 object-cover">
+        class=" w-full object-cover -mt-20" style="height:100vh;">
     {{-- background --}}
     {{-- content --}}
     <div class="mt-6 xl:mx-56 p-4 xl:px-0 ">

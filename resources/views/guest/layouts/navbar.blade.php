@@ -35,10 +35,10 @@
     </div>
 </nav> --}}
 
-<nav class="bg-secondary  text-white sticky top-0 z-10 ">
+<nav class="bg-secondary drop-shadow-xl text-white sticky top-0 z-10 ">
     <div class="xl:mx-56 p-4 xl:px-0 ">
         <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto ">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('img/logo_notext.png') }}" class="h-12" alt="Logo" />
                 <span class="self-center text-2xl grechen-fuemen-regular font-semibold whitespace-nowrap">Si Dewi</span>
             </a>

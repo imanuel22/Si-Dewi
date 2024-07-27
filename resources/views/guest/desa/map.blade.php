@@ -1,49 +1,47 @@
 @php
     use App\Helpers\MapHelper;
-    // $maps = $desa['maps'];
-    // preg_match('/(\d+)°(\d+)\'(\d+(\.\d+)?)\"([NS]) (\d+)°(\d+)\'(\d+(\.\d+)?)\"([EW])/', $maps, $matches);
-
-    // $latitude = MapHelper::dmsToDecimal3($matches[1], $matches[2], $matches[3], $matches[5]);
-    // $longitude = MapHelper::dmsToDecimal3($matches[6], $matches[7], $matches[8], $matches[10]);
 
     $dmsString = $desa['maps'];
-    $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    $coordinates = ['latitude' => null, 'longitude' => null];
 
-    $longitude = Str::limit($coordinates['longitude'], 9, '') ;
-    $latitude = -8.422083 ;
+    if (MapHelper::isDmsFormat($dmsString)) {
+        $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    } else {
+        // Assume the coordinates are in decimal format, split by comma or space
+        [$latitude, $longitude] = explode(',', $dmsString);
+        $latitude = trim($latitude);
+        $longitude = trim($longitude);
+
+        $coordinates['latitude'] = $latitude;
+        $coordinates['longitude'] = $longitude;
+    }
+
+    $latitude = $coordinates['latitude'];
+    $longitude = $coordinates['longitude'];
 
 @endphp
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+{{-- @dd($desa['maps']) --}}
 <div class="bg-white rounded-2xl p-6 h-96">
     <h1 class="text-xl font-semibold">Lokasi Desa</h1>
     <p class="text-lg">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }}</p>
     <div class="h-full mt-4 sm:container text-justify px-1 w-full mx-auto">
-        <h1>  {{$longitude}}</h1>
-        <h1>  {{$latitude}}</h1>
-        <iframe
-        src="https://www.google.com/maps/embed/v1/place?q=8.4696,-115.2386"
-        width="600"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
+        <div id="map" class="relative h-64 z-0"></div>
     </div>
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize the map
-            var map = L.map('map').setView([{{ $latitude }}, {{ $longitude }}], 13);
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the map
+        var map = L.map('map').setView([{{ $latitude }}, {{ $longitude }}], 13);
 
-            // Add a tile layer to the map
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            // Add a marker to the map
-            L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
-                .bindPopup('Lokasi Desa')
-                .openPopup();
-        });
-    </script>
+        // Add a marker to the map
+        L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
+            .bindPopup('Lokasi Desa')
+            .openPopup();
+    });
+</script>

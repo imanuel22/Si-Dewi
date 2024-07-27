@@ -11,8 +11,8 @@
                     @foreach ($paket as $row)
                     <a href="/desa/{{ $row['id_desawisata'] }}/paketwisata/{{ $row['id'] }}"
                     class="group relative block text-white ">
-                    <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2"
-                        style="background-image: url('{{ env('APP_API_URL') }}/uploads/produk/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                    <div class="relative flex  h-96 transform items-end transition-transform group-hover:-translate-y-2"
+                        style="background-image: url('{{ env('APP_API_URL') }}/resource/paketwisata/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-20 transition-opacity group-hover:opacity-50">
                         </div>

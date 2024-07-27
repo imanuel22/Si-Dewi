@@ -12,7 +12,7 @@ aria-labelledby="dashboard-tab">
         <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}"
             class="group relative block text-white ">
             <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2"
-                style="background-image: url('{{ env('APP_API_URL') }}/uploads/akomodasi/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                style="background-image: url('{{ env('APP_API_URL') }}/resource/akomodasi/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-20 transition-opacity group-hover:opacity-50">
                 </div>
