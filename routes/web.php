@@ -30,6 +30,8 @@ Route::middleware('guest')->group(function(){
         Route::get('/produk/{id_produk}',[GuestController::class,'produk']);
     });
     Route::get('/artikel',[GuestController::class,'berita']);
+    Route::get('/artikel/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
+    Route::get('/artikel/{id_artikel}',[GuestController::class,'beritaId']);
 
 
 

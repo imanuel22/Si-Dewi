@@ -196,11 +196,74 @@ class GuestController extends Controller
     }
 
 
+
+public function filterberita(Request $request) {
+    // Fetch data from API
+    $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
+    $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+
+    // Filter berita by search term
+    $searchTerm = $request->get('search');
+    if (!empty($searchTerm)) {
+        $berita = $berita->filter(function ($item) use ($searchTerm) {
+            return stripos($item['judul'], $searchTerm) !== false;
+        });
+    }
+
+    // Filter berita by kaputen
+    $selectedKabupaten = $request->get('kabupaten', []);
+    if (!empty($selectedKabupaten)) {
+        $berita = $berita->filter(function ($item) use ($selectedKabupaten, $desa) {
+            $desaItem = $desa->firstWhere('id', $item['id_desawisata']);
+            return in_array($desaItem['kabupaten'], $selectedKabupaten);
+        });
+    }
+
+    // Create a map of desawisata by id_desawisata for easy joining
+    $desaMap = $desa->keyBy('id_desawisata');
+
+    // Join berita and desawisata based on id_desawisata
+    $joinedData = $berita->map(function ($beritaItem) use ($desaMap) {
+        if (isset($desaMap[$beritaItem['id_desawisata']])) {
+            $beritaItem['desawisata'] = $desaMap[$beritaItem['id_desawisata']];
+        } else {
+            $beritaItem['desawisata'] = null;
+        }
+        return $beritaItem;
+    });
+
+
+    $data = [
+        'berita' => $joinedData,
+        'selectedKabupaten' => $selectedKabupaten,
+    ];
+    return view('guest.artikel2', $data);
+}
+
+
+
+
+
     public function berita(){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
+        $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+
         $data = [
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
+        ];
+        return view('guest.artikel2',$data);
+    }
+
+
+
+     public function beritaId($id){
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
+        $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+
+        $data = [
+            'berita'=>$berita,
+            // 'selectedKabupaten' => request()->kabupaten ?? [],
         ];
         return view('guest.artikel2',$data);
     }
