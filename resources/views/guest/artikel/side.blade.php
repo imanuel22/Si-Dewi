@@ -17,3 +17,4 @@
         </div>
         <hr class="my-4">
     @endforeach
+</div>
