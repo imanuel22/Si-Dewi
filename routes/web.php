@@ -16,6 +16,7 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SuperadminController;
 
 // GUEST
 Route::middleware('guest')->group(function(){
@@ -80,9 +81,7 @@ Route::get('/admin/event', function () {
 
 // SUPERADMIN
 Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
-    Route::get('/dashboard', function(){
-        return view('superadmin.dashboard');
-    });
+    Route::get('/dashboard',[SuperadminController::class,'index']);
     Route::resource('/akun', AkunController::class);
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/admindesa', AdmindesaController::class);

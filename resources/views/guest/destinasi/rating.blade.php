@@ -11,7 +11,7 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                {{ $row['id_akun'] }}
+                                {{ $row['akun']['nama'] }}
                             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                                 01-01-2024
                             </p>
@@ -23,7 +23,6 @@
                                 $halfStar = $rating % 2 >= 1 ? 1 : 0;
                                 $emptyStars = 5 - $fullStars - $halfStar;
                             @endphp
-
                             {{-- Bintang Penuh --}}
                             @for ($i = 0; $i < $fullStars; $i++)
                                 <svg class="w-5 h-5 text-yellow-400 dark:text-white" aria-hidden="true"
