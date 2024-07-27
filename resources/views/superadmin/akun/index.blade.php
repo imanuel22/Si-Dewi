@@ -78,7 +78,7 @@
                                 {{ $row['nama'] }}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <img src="http://localhost:3000/uploads/desawisata/{{ $row['foto'] }}"
+                                <img src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['foto'] }}"
                                     alt="{{ $row['nama'] }}">
                             </td>
                             <td class="px-6 py-4 text-center">

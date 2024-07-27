@@ -54,9 +54,9 @@
             </style>
             <div class="horizontal-scroll mt-5 xl:mt-0 xl:w-3/5 flex flex-row space-x-4 gap-3 overflow-x-auto whitespace-nowrap cursor-grab "
                 id="scroll-container" >
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/badung3.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
@@ -70,14 +70,14 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/bangli3.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Bangli
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -86,14 +86,14 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/denpasar2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Denpasar
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -102,14 +102,14 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Gianyar" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/gianyar2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Gianyar
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -118,14 +118,14 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Jembrana" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/jembrana1.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Jembrana
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -134,14 +134,14 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Buleleng" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/buleleng2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Buleleng
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -150,14 +150,46 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Karangasem" class="card inline-block" >
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
-                        <img class=" object-cover rounded-2xl" src="{{ asset('desa.jpg') }}" alt=""
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/karangasem1.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
                     </div>
                     <div class="mt-5 flex items-center justify-between gap-3 w-full ">
                         <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Kabupaten Badung
+                            Kabupaten Karangasem
+                        </h5>
+                        <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten%5B%5D=Klungkung" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/klungkung2.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
+                        <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                            Kabupaten Klungkung
+                        </h5>
+                        <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="/jelajahi?kabupaten%5B%5D=Tabanan" class="card inline-block" >
+                    <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
+                        <img class=" object-cover rounded-2xl" src="{{ asset('img/tabanan1.jpg') }}" alt=""
+                            style="width:25rem; height:30rem">
+                    </div>
+                    <div class="mt-5 flex items-center justify-between gap-3 w-full ">
+                        <h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                            Kabupaten Tabanan
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
@@ -222,7 +254,7 @@
         </div>
     </div>
     <div class="xl:mx-56 p-4 xl:px-0 py-10 -mt-80 ">
-        <div class="grid grid-cols-3 gap-6 ">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
             <!-- Card 1 -->
             @foreach ($berita as $row)
                 <a href="/artikel/{{ $row['id'] }}" class="group relative block text-white" style="height: 35rem">
