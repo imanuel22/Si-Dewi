@@ -166,6 +166,7 @@ class GuestController extends Controller
             }
             return $item;
         });
+        dd($reviewjoinakun);
         // join destinasi kategori
         // Join destinasi with kategori destinasi if destinasi is a single item
         if (isset($destinasi['id_kategoridestinasi']) && isset($kategoridestinasi[$destinasi['id_kategoridestinasi']])) {

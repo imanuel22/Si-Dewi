@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
+            class="fixed z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 transition-all duration-500 ease-in-out transform translate-y-4 bg-white rounded-lg shadow opacity-0 dark:text-gray-400 dark:bg-gray-800 bottom-14 right-14"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -14,7 +14,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -30,17 +30,17 @@
 
 
     <div class="mx-4">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Desa / Table </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Desa / Table </h2>
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Table Desa Wisata
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Table Desa Wisata
             </p>
             <a href="/superadmin/desa/create"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</a>
         </div>
 
-        <div class=" overflow-x-auto mt-5 border p-4 border-gray-200 rounded-lg shadow">
-            <table id="myTable" class=" justify-self-end w-full text-sm text-gray-500 dark:text-gray-400">
+        <div class="p-4 mt-5 overflow-x-auto border border-gray-200 rounded-lg shadow ">
+            <table id="myTable" class="w-full text-sm text-gray-500 justify-self-end dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-center">
@@ -83,7 +83,7 @@
                                 {{ $row['nama'] }}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <img src="http://localhost:3000/uploads/desawisata/{{ $row['gambar'] }}"
+                                <img src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4 text-center">
@@ -101,7 +101,7 @@
                             <td class="px-6 py-4 text-center">
                                 {{ $row['updatedAt'] }}
                             </td>
-                            <td class="px-6 py-4 flex justify-center">
+                            <td class="flex justify-center px-6 py-4">
                                 {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
                                 <a href="/superadmin/desa/{{ $row['id'] }}/edit"
                                     class=" focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"><svg

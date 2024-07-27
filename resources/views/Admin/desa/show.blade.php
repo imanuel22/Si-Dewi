@@ -4,20 +4,20 @@
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500">Profil Desa / Info</h2>
 
-        <div class="flex justify-between items-center">
+        <div class="flex items-center justify-between">
             <div class="">
                 <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $desa['nama'] }}</p>
-                <h2 class=" font-bold tracking-tight text-gray-500">{{ $desa['kategori'] }} / {{ $desa['kabupaten'] }}</h2>
+                <h2 class="font-bold tracking-tight text-gray-500 ">{{ $desa['kategori'] }} / {{ $desa['kabupaten'] }}</h2>
             </div>
             <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 href="/admin/profil-desa/{{ $desa['id'] }}/edit">edit</a>
         </div>
         <div
-            class="mt-5 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 w-full overflow-hidden">
+            class="block w-full p-6 mt-5 mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <img src="{{ env('APP_API_URL') }}/uploads/desawisata/{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}"
-                class="block mx-auto w-full h-2/4">
+                class="block w-full mx-auto h-2/4">
 
-            <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-full">
+            <div class="grid max-w-full grid-cols-1 gap-5 mt-5 sm:grid-cols-3">
                 <div class="col-span-2 overflow-hidden">
                     <p class="break-words">{{ $desa['deskripsi'] }}</p>
                 </div>
@@ -34,8 +34,8 @@
 
                         </div>
                     @endif
-                    <div class="flex mt-3 items-center">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true"
+                    <div class="flex items-center mt-3">
+                        <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -54,22 +54,22 @@
         {{-- Contact $ Social Media --}}
 
         <div
-            class=" mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            class="block p-6 mt-8 mb-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
 
-            @if (!$informasi)
+            @if (isset($informasi['error']))
                 <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                     href="/admin/informasi/create">add</a>
             @else
                 @foreach ($informasi as $row)
-                    <div class="flex justify-between items-center">
+                    <div class="flex items-center justify-between">
                         <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Contact & Social Media
                         </p>
                         <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             href="/admin/informasi/{{ $row['id'] }}/edit">edit</a>
                     </div>
-                    <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                         @if ($row['no_telp'])
                             <div class="">
                                 <label for="website-admin"
@@ -77,7 +77,7 @@
                                     Telephone</label>
                                 <div class="flex mb-3">
                                     <span
-                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@
                                     WhatsApp</label>
                                 <div class="flex mb-3">
                                     <span
-                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                             viewBox="0 0 24 24">
@@ -125,7 +125,7 @@
                                 Email</label>
                             <div class="flex mb-3">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                         viewBox="0 0 24 24">
@@ -141,7 +141,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
 
                         @if ($row['facebook'])
                             <div class="">
@@ -150,7 +150,7 @@
                                     Facebook</label>
                                 <div class="flex mb-3">
                                     <span
-                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="currentColor" viewBox="0 0 24 24">
@@ -172,7 +172,7 @@
                                     Instagram</label>
                                 <div class="flex mb-3">
                                     <span
-                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                        class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             fill="none" viewBox="0 0 24 24">
@@ -196,7 +196,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website</label>
                             <div class="flex mb-3">
                                 <span
-                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                                    class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
                                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="currentColor" viewBox="0 0 24 24">

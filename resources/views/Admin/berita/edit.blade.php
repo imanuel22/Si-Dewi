@@ -4,20 +4,21 @@
         @csrf
         @method('PATCH')
         <div class="mx-4">
-            <h2 class=" mb-3  font-bold tracking-tight text-gray-500 ">Berita / Tambah </h2>
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Tambah Berita </p>
+            <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Berita / Tambah </h2>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Tambah Berita </p>
 
             <div
-                class="mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="block p-6 mt-8 mb-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Gambar </p>
-                <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
                 {{-- Gambar --}}
-                <div class="flex items-center justify-center h-96 mb-5 rounded">
+                <div class="flex items-center justify-center mb-5 rounded h-96">
                     <div class="w-full px-3">
                         <label for="message" class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">Gambar
                             Banner</label>
                         <input type="hidden" name="gambarOld" value="{{ $berita['gambar'] }}">
-                        <img src="" alt="" class="h-72 mb-3">
+                        <img alt="" class="mb-3 h-72"
+                            src="{{ env('APP_API_URL') }}/resource/berita/{{ $berita['gambar'] }}">
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             aria-describedby="user_avatar_help" id="user_avatar" type="file" name="gambar">
@@ -27,9 +28,9 @@
             </div>
 
             <div
-                class="mt-8 mb-5    block  p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                class="block p-6 mt-8 mb-5 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Isi Berita </p>
-                <hr class="h-px my-4  bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="w-full px-3">
                     <label for="judul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul
                         Berita</label>
@@ -38,7 +39,7 @@
                         required />
                 </div>
                 {{-- Deskripsi --}}
-                <div class="flex items-center justify-center h-96 mb-3 mt-3 rounded">
+                <div class="flex items-center justify-center mt-3 mb-3 rounded h-96">
                     <div class="w-full px-3">
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Isi Berita</label>
