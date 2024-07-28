@@ -3,7 +3,6 @@
 @section('main')
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500">Profil Desa / Info</h2>
-
         <div class="flex items-center justify-between">
             <div class="">
                 <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $desa['nama'] }}</p>
@@ -14,26 +13,16 @@
         </div>
         <div
             class="block w-full p-6 mt-5 mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <img src="{{ env('APP_API_URL') }}/uploads/desawisata/{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}"
-                class="block w-full mx-auto h-2/4">
+            <img src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $desa['gambar'] }}" alt="{{ $desa['nama'] }}"
+                class="block w-full mx-auto h-full">
 
             <div class="grid max-w-full grid-cols-1 gap-5 mt-5 sm:grid-cols-3">
                 <div class="col-span-2 overflow-hidden">
-                    <p class="break-words">{{ $desa['deskripsi'] }}</p>
+                    <p class="break-words">{!! nl2br(e($desa['deskripsi'])) !!}</p>
                 </div>
                 <div class="col-span-1">
-                    @if (isset($desa['maps'][1]))
-                        <div class="relative" style="height: 300px;">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15777.346005471349!2d{{ $desa['maps'] }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOeKdu-OpzOyYoiAtIDE1NSwgNDEuMjMgU08sIFRyYW5zYWN0aW9uIENodW5rcyBSZWQsIE1vYmlsZSBLaW5nZG9tLCBTYW5zIFJvYWQ!5e0!3m2!1sen!2sid!4v1623872036346!5m2!1sen!2sid"
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    @else
-                        <div class="relative" style="height: 300px;">
-
-                        </div>
-                    @endif
+                    <div class="relative" style="height: 300px;" id="map">
+                    </div>
                     <div class="flex items-center mt-3">
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -144,8 +133,7 @@
 
                     @if ($informasi['facebook'])
                         <div class="">
-                            <label for="website-admin"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <label for="website-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Facebook</label>
                             <div class="flex mb-3">
                                 <span
@@ -214,3 +202,19 @@
         </div>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize the map
+        var map = L.map('map').setView([{{$desa['maps']}}], 15);
+
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker to the map
+        L.marker([{{$desa['maps']}}]).addTo(map)
+            .bindPopup('Lokasi Destinasi')
+            .openPopup();
+    });
+</script>
