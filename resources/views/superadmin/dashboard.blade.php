@@ -16,4 +16,58 @@
         <p>count desa di Denpasar: {{ $desa_per_kabupaten['Denpasar'] }}</p>
         <p>count desa di Buleleng: {{ $desa_per_kabupaten['Buleleng'] }}</p>
     </div>
+
+    <div class="w-96">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Badung',
+                    'Bangli',
+                    'Jembrana',
+                    'Klungkung',
+                    'Karangasem',
+                    'Gianyar',
+                    'Tabanan',
+                    'Denpasar',
+                    'Buleleng',
+                ],
+                datasets: [{
+                    label: 'Banyak Desa per Kabupaten',
+                    data: [
+                        {{ $desa_per_kabupaten['Badung'] }},
+                        {{ $desa_per_kabupaten['Bangli'] }},
+                        {{ $desa_per_kabupaten['Jembrana'] }},
+                        {{ $desa_per_kabupaten['Klungkung'] }},
+                        {{ $desa_per_kabupaten['Karangasem'] }},
+                        {{ $desa_per_kabupaten['Gianyar'] }},
+                        {{ $desa_per_kabupaten['Tabanan'] }},
+                        {{ $desa_per_kabupaten['Denpasar'] }},
+                        {{ $desa_per_kabupaten['Buleleng'] }},
+
+                    ],
+                    borderWidth: 1,
+                    hoverOffset: 5,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                }]
+            },
+            options: {
+
+            }
+        });
+    </script>
 @endsection
