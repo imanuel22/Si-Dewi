@@ -53,14 +53,14 @@
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
                             <td class="px-6 py-4 text-center">
-                                <p class="break-words whitespace-normal">{{ $row['nama'] }}</p></td>
+                                <p class="break-words font-bold text-black  whitespace-normal">{{ $row['nama'] }}</p></td>
                             <td class="px-6 py-4 text-center">
                                 <img class="h-60 w-full object-cover" src="{{ env('APP_API_URL') }}/resource/paketwisata/{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4">
                                 <p class="break-words whitespace-normal">{{ \Illuminate\Support\Str::limit($row['deskripsi'], 800) }}</p>
                             </td>
-                            <td class="px-6 py-4 text-center">{{ $row['harga'] }}</td>
+                            <td class="px-6 py-4 text-center text-black font-semibold">{{ $row['harga'] }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center">
                                     <a href="/admin/paket/{{ $row['id'] }}/edit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">

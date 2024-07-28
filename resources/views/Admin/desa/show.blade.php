@@ -8,8 +8,8 @@
                 <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $desa['nama'] }}</p>
                 <h2 class="font-bold tracking-tight text-gray-500 ">{{ $desa['kategori'] }} / {{ $desa['kabupaten'] }}</h2>
             </div>
-            <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                href="/admin/profil-desa/{{ $desa['id'] }}/edit">edit</a>
+            <a  class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-lg px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none "
+                href="/admin/profil-desa/{{ $desa['id'] }}/edit">Edit</a>
         </div>
         <div
             class="block w-full p-6 mt-5 mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -21,7 +21,7 @@
                     <p class="break-words">{!! nl2br(e($desa['deskripsi'])) !!}</p>
                 </div>
                 <div class="col-span-1">
-                    <div class="relative" style="height: 300px;" id="map">
+                    <div class="relative z-0" style="height: 300px;" id="map">
                     </div>
                     <div class="flex items-center mt-3">
                         <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" aria-hidden="true"
@@ -53,7 +53,7 @@
                 <div class="flex items-center justify-between">
                     <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Contact & Social Media
                     </p>
-                    <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    <a class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-lg px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none "
                         href="/admin/informasi/{{ $informasi['id'] }}/edit">edit</a>
                 </div>
                 <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
