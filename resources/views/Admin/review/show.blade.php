@@ -82,13 +82,9 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4 text-center">
-<<<<<<< Updated upstream
-                                {{ $row['id_akun'] }}
-=======
                                 {{ $row['akun']['nama'] }}
                                 {{ $row['akun']['foto'] }}
 
->>>>>>> Stashed changes
                             </td>
                             <td class="px-6 py-4 text-center">
                                 {{ $row['rating'] }}

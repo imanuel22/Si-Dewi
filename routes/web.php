@@ -16,12 +16,13 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SuperadminController;
 
 // GUEST
 Route::middleware('guest')->group(function(){
     Route::get('/', [GuestController::class,'homepage']);
-    Route::get('/jelajahi', [GuestController::class,'jelajahi']);
-    Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
+    Route::get('/jelajahi', [GuestController::class,'filter'])->name('jelajahi.filter');
+    // Route::get('/jelajahi/filter', [GuestController::class,'filter'])->name('jelajahi.filter');
     Route::prefix('/desa/{id_desa}')->group(function(){
         Route::get('/',[GuestController::class,'desa']);
         Route::get('/destinasi/{id_destinasi}',[GuestController::class,'destinasi']);
@@ -29,10 +30,18 @@ Route::middleware('guest')->group(function(){
         Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
         Route::get('/produk/{id_produk}',[GuestController::class,'produk']);
     });
+<<<<<<< HEAD
     Route::get('/artikel',[GuestController::class,'berita']);
     Route::get('/detailArtikel',[GuestController::class,'detail_berita']);
 
 
+=======
+    Route::prefix('/artikel')->group(function(){
+        Route::get('/',[GuestController::class,'filterberita'])->name('artikel.filter');
+        // Route::get('/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
+        Route::get('/{id_artikel}',[GuestController::class,'beritaId']);
+    });
+>>>>>>> c6e05512f900642f96ba74315f6e0a2ba2d65867
 
 
     Route::get('/home',[DashboardController::class,'home']);
@@ -79,9 +88,7 @@ Route::get('/admin/event', function () {
 
 // SUPERADMIN
 Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
-    Route::get('/dashboard', function(){
-        return view('superadmin.dashboard');
-    });
+    Route::get('/dashboard',[SuperadminController::class,'index']);
     Route::resource('/akun', AkunController::class);
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/admindesa', AdmindesaController::class);

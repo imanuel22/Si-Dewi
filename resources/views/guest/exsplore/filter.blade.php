@@ -1,64 +1,67 @@
-<div class="sticky top-20  hidden md:block rounded-r-2xl rounded-t-none bg-white h-full w-1/6 drop-shadow pb-2">
+<div class="sticky hidden w-1/6 h-full pb-2 bg-white rounded-t-none top-20 md:block rounded-r-2xl drop-shadow">
     <div class="py-8 ">
-        <form class="max-w-sm mx-auto  px-4 mb-5" action="">
-            <select id="pilih_data" onchange="toggleClasses()"
+        <form class="formfilter" action="{{ route('jelajahi.filter') }}" method="GET">
+            <select name="kode" id="pilih_data"
+                onchange="toggleClasses() ; document.querySelector('.formfilter').submit()"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>Desa</option>
+                @if (request()->has('kode'))
+                    <option hidden value="{{ request()->get('kode') }}" selected>{{ request()->get('kode') }}</option>
+                @endif
+                <option value="Desa">Desa</option>
                 <option value="Destinasi">Destinasi</option>
             </select>
-        </form>
-        <form class="formfilter" action="{{ route('jelajahi.filter') }}" method="GET">
+
             {{-- <input type="text" name="search" value="{{ request()->get('search') }}"> --}}
             <div class="kategori-desa">
-                <h3 class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kategori Desa</h3>
+                <h3 class="mb-4 text-2xl font-bold text-center text-gray-900 dark:text-white">Kategori Desa</h3>
                 <div class="flex flex-col justify-center px-4">
                     <ul class="w-full text-lg font-medium text-gray-900 bg-white dark:text-white">
-                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                        <li class="w-full border-gray-200 rounded-t-lg dark:border-gray-600">
                             <div class="flex items-center ps-3">
                                 <input id="vue-checkbox" type="checkbox" name="kategori[]" value="Maju"
                                     {{ in_array('Maju', $selectedKategori) ? 'checked' : '' }}
                                     onchange="document.querySelector('.formfilter').submit()"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                 <label for="vue-checkbox"
-                                    class="w-full py-3 ms-2 font-medium text-gray-900 dark:text-gray-300">Maju</label>
+                                    class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Maju</label>
                             </div>
                         </li>
-                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                        <li class="w-full border-gray-200 rounded-t-lg dark:border-gray-600">
                             <div class="flex items-center ps-3">
                                 <input id="react-checkbox" type="checkbox" name="kategori[]" value="Berkembang"
                                     {{ in_array('Berkembang', $selectedKategori) ? 'checked' : '' }}
                                     onchange="document.querySelector('.formfilter').submit()"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                 <label for="react-checkbox"
-                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Berkembang</label>
+                                    class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Berkembang</label>
                             </div>
                         </li>
-                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                        <li class="w-full border-gray-200 rounded-t-lg dark:border-gray-600">
                             <div class="flex items-center ps-3">
                                 <input id="angular-checkbox" type="checkbox" name="kategori[]" value="Mandiri"
                                     {{ in_array('Mandiri', $selectedKategori) ? 'checked' : '' }}
                                     onchange="document.querySelector('.formfilter').submit()"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                 <label for="angular-checkbox"
-                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Mandiri</label>
+                                    class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Mandiri</label>
                             </div>
                         </li>
-                        <li class="w-full  border-gray-200 rounded-t-lg dark:border-gray-600">
+                        <li class="w-full border-gray-200 rounded-t-lg dark:border-gray-600">
                             <div class="flex items-center ps-3">
                                 <input id="laravel-checkbox" type="checkbox" name="kategori[]" value="Rintisan"
                                     {{ in_array('Rintisan', $selectedKategori) ? 'checked' : '' }}
                                     onchange="document.querySelector('.formfilter').submit()"
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                 <label for="laravel-checkbox"
-                                    class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Rintisan</label>
+                                    class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Rintisan</label>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
             <hr class="my-5">
-            <h3 class=" mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white">Kabupaten</h3>
-            <div class="flex flex-col justify-center  px-4">
+            <h3 class="mb-4 text-2xl font-bold text-center text-gray-900 dark:text-white">Kabupaten</h3>
+            <div class="flex flex-col justify-center px-4">
                 <ul class="w-full text-lg font-medium text-gray-900 bg-white dark:text-white">
                     <li class="w-full ">
                         <div class="flex items-center ps-3">
@@ -67,7 +70,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="badung-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Badung</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Badung</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -77,7 +80,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="bangli-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Bangli</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Bangli</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -87,7 +90,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="buleleng-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Buleleng</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Buleleng</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -97,7 +100,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="denpasar-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Denpasar</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Denpasar</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -107,7 +110,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="gianyar-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Gianyar</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Gianyar</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -117,7 +120,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="jembrana-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Jembrana</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Jembrana</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -127,7 +130,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="karangasem-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Karangasem</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Karangasem</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -137,7 +140,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="klungkung-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Klungkung</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Klungkung</label>
                         </div>
                     </li>
                     <li class="w-full ">
@@ -147,7 +150,7 @@
                                 onchange="document.querySelector('.formfilter').submit()"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="tabanan-checkbox"
-                                class="w-full py-3 ms-2  font-medium text-gray-900 dark:text-gray-300">Tabanan</label>
+                                class="w-full py-3 font-medium text-gray-900 ms-2 dark:text-gray-300">Tabanan</label>
                         </div>
                     </li>
                 </ul>
@@ -157,7 +160,8 @@
 </div>
 
 <script>
-    function toggleClasses() {
+    function toggleClasses(kode = 'Desa') {
+        console.log(kode);
         const select = document.getElementById('pilih_data');
         const desaElements = document.querySelectorAll('.desa, .kategori-desa');
         const destinasiElements = document.querySelectorAll('.destinasi');
@@ -179,4 +183,4 @@
     document.addEventListener('DOMContentLoaded', function() {
         toggleClasses();
     });
-    </script>
+</script>

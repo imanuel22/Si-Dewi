@@ -13,10 +13,9 @@
                         </path>
                     </svg>
                 </button>
-                <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Admin Si
-                        Dewi</span>
+                <a href="#" class="flex ms-2 md:me-24 gap-4">
+                    <img src="{{ asset('img/logo_notext.png') }}" class="h-12" alt="Logo" />
+                    <span class=" text-white self-center text-2xl font-semibold grechen-fuemen-regular whitespace-nowrap"> Si Dewi</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -34,10 +33,10 @@
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                Neil Sims
+                                {{ session()->get('nama') }}
                             </p>
                             <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                neil.sims@flowbite.com
+                                {{ session()->get('email') }}
                             </p>
                         </div>
                         <ul class="py-1" role="none">
@@ -47,7 +46,7 @@
                                     role="menuitem">Dashboard</a>
                             </li>
                             <li>
-                                <a href="#"
+                             <a href="/profile"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                     role="menuitem">Settings</a>
                             </li>

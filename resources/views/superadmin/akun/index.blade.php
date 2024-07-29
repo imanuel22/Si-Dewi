@@ -33,82 +33,87 @@
             <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Table Akun
             </p>
             <a href="/superadmin/akun/create"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
+                class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5 border border-gray-200 rounded-lg shadow">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
+        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
+            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="border">
+                        <th scope="col" class="px-6 py-3 text-center border w-12">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Nama
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Foto
                         </th>
 
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             email
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             role
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        {{-- <th scope="col" class="px-6 py-3 text-center border">
                             createdAt
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center border">
                             updatedAt
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        </th> --}}
+                        <th scope="col" class="px-6 py-3 text-center border">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($akun as $row)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
-                                <img src="http://localhost:3000/uploads/desawisata/{{ $row['foto'] }}"
-                                    alt="{{ $row['nama'] }}">
+                            <td class="border py-4 text-center">
+                                <div class="flex justify-center">
+                                    <img class="max-h-40 w-40 rounded-full"
+                                        src="{{ env('APP_API_URL') }}/resource/akun/{{ $row['foto'] }}"
+                                        alt="{{ $row['nama'] }}">
+                                </div>
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['email'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['role'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            {{-- <td class="border px-6 py-4 text-center">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="border px-6 py-4 text-center">
                                 {{ $row['updatedAt'] }}
-                            </td>
-                            <td class="px-6 py-4 flex justify-center">
+                            </td> --}}
+                            <td class="border px-6 py-4 ">
                                 {{-- <a href="/superadmin/akun/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
-
-                                <form action="/superadmin/akun/{{ $row['id'] }}" method="post"
-                                    onsubmit="return confirm('yakin')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
-                                            class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                            <path fill-rule="evenodd"
-                                                d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                                                clip-rule="evenodd" />
-                                        </svg></button>
-                                </form>
+                                <div class=" flex justify-center items-center">
+                                    <form action="/superadmin/akun/{{ $row['id'] }}" method="post"
+                                        onsubmit="return confirm('yakin')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
+                                                class="w-6 h-6 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="currentColor" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                                                    clip-rule="evenodd" />
+                                            </svg></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

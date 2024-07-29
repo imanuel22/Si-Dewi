@@ -21,18 +21,18 @@
 
 @endphp
 {{-- @dd($desa['maps']) --}}
-<div class="bg-white rounded-2xl p-6 h-96">
+<div class="bg-white rounded-2xl p-6 h-96 flex flex-col">
     <h1 class="text-xl font-semibold">Lokasi Desa</h1>
     <p class="text-lg">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }}</p>
-    <div class="h-full mt-4 sm:container text-justify px-1 w-full mx-auto">
-        <div id="map" class="relative h-64 z-0"></div>
+    <div class="flex-grow mt-4 sm:container text-justify px-1 w-full mx-auto">
+        <div id="map" class="relative h-full z-0"></div>
     </div>
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize the map
-        var map = L.map('map').setView([{{ $latitude }}, {{ $longitude }}], 13);
+        var map = L.map('map').setView([{{ $desa['maps'] }}], 13);
 
         // Add a tile layer to the map
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

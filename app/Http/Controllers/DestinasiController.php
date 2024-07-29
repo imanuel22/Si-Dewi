@@ -19,6 +19,7 @@ class DestinasiController extends Controller
 
     $destinasi = Http::withToken($accessToken)->get(env('APP_API_URL') . '/destinasiwisata/desa/' . $id_desa)->collect();
     $reviews = Http::withToken($accessToken)->get(env('APP_API_URL') . '/reviewdestinasi')->collect();
+    $kategoridestinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi')->collect();
 
     // Group reviews by destination ID
     $groupedReviews = $reviews->groupBy('id_destinasiwisata');
@@ -34,6 +35,17 @@ class DestinasiController extends Controller
         $destinasiItem['non_reviews'] = $filteredReviews->count();
         return $destinasiItem;
     });
+
+        // join review akun
+        $kategoridestinasiKey = $kategoridestinasi->keyBy('id');
+        $destinasi = $destinasi->map(function ($item) use ($kategoridestinasiKey) {
+            if (isset($kategoridestinasiKey[$item['id_kategoridestinasi']])) {
+                $item['kategori'] = $kategoridestinasiKey[$item['id_kategoridestinasi']];
+            } else {
+                $item['kategori'] = null;
+            }
+            return $item;
+        });
 
 
     return view('Admin.destinasi.index', [

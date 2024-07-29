@@ -1,9 +1,11 @@
+@php
+   use Carbon\Carbon;
+@endphp
 @extends('Admin.layouts.main')
-
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex z-50 items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
+            class="fixed z-50 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 transition-all duration-500 ease-in-out transform translate-y-4 bg-white rounded-lg shadow opacity-0 dark:text-gray-400 dark:bg-gray-800 bottom-14 right-14"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -14,7 +16,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -29,83 +31,81 @@
     @endif
 
     <div class="mx-4">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Berita / Table </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Berita / Table </h2>
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Berita </p>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Berita </p>
             <a href="/admin/berita/create"
                 class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
-        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+        <div class="relative p-3 mt-5 overflow-x-auto bg-white border-gray-200 rounded-lg shadow">
+            <table id="myTable"
+                class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400 table-fixed">
+                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="border">
-                        <th scope="col" class=" px-6 py-3 text-center border w-12">
-                            No
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Judul
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Gambar
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Isi Berita
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Created at
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Updated at
-                        </th>
-                        <th scope="col" class="border px-6 py-3 text-center">
-                            Action
-                        </th>
+                        <th scope="col" class="w-12 px-6 py-3 text-center ">No</th>
+                        <th scope="col" class="w-1/6 px-6 py-3 text-center ">Judul</th>
+                        <th scope="col" class="w-1/4 px-6 py-3 text-center ">Gambar</th>
+                        <th scope="col" class="w-1/2 px-6 py-3 text-center ">Isi Berita</th>
+                        <th scope="col" class="w-1/6 px-6 py-3 text-center ">Created at</th>
+                        <th scope="col" class="w-1/6 px-6 py-3 text-center ">Updated at</th>
+                        <th scope="col" class="w-1/6 px-6 py-3 text-center ">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($berita as $row)
-                        <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <tr class="bg-white dark:bg-gray-800 dark:-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900  whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="border px-6 py-4 text-center">
-                                {{ $row['judul'] }}
+                            <td class="px-6 py-4 text-center font-bold text-black ">
+                                <p class="break-words whitespace-normal">
+                                    {{ $row['judul'] }}</p>
                             </td>
-                            <td class= " border px-6 py-4 text-center justify-center flex">
-                                <img class="max-h-40 " src="{{ env('APP_API_URL') }}/uploads/berita/{{ $row['gambar'] }}"
+                            <td class="flex justify-center px-6 py-4 text-center h-60">
+                                <img class="h-full w-full object-cover"
+                                    src="{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class="border px-6 py-4">
-                                {{ $row['isi_berita'] }}
+                            <td class="px-6 py-4 ">
+                                <p class="max-w-xl break-words whitespace-normal sm:w-2xl">
+                                    {{ \Illuminate\Support\Str::limit($row['isi_berita'], 500, '...') }}
+                                </p>
                             </td>
-                            <td class="border px-6 py-4 text-center">
-                                {{ $row['createdAt'] }}
+                            @php
+                                $created = Carbon::parse($row['createdAt']);
+                                $updated = Carbon::parse($row['updatedAt']);
+                                $formattedCreatedAt = $created->format('d F Y, H:i');
+                                $formattedUpdatedAt = $updated->format('d F Y, H:i');
+                            @endphp
+
+                            <td class="px-6 py-4 text-center ">
+                                {{ $formattedCreatedAt }}
                             </td>
-                            <td class="border px-6 py-4 text-center">
-                                {{ $row['updatedAt'] }}
+                            <td class="px-6 py-4 text-center ">
+                                {{ $formattedUpdatedAt }}
                             </td>
-                            <td class="border px-6 py-4 ">
+                            <td class="px-6 py-4 ">
                                 <div class="flex justify-center">
-                                    {{-- <a href="/admin/berita/{{ $row['id'] }}"
-                                    class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">v</a> --}}
                                     <a href="/admin/berita/{{ $row['id'] }}/edit"
-                                        class=" focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"><svg
-                                            class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                                        <svg class="w-6 h-6 text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
                                             <path fill-rule="evenodd"
                                                 d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z"
                                                 clip-rule="evenodd" />
                                             <path fill-rule="evenodd"
                                                 d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
                                                 clip-rule="evenodd" />
-                                        </svg></a>
+                                        </svg>
+                                    </a>
                                     <form action="/admin/berita/{{ $row['id'] }}" method="post" class="delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button"
-                                            class= "  focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 delete-button">
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 delete-button">
                                             <svg class="w-6 h-6 text-white" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 fill="currentColor" viewBox="0 0 24 24">
@@ -121,8 +121,4 @@
                     @endforeach
                 </tbody>
             </table>
-
-        </div>
-
-    </div>
-@endsection
+        @endsection
