@@ -197,7 +197,7 @@ class GuestController extends Controller
             'fasilitas' => $fasilitas,
             'averageRating' =>$averageRating
         ];
-        dd($data);
+        
         return view('guest.destinasi', $data);
     }
 
