@@ -182,16 +182,12 @@ class GuestController extends Controller
             $page,
             ['path' => request()->url(), 'query' => request()->query()]
         );
+        
         // join destinasi kategori
         // Join destinasi with kategori destinasi if destinasi is a single item
-        if (isset($destinasi['id_kategoridestinasi']) && isset($kategoridestinasi[$destinasi['id_kategoridestinasi']])) {
-            $destinasi['kategori'] = $kategoridestinasi[$destinasi['id_kategoridestinasi']];
-        } else {
-            $destinasi['kategori'] = null;
-        }
-
-
-
+        $kategoridestinasikey = $kategoridestinasi->keyBy('id');
+        $destinasi['kategori'] = $kategoridestinasikey[$destinasi['id_kategoridestinasi']];        
+        
         $data = [
             'title' => '',
             'desa' => $desa,
@@ -201,6 +197,7 @@ class GuestController extends Controller
             'fasilitas' => $fasilitas,
             'averageRating' =>$averageRating
         ];
+        dd($data);
         return view('guest.destinasi', $data);
     }
 
