@@ -204,4 +204,13 @@ class GuestController extends Controller
         ];
         return view('guest.artikel2',$data);
     }
+
+    public function detail_berita(){
+        $detail_berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/detailBerita')->collect()->sortByDesc('createdAt');
+        $data = [
+            'detail_berita'=>$detail_berita,
+            'selectedKabupaten' => request()->kabupaten ?? [],
+        ];
+        return view('guest.detailArtikel',$data);
+    }
 }
