@@ -309,6 +309,6 @@ public function filterberita(Request $request) {
             'berita'=>$berita,
             // 'selectedKabupaten' => request()->kabupaten ?? [],
         ];
-        return view('guest.artikel2',$data);
+        return view('guest.artikel3',$data);
     }
 }
