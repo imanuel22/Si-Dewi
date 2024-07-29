@@ -290,7 +290,14 @@ public function filterberita(Request $request) {
     public function berita(){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+        
+        $akun = Http::get(env('APP_API_URL').'/akun')->collect();
+            $akunkey = $akun->keyBy('id');
 
+        $berita = $berita->map(function($item) use ($akunkey){
+            $item['akun'] = $akunkey->where('id',$item['id_akun']);
+            return $item;
+        });
         $data = [
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
@@ -303,6 +310,12 @@ public function filterberita(Request $request) {
      public function beritaId($id){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+        $akun = Http::get(env('APP_API_URL').'/akun')->collect();
+        $akunkey = $akun->keyBy('id');
+        $berita = $berita->map(function($item) use ($akunkey){
+            $item['akun'] = $akunkey->where('id',$item['id_akun']);
+            return $item;
+        });
 
         $data = [
             'berita'=>$berita,
