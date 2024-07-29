@@ -9,18 +9,20 @@ class GuestController extends Controller
 {
     public function homepage() {
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(3);
-        $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi')->collect();
+        $review = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/reviewdestinasi')->collect()->whereIn('setujui', 1);
         $reviewdes = $review->groupBy('id_destinasiwisata');
 
         // Fetch destination data (replace this with your actual method of fetching destination data)
         $destinations = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata')->collect();
-
+        $destinatikey = $destinations->keyBy('id');
         // Map reviews with average rating
-        $reviewdes = $reviewdes->map(function ($reviews) use ($destinations) {
+        $reviewdes = $reviewdes->map(function ($reviews) use ($destinatikey) {
             $averageRating = $reviews->avg('rating');
             $destinationId = $reviews[0]['id_destinasiwisata'];
-            $destination = $destinations->firstWhere('id', $destinationId);
-
+            $destination = $destinatikey->firstWhere('id', $destinationId);
+            if ($destination == null) {
+                $destination = [];
+            }
             return [
                 'reviews' => $reviews,
                 'averageRating' => $averageRating / 2,
@@ -307,6 +309,6 @@ public function filterberita(Request $request) {
             'berita'=>$berita,
             // 'selectedKabupaten' => request()->kabupaten ?? [],
         ];
-        return view('guest.artikel2',$data);
+        return view('guest.artikel3',$data);
     }
 }
