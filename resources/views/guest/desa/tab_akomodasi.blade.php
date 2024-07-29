@@ -9,7 +9,7 @@ aria-labelledby="dashboard-tab">
 </header>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     @foreach ($akomodasi as $row)
-        <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}"
+        <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}"
             class="group relative block text-white ">
             <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2"
                 style="background-image: url('{{ env('APP_API_URL') }}/resource/akomodasi/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">

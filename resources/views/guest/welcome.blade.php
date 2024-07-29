@@ -53,8 +53,8 @@
                 }
             </style>
             <div class="horizontal-scroll mt-5 xl:mt-0 xl:w-3/5 flex flex-row space-x-4 gap-3 overflow-x-auto whitespace-nowrap cursor-grab "
-                id="scroll-container" >
-                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
+                id="scroll-container">
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/badung3.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -70,7 +70,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/bangli3.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -86,7 +86,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Badung" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/denpasar2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -102,7 +102,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Gianyar" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Gianyar" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/gianyar2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -118,7 +118,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Jembrana" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Jembrana" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/jembrana1.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -134,7 +134,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Buleleng" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Buleleng" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/buleleng2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -150,7 +150,7 @@
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Karangasem" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Karangasem" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/karangasem1.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -161,12 +161,12 @@
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Klungkung" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Klungkung" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/klungkung2.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -177,12 +177,12 @@
                         </h5>
                         <svg class="rtl:rotate-180 w-7 h-7 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M1 5h12m0 0L9 1m4 4L9 9" />
                         </svg>
                     </div>
                 </a>
-                <a href="/jelajahi?kabupaten%5B%5D=Tabanan" class="card inline-block" >
+                <a href="/jelajahi?kabupaten%5B%5D=Tabanan" class="card inline-block">
                     <div class="image-container flex-shrink-0" style="width:25rem; height:30rem">
                         <img class=" object-cover rounded-2xl" src="{{ asset('img/tabanan1.jpg') }}" alt=""
                             style="width:25rem; height:30rem">
@@ -198,7 +198,7 @@
                         </svg>
                     </div>
                 </a>
-               
+
             </div>
         </div>
     </div>
@@ -220,8 +220,52 @@
                             <div class="relative flex items-end h-full transition-transform transform shadow-lg rounded-xl group-hover:-translate-y-2"
                                 style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}'); background-size: cover; background-position: center;">
                                 <div
-                                    class="absolute p-1 m-2 text-xl font-bold text-yellow-500 bg-white bg-opacity-75 rounded-full top-5 right-5">
-                                    ⭐️ {{ Str::limit($row['averageRating'], 3, '') }}
+                                    class="flex absolute p-1 m-2 text-xl font-bold text-yellow-500l top-5 right-5">
+                                    @php
+
+                                        // Asumsikan averageRating = 3.8
+                                        $rating = round($row['averageRating'] * 2) / 2; // Membulatkan ke 0.5 terdekat
+                                        $fullStars = floor($rating); // Mendapatkan jumlah bintang penuh
+                                        $halfStar = $rating - $fullStars >= 0.5 ? 1 : 0; // Mendapatkan setengah bintang jika ada
+                                        $emptyStars = 5 - $fullStars - $halfStar; // Sisa bintang kosong
+                                    @endphp
+
+                                    {{-- Bintang Penuh --}}
+                                    @for ($i = 0; $i < $fullStars; $i++)
+                                        <svg class="w-5 h-5 text-yellow-400 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                        </svg>
+                                    @endfor
+
+                                    {{-- Setengah Bintang --}}
+                                    @if ($halfStar)
+                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                            <defs>
+                                                <linearGradient id="half-yellow-gray" x1="0" x2="1"
+                                                    y1="0" y2="0">
+                                                    <stop offset="50%" stop-color="#eab308" />
+                                                    <stop offset="50%" stop-color="#9ca3af" />
+                                                </linearGradient>
+                                            </defs>
+                                            <path fill="url(#half-yellow-gray)"
+                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                        </svg>
+                                    @endif
+
+                                    {{-- Bintang Kosong --}}
+                                    @for ($i = 0; $i < $emptyStars; $i++)
+                                        <svg class="w-5 h-5 text-gray-400 dark:text-gray-600" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                        </svg>
+                                    @endfor
+                                    {{-- ⭐️ {{ Str::limit($row['averageRating'], 3, '') }} --}}
                                 </div>
                                 <div
                                     class="absolute inset-0 transition-opacity bg-gradient-to-t from-black to-transparent opacity-20 group-hover:opacity-50">

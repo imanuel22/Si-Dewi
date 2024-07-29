@@ -1,17 +1,17 @@
 <div class=" bg-white rounded-2xl mt-6">
     <div class="p-8">
-        <h1 class="text-2xl font-bold">Produk Lainnya</h1>
+        <h1 class="text-2xl font-bold">Akomodasi Lainnya</h1>
         <div id="indicators-carousel" class="relative w-full mt-5" data-carousel="static">
             <!-- Carousel wrapper -->
-            <div class="relative overflow-hidden rounded-lg h-96">
-                @foreach ($listproduk as $index => $row)
+            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                @foreach ($listakomodasi as $index => $row)
                     @if (is_array($row) && isset($row['gambar'], $row['nama']))
                         <div class="hidden duration-700 ease-in-out"
                             data-carousel-item="{{ $index == 0 ? 'active' : '' }}">
-                            <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}" class="group relative block h-96  text-white">
+                            <a href="/desa/{{ $row['id_desawisata'] }}/akomodasi/{{ $row['id'] }}" class="group relative block h-96  text-white">
 
                                 <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2 "
-                                    style="background-image: url('{{ env('APP_API_URL') }}/resource/produk/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                                    style="background-image: url('{{ env('APP_API_URL') }}/resource/akomodasi/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40">
                                     </div>
@@ -26,7 +26,7 @@
                                             {{ $row['nama'] }}</h3>
 
                                         <p class="mt-4 text-sm sm:text-base break-words w-full">
-                                            {{ \Illuminate\Support\Str::limit($row['deskripsi'], 100) }}
+                                            {{-- {{ \Illuminate\Support\Str::limit($row['deskripsi'], 100) }} --}}
                                         </p>
                                         <p class="mt-4 font-bold">Read more</p>
                                     </div>
