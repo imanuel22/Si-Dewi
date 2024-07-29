@@ -30,18 +30,12 @@ Route::middleware('guest')->group(function(){
         Route::get('/akomodasi/{id_akomodasi}',[GuestController::class,'desa']);
         Route::get('/produk/{id_produk}',[GuestController::class,'produk']);
     });
-<<<<<<< HEAD
-    Route::get('/artikel',[GuestController::class,'berita']);
-    Route::get('/detailArtikel',[GuestController::class,'detail_berita']);
-
-
-=======
     Route::prefix('/artikel')->group(function(){
         Route::get('/',[GuestController::class,'filterberita'])->name('artikel.filter');
         // Route::get('/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
         Route::get('/{id_artikel}',[GuestController::class,'beritaId']);
     });
->>>>>>> c6e05512f900642f96ba74315f6e0a2ba2d65867
+    
 
 
     Route::get('/home',[DashboardController::class,'home']);

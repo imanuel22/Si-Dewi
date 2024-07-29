@@ -5,12 +5,12 @@
         {{-- content Start --}}
         <div class="container-fluid mx-auto">
             {{-- artikel start --}}
-            {{-- @include('guest.') --}}
+            @include('guest.detailArtikel.recent_post')
             {{-- side --}}
-            <div class="grid grid-cols-1 row-start-2 md:w-5/6 mt-4 md:mx-8">
+            <div class="grid grid-cols-1 row-start-2 md:w-5/6  md:mx-8">
                 <aside class="sidebar">
-                    {{-- @include('guest.')
-                    @include('guest.') --}}
+                    @include('guest.detailArtikel.filter')
+                    @include('guest.detailArtikel.side')
                 </aside>
             </div>
         </div>

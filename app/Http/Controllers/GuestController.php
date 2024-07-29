@@ -296,26 +296,14 @@ public function filterberita(Request $request) {
         return view('guest.artikel2',$data);
     }
 
-<<<<<<< HEAD
-    public function detail_berita(){
-        $detail_berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/detailBerita')->collect()->sortByDesc('createdAt');
-        $data = [
-            'detail_berita'=>$detail_berita,
-            'selectedKabupaten' => request()->kabupaten ?? [],
-        ];
-        return view('guest.detailArtikel',$data);
-=======
-
-
      public function beritaId($id){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
 
         $data = [
             'berita'=>$berita,
-            // 'selectedKabupaten' => request()->kabupaten ?? [],
+            'selectedKabupaten' => request()->kabupaten ?? [],
         ];
-        return view('guest.artikel3',$data);
->>>>>>> c6e05512f900642f96ba74315f6e0a2ba2d65867
+        return view('guest.detailArtikel',$data);
     }
 }
