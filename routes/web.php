@@ -35,6 +35,7 @@ Route::middleware('guest')->group(function(){
         // Route::get('/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
         Route::get('/{id_artikel}',[GuestController::class,'beritaId']);
     });
+    
 
 
     Route::get('/home',[DashboardController::class,'home']);
@@ -58,7 +59,7 @@ Route::middleware('guest')->group(function(){
 
 
 // ADMIN
-Route::prefix('/admin')->middleware('ADMIN')->group(function(){
+Route::prefix('/admin')->middleware('role:ADMIN')->group(function(){
     Route::get('/dashboard', function(){
         return view('admin.dashboard');
     });
@@ -80,7 +81,7 @@ Route::get('/admin/event', function () {
 });
 
 // SUPERADMIN
-Route::prefix('/superadmin')->middleware('SUPERADMIN')->group(function(){
+Route::prefix('/superadmin')->middleware('role:SUPERADMIN')->group(function(){
     Route::get('/dashboard',[SuperadminController::class,'index']);
     Route::resource('/akun', AkunController::class);
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);

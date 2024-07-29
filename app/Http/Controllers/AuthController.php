@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use GuzzleHttp\Cookie\SetCookie;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Cookie\SetCookie;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -20,18 +20,26 @@ class AuthController extends Controller
     public function dologin(Request $request)
     {
 
-        $response = Http::post(env('APP_API_URL').'/akun/login', $request);
-        if ($response->successful()) {
-            $token = $response->cookies()->toArray();
-            $request->session()->put('accessToken', $token[0]['Value']);
-            return redirect('/superadmin/dashboard')->with('message', 'berhasil login');
-        } elseif ($response->failed()) {
-            return redirect('/login')->with('message', 'gagal login');
-        } else {
-            return redirect('/login')->with('message', 'erorr system 500');
-        }
+        $credentials = $request->only('email', 'password');
 
-    }
+        $response = Http::post(env('APP_API_URL').'/akun/login', $request);
+
+        
+        if ($response->getStatusCode() == 200) {
+            $body = $response->getBody();
+            $token = json_decode($body, true);
+            Session::put('accessToken', $token);
+            
+            return redirect('/superadmin/dashboard')->with('success', 'Login successful.');
+        } else {
+            return redirect()->back()->with('error', 'Login failed.');
+        }
+}
+
+
+
+
+    
 
     public function logout(Request $request) {
     $accessToken = $request->session()->get('accessToken');

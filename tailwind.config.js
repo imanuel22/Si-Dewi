@@ -59,8 +59,6 @@ export default {
                 secondary: '#1E4E58', // Single secondary color
             },
         },
-        plugins: [
-             require('preline/plugin'),
-            ],
+        
     },
 };
