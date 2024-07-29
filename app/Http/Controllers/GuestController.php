@@ -138,6 +138,7 @@ class GuestController extends Controller
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.$id)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.$id)->collect();
         $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$id )->collect();
+        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/desa/'.$id )->collect()->sortByDesc('createdAt')->take(3);
 
         $data = [
             'title'=>'',
@@ -146,7 +147,8 @@ class GuestController extends Controller
             'akomodasi'=>$akomodasi,
             'paket'=>$paket,
             'produk'=>$produk,
-            'informasi'=>$informasi
+            'informasi'=>$informasi,
+            'berita'=>$berita,
         ];
         return view('guest.detaildesa',$data);
     }
