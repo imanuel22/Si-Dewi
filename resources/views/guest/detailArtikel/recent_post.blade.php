@@ -14,7 +14,7 @@
                                     <div class="flex flex-row gap-4">
                                         {{-- <div class="">
                                             <a href="#" class="pt-person">
-                                                <i class="far fa-calendar-alt"></i>{{$berita['akun'] }} 
+                                                <i class="fa-solid fa-user-tie"></i>{{$berita['akun'] }} 
                                             </a>
                                         </div> --}}
                                         <div class="">
