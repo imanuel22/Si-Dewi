@@ -40,29 +40,29 @@
             <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
                     <tr class="border">
-                        <th scope="col" class="px-6 py-3 text-center border w-12">
+                        <th scope="col" class=" w-20">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             Nama
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             Foto
                         </th>
 
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             email
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             role
                         </th>
-                        {{-- <th scope="col" class="px-6 py-3 text-center border">
+                        {{-- <th scope="col" class="">
                             createdAt
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             updatedAt
                         </th> --}}
-                        <th scope="col" class="px-6 py-3 text-center border">
+                        <th scope="col" class="">
                             Action
                         </th>
                     </tr>
@@ -71,29 +71,29 @@
                     @foreach ($akun as $row)
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class=" font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="border px-6 py-4 text-center">
+                            <td class=" ">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="border py-4 text-center">
+                            <td class="py-4">
                                 <div class="flex justify-center">
                                     <img class="max-h-40 w-40 rounded-full"
                                         src="{{ env('APP_API_URL') }}/resource/akun/{{ $row['foto'] }}"
                                         alt="{{ $row['nama'] }}">
                                 </div>
                             </td>
-                            <td class="border px-6 py-4 text-center">
+                            <td class=" ">
                                 {{ $row['email'] }}
                             </td>
-                            <td class="border px-6 py-4 text-center">
+                            <td class=" ">
                                 {{ $row['role'] }}
                             </td>
-                            {{-- <td class="border px-6 py-4 text-center">
+                            {{-- <td class=" ">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class="border px-6 py-4 text-center">
+                            <td class=" ">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
                             <td class="border px-6 py-4 ">

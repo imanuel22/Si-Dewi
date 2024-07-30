@@ -104,7 +104,7 @@
             <table id="myTable" class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400 table-fixed">
                 <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="">
-                        <th scope="col" class="w-12 px-2">
+                        <th scope="col" class="w-20 px-2">
                             No
                         </th>
                         <th scope="col" class="w-1/5">
