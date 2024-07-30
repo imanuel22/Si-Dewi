@@ -10,12 +10,13 @@ class AdmindesaController extends Controller
     /**
      * Display a listing of the resource.
      */
-public function index()
+public function index(Request $request)
 {
     $admindesa = Http::get(env('APP_API_URL').'/admindesa')->collect();
     $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
     $akun = Http::get(env('APP_API_URL').'/akun')->collect();
-
+    $response_1 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect()->whereIn('role','ADMIN');
+    $response_2 = Http::get(env('APP_API_URL').'/desawisata')->collect();
     $admindesajoin1 = $admindesa->map(function($item) use ($desa, $akun)  {
         $item['desa'] = $desa->where('id', $item['id_desawisata'])->first();
         $item['akun'] = $akun->where('id', $item['id_akun'])->first();
@@ -25,6 +26,8 @@ public function index()
 
     return view('superadmin.admindesa.index', [
         'admindesa' => $admindesajoin1,
+        'akun'=>$response_1,
+        'desawisata'=>$response_2
     ]);
 }
 
@@ -34,12 +37,10 @@ public function index()
      */
     public function create(Request $request)
     {
-        $response_1 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect()->whereIn('role','ADMIN');
-        $response_2 = Http::get(env('APP_API_URL').'/desawisata')->collect();
+
         return view('superadmin.admindesa.create',[
-            'akun'=>$response_1,
-            'desawisata'=>$response_2
-        ]);    
+
+        ]);
 
     }
 
@@ -47,7 +48,7 @@ public function index()
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {       
+    {
         $validatedData = $request->validate([
             'id_akun' => 'required',
             'id_desawisata' => 'required',
@@ -86,7 +87,7 @@ public function index()
         // if($response_akun->successful() && $response_desa->successful()){
         //     $response_1 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
         //     $response_2 = Http::get(env('APP_API_URL').'/desawisata')->collect();
-        //     //ambil id akun 
+        //     //ambil id akun
         //     $id_akun = 1;
         //     //ambil id desa
         //     $id_desawisata = 1;
@@ -96,14 +97,14 @@ public function index()
         //         'id_akun'=>$id_akun,
         //         'id_desawisata'=>$id_desawisata,
         //     ]);
-            
+
         //     if($response_admin->successful()){
         //         //return message
         //     }
         //     if($response_admin->failed()){
         //         //return message
         //     }
-            
+
         // }
 
     }
@@ -121,7 +122,7 @@ public function index()
      */
     public function edit(string $id)
     {
-        return view('superadmin.admindesa.edit');    
+        return view('superadmin.admindesa.edit');
 
     }
 
