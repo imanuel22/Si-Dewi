@@ -274,9 +274,19 @@ public function filterberita(Request $request) {
         return $beritaItem;
     });
 
+    $page = request()->get('page', 1);
+        $perPage = 3;
+
+        $beritaPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
+            $joinedData->forPage($page, $perPage),
+            $joinedData->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
 
     $data = [
-        'berita' => $joinedData,
+        'berita' => $beritaPaginated,
         'selectedKabupaten' => $selectedKabupaten,
         'recent' => $recent,
     ];
