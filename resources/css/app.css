@@ -44,6 +44,22 @@
     font-style: normal;
 }
 
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.3s ease-out;
+}
+
 /* TEST */
 /* .h-screen {
     height: 100vh;
