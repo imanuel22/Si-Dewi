@@ -9,7 +9,7 @@
                 </header>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @foreach ($paket as $row)
-                    <a href="/desa/{{ $row['id_desawisata'] }}/paketwisata/{{ $row['id'] }}"
+                    <a href="/desa/{{ $row['id_desawisata'] }}/paket/{{ $row['id'] }}"
                     class="group relative block text-white ">
                     <div class="relative flex  h-96 transform items-end transition-transform group-hover:-translate-y-2"
                         style="background-image: url('{{ env('APP_API_URL') }}/resource/paketwisata/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
