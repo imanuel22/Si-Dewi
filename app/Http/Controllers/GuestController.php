@@ -242,6 +242,7 @@ public function filterberita(Request $request) {
     // Fetch data from API
     $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
     $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+    $recent =Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(5);
 
     // Filter berita by search term
     $searchTerm = $request->get('searchberita');
@@ -277,6 +278,7 @@ public function filterberita(Request $request) {
     $data = [
         'berita' => $joinedData,
         'selectedKabupaten' => $selectedKabupaten,
+        'recent' => $recent,
     ];
     return view('guest.artikel2', $data);
 }
@@ -285,40 +287,32 @@ public function filterberita(Request $request) {
 
 
 
-    public function berita(){
-        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
-        $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
-<<<<<<< HEAD
-
-=======
+    // public function berita(){
+    //     $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
+    //     $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
+    //     $recent =Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(5);
         
-        // $akun = Http::get(env('APP_API_URL').'/akun')->collect();
-        //     $akunkey = $akun->keyBy('id');
+        
 
-        // $berita = $berita->map(function($item) use ($akunkey){
-        //     $item['akun'] = $akunkey->where('id',$item['id_akun']);
-        //     return $item;
-        // });
->>>>>>> f7f3a0f87144b91d058424a78fbde0752291d097
-        $data = [
-            'berita'=>$berita,
-            'selectedKabupaten' => request()->kabupaten ?? [],
-        ];
-        return view('guest.artikel2',$data);
-    }
+    //     $data = [
+    //         'berita'=>$berita,
+    //         'selectedKabupaten' => request()->kabupaten ?? [],
+            
+    //     ];
+    //     return view('guest.artikel2',$data);
+    // }
 
      public function beritaId($id){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
-<<<<<<< HEAD
-=======
         $akun = Http::get(env('APP_API_URL').'/akun')->collect();
         $admindesa = Http::get(env('APP_API_URL').'/admindesa')->collect();
->>>>>>> f7f3a0f87144b91d058424a78fbde0752291d097
+        $recent =Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(5);
 
         $data = [
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
+            'recent' => $recent,
         ];
         return view('guest.detailArtikel',$data);
     }
