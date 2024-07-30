@@ -309,12 +309,21 @@ public function filterberita(Request $request) {
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
         $akun = Http::get(env('APP_API_URL').'/akun')->collect();
-        $akunkey = $akun->keyBy('id');
-        $berita = $berita->map(function($item) use ($akunkey){
-            $item['akun'] = $akunkey->where('id',$item['id_akun']);
-            return $item;
-        });
+        $admindesa = Http::get(env('APP_API_URL').'/admindesa/akun/'.$berita['id_akun'])->collect();
+        
+        // $admindesajoin1 = $admindesa->map(function($item) use ($desa, $akun)  {
+        //     $item['desa'] = $desa->where('id', $item['id_desawisata'])->first();
+        //     $item['akun'] = $akun->where('id', $item['id_akun'])->first();
+        // return $item;
+        // });
+        // dd($admindesajoin1);
+        // $admindesajoinkey = $admindesajoin1->keyBy('id');
+        // $berita = $berita->map(function ($item) use ($admindesajoin1) {
+        //     $item['akun'] = $admindesajoin1[$item['id_akun']];
+        // });
+        // dd($berita);
 
+        
         $data = [
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
