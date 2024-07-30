@@ -1,17 +1,17 @@
 <div class=" bg-white rounded-2xl mt-6">
     <div class="p-8">
-        <h1 class="text-2xl font-bold">Produk Lainnya</h1>
+        <h1 class="text-2xl font-bold">Paket Wisata Lainnya</h1>
         <div id="indicators-carousel" class="relative w-full mt-5" data-carousel="static">
             <!-- Carousel wrapper -->
             <div class="relative overflow-hidden rounded-lg h-96">
-                @foreach ($listproduk as $index => $row)
+                @foreach ($listpaketwisata as $index => $row)
                     @if (is_array($row) && isset($row['gambar'], $row['nama']))
                         <div class="hidden duration-700 ease-in-out"
                             data-carousel-item="{{ $index == 0 ? 'active' : '' }}">
-                            <a href="/desa/{{ $row['id_desawisata'] }}/produk/{{ $row['id'] }}" class="group relative block h-96  text-white">
+                            <a href="/desa/{{ $row['id_desawisata'] }}/paketwisata/{{ $row['id'] }}" class="group relative block h-96  text-white">
 
                                 <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2 "
-                                    style="background-image: url('{{ env('APP_API_URL') }}/resource/produk/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
+                                    style="background-image: url('{{ env('APP_API_URL') }}/resource/paketwisata/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40">
                                     </div>
@@ -39,7 +39,7 @@
             <!-- Slider indicators -->
             {{-- <div
                     class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
-                    @foreach ($listproduk as $index => $row)
+                    @foreach ($listpaketwisata as $index => $row)
                         @if (is_array($row))
                             <button type="button"
                                 class="w-3 h-3 rounded-full {{ $index == 0 ? 'bg-white' : '' }}"
