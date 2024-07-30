@@ -138,7 +138,6 @@ class GuestController extends Controller
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.$id)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.$id)->collect();
         $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$id )->collect();
-        $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/desa/'.$id )->collect()->sortByDesc('createdAt')->take(3);
 
         $data = [
             'title'=>'',
@@ -147,15 +146,10 @@ class GuestController extends Controller
             'akomodasi'=>$akomodasi,
             'paket'=>$paket,
             'produk'=>$produk,
-            'informasi'=>$informasi,
-            'berita'=>$berita,
+            'informasi'=>$informasi
         ];
         return view('guest.detaildesa',$data);
     }
-
-
-
-
 
     public function destinasi($iddesa, $id)
     {
@@ -178,7 +172,6 @@ class GuestController extends Controller
         });
         $averageRating = $review->avg('rating');
 
-
         $page = request()->get('page', 1);
         $perPage = 5;
 
@@ -189,12 +182,12 @@ class GuestController extends Controller
             $page,
             ['path' => request()->url(), 'query' => request()->query()]
         );
-
+        
         // join destinasi kategori
         // Join destinasi with kategori destinasi if destinasi is a single item
         $kategoridestinasikey = $kategoridestinasi->keyBy('id');
-        $destinasi['kategori'] = $kategoridestinasikey[$destinasi['id_kategoridestinasi']];
-
+        $destinasi['kategori'] = $kategoridestinasikey[$destinasi['id_kategoridestinasi']];        
+        
         $data = [
             'title' => '',
             'desa' => $desa,
@@ -204,24 +197,18 @@ class GuestController extends Controller
             'fasilitas' => $fasilitas,
             'averageRating' =>$averageRating
         ];
+        
         return view('guest.destinasi', $data);
     }
 
     public function akomodasi($iddesa, $id)
     {
-        $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/desawisata/' . $iddesa)->collect();
         $akomodasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/akomodasi/' . $id)->collect();
-        $listakomodasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/akomodasi/desa/' . $iddesa)->collect();
-        $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$iddesa )->collect();
         $data = [
             'title' => '',
-            'desa' => $desa,
-            'listakomodasi' => $listakomodasi,
-            'informasi' => $informasi,
             'akomodasi' => $akomodasi,
         ];
         return view('guest.akomodasi', $data);
-
     }
     public function produk($iddesa, $id)
     {
@@ -229,7 +216,7 @@ class GuestController extends Controller
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/' . $id)->collect();
         $listproduk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . $iddesa)->collect();
         $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$iddesa )->collect();
-
+        
         $data = [
             'title' => '',
             'desa' => $desa,
@@ -239,19 +226,12 @@ class GuestController extends Controller
         ];
         return view('guest.produk', $data);
     }
-
     public function paket($iddesa, $id)
     {
-        $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/desawisata/' . $iddesa)->collect();
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/paketwisata/' . $id)->collect();
-        $listpaketwisata = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/paketwisata/desa/' . $iddesa)->collect();
-        $informasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/informasi/desa/'.$iddesa )->collect();
         $data = [
             'title' => '',
-            'desa' => $desa,
-            'listpaketwisata' => $listpaketwisata,
             'paket' => $paket,
-            'informasi' => $informasi,
         ];
         return view('guest.paket', $data);
     }
@@ -308,14 +288,7 @@ public function filterberita(Request $request) {
     public function berita(){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt');
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
-        
-        $akun = Http::get(env('APP_API_URL').'/akun')->collect();
-            $akunkey = $akun->keyBy('id');
 
-        $berita = $berita->map(function($item) use ($akunkey){
-            $item['akun'] = $akunkey->where('id',$item['id_akun']);
-            return $item;
-        });
         $data = [
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
@@ -326,12 +299,6 @@ public function filterberita(Request $request) {
      public function beritaId($id){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita/'.$id)->collect();
         $desa = Http::get(env('APP_API_URL').'/desawisata')->collect();
-        $akun = Http::get(env('APP_API_URL').'/akun')->collect();
-        $akunkey = $akun->keyBy('id');
-        $berita = $berita->map(function($item) use ($akunkey){
-            $item['akun'] = $akunkey->where('id',$item['id_akun']);
-            return $item;
-        });
 
         $data = [
             'berita'=>$berita,
