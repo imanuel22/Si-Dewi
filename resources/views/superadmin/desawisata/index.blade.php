@@ -52,13 +52,13 @@
                         <th scope="col" class=" w-3/12">
                             gambar
                         </th>
-                        <th scope="col" class=" w-2/12">
+                        <th scope="col" class=" w-3/12">
                             alamat
                         </th>
-                        <th scope="col" class="w-1/12 ">
+                        <th scope="col" class="w-3/12 ">
                             kategori
                         </th>
-                        <th scope="col" class="w-2/12 ">
+                        <th scope="col" class="w-1/12 ">
                             kabupaten
                         </th>
                         {{-- <th scope="col" class="">
@@ -79,15 +79,16 @@
                                 class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="   font-bold">
-                                {{ $row['nama'] }}
+                            <td class=" font-bold px-2 text-black text-lg">
+                                <p class="break-words ">  {{ $row['nama'] }}</p>
                             </td>
                             <td class=" p-4  justify-center flex">
                                 <img class="h-60" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class="   ">
-                                {{ $row['alamat'] }}
+                            <td class=" px-2  ">
+
+                                <p class="break-words">{{ $row['alamat'] }}</p>
                             </td>
                             <td class="   ">
                                 {{ $row['kategori'] }}
