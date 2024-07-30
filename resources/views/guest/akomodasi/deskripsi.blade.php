@@ -6,9 +6,9 @@
             </p>
         </div>
         <div class="star flex flex-col items-center">
-            <div class=" flex gap-1">
+            {{-- <div class=" flex gap-1">
                 <h2 class="text-center text-l mt-1 font-bold">Best Seller</h2>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="mt-10"><h1 class="text-xl font-semibold">Lokasi Desa</h1>

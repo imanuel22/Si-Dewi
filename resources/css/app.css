@@ -60,6 +60,22 @@
     animation: zoomIn 0.3s ease-out;
 }
 
+
+                    .horizontal-scroll::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .card {
+                        flex-shrink: 0;
+                        /* Prevent shrinking */
+
+                    }
+
+.horizontal-scroll {
+  transition: scroll-left 1s ease;
+    /* Smooth scroll transition */
+    }
+
 /* TEST */
 /* .h-screen {
     height: 100vh;

@@ -8,17 +8,9 @@
     <div class="p-4 mt-6 xl:mx-56 xl:px-0 ">
         <div class="gap-6 sm:flex">
             @include('guest.desa.deskripsi')
+
             <div class="sm:w-2/6 ">
                 @include('guest.desa.contact')
-                <div class="p-6 mt-6 mb-6 bg-white sm:mt-0 rounded-2xl">
-                    <ul>
-                        @foreach ($berita as $row)
-                            <li>
-                                <a href="artikel/{{ $row['id'] }}">{{ $row['judul'] }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
                 @include('guest.desa.map')
             </div>
         </div>
