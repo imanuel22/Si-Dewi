@@ -1,4 +1,4 @@
-<div class="hidden p-4 my-4 mt-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:block">
+<div class="lg:block p-4 my-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
     <h2 class="pb-2 font-bold widget-title">Recent posts</h2>
         <div class="pt-footer-recent-post">
             <div class="pt-footer-recent-post-media">

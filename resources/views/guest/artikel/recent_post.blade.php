@@ -3,8 +3,7 @@
         <div class="grid grid-cols-1 col-span-2 row-start-2 gap-4 mx-auto mb-10 md:w-full">
             @foreach ($berita as $row)
                 <a href="/artikel/{{ $row['id'] }}">
-                    <div
-                        class="bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700">
+                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <article class="">
                             <div class="border-black">
                                 <div class="">
@@ -24,5 +23,8 @@
                     </div>
                 </a>
             @endforeach
+            <div class="d">
+                {{ $berita->links() }}
 
+            </div>
         </div>

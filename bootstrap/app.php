@@ -18,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'role' => CheckRole::class,
+            'ADMIN' => AdminMiddleware::class,
+            'SUPERADMIN' => SuperadminMiddleware::class,
 
         ]);
 
