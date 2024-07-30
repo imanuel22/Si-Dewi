@@ -16,37 +16,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->get('accessToken')){
-            // abort(403);
-            return redirect('/login');
-        }
-        
-        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->json();
-        
-        if(!isset($response)){
-            // abort(403);
-            return redirect('/login');
-        }
-        
-        $e = explode('.',$request->session()->get('accessToken'));
-        $d = base64_decode($e[1]);
-        $id = json_decode($d)->id;
 
-        $response2 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$id)->json();
-        $response3 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$id)->json();
-        if(!isset($response3[0]['id_desawisata'])){
-            // abort(403);
+        if(!$request->session()->get('accessToken')){
             return redirect('/login');
         }
-        $request->session()->put([
-            'id'=>$response2['id'],
-            'nama'=>$response2['nama'],
-            'email'=>$response2['email'],
-            'foto'=>$response2['foto'],
-            'role'=>$response2['role'],
-            'id_desa'=>$response3[0]['id_desawisata']]
-        );
-    
+
         if($request->session()->get('role') == 'SUPERADMIN'){
             return redirect('/superadmin/dashboard');
         };

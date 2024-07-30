@@ -23,7 +23,7 @@
                     </div>
                 </a>
             @endforeach
-            <div class="">
+            <div class="d">
                 {{ $berita->links() }}
 
             </div>
