@@ -150,7 +150,7 @@ public function index(Request $request)
             return redirect('/superadmin/admindesa')->with('message','berhasil');
         }
         if($response->failed()){
-            return redirect('/superadmin/admindesa')->with('message',$response->message()->get());
+            return redirect('/superadmin/admindesa')->with('message','404');
         }
     }
 
