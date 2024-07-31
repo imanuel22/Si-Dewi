@@ -1,5 +1,4 @@
-<div
-    class="hidden p-4 my-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:block">
+<div class="hidden p-4 my-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:block">
     <h2 class="pb-2 font-bold widget-title">Recent posts</h2>
     @foreach ($recent as $row)
         <div class="pt-footer-recent-post">
@@ -12,7 +11,7 @@
                 <h6><a href="/artikel/{{ $row['id'] }}">{{ $row['judul'] }}</a>
                 </h6>
                 <a href="#" class="pt-post-date">
-                    <i class="far fa-calendar-alt"></i>{{ $row['createdAt'] }} </a>
+                    <i class="far fa-calendar-alt"></i>{{Str::limit($row['createdAt'], 10, ' ') }}  </a>
             </div>
         </div>
         <hr class="my-4">
