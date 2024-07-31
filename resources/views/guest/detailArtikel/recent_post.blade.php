@@ -5,7 +5,7 @@
                         <article class="">
                             <div class="bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700">
                                 <div class="">
-                                    <img class="h-64 w-full relative"
+                                    <img class="w-full relative"
                                         src="{{ env('APP_API_URL') }}/resource/berita/{{ $berita['gambar'] }}"
                                         alt="{{ $berita['judul'] }}">
                                 </div>

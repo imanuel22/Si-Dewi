@@ -27,7 +27,8 @@
     <script>
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
-            type: 'bar',
+
+            type: 'pie',
             data: {
                 labels: [
                     'Badung',
@@ -56,13 +57,13 @@
                     ],
                     borderWidth: 1,
                     hoverOffset: 5,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    },
+                    // options: {
+                    //     scales: {
+                    //         y: {
+                    //             beginAtZero: true
+                    //         }
+                    //     }
+                    // },
                 }]
             },
             options: {
