@@ -56,10 +56,10 @@ class AuthController extends Controller
     if ($response->successful()) {
         // Flush the session and redirect to the login page with a success message
         $request->session()->flush();
-        return redirect('/login')->with('message', 'Berhasil logout');
+        return redirect('/login');
     } elseif ($response->failed()) {
         // Redirect to the login page with a failure message
-        return redirect('/login')->with('message', 'Gagal logout');
+        return redirect('/login');
     }
 }
 

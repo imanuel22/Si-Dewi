@@ -324,7 +324,7 @@
                             <img src="{{ asset('img/dark-1.png') }}" class="w-1/3" alt="">
                         </div>
                     </div>
-                    <div class="flex gap-4">
+                    <div class="flex justify-center gap-4">
                         <img src="{{ asset('img/logo_notext.png') }}" class=" h-20 " alt="">
                         <img src="{{ asset('img/Play Store.png') }}" class=" h-20" alt="">
                     </div>

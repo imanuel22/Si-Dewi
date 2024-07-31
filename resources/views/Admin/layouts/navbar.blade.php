@@ -26,8 +26,8 @@
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
                             <div class="block relative ">
-                                <img class="object-cover rounded-full w-10" src="{{ env('APP_API_URL') }}/resource/akun/{{ $profile['foto'] }}"
-                                        alt="{{ $profile['nama'] }}">
+                                <img class="object-cover rounded-full w-10" src="{{ env('APP_API_URL') }}/resource/akun/{{ request()->session()->get('foto') }}"
+                                        alt="{{ request()->session()->get('nama') }}">
                             </div>
                         </button>
                     </div>

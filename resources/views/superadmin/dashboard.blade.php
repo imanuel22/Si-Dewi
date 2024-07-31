@@ -6,12 +6,20 @@
         <div class="flex justify-between">
             <h1 class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Dashboard</h1>
         </div>
-        <a href="#"
-            class="mt-10 block w-60 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Total Desa :
-                {{ $desa_count }}
-            </h5>
-        </a>
+        <div class="flex gap-6">
+            <div href="#"
+                class="mt-10 block w-60 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Total Desa :
+                    {{ $desa_count }}
+                </h5>
+            </div>
+            <div href="#"
+                class="mt-10 block w-60 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Total Destinasi :
+                    {{ $destinasi_count }}
+                </h5>
+            </div>
+        </div>
 
 
         {{-- <div class="">
@@ -25,23 +33,23 @@
             <p>count desa di Denpasar: {{ $desa_per_kabupaten['Denpasar'] }}</p>
             <p>count desa di Buleleng: {{ $desa_per_kabupaten['Buleleng'] }}</p>
         </div> --}}
-        <div class="grid sm:grid-cols-2 mt-10">
-            <div class="w-2/4">
+        <div class="grid grid-cols-3 w-full h-full gap-10 mt-10">
+            <div class="p-6 h-full   bg-white drop-shadow-xl rounded-xl">
                 <canvas id="myChart"></canvas>
             </div>
-            <div class="w-full">
-                <canvas id="myChart2"></canvas>
+            <div class=" p-6 col-span-2 bg-white drop-shadow-xl rounded-xl">
+                <canvas class="h-full" id="myChart2"></canvas>
             </div>
         </div>
-        <div class="grid sm:grid-cols-2 mt-10">
-            <div class="">
-                <h1 class="text-3xl font-semibold text-center my-5"  >Destinasi Dengan Review Terbaik</h1>
+        <div class="grid sm:grid-cols-3 mt-10 w-full h-full gap-10">
+            <div class="p-6 h-fit w-full col-span-2 bg-white drop-shadow-xl rounded-xl">
+                <h1 class="text-3xl font-semibold text-center my-5">Destinasi Dengan Review Terbaik</h1>
 
-                <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <div class=" grid grid-cols-1 gap-4 md:grid-cols-2">
 
                     @foreach ($review as $index => $row)
                         <a href="/desa/{{ $row['destination']['id_desawisata'] }}/destinasi/{{ $row['destination']['id'] }}"
-                            class="relative block text-white group" style="height:12rem">
+                            class="relative block text-white group" style="height:20rem">
                             <div class="relative flex items-end h-full transition-transform transform shadow-lg rounded-xl group-hover:-translate-y-2"
                                 style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}'); background-size: cover; background-position: center;">
                                 <div class="flex absolute p-1 m-2 text-xl font-bold text-yellow-500l top-5 right-5">
@@ -103,7 +111,7 @@
                                     </h3>
                                     <p
                                         class="mt-4 text-sm sm:text-base break-words w-full {{ $loop->first ? 'block' : 'hidden' }}">
-                                        {{ \Illuminate\Support\Str::limit($row['destination']['deskripsi'], 100) }}
+                                        {{ \Illuminate\Support\Str::limit($row['destination']['deskripsi'],30) }}
                                     </p>
                                     <p class="mt-4 font-bold">Read more</p>
                                 </div>
@@ -112,9 +120,9 @@
                     @endforeach
                 </div>
             </div>
-            <div class="">
+            <div class="p-6 h-full w-full  bg-white drop-shadow-xl rounded-xl">
                 <h1 class="text-3xl font-semibold text-center my-5">Berita Terbaru</h1>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 ">
+                <div class="grid grid-cols-1  gap-6 ">
                     <!-- Card 1 -->
                     @foreach ($berita as $row)
                         <a href="/artikel/{{ $row['id'] }}" class="relative block text-white group"
@@ -132,7 +140,7 @@
                                     class="absolute z-20 w-full p-4 transition-opacity opacity-0 group-hover:opacity-100 sm:p-6 lg:p-8">
                                     <h3 class="mt-4 text-xl font-medium sm:text-2xl">{{ $row['judul'] }}</h3>
                                     <p class="w-full mt-4 text-sm break-words sm:text-base">
-                                        {{ \Illuminate\Support\Str::limit($row['isi_berita'], 100) }}
+                                        {{ \Illuminate\Support\Str::limit($row['isi_berita'], 30) }}
                                     </p>
                                     <p class="mt-4 font-bold">Read more</p>
                                 </div>
@@ -230,13 +238,23 @@
                 }
             }
         });
-        </script>
+    </script>
     <script>
-        const bar = document.getElementById('myChart2');
+        const bar = document.getElementById('myChart2').getContext('2d');
         new Chart(bar, {
             type: 'bar',
             data: {
-
+                labels: [
+                    'Badung',
+                    'Bangli',
+                    'Jembrana',
+                    'Klungkung',
+                    'Karangasem',
+                    'Gianyar',
+                    'Tabanan',
+                    'Denpasar',
+                    'Buleleng',
+                ],
                 datasets: [{
                     label: 'Banyak Desa per Kabupaten',
                     data: [
@@ -249,33 +267,81 @@
                         {{ $desa_per_kabupaten['Tabanan'] }},
                         {{ $desa_per_kabupaten['Denpasar'] }},
                         {{ $desa_per_kabupaten['Buleleng'] }},
-
                     ],
-                    labels: [
-                        'Badung',
-                        'Bangli',
-                        'Jembrana',
-                        'Klungkung',
-                        'Karangasem',
-                        'Gianyar',
-                        'Tabanan',
-                        'Denpasar',
-                        'Buleleng',
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#FF9F40',
+                        '#4BC0C0',
+                        '#9966FF',
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
                     ],
-                    borderWidth: 1,
-                    hoverOffset: 5,
-                    // options: {
-                    //     scales: {
-                    //         y: {
-                    //             beginAtZero: true
-                    //         }
-                    //     }
-                    // },
+                    borderColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#FF9F40',
+                        '#4BC0C0',
+                        '#9966FF',
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                    ],
+                    borderWidth: 1
                 }]
             },
             options: {
-
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Banyak Desa per Kabupaten di Bali',
+                        font: {
+                            size: 18
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.raw !== null) {
+                                    label += context.raw;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Kabupaten'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Jumlah Desa'
+                        },
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
             }
         });
-    </script>
+        </script>
 @endsection
