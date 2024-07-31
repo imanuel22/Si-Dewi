@@ -19,7 +19,7 @@
                     </button>
                     <div class="relative hidden md:block">
                         <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                            <svg class="w-4 h-4 text-white dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -62,8 +62,8 @@
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="{{ url('/jelajahi') }}"
-                            class="block px-3 py-2 rounded  md:hover:bg-transparent">Desa Wisata</a>
+                        <a href="{{ url('/jelajahi') }}" class="block px-3 py-2 rounded  md:hover:bg-transparent">Desa
+                            Wisata</a>
                     </li>
                     <li>
                         <a href="{{ url('/artikel') }}"

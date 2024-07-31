@@ -27,48 +27,36 @@
             </button>
         </div>
     @endif
-
+    {{-- @dd($destinasi) --}}
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500">Destinasi Wisata / Ulasan</h2>
-
         <div class="flex justify-between">
-            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Wisata Tari Pendet</p>
+            <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Ulasan Destinasi
+                {{ $destinasi['nama'] }}</p>
         </div>
-
-        {{-- <h3>dibuat oleh desa {{ $destinasi['id_desawisata'] }}</h3> --}}
-        {{-- <p>type {{ $destinasi['id_kategoridestinasi'] }}</p> --}}
-        {{-- <div
-            class="mt-8 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-w-full overflow-hidden">
-            <img src="{{ $destinasi['gambar'] }}" alt="{{ $destinasi['nama'] }}" width="300" height="200"
-                class="block mx-auto">
-            <div class="mt-5 max-w-full">
-                <p class="break-words">{{ $destinasi['deskripsi'] }}</p>
-                <p class="flex justify-end">{{ $destinasi['updatedAt'] }}</p>
-            </div>
-        </div> --}}
-        <div class="relative overflow-x-auto mt-5">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
+        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
+            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="border">
+                        <th scope="col" class=" w-20">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/5">
                             akun
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/5">
                             rating
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="w-2/5">
                             review
                         </th>
-                        {{-- <th scope="col" class="px-6 py-3">
+                        {{-- <th scope="col" class="">
                             createdAt
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="">
                             updatedAt
                         </th> --}}
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/5 ">
                             Action
                         </th>
                     </tr>
@@ -81,9 +69,12 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4 text-center">
-                                {{ $row['akun']['nama'] }}
-                                {{ $row['akun']['foto'] }}
-
+                                <div class=" flex items-center justify-center gap-5">
+                                    <img class="h-10 w-10 rounded-full"
+                                        src="{{ env('APP_API_URL') }}/resource/akun/{{ $row['akun']['foto'] }}"
+                                        alt=" {{ $row['akun']['nama'] }}">
+                                    {{ $row['akun']['nama'] }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-center">
                                 {{ $row['rating'] }}

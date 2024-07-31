@@ -3,15 +3,15 @@
     @foreach ($recent as $row)
         <div class="pt-footer-recent-post">
             <div class="pt-footer-recent-post-media">
-                <a href="/artikel/{{ $row['id'] }}">
-                    <img src="{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}" alt="{{ $row['judul'] }}">
+                <a href="/artikel/{{ $row['id'] }}" class="h-80">
+                    <img class="h-full" src="{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}" alt="{{ $row['judul'] }}">
                 </a>
             </div>
             <div class="pt-footer-recent-post-info">
-                <h6><a href="/artikel/{{ $row['id'] }}">{{ $row['judul'] }}</a>
+                <h6 class="mt-2 text-xl text-left font-semibold"><a href="/artikel/{{ $row['id'] }}">{{ $row['judul'] }}</a>
                 </h6>
                 <a href="#" class="pt-post-date">
-                    <i class="far fa-calendar-alt"></i>{{Str::limit($row['createdAt'], 10, ' ') }}  </a>
+                    <i class="far fa-calendar-alt me-3"></i>{{Str::limit($row['createdAt'], 10, ' ') }}  </a>
             </div>
         </div>
         <hr class="my-4">
