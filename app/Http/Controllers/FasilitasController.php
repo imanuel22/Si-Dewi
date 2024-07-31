@@ -76,6 +76,7 @@ class FasilitasController extends Controller
     {
         $validatedData = $request->validate([
             'nama'=> 'required|string',
+            'id_destinasiwisata'=>'required'
         ]);
 
         $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/fasilitas/'.$id,$validatedData);
