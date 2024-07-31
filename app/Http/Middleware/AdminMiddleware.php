@@ -18,10 +18,14 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        $admindesa = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$request->session()->get('id'))->collect();
+        $admindesassss = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$request->session()->get('id'))->collect();
 
+
+        if(!isset($admindesassss[0])){
+            return redirect('/login');
+        }
         Session::put([
-            'id_desa'=>$admindesa[0]['id_desawisata'],
+            'id_desa'=>$admindesassss[0]['id_desawisata'],
         ]);
         if(!$request->session()->get('accessToken')){
             return redirect('/login');

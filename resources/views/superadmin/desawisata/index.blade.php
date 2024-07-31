@@ -30,29 +30,29 @@
 
 
     <div class="mx-4">
-        <h2 class="mb-3  font-bold tracking-tight text-gray-500 ">Desa / Table </h2>
+        <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Desa / Table </h2>
         <div class="flex justify-between">
-            <p class=" text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Table Desa Wisata
+            <p class="text-3xl font-semibold tracking-tight text-gray-900  dark:text-white"> Table Desa Wisata
             </p>
             <a href="/superadmin/desa/create"
                 class="text-white bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:ring-teal-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-200 darl:hover:bg-primary-100  dark:focus:ring-teal-200 focus:outline-none ">Tambah
                 +</a>
         </div>
 
-        <div class="relative overflow-x-auto mt-5 bg-white border-gray-200 rounded-lg shadow p-3">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
+        <div class="relative p-3 mt-5 overflow-x-auto bg-white border-gray-200 rounded-lg shadow">
+            <table id="myTable" class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="">
-                        <th scope="col" class="  w-20">
+                        <th scope="col" class="w-20 ">
                             No
                         </th>
-                        <th scope="col" class="  w-2/12 ">
+                        <th scope="col" class="w-2/12 ">
                             Nama
                         </th>
-                        <th scope="col" class=" w-3/12">
+                        <th scope="col" class="w-3/12 ">
                             gambar
                         </th>
-                        <th scope="col" class=" w-3/12">
+                        <th scope="col" class="w-3/12 ">
                             alamat
                         </th>
                         <th scope="col" class="w-3/12 ">
@@ -76,35 +76,35 @@
                     @foreach ($desawisata as $row)
                         <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900  whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class=" font-bold px-2 text-black text-lg">
+                            <td class="px-2 text-lg font-bold text-black ">
                                 <p class="break-words "> {{ $row['nama'] }}</p>
                             </td>
-                            <td class=" p-4  justify-center flex">
+                            <td class="flex justify-center p-4 ">
                                 <img class="h-60" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class=" px-2  ">
+                            <td class="px-2 ">
 
                                 <p class="break-words">{{ $row['alamat'] }}</p>
                             </td>
-                            <td class=" ">
+                            <td class="">
                                 @php
                                     $bgColor = 'bg-white';
                                     if ($row['kategori'] == 'Maju') {
                                         $bgColor =
-                                        'bg-green-100 text-green-800  font-medium rounded dark:bg-green-900 dark:text-green-300';
+                                            'bg-green-100 text-green-800  font-medium rounded dark:bg-green-900 dark:text-green-300';
                                     } elseif ($row['kategori'] == 'Rintisan') {
                                         $bgColor =
                                             'bg-yellow-100 text-yellow-800  font-medium  rounded dark:bg-yellow-900 dark:text-yellow-300';
                                     } elseif ($row['kategori'] == 'Mandiri') {
                                         $bgColor =
-                                        'bg-blue-100 text-blue-800  font-medium  rounded dark:bg-blue-900 dark:text-blue-300';
-                                    } else{
+                                            'bg-blue-100 text-blue-800  font-medium  rounded dark:bg-blue-900 dark:text-blue-300';
+                                    } else {
                                         $bgColor =
-                                        'bg-gray-100 text-gray-800  font-medium  rounded dark:bg-gray-900 dark:text-gray-300';
+                                            'bg-gray-100 text-gray-800  font-medium  rounded dark:bg-gray-900 dark:text-gray-300';
                                     }
                                 @endphp
                                 <div class="flex justify-center">
@@ -113,19 +113,19 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="  ">
+                            <td class="">
                                 {{ $row['kabupaten'] }}
                             </td>
-                            {{-- <td class=" ">
+                            {{-- <td class="">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class=" ">
+                            <td class="">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
-                            <td class="px-6  py-4 ">
+                            <td class="px-6 py-4 ">
                                 <div class="flex justify-center">
                                     {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
-                                    {{-- <a href="/superadmin/desa/{{ $row['id'] }}/edit"
+                                    <a href="/superadmin/desa/{{ $row['id'] }}/edit"
                                         class=" focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"><svg
                                             class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -135,7 +135,7 @@
                                             <path fill-rule="evenodd"
                                                 d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
                                                 clip-rule="evenodd" />
-                                        </svg></a> --}}
+                                        </svg></a>
 
                                     <form action="/superadmin/desa/{{ $row['id'] }}" method="post"
                                         onsubmit="return confirm('yakin')">

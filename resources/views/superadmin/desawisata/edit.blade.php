@@ -4,7 +4,7 @@
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Profil / Edit </h2>
         <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Edit Profil Desa </p>
-        <form class="mx-auto" action="/admin/profil-desa/{{ $desawisata['id'] }}" method="POST" enctype="multipart/form-data">
+        <form class="mx-auto" action="/superadmin/desa/{{ $desawisata['id'] }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div
@@ -79,7 +79,7 @@
                         <input type="text" value="{{ $desawisata['maps'], old('maps') }}" name="maps" id="maps"
                             class="mb-4 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" />
 
-                        <div class="z-0 relative flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-96"
+                        <div class="relative z-0 flex items-center justify-center w-full rounded bg-gray-50 dark:bg-gray-800 h-96"
                             id="Map">
                         </div>
                     </div>
