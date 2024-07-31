@@ -60,11 +60,7 @@ Route::middleware('guest')->group(function(){
 
 // ADMIN
 Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
-    Route::get('/dashboard', function(){
-        return view('admin.dashboard',[
-            'title'=>''
-        ]);
-    });
+    Route::get('/', [DesawisataController::class,'index']);
     Route::resource('/profil-desa',DesawisataController::class);
     Route::resource('/berita', BeritaController::class);
     Route::resource('/destinasi', DestinasiController::class);
@@ -73,9 +69,9 @@ Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
     Route::resource('/paket', PaketController::class);
     Route::resource('/review', ReviewController::class);
     Route::resource('/informasi', InformasiController::class);
-    Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
     // Route::put('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
     Route::resource('/fasilitas', FasilitasController::class);
+    // Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
 
 
 });

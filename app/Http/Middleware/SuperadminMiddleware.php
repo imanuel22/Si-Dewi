@@ -31,7 +31,7 @@ class SuperadminMiddleware
             return $response;
         };
         if($request->session()->get('role') == 'ADMIN'){
-            return redirect('/admin/dashboard');
+            return redirect('/admin/');
         };
         if($request->session()->get('role') == 'USER'){
             return redirect('/');
