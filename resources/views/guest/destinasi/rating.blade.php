@@ -33,9 +33,9 @@
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                             @php
                                 $rating = $row['rating'];
-                                $fullStars = floor($rating / 2);
-                                $halfStar = $rating % 2 >= 1 ? 1 : 0;
-                                $emptyStars = 5 - $fullStars - $halfStar;
+                                $fullStars = $rating;
+
+                                $emptyStars = 5 - $fullStars;
                             @endphp
                             {{-- Bintang Penuh --}}
                             @for ($i = 0; $i < $fullStars; $i++)
@@ -46,23 +46,6 @@
                                         d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                                 </svg>
                             @endfor
-
-                            {{-- Setengah Bintang --}}
-                            @if ($halfStar)
-                                <svg class="w-5 h-5 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <defs>
-                                        <linearGradient id="half-yellow-gray" x1="0" x2="1"
-                                            y1="0" y2="0">
-                                            <stop offset="50%" stop-color="#eab308" />
-                                            <stop offset="50%" stop-color="#9ca3af" />
-                                        </linearGradient>
-                                    </defs>
-                                    <path fill="url(#half-yellow-gray)"
-                                        d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
-                                </svg>
-                            @endif
-
                             {{-- Bintang Kosong --}}
                             @for ($i = 0; $i < $emptyStars; $i++)
                                 <svg class="w-5 h-5 text-gray-400 dark:text-gray-600" aria-hidden="true"

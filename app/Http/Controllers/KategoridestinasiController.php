@@ -16,7 +16,7 @@ class KategoridestinasiController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/kategoridestinasi/')->collect();
 
         return view('superadmin.kategoridestinasi.index',[
-            'title' => '',
+            'title' => 'admin -kategori destinasi',
             'kategoridestinasi'=>$response
         ]);
     }
@@ -27,7 +27,7 @@ class KategoridestinasiController extends Controller
     public function create()
     {
         return view('superadmin.kategoridestinasi.create',[
-            'title' => '',
+            'title' => 'admin -tambah kategori destinasi',
         ]);
     }
 
@@ -68,7 +68,7 @@ class KategoridestinasiController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/kategoridestinasi/'.$id)->collect();
         return view('superadmin.kategoridestinasi.edit',[
-            'title' => '',
+            'title' => 'admin -edit kategori destinasi',
             'kategoridestinasi'=>$response
         ]);
     }

@@ -22,7 +22,7 @@ class DashboardController extends Controller
         // $data = ['labels' => ,
         //     'data' => ,];
         $data = [
-            'title' => '',
+            'title' => 'admin -dashboard',
         ];
         return view('Admin.dashboard',compact('data'));
     }
@@ -34,7 +34,7 @@ class DashboardController extends Controller
             'desa'=>$response
         ]);
     }
-    
+
     public function desa(String $id){
         $desa = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->collect();
         $destinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/desa/'.$id)->collect();
@@ -97,7 +97,7 @@ class DashboardController extends Controller
         ]);
         return $this->paket($id_desa,$id_paket);
     }
-    
+
     public function produkcount(String $id_desa,String $id_produk){
         Produkcount::create([
             'id_produk'=>$id_produk,

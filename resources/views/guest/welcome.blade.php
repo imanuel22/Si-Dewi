@@ -317,16 +317,16 @@
         <div class="xl:mx-56 p-4 xl:px-0 mt-12 ">
             <div class="pb-10">
                 <h1 class="mb-10 text-4xl font-bold text-center ">Untuk pengalaman yang lebih baik</h1>
-                <div class="flex items-center justify-center">
-                    <div class="hidden sm:block ">
+                <div class="flex items-center justify-center w-full  gap-10">
+                    <div class="hidden xl:block mr-10 ">
                         <div class="flex justify-center gap-5">
-                            <img src="{{ asset('img/dark.png') }}" class="w-1/3" alt="">
-                            <img src="{{ asset('img/dark-1.png') }}" class="w-1/3" alt="">
+                            <img src="{{ asset('img/dark.png') }}" class="" alt="">
+                            <img src="{{ asset('img/dark-1.png') }}" class="" alt="">
                         </div>
                     </div>
                     <div class="flex justify-center gap-4">
-                        <img src="{{ asset('img/logo_notext.png') }}" class=" h-20 " alt="">
-                        <img src="{{ asset('img/Play Store.png') }}" class=" h-20" alt="">
+                        <img src="{{ asset('img/logo_notext.png') }}" class="hidden sm:block h-32 " alt="">
+                        <img src="{{ asset('img/Play Store.png') }}" class=" h-32" alt="">
                     </div>
                 </div>
             </div>
