@@ -13,7 +13,7 @@
             <div class="flex gap-1">
 
                 @php
-                    
+
                     // Asumsikan averageRating = 3.8
                     $rating = round($averageRating * 2) / 2; // Membulatkan ke 0.5 terdekat
                     $fullStars = floor($rating); // Mendapatkan jumlah bintang penuh

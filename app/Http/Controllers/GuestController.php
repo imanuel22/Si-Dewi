@@ -25,7 +25,7 @@ class GuestController extends Controller
             }
             return [
                 'reviews' => $reviews,
-                'averageRating' => $averageRating / 2,
+                'averageRating' => $averageRating ,
                 'destination' => $destination
             ];
         });
@@ -176,7 +176,7 @@ class GuestController extends Controller
         $averageRating = $review->avg('rating');
 
         $page = request()->get('page', 1);
-        $perPage = 5;
+        $perPage = 3;
 
         $reviewPaginated = new \Illuminate\Pagination\LengthAwarePaginator(
             $reviewjoinakun->forPage($page, $perPage),
