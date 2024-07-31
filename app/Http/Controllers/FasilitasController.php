@@ -13,7 +13,7 @@ class FasilitasController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -23,7 +23,7 @@ class FasilitasController extends Controller
     {
         return view('Admin.fasilitas.create',[
 
-            'title' => '',
+            'title' => 'petugas -tambah fasilitas',
             'id_destinasiwisata'=>$id
         ]);
     }
@@ -45,7 +45,7 @@ class FasilitasController extends Controller
                 } else {
                     return redirect('/admin/revifasilitasew/'.$request->id_destinasiwisata)->with('message','erorr system 500');
                 }
-        
+
     }
 
     /**
@@ -55,7 +55,7 @@ class FasilitasController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/fasilitas/destinasi/'.$id)->collect();
         return view('Admin.fasilitas.show',[
-            'title' => '',
+            'title' => 'petugas -fasilitas',
             'fasilitas'=>$response,
             'id_destinasiwisata'=>$id,
         ]);
@@ -73,7 +73,7 @@ class FasilitasController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, String $id)
-    {   
+    {
         // $validatedData = $request->validate([
         //     'setujui'=> 'numeric'
         // ]);

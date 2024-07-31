@@ -16,13 +16,14 @@ class DesawisataController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata')->collect();
         // if(Desawisata::all()->toArray()!=$response){
         //     Desawisata::truncate();
-        //     for ($i=0; $i < count($response); $i++) { 
+        //     for ($i=0; $i < count($response); $i++) {
         //         Desawisata::create($response[$i]);
         //     }
         // }
         // $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
+            'title' => 'admin -desa wisata',
             'desawisata'=> $response
         ]);
     }
@@ -67,24 +68,24 @@ class DesawisataController extends Controller
         } else {
             return redirect('/superadmin/desa')->with('message','erorr system 500');
         }
-        
+
     }
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
-    {   
+    {
         if(request()->session()->get('id_desa') != $id){
             abort(403);
         }
-        
+
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->json();
         $response2 = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/desa/'.$id)->json();
-        
+
         // dd($response2[0]);
         return view('Admin.desa.show',[
-            'title' => '',
+            'title' => 'desa wisata',
             'desa'=>$response,
             'informasi'=>$response2,
         ]);
@@ -94,7 +95,7 @@ class DesawisataController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {   
+    {
         if(request()->session()->get('id_desa') != $id){
             abort(403);
         }
@@ -102,7 +103,7 @@ class DesawisataController extends Controller
         // dd($response);
         return view('superadmin.desawisata.edit',[
             'desawisata'=>$response,
-            'title'=>'desawisata'
+            'title'=>'edit desawisata'
         ]);
     }
 
@@ -129,7 +130,7 @@ class DesawisataController extends Controller
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
-       
+
         if($_FILES['gambar']['error'] === 4){
             $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
         }else{

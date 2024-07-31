@@ -22,7 +22,7 @@ class InformasiController extends Controller
     public function create()
     {
         return view('Admin.informasi.create',[
-            'title' => '',
+            'title' => 'petugas -tambah contact & social media',
         ]);
     }
 
@@ -43,7 +43,7 @@ class InformasiController extends Controller
         $validatedData['id_desawisata'] = $request->session()->get('id_desa');
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
-        
+
         $response = Http::withToken($request->session()->get('accessToken'))->post(env('APP_API_URL').'/informasi/add',$validatedData);
 
         if($response->successful()){
@@ -72,7 +72,7 @@ class InformasiController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/'.$id)->collect();
         // dd($response);
         return view('Admin.informasi.edit',[
-            'title' => '',
+            'title' => 'petugas -edit contact & social media',
             'informasi'=>$response,
         ]);
 
@@ -93,7 +93,7 @@ class InformasiController extends Controller
         ]);
         $validatedData['id_desawisata'] = $request->session()->get('id_desa');
         $validatedData['updatedAt'] = now();
-        
+
         $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/informasi/'.$id,$validatedData);
         if($response->successful()){
             return redirect('/admin/profil-desa/'.$request->session()->get('id_desa'))->with('message','berhasil menambahkan');

@@ -16,7 +16,7 @@ class ProdukController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . request()->session()->get('id_desa'))->collect();
 
         return view('Admin.produk.index', [
-            'title' => '',
+            'title' => 'petugas -produk',
             'produk' => $response
         ]);
     }
@@ -27,7 +27,7 @@ class ProdukController extends Controller
     public function create()
     {
         return view('Admin.produk.create',[
-            'title' => '',
+            'title' => 'petugas -tambah produk',
         ]);
     }
 
@@ -80,7 +80,7 @@ class ProdukController extends Controller
             abort(403);
         }
         return view('Admin.produk.edit', [
-            'title' => '',
+            'title' => 'petugas -edit produk',
             'produk' => $response
         ]);
     }

@@ -69,7 +69,7 @@ class ReviewController extends Controller
     return view('Admin.review.show', [
         'review' => $reviewsWithAccountData,
         'destinasi' => $destinasi,
-        'title' => '',
+        'title' => 'petugas -review destinasi',
     ]);
     }
 

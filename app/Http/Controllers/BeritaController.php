@@ -14,7 +14,7 @@ class BeritaController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/desa/' . request()->session()->get('id_desa'))->collect();
         return view('Admin.berita.index', [
-            'title' => '',
+            'title' => 'Petugas -berita',
             'berita' => $response,
         ]);
     }
@@ -25,7 +25,7 @@ class BeritaController extends Controller
     public function create()
     {
         return view('Admin.berita.create',[
-            'title' => '',
+            'title' => 'petugas -tambah berita',
         ]);
     }
 
@@ -70,7 +70,7 @@ class BeritaController extends Controller
             abort(403);
         }
         return view('Admin.berita.show', [
-            'title' => '',
+            'title' => 'petugas -berita',
             'berita' => $response,
         ]);
     }
@@ -85,7 +85,7 @@ class BeritaController extends Controller
             abort(403);
         }
         return view('Admin.berita.edit', [
-            'title' => '',
+            'title' => 'petugas -update berita',
             'berita' => $response
         ]);
 

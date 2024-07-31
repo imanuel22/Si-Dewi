@@ -15,7 +15,7 @@ class AkunController extends Controller
     {
         $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
         return view('superadmin.akun.index',[
-            'title' => '',
+            'title' => 'admin-akun',
             'akun'=>$response
         ]);
     }
@@ -26,7 +26,7 @@ class AkunController extends Controller
     public function create()
     {
         return view('superadmin.akun.create',[
-            'title' => '',
+            'title' => 'admin-tambah akun',
         ]);
     }
 
@@ -35,7 +35,7 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([ 
+        $validatedData = $request->validate([
             'nama'=>'required',
             'no_telp'=>'required',
             'password'=>'required',
@@ -50,7 +50,7 @@ class AkunController extends Controller
         $response = Http::attach(
             'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
         )->post(env('APP_API_URL').'/akun/add',$validatedData);
-        
+
         if($response->successful()){
             return redirect('/superadmin/akun')->with('message',$response->reason());
         }elseif ($response->failed()) {
@@ -58,7 +58,7 @@ class AkunController extends Controller
         } else {
             return redirect('/superadmin/akun')->with('message',$response->reason());
         }
-        
+
     }
 
     /**
@@ -66,7 +66,7 @@ class AkunController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -74,7 +74,7 @@ class AkunController extends Controller
      */
     public function edit(string $id)
     {
-        
+
     }
 
     /**
@@ -83,6 +83,7 @@ class AkunController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
+            'title'=>'admin-edit akun',
             'nama'=>'string',
             'no_telp'=>'string',
             'email'=>'string|email',
@@ -91,7 +92,7 @@ class AkunController extends Controller
 
         if(!$request['foto']){
             $validatedData['foto'] = $request['fotoOld'];
-        } 
+        }
 
         $validatedData['updatedAt'] = now();
         // dd($request,$id,$validatedData);
@@ -131,7 +132,7 @@ class AkunController extends Controller
     public function profile(){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'))->collect();
         return view('profile',[
-            'title' => '',
+            'title' => 'profile',
             'profile'=>$response
         ]);
     }
@@ -142,8 +143,8 @@ class AkunController extends Controller
             'newpassword'=>'required',
             'repeatpassword'=>'required',
             ]);
-            
-            
+
+
             $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
         if(!password_verify($request['oldpassword'],$response['password'])){
             return false;

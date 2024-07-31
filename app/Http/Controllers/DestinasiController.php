@@ -11,7 +11,7 @@ class DestinasiController extends Controller
     /**
      * Display a listing of the resource.
      */
- 
+
  public function index()
 {
     $accessToken = request()->session()->get('accessToken');
@@ -49,7 +49,7 @@ class DestinasiController extends Controller
 
 
     return view('Admin.destinasi.index', [
-        'title' => '',
+        'title' => 'petugas -destinasi',
         'destinasi' => $destinasi,
     ]);
 }
@@ -62,7 +62,7 @@ class DestinasiController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi/')->collect();
         return view('Admin.destinasi.create', [
-            'title' => '',
+            'title' => 'petugas -tambah destinasi',
             'kategoridesawisata' => $response,
         ]);
     }
@@ -121,6 +121,7 @@ class DestinasiController extends Controller
             abort(403);
         }
         return view('Admin.destinasi.edit', [
+            'title' => 'petugas - edit destinasi',
             'destinasi' => $response
         ]);
     }

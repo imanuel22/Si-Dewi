@@ -25,11 +25,11 @@ public function index(Request $request)
 
 
     return view('superadmin.admindesa.index', [
-        'title' => '',
+        'title' => 'admin-akunpetugas',
         'admindesa' => $admindesajoin1,
         'akun'=>$response_1,
         'desawisata'=>$response_2,
-    
+
     ]);
 }
 
@@ -41,7 +41,7 @@ public function index(Request $request)
     {
 
         return view('superadmin.admindesa.create',[
-        'title' => '',
+        'title' => 'admin-tambah petugas',
 
         ]);
 
@@ -126,7 +126,7 @@ public function index(Request $request)
     public function edit(string $id)
     {
         return view('superadmin.admindesa.edit',[
-                    'title' => '',
+                    'title' => 'admin-edit petugas',
 
         ]);
 

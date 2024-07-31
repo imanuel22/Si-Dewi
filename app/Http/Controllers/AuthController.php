@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth.login',[
-            'title' => '',
+            'title' => 'login',
         ]);
     }
 
@@ -26,12 +26,12 @@ class AuthController extends Controller
 
         $response = Http::post(env('APP_API_URL').'/akun/login', $request);
 
-        
+
         if ($response->getStatusCode() == 200) {
             $body = $response->getBody();
             $token = json_decode($body, true);
             Session::put('accessToken', $token);
-            
+
             return redirect('/superadmin/dashboard')->with('success', 'Login successful.');
         } else {
             return redirect()->back()->with('error', 'Login failed.');
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
 
 
-    
+
 
     public function logout(Request $request) {
     $accessToken = $request->session()->get('accessToken');

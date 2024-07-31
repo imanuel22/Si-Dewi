@@ -16,7 +16,7 @@ class AkomodasiController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/akomodasi/desa/' . request()->session()->get('id_desa'))->collect();
 
         return view('Admin.akomodasi.index', [
-                    'title' => '',
+                    'title' => 'petugas-akomodasi',
             'akomodasi' => $response
         ]);
     }
@@ -27,7 +27,7 @@ class AkomodasiController extends Controller
     public function create()
     {
         return view('Admin.akomodasi.create',[
-            'title' => '',
+            'title' => 'petugas-tambah akomodasi',
         ]);
     }
 
@@ -79,7 +79,7 @@ class AkomodasiController extends Controller
             abort(403);
         }
         return view('Admin.akomodasi.edit', [
-            'title' => '',
+            'title' => 'petugas-edit akomodasi',
             'akomodasi' => $response
         ]);
     }
