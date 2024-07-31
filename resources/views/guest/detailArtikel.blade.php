@@ -9,7 +9,6 @@
             {{-- side --}}
             <div class="grid grid-cols-1 row-start-2">
                 <aside class="sidebar">
-                    @include('guest.detailArtikel.filter')
                     @include('guest.detailArtikel.side')
                 </aside>
             </div>

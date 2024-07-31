@@ -1,11 +1,11 @@
 <div class="px-36 mt-4">
     <div class="grid grid-cols-3 gap-4">
         <div class="grid grid-cols-1 col-span-2 row-start-2 gap-4 mx-auto mb-10">
-                    <div class="bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700">
+                    <div class=>
                         <article class="">
-                            <div class="border-black">
+                            <div class="bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700">
                                 <div class="">
-                                    <img width="1200"
+                                    <img class="w-full relative"
                                         src="{{ env('APP_API_URL') }}/resource/berita/{{ $berita['gambar'] }}"
                                         alt="{{ $berita['judul'] }}">
                                 </div>
@@ -19,7 +19,7 @@
                                             </a>
                                         </div>
                                         <div class="">
-                                            <a href="#" class="pt-post-date mr-1">
+                                            <a href="#" class="pt-post-date">
                                                 <i class="far fa-calendar-alt mr-1 mb-3"></i>
                                                 {{Str::limit($berita['createdAt'], 10, ' ') }} 
                                             </a>

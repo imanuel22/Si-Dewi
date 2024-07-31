@@ -7,7 +7,7 @@
             {{-- artikel start --}}
             @include('guest.artikel.recent_post')
             {{-- side --}}
-            <div class="grid grid-cols-1 row-start-2 md:w-5/6 mt-4 md:mx-8">
+            <div class="grid grid-cols-1 row-start-2 md:w-5/6 mt-1 md:mx-8">
                 <aside class="sidebar">
                     @include('guest.artikel.filter')
                     @include('guest.artikel.side')

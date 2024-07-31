@@ -129,7 +129,7 @@ class AkunController extends Controller
     }
 
     public function profile(){
-        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'));
+        $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'))->collect();
         return view('profile',[
             'title' => '',
             'profile'=>$response
