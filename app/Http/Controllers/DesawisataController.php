@@ -23,6 +23,7 @@ class DesawisataController extends Controller
         // $datadesa=Desawisata::all();
 
         return view('superadmin.desawisata.index',[
+            'title' => '',
             'desawisata'=> $response
         ]);
     }
@@ -33,6 +34,7 @@ class DesawisataController extends Controller
     public function create()
     {
         return view('superadmin.desawisata.create',[
+            'title' => '',
             // 'desawisata'=> $response
         ]);
     }
