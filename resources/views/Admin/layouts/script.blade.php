@@ -81,12 +81,12 @@
             },
             table: 'dataTable min-w-full text-sm align-middle whitespace-nowrap',
             thead: {
-                row: ' ',
-                cell: ' border  px-3 py-4 text-gray-900 bg-gray-100/75 font-semibold text-left dark:text-gray-50 dark:bg-gray-700/25'
+                row: '  dark:border-gray-700/50',
+                cell: 'border px-3 py-4 text-gray-900 bg-gray-100/75 font-semibold text-left dark:text-gray-50 dark:bg-gray-700/25 text-center'
             },
             tbody: {
                 row: '',
-                cell: 'border'
+                cell: 'border text-center'
             },
             tfoot: {
                 row: 'even:bg-gray-50 dark:even:bg-gray-900/50',

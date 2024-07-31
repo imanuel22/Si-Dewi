@@ -1,18 +1,17 @@
 @extends('guest.layouts.main')
 
 @section('main')
-    <div class="container-fluid ">
-        {{-- content Start --}}
-        <div class="container-fluid mx-auto">
-            {{-- artikel start --}}
+<div class="xl:mx-56 p-4 xl:px-0">
+    <div class="drop-shadow text-justify mx-auto">
+        <div class="sm:flex gap-8 ">
+            {{-- Deskripsi Destinasi --}}
             @include('guest.artikel.recent_post')
-            {{-- side --}}
-            <div class="grid grid-cols-1 row-start-2 md:w-5/6 mt-1 md:mx-8">
-                <aside class="sidebar">
-                    @include('guest.artikel.filter')
-                    @include('guest.artikel.side')
-                </aside>
+            {{-- Card Kanan --}}
+            <div class="mb-2 mt-16 sm:w-1/5 ">
+                @include('guest.artikel.filter')
+                @include('guest.artikel.side')
             </div>
         </div>
     </div>
+</div>
 @endsection
