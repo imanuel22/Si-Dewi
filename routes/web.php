@@ -60,7 +60,6 @@ Route::middleware('guest')->group(function(){
 
 // ADMIN
 Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
-    Route::get('/', [DesawisataController::class,'index']);
     Route::resource('/profil-desa',DesawisataController::class);
     Route::resource('/berita', BeritaController::class);
     Route::resource('/destinasi', DestinasiController::class);
