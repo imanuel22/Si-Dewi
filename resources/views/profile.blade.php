@@ -7,7 +7,7 @@
 
 @section('main')
     <div
-        class="grid grid-cols-5 grid-rows-1 gap-6 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 ">
+        class="lg:flex gap-6 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 ">
         <div class="content-center col-span-1">
             <div class="relative block">
                 <a class="flex justify-center">
@@ -16,7 +16,7 @@
                 </a>
             </div>
         </div>
-        <div class="content-center col-span-4">
+        <div class="content-center col-span-4 w-full">
             <div class="">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Profile </p>
                 <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
@@ -92,7 +92,7 @@
                                     <label for="nama"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                                     <input type="text"value="{{ $profile['nama'] }}" name="nama" id="nama"
-                                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                        class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         required />
                                 </div>
                                 <div class="mb-5">
@@ -101,13 +101,13 @@
                                         Telephone</label>
                                     <input type="text" value="{{ $profile['no_telp'] }}" name="no_telp" id="no_telp"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                                        required />
+                                        required />y
                                 </div>
                             </div>
                             <div class="mb-5">
                                 <label for="email"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email"value="{{ $profile['email'] }}" name="email" id="email"
+                                <input type="email" value="{{ $profile['email'] }}" name="email" id="email"
                                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                                     placeholder="name@flowbite.com" required />
                             </div>
@@ -227,7 +227,7 @@
             </div>
         </div>
     </div>
-    {{-- 
+    {{--
     <p>edit password</p>
     <form class="max-w-sm mx-auto" action="/profile/password/{{$profile['id']}}" method="POST">
         @csrf

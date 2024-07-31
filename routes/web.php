@@ -35,7 +35,7 @@ Route::middleware('guest')->group(function(){
         // Route::get('/filter',[GuestController::class,'filterberita'])->name('artikel.filter');
         Route::get('/{id_artikel}',[GuestController::class,'beritaId']);
     });
-    
+
 
 
     Route::get('/home',[DashboardController::class,'home']);
@@ -60,7 +60,7 @@ Route::middleware('guest')->group(function(){
 
 // ADMIN
 Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
-    Route::get('/dashboard', function(){
+    Route::get('/profil-desa', function(){
         return view('admin.dashboard',[
             'title'=>''
         ]);

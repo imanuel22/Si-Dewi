@@ -194,18 +194,18 @@
             button.addEventListener('click', function() {
                 var form = this.closest('.delete-form');
                 swalWithTailwindButtons.fire({
-                    title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    title: "Yakin menghapus data?",
+                    text: "Data yang sudah dihapus tidak bisa dikembalikan!",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "No, cancel!",
+                    cancelButtonText: "Tidak, batal!",
+                    confirmButtonText: "Ya, hapus!",
                     reverseButtons: true
                 }).then((result) => {
                     if (result.isConfirmed) {
                         swalWithTailwindButtons.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Data telah dihapus.",
                             icon: "success"
                         }).then(() => {
                             form.submit();
@@ -213,7 +213,7 @@
                     } else if (result.dismiss === Swal.DismissReason.cancel) {
                         swalWithTailwindButtons.fire({
                             title: "Cancelled",
-                            text: "Your imaginary file is safe :)",
+                            text: "Data batal dihapus",
                             icon: "error"
                         });
                     }

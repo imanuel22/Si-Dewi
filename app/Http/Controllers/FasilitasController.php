@@ -37,6 +37,7 @@ class FasilitasController extends Controller
                 'nama'=> 'required',
                 'id_destinasiwisata'=>'required'
             ]);
+        dd($request);
             $response = Http::post(env('APP_API_URL').'/fasilitas/add',$validatedData);
                 if($response->successful()){
                     return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','berhasil mengupdate');
