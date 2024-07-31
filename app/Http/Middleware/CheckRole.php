@@ -32,6 +32,10 @@ class CheckRole
         if (!$user && $user['role'] !== $role) {
             return redirect('/login');
         }
+        if($user === null){
+            return redirect('/login');
+
+        }
         
 
         Session::put([
