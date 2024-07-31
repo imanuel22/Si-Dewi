@@ -90,7 +90,7 @@
         </div> --}}
         <!-- Login Form for larger screens -->
         <div
-            class="hidden m-10 bg-opacity-90 rounded-3xl sm:flex z-10 items-center shadow-lg justify-center bg-white rounded sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            class="hidden m-10 bg-opacity-90 rounded-3xl sm:flex z-10 items-center shadow-lg justify-center bg-white sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div class="w-full max-w-lg mx-7">
                 <p class="mx-1 mb-24 -mt-24 text-6xl font-semibold text-gray-900 font-poppins dark:text-white">Login</p>
                 <form class="mt-7" action="/dologin" method="POST">
@@ -134,7 +134,7 @@
         </div>
 
         <!-- Login Form for smaller screens -->
-        <div class="block sm:hidden z-10 absolute inset-0 flex items-center justify-center m-5">
+        <div class="sm:hidden z-10 absolute inset-0 flex items-center justify-center m-5">
             <div class="w-full max-w-lg bg-white bg-opacity-80 p-5 rounded-3xl">
                 <p class="mb-8 text-4xl font-semibold text-gray-900 font-poppins dark:text-white">Login</p>
                 <form action="/dologin" method="POST">

@@ -2,6 +2,7 @@
     <div class="grid grid-cols-3 gap-4">
         <div class="grid grid-cols-1 col-span-2 row-start-2 gap-4 mx-auto mb-10 md:w-full">
             @foreach ($berita as $row)
+                    <div>
                         <a href="/artikel/{{ $row['id'] }}">
                         <article class="">
                             <div class="bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 mb-4">
@@ -20,13 +21,8 @@
                             </div>
                         </a>
                         </article>
+                    </div>
+                </a>
             @endforeach
-<<<<<<< HEAD
             {{ $berita->links() }}
-=======
-            <div class="d">
-                {{ $berita->links() }}
-
-            </div>
->>>>>>> cd0c20a1b7e7d70f53cae2ba9e010a937d082702
         </div>
