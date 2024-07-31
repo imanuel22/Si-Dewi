@@ -13,7 +13,6 @@ class FasilitasController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -33,6 +32,7 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validatedData = $request->validate([
                 'nama'=> 'required',
                 'id_destinasiwisata'=>'required'
