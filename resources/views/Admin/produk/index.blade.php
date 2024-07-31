@@ -39,7 +39,7 @@
                 +</a>
         </div>
         <div class="relative p-3 mt-5 overflow-x-auto bg-white border-gray-200 rounded-lg shadow">
-            <table id="myTable" class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400 table-fixed">
+            <table id="myTable" class="w-full text-sm text-left text-gray-500 table-fixed rtl:text-right dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                     <tr class="border">
                         <th scope="col" class="w-12 px-6 py-3 text-center">No</th>
@@ -55,24 +55,24 @@
                     <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
                         <td class="px-6 py-4 text-center">
-                            <p class="break-words font-bold text-black whitespace-normal">{{ $row['nama'] }}</p>
+                            <p class="font-bold text-black break-words whitespace-normal">{{ $row['nama'] }}</p>
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <img class="h-60 w-full object-cover" src="{{ env('APP_API_URL') }}/resource/produk/{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
+                            <img class="object-cover w-full h-60" src="{{ env('APP_API_URL') }}/resource/produk/{{ $row['gambar'] }}" alt="{{ $row['gambar'] }}">
                         </td>
                         <td class="px-6 py-4">
                             <p class="break-words whitespace-normal">{{ \Illuminate\Support\Str::limit($row['deskripsi'], 800) }}</p>
                         </td>
-                        <td class="px-6 py-4 text-center font-semibold text-black">{{ $row['harga'] }}</td>
+                        <td class="px-6 py-4 font-semibold text-center text-black">{{ $row['harga'] }}</td>
                         <td class="px-6 py-4">
                             <div class="flex justify-center">
-                                <a href="/admin/paket/{{ $row['id'] }}/edit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
+                                <a href="/admin/produk/{{ $row['id'] }}/edit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">
                                     <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd" d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z" clip-rule="evenodd"/>
                                         <path fill-rule="evenodd" d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z" clip-rule="evenodd"/>
                                     </svg>
                                 </a>
-                                <form action="/admin/paket/{{ $row['id'] }}" method="post" class="delete-form">
+                                <form action="/admin/produk/{{ $row['id'] }}" method="post" class="delete-form">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 delete-button">

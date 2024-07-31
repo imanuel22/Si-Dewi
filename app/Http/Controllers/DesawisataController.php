@@ -34,6 +34,7 @@ class DesawisataController extends Controller
     public function create()
     {
         return view('superadmin.desawisata.create',[
+            'title' => '',
             // 'desawisata'=> $response
             'title' => 'admin -tambah desa wisata',
         ]);
