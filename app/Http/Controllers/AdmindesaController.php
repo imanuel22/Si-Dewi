@@ -125,6 +125,7 @@ public function index(Request $request)
      */
     public function edit(string $id)
     {
+        
         return view('superadmin.admindesa.edit',[
                     'title' => 'admin-edit petugas',
 
@@ -137,7 +138,18 @@ public function index(Request $request)
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'id_akun' => 'required',
+            'id_desawisata' => 'required',
+        ]);
+        $response = Http::patch(env('APP_API_URL').'/admindesa/'.$id,$validatedData);
+
+        if($response->successful()){
+            return redirect('/superadmin/admindesa')->with('message','berhasil');
+        }
+        if($response->failed()){
+            return redirect('/superadmin/admindesa')->with('message','gagal');
+        }
     }
 
     /**
