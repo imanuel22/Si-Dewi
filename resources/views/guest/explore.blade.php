@@ -1,4 +1,4 @@
-@extends('guest.layouts.main')
+@extends('guest.layouts.exsplore')
 @section('main')
     <div class="flex  mb-10">
 {{-- Filter --}}

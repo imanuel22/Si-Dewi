@@ -3,17 +3,17 @@
 @section('main')
     <div class="bg-white h-full">
         <!-- Gambar Latar Belakang -->
-        <div class="inset-0 bg-black opacity-50 mix-blend-screen"></div>
+
         <div class="relative w-full">
             <img src="{{ asset('img/klungkung2.jpg') }}" class="object-cover w-full h-screen md:h-[calc(100vh-200px)]"
                 alt="">
             <div
-                class="absolute top-0  flex xl:mx-56 p-4 xl:px-0 flex-col justify-center -mt-20   h-full  py-10 text-white poppins-bold space-y-4 ">
-                <h1 class="text-4xl  md:text-7xl">EXPLORE BALI</h1>
-                <h1 class="text-2xl  md:text-6xl">WHERE CULTURE MEETS PARADISE</h1>
-                <div class=" flex justify-end  sm:-mr-64">
+                class="absolute top-0  flex xl:mx-56 p-4 xl:px-0 flex-col justify-center    h-full  py-10 text-white poppins-bold space-y-4 ">
+                <h1 class="text-7xl">EXPLORE BALI</h1>
+                <h1 class="text-6xl">WHERE CULTURE MEETS PARADISE</h1>
+                <div class=" flex justify-end 2xl:-mr-64">
                     <a href="/jelajahi"
-                        class="inline-block text-lg mt-10 px-6 py-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 rounded-full text-center">
+                        class="inline-block font-semibold text-lg mt-10 px-6 py-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 rounded-full text-center">
                         Explore
                     </a>
                 </div>

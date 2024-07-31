@@ -1,4 +1,4 @@
-<div class="sticky hidden w-1/6 h-full pb-2 bg-white rounded-t-none top-20 md:block rounded-r-2xl drop-shadow">
+<div class="sticky hidden md:w-2/6 lg:w-1/6 h-full pb-2 bg-white rounded-t-none top-20 md:block rounded-r-2xl drop-shadow">
     <div class="py-8 ">
         <form class="formfilter" action="{{ route('jelajahi.filter') }}" method="GET">
             <div class="px-4  mb-3">
