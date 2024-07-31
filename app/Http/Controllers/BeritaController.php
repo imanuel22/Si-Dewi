@@ -96,16 +96,15 @@ class BeritaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         $validatedData = $request->validate([
-            'judul' => 'required|max:25',
-            'isi_berita' => 'required',
+            'judul' => 'required',
+            'isi_berita' => 'required|string',
             'gambar' => 'image|file',
         ]);
         if (!$request['gambar']) {
             $validatedData['gambar'] = $request['gambarOld'];
         }
-
+        
         $validatedData['updatedAt'] = now();
 
         if ($_FILES['gambar']['error'] === 4) {
@@ -117,13 +116,12 @@ class BeritaController extends Controller
                 $_FILES['gambar']['name']
             )->patch(env('APP_API_URL') . '/berita/' . $id, $validatedData);
         }
-
         if ($response->successful()) {
-            return redirect('/admin/berita/' . $id)->with('message', 'berhasil mengupdate');
+            return redirect('/admin/berita/')->with('message', 'berhasil mengupdate');
         } elseif ($response->failed()) {
-            return redirect('/admin/berita/' . $id)->with('message', 'gagal mengupdate');
+            return redirect('/admin/berita/')->with('message', 'gagal mengupdate');
         } else {
-            return redirect('/admin/berita/' . $id)->with('message', 'erorr system 500');
+            return redirect('/admin/berita/')->with('message', 'erorr system 500');
         }
     }
 

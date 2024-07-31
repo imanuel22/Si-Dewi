@@ -3,7 +3,7 @@
 @section('main')
     @if (session()->has('message'))
         <div id="toast-success"
-            class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 fixed bottom-14 right-14 opacity-0 transform translate-y-4 transition-all duration-500 ease-in-out"
+            class="fixed flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 transition-all duration-500 ease-in-out transform translate-y-4 bg-white rounded-lg shadow opacity-0 dark:text-gray-400 dark:bg-gray-800 bottom-14 right-14"
             role="alert">
             <div
                 class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -14,7 +14,7 @@
                 </svg>
                 <span class="sr-only">Check icon</span>
             </div>
-            <div class="ms-3 text-sm font-normal">{{ session('message') }}</div>
+            <div class="text-sm font-normal ms-3">{{ session('message') }}</div>
             <button type="button"
                 class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-dismiss-target="#toast-success" aria-label="Close">
@@ -38,16 +38,16 @@
         {{-- <h3>dibuat oleh desa {{ $destinasi['id_desawisata'] }}</h3> --}}
         {{-- <p>type {{ $destinasi['id_kategoridestinasi'] }}</p> --}}
         {{-- <div
-            class="mt-8 mb-5 block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 max-w-full overflow-hidden">
+            class="block max-w-full p-6 mt-8 mb-5 overflow-hidden bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <img src="{{ $destinasi['gambar'] }}" alt="{{ $destinasi['nama'] }}" width="300" height="200"
                 class="block mx-auto">
-            <div class="mt-5 max-w-full">
+            <div class="max-w-full mt-5">
                 <p class="break-words">{{ $destinasi['deskripsi'] }}</p>
                 <p class="flex justify-end">{{ $destinasi['updatedAt'] }}</p>
             </div>
         </div> --}}
-        <div class="relative overflow-x-auto mt-5">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div class="relative mt-5 overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -97,11 +97,12 @@
                             <td class="px-6 py-4">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
-                            <td class="px-6 py-4 flex justify-center">
+                            <td class="flex justify-center px-6 py-4">
                                 {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
                                 <form action="/admin/review/{{ $row['id'] }}" method="post">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{ $row['id_destinasiwisata'] }}">
+                                    <input type="hidden" name="id_destinasiwisata"
+                                        value="{{ $row['id_destinasiwisata'] }}">
                                     @method('PATCH')
                                     <button type="submit" onclick="confirm('yakin')" name="setujui" value="1"
                                         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900"><svg
@@ -118,6 +119,8 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="3" d="M6 18 17.94 6M18 18 6.06 6" />
                                         </svg>
+                                        <input type="hidden" name="id_destinasiwisata"
+                                            value="{{ $row['id_destinasiwisata'] }}">
                                     </button>
                                 </form>
                             </td>
