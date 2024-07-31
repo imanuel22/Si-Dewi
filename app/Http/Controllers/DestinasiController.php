@@ -103,9 +103,11 @@ class DestinasiController extends Controller
     public function show(string $id)
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/' . $id)->collect();
+        $response1 = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi/')->collect();
 
         return view('Admin.destinasi.show', [
-            'destinasi' => $response
+            'destinasi' => $response,
+            'kategoridesawisata' => $response1,
         ]);
 
     }
@@ -116,13 +118,18 @@ class DestinasiController extends Controller
     public function edit(string $id)
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/destinasiwisata/' . $id)->collect();
+        $response1 = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi/')->collect();
 
+        $kategoriKey = $response1->keyBy('id');
+        $response['kategori'] = $kategoriKey[$response['id_kategoridestinasi']];
         if (request()->session()->get('id_desa') != $response['id_desawisata']) {
             abort(403);
         }
         return view('Admin.destinasi.edit', [
             'title' => 'petugas - edit destinasi',
-            'destinasi' => $response
+            'destinasi' => $response,
+                        'kategoridesawisata' => $response1,
+
         ]);
     }
 
