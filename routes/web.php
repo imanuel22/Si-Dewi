@@ -89,5 +89,4 @@ Route::prefix('/superadmin')->middleware(['role:SUPERADMIN','SUPERADMIN'])->grou
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/admindesa', AdmindesaController::class);
     Route::resource('/kategoridestinasi', KategoridestinasiController::class);
-
 });
