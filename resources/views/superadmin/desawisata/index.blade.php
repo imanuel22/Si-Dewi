@@ -43,31 +43,31 @@
             <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs  text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400">
                     <tr class="">
-                        <th scope="col" class="px-6 py-3 text-center  w-12">
+                        <th scope="col" class="  w-20">
                             No
                         </th>
-                        <th scope="col" class=" px-6 py-3 text-center w-44 ">
+                        <th scope="col" class="  w-2/12 ">
                             Nama
                         </th>
-                        <th scope="col" class=" px-6 py-3 text-center">
+                        <th scope="col" class=" w-3/12">
                             gambar
                         </th>
-                        <th scope="col" class="  px-6 py-3 text-center">
+                        <th scope="col" class=" w-3/12">
                             alamat
                         </th>
-                        <th scope="col" class=" px-6 py-3 text-center">
+                        <th scope="col" class="w-3/12 ">
                             kategori
                         </th>
-                        <th scope="col" class=" px-6 py-3 text-center">
+                        <th scope="col" class="w-1/12 ">
                             kabupaten
                         </th>
-                        {{-- <th scope="col" class="px-6 py-3 text-center">
+                        {{-- <th scope="col" class="">
                             createdAt
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="">
                             updatedAt
                         </th> --}}
-                        <th scope="col" class=" px-6 py-3 text-center">
+                        <th scope="col" class="w-1/12 ">
                             Action
                         </th>
                     </tr>
@@ -79,26 +79,27 @@
                                 class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class=" px-6 py-4 text-center">
-                                {{ $row['nama'] }}
+                            <td class=" font-bold px-2 text-black text-lg">
+                                <p class="break-words ">  {{ $row['nama'] }}</p>
                             </td>
-                            <td class=" px-6 py-4 text-center justify-center flex">
-                                <img class="h-40" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
+                            <td class=" p-4  justify-center flex">
+                                <img class="h-60" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
                             </td>
-                            <td class="  px-6 py-4 text-center">
-                                {{ $row['alamat'] }}
+                            <td class=" px-2  ">
+
+                                <p class="break-words">{{ $row['alamat'] }}</p>
                             </td>
-                            <td class="  px-6 py-4 text-center">
+                            <td class="   ">
                                 {{ $row['kategori'] }}
                             </td>
-                            <td class=" px-6 py-4 text-center">
+                            <td class="  ">
                                 {{ $row['kabupaten'] }}
                             </td>
-                            {{-- <td class="px-6 py-4 text-center">
+                            {{-- <td class=" ">
                                 {{ $row['createdAt'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class=" ">
                                 {{ $row['updatedAt'] }}
                             </td> --}}
                             <td class="px-6  py-4 ">

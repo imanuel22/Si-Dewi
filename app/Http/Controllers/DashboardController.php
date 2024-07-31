@@ -21,12 +21,16 @@ class DashboardController extends Controller
         // }
         // $data = ['labels' => ,
         //     'data' => ,];
+        $data = [
+            'title' => '',
+        ];
         return view('Admin.dashboard',compact('data'));
     }
 
     public function home(){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata')->collect();
         return view('guest.home',[
+            'title' => '',
             'desa'=>$response
         ]);
     }
@@ -37,6 +41,7 @@ class DashboardController extends Controller
         $paket = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/desa/'.$id)->collect();
         $produk = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/desa/'.$id)->collect();
         return view('guest.desa',[
+            'title' => '',
             'desa'=>$desa,
             'destinasi'=>$destinasi,
             'paket'=>$paket,
@@ -47,6 +52,7 @@ class DashboardController extends Controller
     public function destinasi(String $id_desa,String $id_destinasi){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/'.$id_destinasi)->collect();
         return view('guest.destinasi',[
+            'title' => '',
             'destinasi'=>$response
         ]);
     }
@@ -54,6 +60,7 @@ class DashboardController extends Controller
     public function paket(String $id_desa,String $id_paket){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/paketwisata/'.$id_paket)->collect();
         return view('guest.paket',[
+            'title' => '',
             'paket'=>$response
         ]);
     }
@@ -61,6 +68,7 @@ class DashboardController extends Controller
     public function produk(String $id_desa,String $id_produk){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/produk/'.$id_produk)->collect();
         return view('guest.produk',[
+            'title' => '',
             'produk'=>$response
         ]);
     }

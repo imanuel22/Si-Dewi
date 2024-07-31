@@ -1,6 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     /*! DataTables Tailwind CSS integration
      */
@@ -82,11 +83,11 @@
             table: 'dataTable min-w-full text-sm align-middle whitespace-nowrap',
             thead: {
                 row: '  dark:border-gray-700/50',
-                cell: 'border px-3 py-4 text-gray-900 bg-gray-100/75 font-semibold text-left dark:text-gray-50 dark:bg-gray-700/25'
+                cell: 'border px-3 py-4 text-gray-900 bg-gray-100/75 font-semibold text-left dark:text-gray-50 dark:bg-gray-700/25 text-center'
             },
             tbody: {
                 row: '',
-                cell: 'border'
+                cell: 'border text-center'
             },
             tfoot: {
                 row: 'even:bg-gray-50 dark:even:bg-gray-900/50',

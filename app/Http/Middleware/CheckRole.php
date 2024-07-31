@@ -42,7 +42,7 @@ class CheckRole
             'role'=>$user['role'],
             'no_telp'=>$user['no_telp'],
         ]);
-
+        
         return $next($request);
     }
 }

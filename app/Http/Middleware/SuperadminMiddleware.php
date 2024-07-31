@@ -25,25 +25,6 @@ class SuperadminMiddleware
             return redirect('/login');
         }
         
-        $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->json();
-        
-        if(!$response){
-            return redirect('/login');
-            // abort(403);
-        }
-        
-        $e = explode('.',$request->session()->get('accessToken'));
-        $d = base64_decode($e[1]);
-        $id = json_decode($d)->id;
-
-        $response2 = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$id)->json();
-        $request->session()->put([
-            'id'=>$response2['id'],
-            'nama'=>$response2['nama'],
-            'email'=>$response2['email'],
-            'foto'=>$response2['foto'],
-            'role'=>$response2['role'],]
-        );
 
         if($request->session()->get('role') == 'SUPERADMIN'){
             $response=$next($request);

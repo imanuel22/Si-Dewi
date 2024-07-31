@@ -15,6 +15,7 @@ class AkunController extends Controller
     {
         $response = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun')->collect();
         return view('superadmin.akun.index',[
+            'title' => '',
             'akun'=>$response
         ]);
     }
@@ -25,7 +26,7 @@ class AkunController extends Controller
     public function create()
     {
         return view('superadmin.akun.create',[
-            // 'akun'=> $response
+            'title' => '',
         ]);
     }
 
@@ -130,6 +131,7 @@ class AkunController extends Controller
     public function profile(){
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.request()->session()->get('id'))->collect();
         return view('profile',[
+            'title' => '',
             'profile'=>$response
         ]);
     }

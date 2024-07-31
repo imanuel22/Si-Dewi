@@ -1,20 +1,15 @@
 <div class="hidden  rounded-lg  bg-white p-6 dark:bg-gray-800 " id="styled-profile" role="tabpanel"
                 aria-labelledby="profile-tab">
-                <header class=" pt-3  ">
-                    <h2 class="text-4xl font-bold ">Destinasi Wisata</h2>
-                    <p class="my-4 max-w-5xl ">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
-                        dicta incidunt est ipsam, officia dolor fugit natus?
-                    </p>
-                </header>
+                @if($destinasi->isNotEmpty())
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     @foreach ($destinasi as $row)
                         <a href="/desa/{{ $row['id_desawisata'] }}/destinasi/{{ $row['id'] }}"
-                            class="group relative block text-white">
-                            <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2"
+                            class="group relative block text-white ">
+                            <div class="relative flex h-96 transform items-end transition-transform group-hover:-translate-y-2 rounded-2xl "
                                 style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['gambar'] }}'); background-size: cover; background-position: center;">
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-20 transition-opacity group-hover:opacity-50">
+                                    class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-20 transition-opacity group-hover:opacity-50 rounded-2xl">
                                 </div>
                                 <div
                                     class="p-4 !pt-0 z-10 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
@@ -32,4 +27,9 @@
                         </a>
                     @endforeach
                 </div>
+                @else
+                <header class=" pt-3  ">
+                    <h2 class="text-3xl text-gray-600 font-semibold text-center">Tidak ada destinasi yang tersedia</h2>
+                </header>
+                @endif
             </div>

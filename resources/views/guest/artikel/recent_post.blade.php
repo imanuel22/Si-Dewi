@@ -21,5 +21,12 @@
                         </a>
                         </article>
             @endforeach
+<<<<<<< HEAD
             {{ $berita->links() }}
+=======
+            <div class="d">
+                {{ $berita->links() }}
+
+            </div>
+>>>>>>> cd0c20a1b7e7d70f53cae2ba9e010a937d082702
         </div>

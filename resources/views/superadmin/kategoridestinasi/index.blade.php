@@ -1,3 +1,6 @@
+@php
+   use Carbon\Carbon;
+@endphp
 @extends('superadmin.layouts.main')
 
 @section('main')
@@ -37,44 +40,52 @@
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</button>
         </div>
-        <div class="relative overflow-x-auto mt-5 border border-gray-200 rounded-lg shadow">
-            <table id="myTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
+        <div class="relative p-3 mt-5 overflow-x-auto bg-white border-gray-200 rounded-lg shadow">
+            <table id="myTable" class="w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400 table-fixed">
+                <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="">
+                        <th scope="col" class="w-12 ">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/4 text-center">
                             Nama
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/4 text-center">
                             createdAt
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/4 text-center">
                             updatedAt
                         </th>
-                        <th scope="col" class="px-6 py-3 text-center">
+                        <th scope="col" class="w-1/4 text-center">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($kategoridestinasi as $row)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white  dark:bg-gray-800">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class=" font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4 text-center">
+                            <td class=" text-center">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="px-6 py-4 text-center">
-                                {{ $row['createdAt'] }}
+                            @php
+                            $created = Carbon::parse($row['createdAt']);
+                            $updated = Carbon::parse($row['updatedAt']);
+                            $formattedCreatedAt = $created->format('d F Y, H:i');
+                            $formattedUpdatedAt = $updated->format('d F Y, H:i');
+                        @endphp
+
+                            <td class=" text-center">
+                                {{ $formattedCreatedAt }}
                             </td>
-                            <td class="px-6 py-4 text-center">
-                                {{ $row['updatedAt'] }}
+                            <td class=" text-center">
+                                {{ $formattedUpdatedAt }}
                             </td>
-                            <td class="px-6 py-4 flex justify-center">
+                            <td class="py-4 ">
+                                <div class="flex justify-center items-center">
                                 {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
                                 <a href="/superadmin/kategoridestinasi/{{ $row['id'] }}/edit"
                                     class=" focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"><svg
@@ -100,6 +111,7 @@
                                                 clip-rule="evenodd" />
                                         </svg></button>
                                 </form>
+                            </div>
                             </td>
                         </tr>
                     @endforeach
@@ -108,13 +120,13 @@
         </div>
         <div id="crud-modal" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full zoom-in">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                            Tambah Fasilitas
+                            Tambah Kategori
                         </h3>
                         <button type="button"
                             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"

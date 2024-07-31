@@ -1,4 +1,4 @@
-<div class="md:w-5/6 mt-8 mx-6 md:mx-8">
+<div class="md:w-4/6 xl:w-5/6 mt-8 mx-6 md:mx-8">
     @if ($desa)
         <div class="hidden desa">
             <div class=" grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

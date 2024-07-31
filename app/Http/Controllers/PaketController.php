@@ -16,6 +16,7 @@ class PaketController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/paketwisata/desa/' . request()->session()->get('id_desa'))->collect();
 
         return view('Admin.paket.index', [
+            'title' => '',
             'paket' => $response
         ]);
     }
@@ -25,7 +26,9 @@ class PaketController extends Controller
      */
     public function create()
     {
-        return view('Admin.paket.create');
+        return view('Admin.paket.create',[
+            'title' => '',
+        ]);
     }
 
     /**
@@ -77,6 +80,7 @@ class PaketController extends Controller
             abort(403);
         }
         return view('Admin.paket.edit', [
+            'title' => '',
             'paket' => $response
         ]);
     }

@@ -49,6 +49,7 @@ class DestinasiController extends Controller
 
 
     return view('Admin.destinasi.index', [
+        'title' => '',
         'destinasi' => $destinasi,
     ]);
 }
@@ -61,6 +62,7 @@ class DestinasiController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/kategoridestinasi/')->collect();
         return view('Admin.destinasi.create', [
+            'title' => '',
             'kategoridesawisata' => $response,
         ]);
     }
