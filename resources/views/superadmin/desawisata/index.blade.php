@@ -80,7 +80,7 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class=" font-bold px-2 text-black text-lg">
-                                <p class="break-words ">  {{ $row['nama'] }}</p>
+                                <p class="break-words "> {{ $row['nama'] }}</p>
                             </td>
                             <td class=" p-4  justify-center flex">
                                 <img class="h-60" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
@@ -90,8 +90,28 @@
 
                                 <p class="break-words">{{ $row['alamat'] }}</p>
                             </td>
-                            <td class="   ">
-                                {{ $row['kategori'] }}
+                            <td class=" ">
+                                @php
+                                    $bgColor = 'bg-white';
+                                    if ($row['kategori'] == 'Maju') {
+                                        $bgColor =
+                                        'bg-green-100 text-green-800  font-medium rounded dark:bg-green-900 dark:text-green-300';
+                                    } elseif ($row['kategori'] == 'Rintisan') {
+                                        $bgColor =
+                                            'bg-yellow-100 text-yellow-800  font-medium  rounded dark:bg-yellow-900 dark:text-yellow-300';
+                                    } elseif ($row['kategori'] == 'Mandiri') {
+                                        $bgColor =
+                                        'bg-blue-100 text-blue-800  font-medium  rounded dark:bg-blue-900 dark:text-blue-300';
+                                    } else{
+                                        $bgColor =
+                                        'bg-gray-100 text-gray-800  font-medium  rounded dark:bg-gray-900 dark:text-gray-300';
+                                    }
+                                @endphp
+                                <div class="flex justify-center">
+                                    <div class="{{ $bgColor }} p-4 rounded-3xl w-52 ">
+                                        {{ $row['kategori'] }}
+                                    </div>
+                                </div>
                             </td>
                             <td class="  ">
                                 {{ $row['kabupaten'] }}

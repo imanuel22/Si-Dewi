@@ -79,7 +79,7 @@
                             </td>
                             <td class="py-4">
                                 <div class="flex justify-center">
-                                    <img class="max-h-40 w-40 rounded-full"
+                                    <img class="h-40 w-40 rounded-full"
                                         src="{{ env('APP_API_URL') }}/resource/akun/{{ $row['foto'] }}"
                                         alt="{{ $row['nama'] }}">
                                 </div>
