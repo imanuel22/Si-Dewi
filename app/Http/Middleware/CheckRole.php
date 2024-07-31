@@ -19,6 +19,8 @@ class CheckRole
             return redirect('/login');
         }
 
+       
+
         $explode = explode('.',$api_token);
         $decode = base64_decode($explode[1]);
         $userdata = json_decode($decode);
@@ -32,7 +34,7 @@ class CheckRole
         if (!$user && $user['role'] !== $role) {
             return redirect('/login');
         }
-        if($user === null){
+        if(!isset($user['id'])){
             return redirect('/login');
 
         }

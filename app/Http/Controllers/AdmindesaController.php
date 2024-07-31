@@ -23,6 +23,7 @@ public function index(Request $request)
         return $item;
     });
 
+// dd($admindesajoin1);
 
     return view('superadmin.admindesa.index', [
         'title' => 'admin-akunpetugas',
@@ -125,7 +126,7 @@ public function index(Request $request)
      */
     public function edit(string $id)
     {
-        
+
         return view('superadmin.admindesa.edit',[
                     'title' => 'admin-edit petugas',
 
