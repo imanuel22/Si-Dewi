@@ -10,12 +10,17 @@
             <div
                 class="absolute top-0  flex xl:mx-56 p-4 xl:px-0 flex-col justify-center    h-full  py-10 text-white poppins-bold space-y-4 ">
                 <h1 class="text-6xl">EKSPLORASI KEINDAHAN ALAM </h1>
-                <h1 class="text-5xl">DAN WARISAN BUDAYA YANG MEMPESONA </h1>
-                <div class=" flex justify-end 2xl:-mr-64">
+                <h1 class="text-6xl">DAN WARISAN BUDAYA YANG MEMPESONA </h1>
+                <div class=" flex justify-end 2xl:-mr-28">
                     <a href="/jelajahi"
-                        class="inline-block font-semibold text-lg mt-10 px-6 py-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 rounded-full text-center">
+                        class="flex gap-3 font-semibold text-lg mt-10 px-6 py-3 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 rounded-full text-center">
                         Jelajahi
+                        <svg class="w-7 h-7 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                          </svg>
                     </a>
+
+
                 </div>
             </div>
         </div>

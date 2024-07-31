@@ -31,7 +31,7 @@
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Fasilitas / Table </h2>
         <div class="flex justify-between">
-            <h1 class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Fasilitas Destinasi Wisata</h1>
+            <h1 class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Fasilitas  {{ $destinasi['nama'] }}</h1>
             <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                 +</button>
