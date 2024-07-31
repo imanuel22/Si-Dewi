@@ -33,6 +33,7 @@ class GuestController extends Controller
 
         $data = [
             'berita'=>$berita,
+            'title' => '',
             'review'=>$top5Reviews,
         ];
         return view('guest.welcome',$data);
@@ -89,6 +90,7 @@ class GuestController extends Controller
 
 
     return view('guest.explore', [
+        'title' => '',
         'kode'=>$kode,
         'desa' => $desaPaginated,
         'destinasi' => $destinasiPaginated,
@@ -300,6 +302,7 @@ public function filterberita(Request $request) {
         );
 
     $data = [
+        'title' => '',
         'berita' => $beritaPaginated,
         'selectedKabupaten' => $selectedKabupaten,
         'recent' => $recent,
@@ -334,6 +337,7 @@ public function filterberita(Request $request) {
         $recent =Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(5);
 
         $data = [
+            'title' => '',
             'berita'=>$berita,
             'selectedKabupaten' => request()->kabupaten ?? [],
             'recent' => $recent,

@@ -84,6 +84,7 @@ class DesawisataController extends Controller
         
         // dd($response2[0]);
         return view('Admin.desa.show',[
+            'title' => '',
             'desa'=>$response,
             'informasi'=>$response2,
         ]);

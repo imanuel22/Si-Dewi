@@ -34,6 +34,7 @@ class SuperadminController extends Controller
         $top5Reviews = $reviewdes->sortByDesc('averageRating')->take(3);
 
         $data = [
+            'title' => '',
             'berita'=>$berita,
             'review'=>$top5Reviews,
             'desa'=>$desa,

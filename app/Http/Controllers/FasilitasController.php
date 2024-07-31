@@ -22,6 +22,8 @@ class FasilitasController extends Controller
     public function create(String $id)
     {
         return view('Admin.fasilitas.create',[
+
+            'title' => '',
             'id_destinasiwisata'=>$id
         ]);
     }
@@ -53,6 +55,7 @@ class FasilitasController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/fasilitas/destinasi/'.$id)->collect();
         return view('Admin.fasilitas.show',[
+            'title' => '',
             'fasilitas'=>$response,
             'id_destinasiwisata'=>$id,
         ]);
