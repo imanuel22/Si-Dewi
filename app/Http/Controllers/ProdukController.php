@@ -16,6 +16,7 @@ class ProdukController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/produk/desa/' . request()->session()->get('id_desa'))->collect();
 
         return view('Admin.produk.index', [
+            'title' => '',
             'produk' => $response
         ]);
     }
@@ -25,7 +26,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('Admin.produk.create');
+        return view('Admin.produk.create',[
+            'title' => '',
+        ]);
     }
 
     /**
@@ -77,6 +80,7 @@ class ProdukController extends Controller
             abort(403);
         }
         return view('Admin.produk.edit', [
+            'title' => '',
             'produk' => $response
         ]);
     }

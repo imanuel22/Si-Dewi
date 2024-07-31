@@ -21,7 +21,9 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        return view('Admin.informasi.create');
+        return view('Admin.informasi.create',[
+            'title' => '',
+        ]);
     }
 
     /**
@@ -70,6 +72,7 @@ class InformasiController extends Controller
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/informasi/'.$id)->collect();
         // dd($response);
         return view('Admin.informasi.edit',[
+            'title' => '',
             'informasi'=>$response,
         ]);
 

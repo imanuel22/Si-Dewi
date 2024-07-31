@@ -34,11 +34,15 @@ class SuperadminController extends Controller
         $top5Reviews = $reviewdes->sortByDesc('averageRating')->take(3);
 
         $data = [
+            'title' => '',
             'berita'=>$berita,
             'review'=>$top5Reviews,
             'desa'=>$desa,
             'desa_count'=>$desa->count(),
             'desa_per_kabupaten'=>$desaPerKabupaten,
+            'destinasi'=>$destinations,
+            'destinasi_count'=>$destinations->count(),
+
         ];
         return view('superadmin.dashboard',$data);
     }

@@ -14,6 +14,7 @@ class BeritaController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL') . '/berita/desa/' . request()->session()->get('id_desa'))->collect();
         return view('Admin.berita.index', [
+            'title' => '',
             'berita' => $response,
         ]);
     }
@@ -23,7 +24,9 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('Admin.berita.create');
+        return view('Admin.berita.create',[
+            'title' => '',
+        ]);
     }
 
     /**
@@ -67,6 +70,7 @@ class BeritaController extends Controller
             abort(403);
         }
         return view('Admin.berita.show', [
+            'title' => '',
             'berita' => $response,
         ]);
     }
@@ -81,6 +85,7 @@ class BeritaController extends Controller
             abort(403);
         }
         return view('Admin.berita.edit', [
+            'title' => '',
             'berita' => $response
         ]);
 
