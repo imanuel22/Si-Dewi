@@ -39,6 +39,9 @@ class SuperadminController extends Controller
             'desa'=>$desa,
             'desa_count'=>$desa->count(),
             'desa_per_kabupaten'=>$desaPerKabupaten,
+            'destinasi'=>$destinations,
+            'destinasi_count'=>$destinations->count(),
+
         ];
         return view('superadmin.dashboard',$data);
     }
