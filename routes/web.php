@@ -61,7 +61,9 @@ Route::middleware('guest')->group(function(){
 // ADMIN
 Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
     Route::get('/dashboard', function(){
-        return view('admin.dashboard');
+        return view('admin.dashboard',[
+            'title'=>''
+        ]);
     });
     Route::resource('/profil-desa',DesawisataController::class)->only(['show','edit','update']);
     Route::resource('/berita', BeritaController::class);
