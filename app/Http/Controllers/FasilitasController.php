@@ -54,10 +54,12 @@ class FasilitasController extends Controller
     public function show(String $id)
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/fasilitas/destinasi/'.$id)->collect();
+        $destinasi = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/destinasiwisata/'.$id)->collect();
         return view('Admin.fasilitas.show',[
             'title' => 'petugas -fasilitas',
             'fasilitas'=>$response,
             'id_destinasiwisata'=>$id,
+            'destinasi'=>$destinasi,
         ]);
     }
 
