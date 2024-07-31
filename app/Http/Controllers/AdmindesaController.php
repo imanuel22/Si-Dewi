@@ -143,7 +143,7 @@ public function index(Request $request)
             'id_akun' => 'required',
             'id_desawisata' => 'required',
         ]);
-        $validatedData['updatedAt'] = now();
+
         $response = Http::patch(env('APP_API_URL').'/admindesa/'.$id,$validatedData);
 
         if($response->successful()){

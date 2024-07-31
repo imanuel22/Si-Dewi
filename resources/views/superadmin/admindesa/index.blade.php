@@ -224,10 +224,10 @@
                                             <select id="id_akun" name="id_akun"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 @if (isset($row['id_akun']))
-                                                    <option hidden value="{{ $row['id_akun'] }}">
+                                                    <option selected hidden value="{{ $row['id_akun'] }}">
                                                         {{ $row['akun']['nama'] }}</option>
                                                 @else
-                                                    <option hidden value="">Pilih Akun</option>
+                                                    <option selected hidden value="">Pilih Akun</option>
                                                 @endif
                                                 @foreach ($akun as $akunItem)
                                                     <option value="{{ $akunItem['id'] }}">{{ $akunItem['nama'] }}
@@ -245,10 +245,10 @@
                                             <select id="id_desawisata" name="id_desawisata"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 @if (isset($row['id_desawisata']))
-                                                    <option hidden value="{{ $row['id_desawisata'] }}">
+                                                    <option selected hidden value="{{ $row['id_desawisata'] }}">
                                                         {{ $row['desa']['nama'] }}</option>
                                                 @else
-                                                    <option hidden value="">Pilih Desa Wisata</option>
+                                                    <option selected hidden value="">Pilih Desa Wisata</option>
                                                 @endif
                                                 @foreach ($desawisata as $desaItem)
                                                     <option value="{{ $desaItem['id'] }}">{{ $desaItem['nama'] }}

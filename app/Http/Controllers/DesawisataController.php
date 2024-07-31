@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Desawisata;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -98,9 +99,7 @@ class DesawisataController extends Controller
      */
     public function edit(string $id)
     {
-        if(request()->session()->get('id_desa') != $id){
-            abort(403);
-        }
+       
         $response = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/desawisata/'.$id)->collect();
         // dd($response);
         return view('superadmin.desawisata.edit',[
@@ -114,9 +113,6 @@ class DesawisataController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(request()->session()->get('id_desa') != $id){
-            abort(403);
-        }
         $validatedData = $request->validate([
             'nama'=>'required|max:255',
             'alamat'=>'required|max:255',
@@ -141,13 +137,25 @@ class DesawisataController extends Controller
             )->patch(env('APP_API_URL').'/desawisata/'.$id,$validatedData);
         }
 
-        if($response->successful()){
-            return redirect('/admin/profil-desa/'.$id)->with('message','berhasil mengupdate');
-        }elseif ($response->failed()) {
-            return redirect('/admin/profil-desa/'.$id)->with('message','gagal mengupdate');
-        } else {
-            return redirect('/admin/profil-desa/'.$id)->with('message','erorr system 500');
+        if($request->session()->get('role')=='ADMIN'){
+            if($response->successful()){
+                return redirect('/admin/profil-desa/'.$id)->with('message','berhasil mengupdate');
+            }elseif ($response->failed()) {
+                return redirect('/admin/profil-desa/'.$id)->with('message','gagal mengupdate');
+            } else {
+                return redirect('/admin/profil-desa/'.$id)->with('message','erorr system 500');
+            }
         }
+        if($request->session()->get('role')=='SUPERADMIN'){
+            if($response->successful()){
+                return redirect('/superadmin/desa/')->with('message','berhasil mengupdate');
+            }elseif ($response->failed()) {
+                return redirect('/superadmin/desa/')->with('message','gagal mengupdate');
+            } else {
+                return redirect('/superadmin/desa/')->with('message','erorr system 500');
+            }
+        }
+
     }
 
     /**

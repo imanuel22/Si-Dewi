@@ -65,7 +65,7 @@ Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
             'title'=>''
         ]);
     });
-    Route::resource('/profil-desa',DesawisataController::class)->only(['show','edit','update']);
+    Route::resource('/profil-desa',DesawisataController::class);
     Route::resource('/berita', BeritaController::class);
     Route::resource('/destinasi', DestinasiController::class);
     Route::resource('/akomodasi', AkomodasiController::class);
@@ -87,7 +87,7 @@ Route::get('/admin/event', function () {
 Route::prefix('/superadmin')->middleware(['role:SUPERADMIN','SUPERADMIN'])->group(function(){
     Route::get('/dashboard',[SuperadminController::class,'index']);
     Route::resource('/akun', AkunController::class);
-    Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
+    Route::resource('/desa', DesawisataController::class);
     Route::resource('/admindesa', AdmindesaController::class);
     Route::resource('/kategoridestinasi', KategoridestinasiController::class);
 });
