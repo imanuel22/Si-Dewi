@@ -143,13 +143,14 @@ public function index(Request $request)
             'id_akun' => 'required',
             'id_desawisata' => 'required',
         ]);
+        $validatedData['updatedAt'] = now();
         $response = Http::patch(env('APP_API_URL').'/admindesa/'.$id,$validatedData);
 
         if($response->successful()){
             return redirect('/superadmin/admindesa')->with('message','berhasil');
         }
         if($response->failed()){
-            return redirect('/superadmin/admindesa')->with('message','gagal');
+            return redirect('/superadmin/admindesa')->with('message','404');
         }
     }
 

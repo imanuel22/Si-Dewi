@@ -74,22 +74,17 @@ class FasilitasController extends Controller
      */
     public function update(Request $request, String $id)
     {
-        // $validatedData = $request->validate([
-        //     'setujui'=> 'numeric'
-        // ]);
-        // if($validatedData['setujui'] == 1){
-        //     $response = Http::patch(env('APP_API_URL').'/fasilitas/'.$request->id,$validatedData);
-        //     if($response->successful()){
-        //         return redirect('/admin/review/'.$id)->with('message','berhasil mengupdate');
-        //     }elseif ($response->failed()) {
-        //         return redirect('/admin/review/'.$id)->with('message','gagal mengupdate');
-        //     } else {
-        //         return redirect('/admin/review/'.$id)->with('message','erorr system 500');
-        //     }
-        // }
-        // if($validatedData['setujui'] == 0){
-        //     return $this->destroy($id,$request->id_destinasiwisata);
-        // }
+        $validatedData = $request->validate([
+            'nama'=> 'required|string',
+        ]);
+
+        $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/fasilitas/'.$id,$validatedData);
+        if($response->successful()){
+            return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','berhasil ');
+        }else{
+            return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','404 ');
+        }
+
     }
 
     /**

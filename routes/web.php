@@ -74,6 +74,7 @@ Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
     Route::resource('/review', ReviewController::class);
     Route::resource('/informasi', InformasiController::class);
     Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
+    // Route::put('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
     Route::resource('/fasilitas', FasilitasController::class);
 
 
@@ -89,5 +90,4 @@ Route::prefix('/superadmin')->middleware(['role:SUPERADMIN','SUPERADMIN'])->grou
     Route::resource('/desa', DesawisataController::class)->only(['index','create','destroy','store']);
     Route::resource('/admindesa', AdmindesaController::class);
     Route::resource('/kategoridestinasi', KategoridestinasiController::class);
-
 });
