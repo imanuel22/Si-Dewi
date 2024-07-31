@@ -9,7 +9,7 @@
                 alt="">
             <div
                 class="absolute top-0  flex xl:mx-56 p-4 xl:px-0 flex-col justify-center    h-full  py-10 text-white poppins-bold space-y-4 ">
-                <h1 class="text-7xl">EXPLORE BALI</h1>
+                <h1 class="text-7xl">Eksplorasi keindahan alam dan warisan budaya yang mempesona</h1>
                 <h1 class="text-6xl">WHERE CULTURE MEETS PARADISE</h1>
                 <div class=" flex justify-end 2xl:-mr-64">
                     <a href="/jelajahi"
