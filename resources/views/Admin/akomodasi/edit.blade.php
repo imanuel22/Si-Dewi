@@ -3,7 +3,7 @@
 @section('main')
     <div class="mx-4">
         <h2 class="mb-3 font-bold tracking-tight text-gray-500 ">Akomodasi / Tambah </h2>
-        <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Tambah Akomodasi </p>
+        <p class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white"> Edit Akomodasi </p>
         <form class="mx-auto" action="/admin/akomodasi/{{ $akomodasi['id'] }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')

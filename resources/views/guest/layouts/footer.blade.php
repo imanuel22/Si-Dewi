@@ -4,7 +4,7 @@
         <div class="p-4 xl:mx-56 xl:px-0">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
-                    <a href="https://flowbite.com/" class="flex items-center gap-4">
+                    <a href="/" class="flex items-center gap-4">
                         <img src="{{ asset('img/logo_notext.png') }}" class="h-14" alt="Logo" />
                         <span class="self-center text-3xl grechen-fuemen-regular font-semibold whitespace-nowrap">Si
                             Dewi</span>
@@ -81,8 +81,8 @@
             </div>
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
-                <span class="text-sm text-white sm:text-center">© 2023 <a href="https://flowbite.com/"
-                        class="hover:underline">Flowbite™</a>. All Rights Reserved.</span>
+                <span class="text-sm text-white sm:text-center">© CF2024 <a href="/"
+                        class="hover:underline"></a>. All Rights Reserved.</span>
                 <div class="flex mt-4 sm:justify-center sm:mt-0">
                     <a href="#" class="text-white hover:text-white dark:hover:text-white">
                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -113,7 +113,7 @@
                         <span class="sr-only">GitHub account</span>
                     </a>
                     <a href="#" class="text-white hover:text-white dark:hover:text-white ms-5">
-                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="" fill="currentColor"
                             viewBox="0 0 20 20">
                             <!-- Dribbble SVG Path -->
                         </svg>

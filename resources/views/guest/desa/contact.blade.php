@@ -1,3 +1,12 @@
+@php
+    $no_wa = $informasi['no_wa'];
+    if (substr($no_wa, 0, 1) == '0') {
+        $no_wa = '62' . substr($no_wa, 1);
+    } else {
+        $no_wa = '62' . $no_wa;
+    }
+@endphp
+
 <div class="bg-white mt-6 sm:mt-0 rounded-2xl p-6 mb-6">
     <h1 class="text-xl font-semibold mb-3 "> CONTACT </h1>
 {{-- @dd($informasi) --}}
@@ -44,7 +53,7 @@
     <h1 class="text-xl font-semibold mb-3 "> SOCIAL MEDIA </h1>
 
     <!-- WhatsApp -->
-    <a href="https://wa.me/{{ $informasi['no_wa'] }}" class="">
+    <a href="https://wa.me/{{ $no_wa }}" class="">
         <div class="flex items-center mb-3 gap-3">
             <svg class="w-8 h-8 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="none" viewBox="0 0 24 24">

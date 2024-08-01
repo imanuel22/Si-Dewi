@@ -69,7 +69,7 @@
                                     alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4 ">
-                                <p class="max-w-xl break-words whitespace-normal sm:w-2xl">
+                                <p class="text-left max-w-xl break-words whitespace-normal sm:w-2xl">
                                     {{ \Illuminate\Support\Str::limit($row['isi_berita'], 500, '...') }}
                                 </p>
                             </td>

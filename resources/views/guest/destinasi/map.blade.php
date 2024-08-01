@@ -1,17 +1,23 @@
 @php
     use App\Helpers\MapHelper;
-    // $maps = $desa['maps'];
-    // preg_match('/(\d+)°(\d+)\'(\d+(\.\d+)?)\"([NS]) (\d+)°(\d+)\'(\d+(\.\d+)?)\"([EW])/', $maps, $matches);
 
-    // $latitude = MapHelper::dmsToDecimal3($matches[1], $matches[2], $matches[3], $matches[5]);
-    // $longitude = MapHelper::dmsToDecimal3($matches[6], $matches[7], $matches[8], $matches[10]);
+    $dmsString = $desa['maps'];
+    $coordinates = ['latitude' => null, 'longitude' => null];
 
-    // $dmsString = $desa['maps'];
-    // $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    if (MapHelper::isDmsFormat($dmsString)) {
+        $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    } else {
+        // Assume the coordinates are in decimal format, split by comma or space
+        [$latitude, $longitude] = explode(',', $dmsString);
+        $latitude = trim($latitude);
+        $longitude = trim($longitude);
 
-    // $longitude = Str::limit($coordinates['longitude'], 9, '') ;
-    // $latitude = Str::limit($coordinates['latitude'], 9, '') ;
+        $coordinates['latitude'] = $latitude;
+        $coordinates['longitude'] = $longitude;
+    }
 
+    $latitude = $coordinates['latitude'];
+    $longitude = $coordinates['longitude'];
 
 @endphp
 
@@ -23,19 +29,21 @@
     </div>
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize the map
-            var map = L.map('map').setView([{{$desa['maps']}}], 15);
+<script>
+    var gmapUrl = 'https://www.google.com/maps?q=' + {{ $latitude }} + ',' + {{ $longitude }};
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the map
+        var map = L.map('map').setView([{{ $desa['maps'] }}], 13);
 
-            // Add a tile layer to the map
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            // Add a marker to the map
-            L.marker([{{$desa['maps']}}]).addTo(map)
-                .bindPopup('Lokasi Destinasi')
-                .openPopup();
-        });
-    </script>
+        // Add a marker to the map
+        L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
+            .bindPopup('<a href="' + gmapUrl +
+                '" target="_blank" style="text-decoration:none; color: inherit;">Lokasi Desa</a>')
+            .openPopup();
+    });
+</script>

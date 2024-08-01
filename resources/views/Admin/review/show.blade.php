@@ -76,8 +76,32 @@
                                     {{ $row['akun']['nama'] }}
                                 </div>
                             </td>
-                            <td class="px-6 py-4 text-center">
-                                {{ $row['rating'] }}
+                            <td class="">
+                                <div class="flex w-full justify-center">
+                                    @php
+                                        $rating = $row['rating'];
+                                        $fullStars = $rating;
+                                        $emptyStars = 5 - $fullStars;
+                                    @endphp
+                                    {{-- Bintang Penuh --}}
+                                    @for ($i = 0; $i < $fullStars; $i++)
+                                        <svg class="w-5 h-5 text-yellow-400 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                        </svg>
+                                    @endfor
+                                    {{-- Bintang Kosong --}}
+                                    @for ($i = 0; $i < $emptyStars; $i++)
+                                        <svg class="w-5 h-5 text-gray-400 dark:text-gray-600" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                        </svg>
+                                    @endfor
+                                </div>
                             </td>
                             <td class="px-6 py-4">
                                 {{ $row['review'] }}
@@ -95,7 +119,7 @@
                                     <input type="hidden" name="id_destinasiwisata"
                                         value="{{ $row['id_destinasiwisata'] }}">
                                     @method('PATCH')
-                                    <button type="submit"  name="setujui" value="1"
+                                    <button type="submit" name="setujui" value="1"
                                         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900"><svg
                                             class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -103,7 +127,7 @@
                                                 stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
                                         </svg>
                                     </button>
-                                    <button type="button"  name="setujui" value="0"
+                                    <button type="button" name="setujui" value="0"
                                         class="delete-button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
                                             class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
