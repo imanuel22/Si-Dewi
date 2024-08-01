@@ -222,3 +222,47 @@
         });
     });
 </script>
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const swalWithTailwindButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mx-2 rounded',
+                cancelButton: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 rounded'
+            },
+            buttonsStyling: false
+        });
+
+        var deleteButtons = document.querySelectorAll('.delete-button');
+
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var form = this.closest('.delete-form');
+                swalWithTailwindButtons.fire({
+                    title: "Yakin menghapus data?",
+                    text: "Data yang sudah dihapus tidak bisa dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "Tidak, batal!",
+                    confirmButtonText: "Ya, hapus!",
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        swalWithTailwindButtons.fire({
+                            title: "Deleted!",
+                            text: "Data telah dihapus.",
+                            icon: "success"
+                        }).then(() => {
+                            form.submit();
+                        });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        swalWithTailwindButtons.fire({
+                            title: "Cancelled",
+                            text: "Data batal dihapus",
+                            icon: "error"
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script> --}}
