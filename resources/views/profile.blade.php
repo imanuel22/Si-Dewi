@@ -24,23 +24,26 @@
                     <div class="mb-5">
                         <label for="nama"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                        <input type="text" name="nama" id="nama"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                            placeholder="{{ $profile['nama'] }}" disabled />
+                        <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
+                            {{ $profile['nama'] }}
+                        </p>
+
                     </div>
                     <div class="mb-5">
                         <label for="no_telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
                             Telephone</label>
-                        <input type="text" name="no_telp" id="no_telp"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                            placeholder="{{ $profile['no_telp'] }}" disabled />
+                            <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
+                                {{ $profile['no_telp'] }}
+                            </p>
+
                     </div>
                     <div class="mb-5">
                         <label for="no_telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Email</label>
-                        <input type="text" name="no_telp" id="no_telp"
-                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                            placeholder="{{ $profile['email'] }}" disabled />
+                            <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
+                                {{ $profile['email'] }}
+                            </p>
+                        
                     </div>
                 </div>
                 <button data-modal-target="edit-profile" data-modal-toggle="edit-profile"
@@ -101,7 +104,7 @@
                                         Telephone</label>
                                     <input type="text" value="{{ $profile['no_telp'] }}" name="no_telp" id="no_telp"
                                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                                        required />y
+                                        required />
                                 </div>
                             </div>
                             <div class="mb-5">

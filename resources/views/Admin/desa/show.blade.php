@@ -38,7 +38,7 @@
         </div>
 
 
-        @dd($informasi)
+        {{-- @dd($informasi) --}}
 
         {{-- Contact $ Social Media --}}
 

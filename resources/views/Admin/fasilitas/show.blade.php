@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 @extends('Admin.layouts.main')
 
 @section('main')
@@ -69,11 +72,17 @@
                             <td class="px-6 py-4">
                                 {{ $row['nama'] }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ $row['createdAt'] }}
+                            @php
+                                $created = Carbon::parse($row['createdAt']);
+                                $updated = Carbon::parse($row['updatedAt']);
+                                $formattedCreatedAt = $created->format('d F Y, H:i');
+                                $formattedUpdatedAt = $updated->format('d F Y, H:i');
+                            @endphp
+                            <td class="">
+                                {{ $formattedCreatedAt }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ $row['updatedAt'] }}
+                            <td class="">
+                                {{ $formattedUpdatedAt }}
                             </td>
                             <td class="">
                                 <div class="flex justify-center px-6 py-4">
@@ -190,23 +199,34 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form class="p-3 md:p-5" action="/admin/fasilitas/" method="POST">
+                    {{-- <form class="p-3 md:p-5" action="/admin/fasilitas/" method="POST">
                         @csrf
                         <input type="hidden" name="id_destinasiwisata" value="{{ $id_destinasiwisata }}">
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div class="col-span-2">
-                                <label for="name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                                    Fasilitas</label>
-                                <input type="text" name="nama" id="nama"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Masukan nama fasilitas" required="">
+                                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Fasilitas</label>
+                                <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Masukan nama fasilitas" required>
                             </div>
                         </div>
-                        <button type="reset"
-                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
+                        <button type="reset" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    </form> --}}
+
+                    <form class="mx-auto p-3 md:p-5" action="/admin/fasilitas" method="POST">
+                        @csrf
+                        <input type="hidden" name="id_destinasiwisata" value="{{ $id_destinasiwisata }}">
+                        <div class="mb-5">
+                            <label for="nama"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nama</label>
+                            <input type="text" name="nama" id="nama"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                required />
+                        </div>
+
                         <button type="submit"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                        <button type="reset"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
                     </form>
                 </div>
             </div>

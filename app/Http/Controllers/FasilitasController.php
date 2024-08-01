@@ -6,6 +6,7 @@ use App\Models\Fasilitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
+
 class FasilitasController extends Controller
 {
     /**
@@ -13,6 +14,7 @@ class FasilitasController extends Controller
      */
     public function index()
     {
+
     }
 
     /**
@@ -32,12 +34,12 @@ class FasilitasController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $validatedData = $request->validate([
                 'nama'=> 'required',
                 'id_destinasiwisata'=>'required'
             ]);
-        dd($request);
+        // dd($request,$validatedData);
             $response = Http::post(env('APP_API_URL').'/fasilitas/add',$validatedData);
                 if($response->successful()){
                     return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','berhasil mengupdate');
@@ -106,4 +108,5 @@ class FasilitasController extends Controller
             return redirect('/admin/fasilitas/'.$request->id_destinasiwisata)->with('message','erorr system 500');
         }
     }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class AkunController extends Controller
 {
@@ -87,7 +88,7 @@ class AkunController extends Controller
             'nama'=>'string',
             'no_telp'=>'string',
             'email'=>'string|email',
-            'foto'=>'image|file|nullable',
+            'c'=>'image|file|nullable',
         ]);
 
         if(!$request['foto']){
@@ -104,6 +105,13 @@ class AkunController extends Controller
                 'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
             )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
         }
+
+        Session::put([
+            'nama'=>$validatedData['nama'],
+            'no_telp'=>$validatedData['no_telp'],
+            'email'=>$validatedData['email'],
+            'email'=>$validatedData['email'],
+        ]);
 
         if($response->successful()){
             return redirect('/profile')->with('message','berhasil mengupdate');

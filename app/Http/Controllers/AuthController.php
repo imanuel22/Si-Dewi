@@ -44,23 +44,22 @@ class AuthController extends Controller
 
 
     public function logout(Request $request) {
-    $accessToken = $request->session()->get('accessToken');
+        $accessToken = $request->session()->get('accessToken');
 
-    // Make the API request to log out
-    $response = Http::withToken($accessToken)
+        // Make the API request to log out
+        $response = Http::withToken($accessToken)
         ->delete(env('APP_API_URL') . '/akun/logout', [
             'accessToken' => $accessToken
         ]);
 
     // Check if the request was successful
-    if ($response->successful()) {
-        // Flush the session and redirect to the login page with a success message
-        $request->session()->flush();
+
+    $request->session()->flush();
+
+
         return redirect('/login');
-    } elseif ($response->failed()) {
-        // Redirect to the login page with a failure message
-        return redirect('/login');
-    }
+
+
 }
 
 }

@@ -90,12 +90,12 @@
                             </td> --}}
                             <td class="flex justify-center px-6 py-4">
                                 {{-- <a href="/superadmin/desa/create" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">S</a> --}}
-                                <form action="/admin/review/{{ $row['id'] }}" method="post">
+                                <form action="/admin/review/{{ $row['id'] }}" method="post" class="delete-form">
                                     @csrf
                                     <input type="hidden" name="id_destinasiwisata"
                                         value="{{ $row['id_destinasiwisata'] }}">
                                     @method('PATCH')
-                                    <button type="submit" onclick="confirm('yakin')" name="setujui" value="1"
+                                    <button type="submit"  name="setujui" value="1"
                                         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-900"><svg
                                             class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -103,8 +103,8 @@
                                                 stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5" />
                                         </svg>
                                     </button>
-                                    <button type="submit" onclick="confirm('yakin')" name="setujui" value="0"
-                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
+                                    <button type="button"  name="setujui" value="0"
+                                        class="delete-button focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"><svg
                                             class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

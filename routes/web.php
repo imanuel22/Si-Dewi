@@ -17,6 +17,7 @@ use App\Http\Controllers\KategoridestinasiController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SuperadminController;
+use App\Http\Controllers\AdminController;
 
 // GUEST
 Route::middleware('guest')->group(function(){
@@ -60,6 +61,7 @@ Route::middleware('guest')->group(function(){
 
 // ADMIN
 Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
+    Route::get('/dashboard',[AdminController::class,'index']);
     Route::resource('/profil-desa',DesawisataController::class);
     Route::resource('/berita', BeritaController::class);
     Route::resource('/destinasi', DestinasiController::class);
@@ -68,8 +70,9 @@ Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
     Route::resource('/paket', PaketController::class);
     Route::resource('/review', ReviewController::class);
     Route::resource('/informasi', InformasiController::class);
-    // Route::put('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
+    Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
     Route::resource('/fasilitas', FasilitasController::class);
+    // Route::post('/fasilitas/{{id_destinasi}}/add',[FasilitasController::class,'tambah'] );
     // Route::get('/fasilitas/{id_destinasiwisata}/create',[FasilitasController::class,'create']);
 
 

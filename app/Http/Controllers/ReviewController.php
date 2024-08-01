@@ -90,13 +90,13 @@ class ReviewController extends Controller
             'setujui' => 'numeric'
         ]);
         if ($validatedData['setujui'] == 1) {
-            $response = Http::patch(env('APP_API_URL').'/reviewdestinasi/' . $request->id, $validatedData);
+            $response = Http::patch(env('APP_API_URL').'/reviewdestinasi/' . $id, $validatedData);
             if ($response->successful()) {
-                return redirect('/admin/review/' . $id)->with('message', 'berhasil mengupdate');
+                return redirect('/admin/review/' . $request->id_destinasiwisata)->with('message', 'berhasil mengupdate');
             } elseif ($response->failed()) {
-                return redirect('/admin/review/' . $id)->with('message', 'gagal mengupdate');
+                return redirect('/admin/review/' . $request->id_destinasiwisata)->with('message', 'gagal mengupdate');
             } else {
-                return redirect('/admin/review/' . $id)->with('message', 'erorr system 500');
+                return redirect('/admin/review/' . $request->id_destinasiwisata)->with('message', 'erorr system 500');
             }
         }
         if ($validatedData['setujui'] == 0) {

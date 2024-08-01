@@ -67,7 +67,7 @@
                                 <p class="break-words text-left whitespace-normal">
                                     {{ \Illuminate\Support\Str::limit($row['deskripsi'], 800) }}</p>
                             </td>
-                            <td class="px-6 py-4 text-center text-black font-semibold">{{ $row['harga'] }}</td>
+                            <td class="px-6 py-4 text-xl text-center text-black font-semibold">{{ $row['harga'] }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center">
                                     <button type="button" data-modal-target="static-modal" data-modal-toggle="static-modal"

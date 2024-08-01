@@ -27,10 +27,10 @@
             <div href="#"
                 class="flex  gap-5  w-52 p-3  bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <svg class="w-10 h-10 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z" />
-        </svg>
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z" />
+                </svg>
                 <div class="flex flex-col">
                     <h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
                         {{ $destinasi_count }}
@@ -74,10 +74,12 @@
                                 style="background-image: url('{{ env('APP_API_URL') }}/resource/destinasiwisata/{{ $row['destination']['gambar'] }}'); background-size: cover; background-position: center;">
                                 <div class="flex absolute p-1 m-2 text-xl font-bold text-yellow-500l top-5 right-5">
                                     @php
-                                        $rating = round($row['averageRating'] * 2) / 2;
-                                        $fullStars = floor($rating);
-                                        $halfStar = $rating - $fullStars >= 0.5 ? 1 : 0;
-                                        $emptyStars = 5 - $fullStars - $halfStar;
+
+                                        // Asumsikan averageRating = 3.8
+                                        $rating = round($row['averageRating'] * 2) / 2; // Membulatkan ke 0.5 terdekat
+                                        $fullStars = floor($rating); // Mendapatkan jumlah bintang penuh
+
+                                        $emptyStars = 5 - $fullStars;
                                     @endphp
 
                                     {{-- Bintang Penuh --}}
@@ -91,20 +93,20 @@
                                     @endfor
 
                                     {{-- Setengah Bintang --}}
-                                    @if ($halfStar)
-                                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                            <defs>
-                                                <linearGradient id="half-yellow-gray" x1="0" x2="1"
-                                                    y1="0" y2="0">
-                                                    <stop offset="50%" stop-color="#eab308" />
-                                                    <stop offset="50%" stop-color="#9ca3af" />
-                                                </linearGradient>
-                                            </defs>
-                                            <path fill="url(#half-yellow-gray)"
-                                                d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
-                                        </svg>
-                                    @endif
+                                    {{-- @if ($halfStar)
+                                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                                <defs>
+                                                    <linearGradient id="half-yellow-gray" x1="0" x2="1"
+                                                        y1="0" y2="0">
+                                                        <stop offset="50%" stop-color="#eab308" />
+                                                        <stop offset="50%" stop-color="#9ca3af" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <path fill="url(#half-yellow-gray)"
+                                                    d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                                            </svg>
+                                        @endif --}}
 
                                     {{-- Bintang Kosong --}}
                                     @for ($i = 0; $i < $emptyStars; $i++)

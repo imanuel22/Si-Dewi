@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class SuperadminController extends Controller
+class AdminController extends Controller
 {
     public function index(){
         $berita = Http::withToken(request()->session()->get('accessToken'))->get(env('APP_API_URL').'/berita')->collect()->sortByDesc('createdAt')->take(3);
@@ -27,7 +27,7 @@ class SuperadminController extends Controller
             }
             return [
                 'reviews' => $reviews,
-                'averageRating' => $averageRating,
+                'averageRating' => $averageRating / 2,
                 'destination' => $destination
             ];
         });
@@ -44,6 +44,6 @@ class SuperadminController extends Controller
             'destinasi_count'=>$destinations->count(),
 
         ];
-        return view('superadmin.dashboard',$data);
+        return view('admin.dashboard',$data);
     }
 }

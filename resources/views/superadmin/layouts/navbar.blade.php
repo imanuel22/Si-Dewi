@@ -15,7 +15,9 @@
                 </button>
                 <a href="#" class="flex ms-2 md:me-24 gap-4">
                     <img src="{{ asset('img/logo_notext.png') }}" class="h-12" alt="Logo" />
-                    <span class=" text-white self-center text-2xl font-semibold grechen-fuemen-regular whitespace-nowrap"> Si Dewi</span>
+                    <span
+                        class=" text-white self-center text-2xl font-semibold grechen-fuemen-regular whitespace-nowrap">
+                        Si Dewi</span>
                 </a>
             </div>
             <div class="flex items-center">
@@ -26,8 +28,9 @@
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
                             <div class="block relative ">
-                                <img class="object-cover rounded-full w-10" src="{{ env('APP_API_URL') }}/resource/akun/{{ request()->session()->get('foto') }}"
-                                        alt="{{ request()->session()->get('nama') }}">
+                                <img class="object-cover rounded-full w-10"
+                                    src="{{ env('APP_API_URL') }}/resource/akun/{{ request()->session()->get('foto') }}"
+                                    alt="{{ request()->session()->get('nama') }}">
                             </div>
                         </button>
                     </div>
@@ -53,16 +56,11 @@
                                     role="menuitem">Settings</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    role="menuitem">Earnings</a>
-                            </li>
-                            <li>
-                                <form action="/logout" method="post">
+                                <form action="/logout" method="post"
+                                    class="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
                                     @csrf
                                     @method('DELETE')
-                                    <button
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                                    <button class="">Sign
                                         out</button>
                                 </form>
                             </li>
