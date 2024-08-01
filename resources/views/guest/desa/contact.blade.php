@@ -1,5 +1,7 @@
 <div class="bg-white mt-6 sm:mt-0 rounded-2xl p-6 mb-6">
     <h1 class="text-xl font-semibold mb-3 "> CONTACT </h1>
+@dd($informasi)
+
     <!-- No Telp -->
     <div class="">
         <div class="flex items-center mb-3 gap-3">
@@ -11,7 +13,6 @@
             <p class="text-xl">{{ $informasi['no_telp'] }}</p>
         </div>
     </div>
-
     <!-- Email -->
     <div class="">
         <div class="flex items-center mb-3 gap-3">

@@ -30,6 +30,7 @@
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
+      var gmapUrl = 'https://www.google.com/maps?q=' + {{$latitude}} + ',' + {{$longitude}};
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize the map
         var map = L.map('map').setView([{{ $desa['maps'] }}], 13);
@@ -41,7 +42,7 @@
 
         // Add a marker to the map
         L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
-            .bindPopup('Lokasi Desa')
-            .openPopup();
+        .bindPopup('<a href="' + gmapUrl + '" target="_blank" style="text-decoration:none; color: inherit;">Lokasi Desa</a>')
+        .openPopup();
     });
 </script>

@@ -1,7 +1,7 @@
 <div class=" bg-white rounded-2xl ">
     <div class="p-8">
         <h1 class="text-4xl font-bold text-secondary">Rp {{$paket['harga']}},00</h1>
-        <a href=""
+        <a href="https://wa.me/{{ $informasi['no_wa'] }}"
             class=" text-lime-950 flex font-semibold justify-center items-center gap-5 text-xl p-2 mt-8  border-lime-950 hover:border-green-500 border-2 rounded-3xl hover:bg-green-500 hover:text-white">
             <svg class="w-8 h-8 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="none" viewBox="0 0 24 24">

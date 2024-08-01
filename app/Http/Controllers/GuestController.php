@@ -198,7 +198,7 @@ class GuestController extends Controller
             'listdestinasi' => $listdestinasi,
             'review' => $reviewPaginated,
             'fasilitas' => $fasilitas,
-            'averageRating' =>$averageRating
+            'averageRating' =>$averageRating,
         ];
 
         return view('guest.destinasi', $data);

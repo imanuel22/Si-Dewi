@@ -11,7 +11,8 @@
             </div> --}}
         </div>
     </div>
-    <div class="mt-10"><h1 class="text-xl font-semibold">Lokasi Desa</h1>
+    <div class="mt-10">
+        <h1 class="text-xl font-semibold">Lokasi Desa</h1>
         <p class="text-lg">{{ $desa['alamat'] }} / {{ $desa['kabupaten'] }}</p>
         <div class="h-full mt-4 sm:container text-justify px-1 w-full mx-auto">
             <div id="map" class="relative h-64 z-0"></div>
@@ -19,19 +20,21 @@
     </div>
 </div>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize the map
-            var map = L.map('map').setView([{{ $desa['maps'] }}], 15);
+<script>
+    var gmapUrl = 'https://www.google.com/maps?q=' + {{ $desa['maps'] }};
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the map
+        var map = L.map('map').setView([{{ $desa['maps'] }}], 15);
 
-            // Add a tile layer to the map
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            // Add a marker to the map
-            L.marker([{{ $desa['maps'] }}]).addTo(map)
-                .bindPopup('Lokasi Desa')
-                .openPopup();
-        });
-    </script>
+        // Add a marker to the map
+        L.marker([{{ $desa['maps'] }}]).addTo(map)
+            .bindPopup('<a href="' + gmapUrl +
+                '" target="_blank" style="text-decoration:none; color: inherit;">Lokasi Desa</a>')
+            .openPopup();
+    });
+</script>
