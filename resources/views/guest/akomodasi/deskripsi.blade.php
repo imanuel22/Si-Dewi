@@ -1,3 +1,27 @@
+@php
+    use App\Helpers\MapHelper;
+
+    $dmsString = $desa['maps'];
+    $coordinates = ['latitude' => null, 'longitude' => null];
+
+    if (MapHelper::isDmsFormat($dmsString)) {
+        $coordinates = MapHelper::parseDmsCoordinates($dmsString);
+    } else {
+        // Assume the coordinates are in decimal format, split by comma or space
+        [$latitude, $longitude] = explode(',', $dmsString);
+        $latitude = trim($latitude);
+        $longitude = trim($longitude);
+
+        $coordinates['latitude'] = $latitude;
+        $coordinates['longitude'] = $longitude;
+    }
+
+    $latitude = $coordinates['latitude'];
+    $longitude = $coordinates['longitude'];
+
+@endphp
+
+
 <div class="mb-2 bg-white  sm:w-4/6   rounded-2xl p-8 h-fit ">
     <div class="flex justify-between items-center">
         <div class="">
@@ -19,22 +43,22 @@
         </div>
     </div>
 </div>
+
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    var gmapUrl = 'https://www.google.com/maps?q=' + {{ $desa['maps'] }};
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize the map
-        var map = L.map('map').setView([{{ $desa['maps'] }}], 15);
+    var gmapUrl = 'https://www.google.com/maps?q=' + {{$latitude}} + ',' + {{$longitude}};
+  document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the map
+      var map = L.map('map').setView([{{ $desa['maps'] }}], 13);
 
-        // Add a tile layer to the map
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+      // Add a tile layer to the map
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
-        // Add a marker to the map
-        L.marker([{{ $desa['maps'] }}]).addTo(map)
-            .bindPopup('<a href="' + gmapUrl +
-                '" target="_blank" style="text-decoration:none; color: inherit;">Lokasi Desa</a>')
-            .openPopup();
-    });
+      // Add a marker to the map
+      L.marker([{{ $latitude }}, {{ $longitude }}]).addTo(map)
+      .bindPopup('<a href="' + gmapUrl + '" target="_blank" style="text-decoration:none; color: inherit;">Lokasi Desa</a>')
+      .openPopup();
+  });
 </script>
