@@ -45,7 +45,6 @@ class AkunController extends Controller
             'role'=>'required',
         ]);
 
-        dd($validatedData);
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
