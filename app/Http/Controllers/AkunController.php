@@ -37,14 +37,15 @@ class AkunController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama'=>'required',
-            'no_telp'=>'required',
-            'password'=>'required',
+            'nama'=>'required|string',
+            'no_telp'=>'required|numeric|min:11',
+            'password'=>'required|min:8',
             'email'=>'required|email',
             'foto'=>'required|image|file',
             'role'=>'required',
         ]);
 
+        dd($validatedData);
         $validatedData['createdAt'] = now();
         $validatedData['updatedAt'] = now();
 
