@@ -53,11 +53,11 @@ class AkunController extends Controller
         )->post(env('APP_API_URL').'/akun/add',$validatedData);
 
         if($response->successful()){
-            return redirect('/superadmin/akun')->with('message',$response->reason());
+            return redirect('/superadmin/akun')->with('message','Berhasil menambahkan data');
         }elseif ($response->failed()) {
-            return redirect('/superadmin/akun')->with('message',$response->reason());
+            return redirect('/superadmin/akun')->with('message','Gagal mengupdate data');
         } else {
-            return redirect('/superadmin/akun')->with('message',$response->reason());
+            return redirect('/superadmin/akun')->with('message','Erorr system 500');
         }
 
     }
@@ -114,11 +114,11 @@ class AkunController extends Controller
         ]);
 
         if($response->successful()){
-            return redirect('/profile')->with('message','berhasil mengupdate');
+            return redirect('/profile')->with('message','Berhasil mengupdate data');
         }elseif ($response->failed()) {
-            return redirect('/profile')->with('message','gagal mengupdate');
+            return redirect('/profile')->with('message','Gagal mengupdate data');
         } else {
-            return redirect('/profile')->with('message','erorr system 500');
+            return redirect('/profile')->with('message','Erorr system 500');
         }
     }
 
@@ -129,9 +129,9 @@ class AkunController extends Controller
     {
         $response = Http::withToken(request()->session()->get('accessToken'))->delete(env('APP_API_URL').'/akun/'.$id);
         if($response->successful()){
-            return redirect('/superadmin/akun')->with('message','berhasil menghapus');
+            return redirect('/superadmin/akun')->with('message','Berhasil menghapus data');
         }elseif ($response->failed()) {
-            return redirect('/superadmin/akun')->with('message','gagal menghapus');
+            return redirect('/superadmin/akun')->with('message','Gagal menghapus data');
         } else {
             return redirect('/superadmin/akun')->with('message','erorr system 500');
         }
@@ -173,9 +173,9 @@ class AkunController extends Controller
         }
 
         if($response->successful()){
-            return redirect('/profile')->with('message','berhasil mengupdate');
+            return redirect('/profile')->with('message','Berhasil mengupdate data');
         }elseif ($response->failed()) {
-            return redirect('/profile')->with('message','gagal mengupdate');
+            return redirect('/profile')->with('message','Gagal mengupdate data');
         } else {
             return redirect('/profile')->with('message','erorr system 500');
         }
