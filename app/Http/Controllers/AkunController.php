@@ -91,37 +91,6 @@ public function update(Request $request, string $id)
         'foto' => 'nullable|mimes:jpeg,jpg,png,gif|max:2048' // Adding validation for image files
     ]);
 
-<<<<<<< HEAD
-        if(!$request['foto']){
-            $validatedData['foto'] = $request['fotoOld'];
-        }
-
-        $validatedData['updatedAt'] = now();
-        // dd($request,$id,$validatedData);
-
-        if(!isset($_FILES['foto'])){
-            $response = Http::withToken($request->session()->get('accessToken'))->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
-        }else{
-            $response = Http::withToken($request->session()->get('accessToken'))->attach(
-                'foto', file_get_contents($_FILES['foto']['tmp_name']), $_FILES['foto']['name']
-            )->patch(env('APP_API_URL').'/akun/'.$id,$validatedData);
-        }
-
-        Session::put([
-            'nama'=>$validatedData['nama'],
-            'no_telp'=>$validatedData['no_telp'],
-            'email'=>$validatedData['email'],
-            'email'=>$validatedData['email'],
-        ]);
-
-        if($response->successful()){
-            return redirect('/profile')->with('message','Berhasil mengupdate data');
-        }elseif ($response->failed()) {
-            return redirect('/profile')->with('message','Gagal mengupdate data');
-        } else {
-            return redirect('/profile')->with('message','Erorr system 500');
-        }
-=======
     // If no new image is uploaded, keep the old image
     if (!$request->hasFile('foto')) {
         $validatedData['foto'] = $request->input('fotoOld');  // Use the old photo if no new photo is uploaded
@@ -129,7 +98,6 @@ public function update(Request $request, string $id)
         // New image file uploaded, need to attach it
         $file = $request->file('foto');  // Get the uploaded file
         $validatedData['foto'] = $file->getClientOriginalName();  // Store the file name in the session instead
->>>>>>> c141eae91868f20ebe7274b190fd9a993b794262
     }
 
     // Add timestamp
