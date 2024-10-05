@@ -22,26 +22,47 @@ class AuthController extends Controller
     public function dologin(Request $request)
     {
 
-        $credentials = $request->only('email', 'password');
+        $validate = $request->validate([ 
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        $response = Http::post(env('APP_API_URL').'/akun/login', $validate );
 
-        $response = Http::post(env('APP_API_URL').'/akun/login', $request);
-
-
-        if ($response->getStatusCode() == 200) {
-            $body = $response->getBody();
-            $token = json_decode($body, true);
+        if($response->successful()){
+            $token = $response->json();
             Session::put('accessToken', $token);
 
-            return redirect('/superadmin/dashboard')->with('success', 'Login successful.');
+            $explode = explode('.', $token);
+            $decode = base64_decode($explode[1]);
+            $userData = json_decode($decode);
+
+            $akun = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/akun/'.$userData->id)->collect();
+            $role=$akun['role'];
+            Session::put([
+            'id'=>$userData->id,
+            'nama'=>$userData->nama,
+            'email'=>$userData->email,
+            'foto'=>$userData->foto,
+            'role'=>$role,
+            'no_telp'=>$userData->no_telp,
+            ]);
+            if ($role == 'SUPERADMIN') {
+                return redirect('/superadmin/dashboard')->with('success', 'Login successful.');
+            }
+            if ($role == 'ADMIN') {
+                $admindesa = Http::withToken($request->session()->get('accessToken'))->get(env('APP_API_URL').'/admindesa/akun/'.$request->session()->get('id'))->collect();
+                if(!isset($admindesa[0])){
+                    return redirect('/login');
+                }
+                Session::put([
+                    'id_desa'=>$admindesa[0]['id_desawisata'],
+                ]);
+                return redirect('/admin/profil-desa/'.$request->session()->get('id_desa'));           
+            }
         } else {
             return redirect()->back()->with('error', 'Login failed.');
         }
 }
-
-
-
-
-
 
     public function logout(Request $request) {
         $accessToken = $request->session()->get('accessToken');

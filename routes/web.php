@@ -60,7 +60,7 @@ Route::middleware('guest')->group(function(){
 
 
 // ADMIN
-Route::prefix('/admin')->middleware(['role:ADMIN','ADMIN'])->group(function(){
+Route::prefix('/admin')->middleware(['role:ADMIN'])->group(function(){
     Route::get('/dashboard',[AdminController::class,'index']);
     Route::resource('/profil-desa',DesawisataController::class);
     Route::resource('/berita', BeritaController::class);
@@ -82,7 +82,7 @@ Route::get('/admin/event', function () {
 });
 
 // SUPERADMIN
-Route::prefix('/superadmin')->middleware(['role:SUPERADMIN','SUPERADMIN'])->group(function(){
+Route::prefix('/superadmin')->middleware(['role:SUPERADMIN'])->group(function(){
     Route::get('/dashboard',[SuperadminController::class,'index']);
     Route::resource('/akun', AkunController::class);
     Route::resource('/desa', DesawisataController::class);
