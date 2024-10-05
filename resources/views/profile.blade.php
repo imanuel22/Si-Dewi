@@ -6,8 +6,11 @@
 @extends($link)
 
 @section('main')
+    @error('foto')
+        {{ $message }}
+    @enderror
     <div
-        class="lg:flex gap-6 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 ">
+        class="gap-6 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow lg:flex hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 ">
         <div class="content-center col-span-1">
             <div class="relative block">
                 <a class="flex justify-center">
@@ -16,7 +19,7 @@
                 </a>
             </div>
         </div>
-        <div class="content-center col-span-4 w-full">
+        <div class="content-center w-full col-span-4">
             <div class="">
                 <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Profile </p>
                 <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
@@ -24,7 +27,7 @@
                     <div class="mb-5">
                         <label for="nama"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                        <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
+                        <p class="w-full p-2 pl-2 border border-gray-300 rounded-lg ">
                             {{ $profile['nama'] }}
                         </p>
 
@@ -32,18 +35,18 @@
                     <div class="mb-5">
                         <label for="no_telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No
                             Telephone</label>
-                            <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
-                                {{ $profile['no_telp'] }}
-                            </p>
+                        <p class="w-full p-2 pl-2 border border-gray-300 rounded-lg ">
+                            {{ $profile['no_telp'] }}
+                        </p>
 
                     </div>
                     <div class="mb-5">
                         <label for="no_telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Email</label>
-                            <p class="w-full p-2 pl-2 border rounded-lg border-gray-300 ">
-                                {{ $profile['email'] }}
-                            </p>
-                        
+                        <p class="w-full p-2 pl-2 border border-gray-300 rounded-lg ">
+                            {{ $profile['email'] }}
+                        </p>
+
                     </div>
                 </div>
                 <button data-modal-target="edit-profile" data-modal-toggle="edit-profile"
@@ -82,7 +85,8 @@
                 </div>
                 <!-- Modal body -->
                 <div class="px-10">
-                    <form class="mx-2 " action="/profile/update/{{ $profile['id'] }}" method="POST">
+                    <form class="mx-2 " action="/profile/update/{{ $profile['id'] }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div
@@ -90,7 +94,6 @@
                             <p class="text-xl font-bold tracking-tight text-gray-900 dark:text-white ">Info Profile </p>
                             <hr class="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700">
                             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
-                                <input type="hidden" name="fotoOld" value="{{ $profile['foto'] }}">
                                 <div class="mb-5">
                                     <label for="nama"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
@@ -122,9 +125,9 @@
                             <div class="mb-5">
                                 <input type="hidden" name="fotoOld" value="{{ $profile['foto'] }}">
 
-                                    <img class="object-cover mb-2 rounded-full image-preview img-fluid" width="450"
-                                        src="{{ env('APP_API_URL') }}/resource/akun/{{ $profile['foto'] }}"
-                                        alt="{{ $profile['nama'] }}">
+                                <img class="object-cover mb-2 rounded-full image-preview img-fluid" width="450"
+                                    src="{{ env('APP_API_URL') }}/resource/akun/{{ $profile['foto'] }}"
+                                    alt="{{ $profile['nama'] }}">
 
                                 <input onchange="previewImage()" name="foto" id="foto"
                                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"

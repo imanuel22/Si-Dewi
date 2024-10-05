@@ -81,16 +81,17 @@ class AkunController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        $validatedData = $request->validate([
-            'title'=>'admin-edit akun',
-            'nama'=>'string',
-            'no_telp'=>'string',
-            'email'=>'string|email',
-            'c'=>'image|file|nullable',
-        ]);
+public function update(Request $request, string $id)
+{
+    // Validate incoming request
+    $validatedData = $request->validate([
+        'nama' => 'string',
+        'no_telp' => 'string',
+        'email' => 'string|email',
+        'foto' => 'nullable|mimes:jpeg,jpg,png,gif|max:2048' // Adding validation for image files
+    ]);
 
+<<<<<<< HEAD
         if(!$request['foto']){
             $validatedData['foto'] = $request['fotoOld'];
         }
@@ -120,7 +121,54 @@ class AkunController extends Controller
         } else {
             return redirect('/profile')->with('message','Erorr system 500');
         }
+=======
+    // If no new image is uploaded, keep the old image
+    if (!$request->hasFile('foto')) {
+        $validatedData['foto'] = $request->input('fotoOld');  // Use the old photo if no new photo is uploaded
+    } else {
+        // New image file uploaded, need to attach it
+        $file = $request->file('foto');  // Get the uploaded file
+        $validatedData['foto'] = $file->getClientOriginalName();  // Store the file name in the session instead
+>>>>>>> c141eae91868f20ebe7274b190fd9a993b794262
     }
+
+    // Add timestamp
+    $validatedData['updatedAt'] = now();
+
+    // Handle the request with or without an image
+    if (!$request->hasFile('foto')) {
+        // No new image file uploaded
+        $response = Http::withToken($request->session()->get('accessToken'))
+            ->patch(env('APP_API_URL') . '/akun/' . $id, $validatedData);
+    } else {
+        // New image file uploaded, need to attach it
+        $file = $request->file('foto');  // Get the uploaded file
+
+        $response = Http::withToken($request->session()->get('accessToken'))
+            ->attach(
+                'foto', file_get_contents($file->getPathname()), $file->getClientOriginalName()
+            )->patch(env('APP_API_URL') . '/akun/' . $id, $validatedData);
+    }
+
+    // Update session with new data (except the file, which is not serializable)
+    Session::put([
+        'nama' => $validatedData['nama'],
+        'no_telp' => $validatedData['no_telp'],
+        'email' => $validatedData['email'],
+        'foto' => $validatedData['foto'], // Store the filename, not the file object
+    ]);
+
+    // Handle response
+    if ($response->successful()) {
+        return redirect('/profile')->with('message', 'Berhasil mengupdate');
+    } elseif ($response->failed()) {
+        return redirect('/profile')->with('message', 'Gagal mengupdate');
+    } else {
+        return redirect('/profile')->with('message', 'Error system 500');
+    }
+}
+
+
 
     /**
      * Remove the specified resource from storage.
