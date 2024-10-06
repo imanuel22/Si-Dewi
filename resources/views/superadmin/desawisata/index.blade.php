@@ -49,9 +49,9 @@
                         <th scope="col" class="w-2/12 ">
                             Nama
                         </th>
-                        <th scope="col" class="w-3/12 ">
+                        <!-- <th scope="col" class="w-3/12 ">
                             gambar
-                        </th>
+                        </th> -->
                         <th scope="col" class="w-3/12 ">
                             alamat
                         </th>
@@ -82,10 +82,10 @@
                             <td class="px-2 text-lg font-bold text-black ">
                                 <p class="break-words "> {{ $row['nama'] }}</p>
                             </td>
-                            <td class="flex justify-center p-4 ">
+                            <!-- <td class="flex justify-center p-4 ">
                                 <img class="h-60" src="{{ env('APP_API_URL') }}/resource/desawisata/{{ $row['gambar'] }}"
                                     alt="{{ $row['gambar'] }}">
-                            </td>
+                            </td> -->
                             <td class="px-2 ">
 
                                 <p class="break-words">{{ $row['alamat'] }}</p>
@@ -108,7 +108,7 @@
                                     }
                                 @endphp
                                 <div class="flex justify-center">
-                                    <div class="{{ $bgColor }} p-4 rounded-3xl w-52 ">
+                                    <div class="{{ $bgColor }} p-4 rounded-3xl w-40 ">
                                         {{ $row['kategori'] }}
                                     </div>
                                 </div>
@@ -160,76 +160,10 @@
         </div>
     </div>
 
-    <script>
-        $("#your-div-id").css("your-attribute", "your-value");
-    </script>
-@endsection
-
-<!-- Include external scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
-    /*! DataTables Tailwind CSS integration */
-    (function(factory) {
-        if (typeof define === 'function' && define.amd) {
-            define(['jquery', 'datatables.net'], function($) {
-                return factory($, window, document);
-            });
-        } else if (typeof exports === 'object') {
-            var jq = require('jquery');
-            var cjsRequires = function(root, $) {
-                if (!$.fn.dataTable) {
-                    require('datatables.net')(root, $);
-                }
-            };
-
-            if (typeof window === 'undefined') {
-                module.exports = function(root, $) {
-                    root = root || window;
-                    $ = $ || jq(root);
-                    cjsRequires(root, $);
-                    return factory($, root, root.document);
-                };
-            } else {
-                cjsRequires(window, jq);
-                module.exports = factory(jq, window, window.document);
-            }
-        } else {
-            factory(jQuery, window, document);
-        }
-    }(function($, window, document) {
-        'use strict';
-        var DataTable = $.fn.dataTable;
-
-        // Extend DataTables defaults for Tailwind CSS
-        $.extend(true, DataTable.defaults, { renderer: 'tailwindcss' });
-        $.extend(true, DataTable.ext.classes, {
-            container: "dt-container dt-tailwindcss",
-            search: { input: "border bg-gray-100 ..." },
-            length: { select: "border px-3 py-2 ..." },
-          
-            table: 'dataTable min-w-full text-sm align-middle whitespace-nowrap',
-            thead: { row: 'dark:border-gray-700/50', cell: 'border px-3 py-4 text-center' },
-            tbody: { cell: 'border text-center' },
-        });
-
-        // Renderer for Tailwind CSS paging button
-        DataTable.ext.renderer.pagingButton.tailwindcss = function(settings, buttonType, content, active, disabled) {
-            var classes = settings.oClasses.paging;
-            var btnClasses = [classes.button];
-            btnClasses.push(active ? classes.active : classes.notActive);
-            btnClasses.push(disabled ? classes.notEnabled : classes.enabled);
-
-            var a = $('<a>', { href: disabled ? null : '#', class: btnClasses.join(' ') }).html(content);
-            return { display: a, clicker: a };
-        };
-
-        return DataTable;
-    }));
-
+   
     // Initialize DataTable
     $(document).ready(function() {
         var table = new DataTable('#myTable');
@@ -307,3 +241,6 @@
         }
     });
 </script>
+@endsection
+
+

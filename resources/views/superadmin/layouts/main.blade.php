@@ -6,7 +6,7 @@
     @include('superadmin.layouts.navbar')
     @include('superadmin.layouts.sidebar')
     <div class="p-4 sm:ml-64 ">
-        <div class="mt-14">
+        <div class="mt-20">
             @yield('main')
         </div>
     </div>

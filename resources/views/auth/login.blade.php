@@ -89,7 +89,7 @@
             </div>
         </div> --}}
         <!-- Login Form for larger screens -->
-        <div
+        <!-- <div
             class="hidden m-10 bg-opacity-90 rounded-3xl sm:flex z-10 items-center shadow-lg justify-center bg-white sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div class="w-full max-w-lg mx-7">
                 <p class="mx-1 mb-24 -mt-24 text-6xl font-semibold text-gray-900 font-poppins dark:text-white">Login</p>
@@ -131,11 +131,11 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
 
         <!-- Login Form for smaller screens -->
-        <div class="sm:hidden z-10 absolute inset-0 flex items-center justify-center m-5">
-            <div class="w-full max-w-lg bg-white bg-opacity-80 p-5 rounded-3xl">
+        <div class=" z-10 absolute inset-0 flex items-center justify-center m-5">
+            <div class="w-full max-w-md sm:max-w-2xl bg-white bg-opacity-80 sm:p-12 lg:p-20 p-8 rounded-3xl">
                 <p class="mb-8 text-4xl font-semibold text-gray-900 font-poppins dark:text-white">Login</p>
                 <form action="/dologin" method="POST">
                     @csrf
@@ -170,7 +170,7 @@
                             </i>
                         </div>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-end">
                         <button type="submit"
                             class="px-10 py-3 mt-4 text-2xl font-medium text-center text-white shadow-lg rounded-xl bg-primary-200 hover:bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">LOGIN</button>
                     </div>

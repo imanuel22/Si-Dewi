@@ -45,7 +45,7 @@
                     <tr class="border">
                         <th scope="col" class="w-12 px-6 py-3 text-center ">No</th>
                         <th scope="col" class="w-1/6 px-6 py-3 text-center ">Judul</th>
-                        <th scope="col" class="w-1/4 px-6 py-3 text-center ">Gambar</th>
+                      
                         <th scope="col" class="w-1/2 px-6 py-3 text-center ">Isi Berita</th>
                         <th scope="col" class="w-1/6 px-6 py-3 text-center ">Created at</th>
                         <th scope="col" class="w-1/6 px-6 py-3 text-center ">Updated at</th>
@@ -60,13 +60,8 @@
                                 {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4 text-center font-bold text-black ">
-                                <p class="break-words whitespace-normal">
+                                <p class="break-words text-lg whitespace-normal">
                                     {{ $row['judul'] }}</p>
-                            </td>
-                            <td class="flex justify-center px-6 py-4 text-center h-60">
-                                <img class="h-full w-full object-cover"
-                                    src="{{ env('APP_API_URL') }}/resource/berita/{{ $row['gambar'] }}"
-                                    alt="{{ $row['gambar'] }}">
                             </td>
                             <td class="px-6 py-4 ">
                                 <p class="text-left max-w-xl break-words whitespace-normal sm:w-2xl">
@@ -132,7 +127,7 @@
 
                         <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                            <div class="relative p-4 w-full max-w-4xl max-h-full">
                                 <!-- Modal content -->
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                     <!-- Modal header -->
@@ -172,73 +167,11 @@
                     @endforeach
                 </tbody>
             </table>
-        @endsection
 
-        <!-- Include external scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
-    /*! DataTables Tailwind CSS integration */
-    (function(factory) {
-        if (typeof define === 'function' && define.amd) {
-            define(['jquery', 'datatables.net'], function($) {
-                return factory($, window, document);
-            });
-        } else if (typeof exports === 'object') {
-            var jq = require('jquery');
-            var cjsRequires = function(root, $) {
-                if (!$.fn.dataTable) {
-                    require('datatables.net')(root, $);
-                }
-            };
-
-            if (typeof window === 'undefined') {
-                module.exports = function(root, $) {
-                    root = root || window;
-                    $ = $ || jq(root);
-                    cjsRequires(root, $);
-                    return factory($, root, root.document);
-                };
-            } else {
-                cjsRequires(window, jq);
-                module.exports = factory(jq, window, window.document);
-            }
-        } else {
-            factory(jQuery, window, document);
-        }
-    }(function($, window, document) {
-        'use strict';
-        var DataTable = $.fn.dataTable;
-
-        // Extend DataTables defaults for Tailwind CSS
-        $.extend(true, DataTable.defaults, { renderer: 'tailwindcss' });
-        $.extend(true, DataTable.ext.classes, {
-            container: "dt-container dt-tailwindcss",
-            search: { input: "border bg-gray-100 ..." },
-            length: { select: "border px-3 py-2 ..." },
-          
-            table: 'dataTable min-w-full text-sm align-middle whitespace-nowrap',
-            thead: { row: 'dark:border-gray-700/50', cell: 'border px-3 py-4 text-center' },
-            tbody: { cell: 'border text-center' },
-        });
-
-        // Renderer for Tailwind CSS paging button
-        DataTable.ext.renderer.pagingButton.tailwindcss = function(settings, buttonType, content, active, disabled) {
-            var classes = settings.oClasses.paging;
-            var btnClasses = [classes.button];
-            btnClasses.push(active ? classes.active : classes.notActive);
-            btnClasses.push(disabled ? classes.notEnabled : classes.enabled);
-
-            var a = $('<a>', { href: disabled ? null : '#', class: btnClasses.join(' ') }).html(content);
-            return { display: a, clicker: a };
-        };
-
-        return DataTable;
-    }));
-
+   
     // Initialize DataTable
     $(document).ready(function() {
         var table = new DataTable('#myTable');
@@ -316,3 +249,4 @@
         }
     });
 </script>
+        @endsection
